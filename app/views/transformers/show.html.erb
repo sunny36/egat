@@ -1,0 +1,12 @@
+<p>
+  <b>Transformer Name:</b>
+  <%=h @transformer.transformer_name %>
+</p>
+<p>
+  <b>Brand:</b>
+  <%=h @transformer.brand.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_transformer_path(@transformer) %> |
+<%= link_to 'Back', transformers_path %>

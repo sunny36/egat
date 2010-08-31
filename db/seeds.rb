@@ -5,3 +5,12 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+
+
+Brand.delete_all
+open("db/brands.txt") do |brands|
+  brands.read.each_line do |brand|
+    Brand.create({:name => brand.strip})
+  end
+end

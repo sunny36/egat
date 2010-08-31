@@ -6,3 +6,776 @@ Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-08-31 19:55:5
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
 Completed in 71ms (View: 9, DB: 0) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (38.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831130325')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("students")[0m
+
+
+Processing StudentsController#index (for 127.0.0.1 at 2010-08-31 20:03:51) [GET]
+  [4;36;1mStudent Load (0.5ms)[0m   [0;1mSELECT * FROM "students" [0m
+Rendering template within layouts/students
+Rendering students/index
+Completed in 29ms (View: 20, DB: 1) | 200 OK [http://localhost/students]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-31 20:25:26) [GET]
+
+ActionController::RoutingError (No route matches "/transformers" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-31 20:25:46) [GET]
+
+LoadError (Expected /Users/somchok/code/egat/app/controllers/transformers_controller.rb to define TransformersController):
+  
+
+Rendered rescues/_trace (98.2ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 20:26:17) [GET]
+  [4;36;1mTransformer Load (46.1ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering transformers/index
+
+ActionView::TemplateError (undefined local variable or method `student' for #<ActionView::Base:0x10371dbe0>) on line #12 of app/views/transformers/index.html.erb:
+9:   <tr>
+10:     <td><%=h transformer.id %></td>
+11:     <td><%=h transformer.transformer_name %></td>
+12:     <td><%= link_to 'Show', student %></td>
+13:     <td><%= link_to 'Edit', edit_student_path(student) %></td>
+14:     <td><%= link_to 'Destroy', student, :confirm => 'Are you sure?', :method => :delete %></td>
+15:   </tr>
+
+    app/views/transformers/index.html.erb:12
+    app/views/transformers/index.html.erb:8:in `each'
+    app/views/transformers/index.html.erb:8
+    app/controllers/transformers_controller.rb:6:in `index'
+
+Rendered rescues/_trace (40.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 20:26:37) [GET]
+  [4;35;1mTransformer Load (121.8ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering transformers/index
+Completed in 187ms (View: 15, DB: 122) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 20:27:10) [GET]
+  [4;36;1mTransformer Load (48.0ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 191ms (View: 17, DB: 48) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 20:27:45) [GET]
+  [4;35;1mTransformer Load (45.4ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 112ms (View: 17, DB: 45) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 20:57:35) [GET]
+  [4;36;1mTransformer Load (46.5ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 244ms (View: 12, DB: 46) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 20:57:36) [GET]
+  [4;35;1mTransformer Load (122.3ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 187ms (View: 13, DB: 122) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 20:58:07) [GET]
+  [4;36;1mTransformer Load (45.0ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 107ms (View: 13, DB: 45) | 200 OK [http://localhost/transformers]
+  [4;36;1mSQL (4.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831130325')[0m
+Migrating to CreateBrands (20100831132834)
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831132834')[0m
+Migrating to AddBrandIdToTransformer (20100831140020)
+  [4;35;1mSQL (12.6ms)[0m   [0mALTER TABLE "transformer" ADD "brand_id" integer[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831140020')[0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("arrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("brands")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bus_voltage_hvs")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("bus_voltage_lvs")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("bushing")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("chart_present")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("conservator_tank")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_cor")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_dcr")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_exc")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("elec_imp_single")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("elec_imp_three")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_ins_auto")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_ins_three")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("elec_ins_two")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("elec_rat")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("equipment")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("equipment_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("failure_condition")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_list("failure_condition_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("fruits")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("general_condition")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("hot_line_oil_filter")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("importance_indices")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("inspection")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("inspection_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("lightning_arrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("load_history")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("load_pattern_per_years")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("maintank")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("manufacturer")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("ngr")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_aging")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_contamination")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_furan")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_insulate")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_compartment")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_contact")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_control_cab")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_model")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_oil_contamination")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_type")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_draft_result")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_part")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_score")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_sub_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_type")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("performance_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("person")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("posts")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("probability_of_force_outages")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("public_images")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("radiator_cooling")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("regulatingpt")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("report")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("social_aspects")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("station")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("students")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("sun_flower")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("system_locations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("tarrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tbushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("thermo_scan")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tran_status")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("trans_control_cab")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("transformer")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("transformer_history_move")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("visual_bushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("web_link")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("web_tool")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("winding_type")[0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mALTER TABLE "brands" ADD "name" varchar(255)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831143654')[0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("arrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("brands")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bus_voltage_hvs")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("bus_voltage_lvs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bushing")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("chart_present")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("conservator_tank")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_cor")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_dcr")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_exc")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("elec_imp_single")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("elec_imp_three")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_ins_auto")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_ins_three")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_ins_two")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_rat")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("equipment")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("equipment_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("failure_condition")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("failure_condition_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("fruits")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("general_condition")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("hot_line_oil_filter")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("importance_indices")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("inspection")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("inspection_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("lightning_arrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("load_history")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("load_pattern_per_years")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("maintank")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("manufacturer")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("ngr")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_aging")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_contamination")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_furan")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_insulate")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_compartment")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_contact")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_control_cab")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_model")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_oil_contamination")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_type")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_draft_result")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_part")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_score")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_sub_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_type")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("performance_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("person")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("posts")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("probability_of_force_outages")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("public_images")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("radiator_cooling")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("regulatingpt")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("report")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("social_aspects")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("station")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("students")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("sun_flower")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("system_locations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("tarrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tbushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("thermo_scan")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tran_status")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("trans_control_cab")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("transformer")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("transformer_history_move")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("visual_bushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("web_link")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("web_tool")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("winding_type")[0m
+  [4;36;1mBrand Delete all (5.0ms)[0m   [0;1mDELETE FROM "brands" WHERE 1=1[0m
+  [4;36;1mBrand Delete all (5.1ms)[0m   [0;1mDELETE FROM "brands" WHERE 1=1[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ASEA', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('National', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Schorch', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siemens', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Tira Thai', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Takaoka', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Alstom', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.5ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Trafo Union', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meiden', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Rade Koncar', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.5ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Toshiba', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elektro Bauag', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ABB', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Fuji', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Mitsubishi', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('OSAKA', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Daihen', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Jeumont Schneider', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meidensha', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Ekarat Daihen', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('TMT & D', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Chenyang', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Volta Werke', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elin', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Hyundai', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siriwiwat', '2010-08-31 15:09:16', '2010-08-31 15:09:16')[0m
+  [4;36;1mSQL (4.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTransformer Load (0.7ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+  [4;35;1mTransformer Load (0.6ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:14:05) [GET]
+  [4;35;1mTransformer Load (47.8ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 130ms (View: 30, DB: 48) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:14:59) [GET]
+  [4;36;1mTransformer Load (126.3ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 433ms (View: 255, DB: 126) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:16:09) [GET]
+  [4;35;1mTransformer Load (48.6ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+Completed in 362ms (View: 262, DB: 49) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:16:11) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering transformers/edit
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of app/views/transformers/edit.html.erb:
+1: <h1>Editing Transformer</h1>
+2: 
+3: <% form_for(@transformer) do |f| %>
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+
+    app/views/transformers/edit.html.erb:3
+
+Rendered rescues/_trace (37.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:17:14) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+Completed in 150ms (View: 140, DB: 0) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:20:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::Brands) on line #13 of app/views/transformers/edit.html.erb:
+10:   <p>
+11:   <%= f.label :brand_id %>
+12:   <%=
+13:     @brands = Brands.find(:all, :order => "name")
+14:     f.collection_select(:brand_id, @brands, :id, :value, {:prompt => false})
+15:   %>
+16:     
+
+    app/views/transformers/edit.html.erb:13
+    app/views/transformers/edit.html.erb:3
+
+Rendered rescues/_trace (37.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:20:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+
+ActionView::TemplateError (undefined method `value' for #<Brand:0x103183630>) on line #14 of app/views/transformers/edit.html.erb:
+11:   <%= f.label :brand_id %>
+12:   <%=
+13:     @brands = Brand.find(:all, :order => "name")
+14:     f.collection_select(:brand_id, @brands, :id, :value, {:prompt => false})
+15:   %>
+16:     
+17:   </p>
+
+    app/views/transformers/edit.html.erb:14
+    app/views/transformers/edit.html.erb:3
+
+Rendered rescues/_trace (41.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:20:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.4ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 29ms (View: 18, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:20:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.4ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 32ms (View: 18, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:20:59) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"1", "transformer"=>{"transformer_name"=>"AN-KT1A", "brand_id"=>""}}
+
+ActionController::UnknownAction (No action responded to update. Actions: edit and index):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:21:15) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 34ms (View: 22, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:21:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 28ms (View: 17, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:23:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 25ms (View: 15, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:25:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 25ms (View: 14, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:25:55) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"1", "transformer"=>{"transformer_name"=>"AN-KT1A", "brand_id"=>"13"}}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+
+TypeError (exception class/object expected):
+  app/controllers/transformers_controller.rb:18:in `raise'
+  app/controllers/transformers_controller.rb:18:in `update'
+
+Rendered rescues/_trace (29.5ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:27:03) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"1", "transformer"=>{"transformer_name"=>"AN-KT1A", "brand_id"=>"13"}}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+
+TypeError (exception class/object expected):
+  app/controllers/transformers_controller.rb:19:in `raise'
+  app/controllers/transformers_controller.rb:19:in `update'
+
+Rendered rescues/_trace (28.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:27:40) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"1", "transformer"=>{"transformer_name"=>"AN-KT1A", "brand_id"=>"13"}}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+
+TypeError (exception class/object expected):
+  app/controllers/transformers_controller.rb:19:in `raise'
+  app/controllers/transformers_controller.rb:19:in `update'
+
+Rendered rescues/_trace (110.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:27:51) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mTransformer Load (0.5ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 3) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;36;1mBrand Load (0.8ms)[0m   [0;1mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 26ms (View: 16, DB: 1) | 200 OK [http://localhost/transformers/3/edit]
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:27:54) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"3", "transformer"=>{"transformer_name"=>"AP-KT1A", "brand_id"=>"4"}}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 3) [0m
+
+TypeError (exception class/object expected):
+  app/controllers/transformers_controller.rb:19:in `raise'
+  app/controllers/transformers_controller.rb:19:in `update'
+
+Rendered rescues/_trace (28.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:29:39) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"3", "transformer"=>{"transformer_name"=>"AP-KT1A", "brand_id"=>"13"}}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 3) [0m
+  [4;35;1mTransformer Update (0.4ms)[0m   [0mUPDATE "transformer" SET "brand_id" = 13 WHERE "id" = 3[0m
+Redirected to http://localhost:3000/transformers/3
+Completed in 17ms (DB: 1) | 302 Found [http://localhost/transformers/3]
+
+
+Processing TransformersController#show (for 127.0.0.1 at 2010-08-31 22:29:39) [GET]
+  Parameters: {"id"=>"3"}
+Rendering template within layouts/application
+Rendering transformers/show
+
+ActionView::TemplateError (undefined method `transformer_name' for nil:NilClass) on line #3 of app/views/transformers/show.html.erb:
+1: <p>
+2:   <b>Transformer Name:</b>
+3:   <%=h @transformer.transformer_name %>
+4: </p>
+5: <p>
+6:   <b>Brand:</b>
+
+    app/views/transformers/show.html.erb:3
+
+Rendered rescues/_trace (36.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:30:03) [GET]
+  [4;36;1mTransformer Load (46.9ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+  [4;35;1mBrand Load (0.2ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 351ms (View: 254, DB: 47) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:30:25) [GET]
+  [4;36;1mTransformer Load (127.3ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+  [4;35;1mBrand Load (0.2ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 368ms (View: 187, DB: 128) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:31:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;35;1mBrand Load (0.8ms)[0m   [0mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 26ms (View: 15, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:31:56) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"1", "transformer"=>{"transformer_name"=>"AN-KT1A", "brand_id"=>"7"}}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+  [4;35;1mTransformer Update (0.4ms)[0m   [0mUPDATE "transformer" SET "brand_id" = 7 WHERE "id" = 1[0m
+Redirected to http://localhost:3000/transformers/1
+Completed in 20ms (DB: 1) | 302 Found [http://localhost/transformers/1]
+
+
+Processing TransformersController#show (for 127.0.0.1 at 2010-08-31 22:31:56) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/show
+  [4;35;1mBrand Load (0.2ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 7) [0m
+
+ActionView::TemplateError (undefined method `edit_brand_path' for #<ActionView::Base:0x103448758>) on line #11 of app/views/transformers/show.html.erb:
+8: </p>
+9: 
+10: 
+11: <%= link_to 'Edit', edit_brand_path(@transformer) %> |
+12: <%= link_to 'Back', brands_path %>
+
+    app/views/transformers/show.html.erb:11
+    app/controllers/transformers_controller.rb:28:in `show'
+
+Rendered rescues/_trace (38.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TransformersController#show (for 127.0.0.1 at 2010-08-31 22:32:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTransformer Load (0.3ms)[0m   [0;1mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/show
+  [4;35;1mBrand Load (0.2ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 7) [0m
+Completed in 22ms (View: 12, DB: 0) | 200 OK [http://localhost/transformers/1]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:32:22) [GET]
+  [4;36;1mTransformer Load (48.5ms)[0m   [0;1mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+  [4;35;1mBrand Load (0.2ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 7) [0m
+  [4;36;1mBrand Load (0.1ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 347ms (View: 246, DB: 49) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:32:24) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;36;1mBrand Load (0.8ms)[0m   [0;1mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 25ms (View: 14, DB: 1) | 200 OK [http://localhost/transformers/2/edit]
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:32:27) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"2", "transformer"=>{"transformer_name"=>"AN-KT2A", "brand_id"=>"1"}}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 2) [0m
+  [4;36;1mTransformer Update (0.3ms)[0m   [0;1mUPDATE "transformer" SET "brand_id" = 1 WHERE "id" = 2[0m
+Redirected to http://localhost:3000/transformers/2
+Completed in 17ms (DB: 1) | 302 Found [http://localhost/transformers/2]
+
+
+Processing TransformersController#show (for 127.0.0.1 at 2010-08-31 22:32:27) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering transformers/show
+  [4;36;1mBrand Load (0.2ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 1) [0m
+Completed in 18ms (View: 9, DB: 0) | 200 OK [http://localhost/transformers/2]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:32:30) [GET]
+  [4;35;1mTransformer Load (47.2ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+  [4;36;1mBrand Load (0.2ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 7) [0m
+  [4;35;1mBrand Load (0.2ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 1) [0m
+  [4;36;1mBrand Load (0.2ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 438ms (View: 252, DB: 48) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:32:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;36;1mBrand Load (0.8ms)[0m   [0;1mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 25ms (View: 15, DB: 1) | 200 OK [http://localhost/transformers/1/edit]
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:32:37) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"1", "transformer"=>{"transformer_name"=>"AN-KT1A", "brand_id"=>"13"}}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+  [4;36;1mTransformer Update (0.6ms)[0m   [0;1mUPDATE "transformer" SET "brand_id" = 13 WHERE "id" = 1[0m
+Redirected to http://localhost:3000/transformers/1
+Completed in 18ms (DB: 1) | 302 Found [http://localhost/transformers/1]
+
+
+Processing TransformersController#show (for 127.0.0.1 at 2010-08-31 22:32:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering transformers/show
+  [4;36;1mBrand Load (0.2ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 18ms (View: 9, DB: 0) | 200 OK [http://localhost/transformers/1]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:32:38) [GET]
+  [4;35;1mTransformer Load (129.0ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+  [4;36;1mBrand Load (0.2ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+  [4;35;1mBrand Load (0.1ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 352ms (View: 172, DB: 129) | 200 OK [http://localhost/transformers]
+
+
+Processing TransformersController#edit (for 127.0.0.1 at 2010-08-31 22:32:40) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering transformers/edit
+  [4;36;1mBrand Load (0.8ms)[0m   [0;1mSELECT * FROM "brands" ORDER BY name[0m
+Completed in 25ms (View: 15, DB: 1) | 200 OK [http://localhost/transformers/2/edit]
+
+
+Processing TransformersController#update (for 127.0.0.1 at 2010-08-31 22:32:43) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"rEWnFmqNyX4zIC8HSUsS3x2WvnSDen8sFpjblmFs9UE=", "id"=>"2", "transformer"=>{"transformer_name"=>"AN-KT2A", "brand_id"=>"13"}}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 2) [0m
+  [4;36;1mTransformer Update (0.4ms)[0m   [0;1mUPDATE "transformer" SET "brand_id" = 13 WHERE "id" = 2[0m
+Redirected to http://localhost:3000/transformers/2
+Completed in 18ms (DB: 1) | 302 Found [http://localhost/transformers/2]
+
+
+Processing TransformersController#show (for 127.0.0.1 at 2010-08-31 22:32:43) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTransformer Load (0.3ms)[0m   [0mSELECT * FROM "transformer" WHERE ("transformer"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering transformers/show
+  [4;36;1mBrand Load (0.3ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 20ms (View: 10, DB: 1) | 200 OK [http://localhost/transformers/2]
+
+
+Processing TransformersController#index (for 127.0.0.1 at 2010-08-31 22:32:45) [GET]
+  [4;35;1mTransformer Load (46.2ms)[0m   [0mSELECT * FROM "transformer" [0m
+Rendering template within layouts/application
+Rendering transformers/index
+  [4;36;1mBrand Load (0.2ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
+Completed in 357ms (View: 175, DB: 46) | 200 OK [http://localhost/transformers]

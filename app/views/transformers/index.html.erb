@@ -1,0 +1,25 @@
+<h1>Transformers</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Transformer Name</th>
+     <th>Brand</th>
+  </tr>
+
+<% @transformers.each do |transformer| %>
+  <tr>
+    <td><%=h transformer.id %></td>
+    <td><%=h transformer.transformer_name %></td>
+    <% unless transformer.brand.nil? %>
+      <td><%=h transformer.brand.name %></td>
+    <% else %>
+      <td>-</td>
+    <% end %>
+    <td><%= link_to 'Edit', edit_transformer_path(transformer) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

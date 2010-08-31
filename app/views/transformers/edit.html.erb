@@ -1,0 +1,24 @@
+<h1>Editing Transformer</h1>
+
+<% form_for(@transformer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :transformer_name %><br />
+    <%= f.text_field :transformer_name %>
+  </p>
+  <p>
+  <%= f.label :brand_id %><br />
+  <%=
+    @brands = Brand.find(:all, :order => "name")
+    f.collection_select(:brand_id, @brands, :id, :name, {:prompt => false})
+  %>
+    
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @transformer %> |
+<%= link_to 'Back', transformers_path %>
