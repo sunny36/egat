@@ -1,7 +1,7 @@
 class TransformersController < ApplicationController
 
   def index
-    @transformers = Transformer.all
+    @transformers = Transformer.find(:all, :order => "id")
     respond_to do |format|
       format.html 
     end
