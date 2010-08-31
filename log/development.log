@@ -779,3 +779,566 @@ Rendering transformers/index
   [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
   [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "brands" WHERE ("brands"."id" = 13) [0m
 Completed in 357ms (View: 175, DB: 46) | 200 OK [http://localhost/transformers]
+  [4;36;1mSQL (4.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+Migrating to CreateBusVoltageHvs (20100831173429)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: table "bus_voltage_hvs" already exists: CREATE TABLE "bus_voltage_hvs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+Migrating to CreateBusVoltageHvs (20100831173429)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "bus_voltage_hvs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173429')[0m
+Migrating to CreateBusVoltageLvs (20100831173442)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "bus_voltage_lvs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173442')[0m
+Migrating to CreateProbabilityOfForceOutages (20100831173509)
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: table "probability_of_force_outages" already exists: CREATE TABLE "probability_of_force_outages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+Migrating to CreateBusVoltageHvs (20100831173429)
+Migrating to CreateBusVoltageLvs (20100831173442)
+Migrating to CreateProbabilityOfForceOutages (20100831173509)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCREATE TABLE "probability_of_force_outages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173509')[0m
+Migrating to CreateSocialAspects (20100831173520)
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: table "social_aspects" already exists: CREATE TABLE "social_aspects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+Migrating to CreateBusVoltageHvs (20100831173429)
+Migrating to CreateBusVoltageLvs (20100831173442)
+Migrating to CreateProbabilityOfForceOutages (20100831173509)
+Migrating to CreateSocialAspects (20100831173520)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "social_aspects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173520')[0m
+Migrating to CreateSystemLocations (20100831173535)
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: table "system_locations" already exists: CREATE TABLE "system_locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (4.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+Migrating to CreateBusVoltageHvs (20100831173429)
+Migrating to CreateBusVoltageLvs (20100831173442)
+Migrating to CreateProbabilityOfForceOutages (20100831173509)
+Migrating to CreateSocialAspects (20100831173520)
+Migrating to CreateSystemLocations (20100831173535)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "system_locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173535')[0m
+Migrating to CreateApplicationUses (20100831173553)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "application_uses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173553')[0m
+Migrating to CreateSystemStabilities (20100831173603)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "system_stabilities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173603')[0m
+Migrating to CreatePollutions (20100831173618)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "pollutions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173618')[0m
+Migrating to CreateDamageOfProperties (20100831173649)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "damage_of_properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "message" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173649')[0m
+Migrating to CreateLoadPatternPerYears (20100831173713)
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: table "load_pattern_per_years" already exists: CREATE TABLE "load_pattern_per_years" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lteq_0_pt_6" integer, "gt_0_pt_6_and_lteq_1" integer, "gt_1_and_lteq_1_pt_2" integer, "gt_1_pt_2_and_lteq_1_pt_5" integer, "gt_1_pt_5" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (4.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+Migrating to CreateBusVoltageHvs (20100831173429)
+Migrating to CreateBusVoltageLvs (20100831173442)
+Migrating to CreateProbabilityOfForceOutages (20100831173509)
+Migrating to CreateSocialAspects (20100831173520)
+Migrating to CreateSystemLocations (20100831173535)
+Migrating to CreateApplicationUses (20100831173553)
+Migrating to CreateSystemStabilities (20100831173603)
+Migrating to CreatePollutions (20100831173618)
+Migrating to CreateDamageOfProperties (20100831173649)
+Migrating to CreateLoadPatternPerYears (20100831173713)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "load_pattern_per_years" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lteq_0_pt_6" integer, "gt_0_pt_6_and_lteq_1" integer, "gt_1_and_lteq_1_pt_2" integer, "gt_1_pt_2_and_lteq_1_pt_5" integer, "gt_1_pt_5" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100831173713')[0m
+  [4;35;1mSQL (2.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("application_uses")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("arrester")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("brands")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("bus_voltage_hvs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bus_voltage_lvs")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("bushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("chart_present")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("conservator_tank")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("damage_of_properties")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_cor")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_dcr")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_exc")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_imp_single")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_imp_three")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_ins_auto")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_ins_three")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_ins_two")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_rat")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("equipment")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("equipment_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("failure_condition")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("failure_condition_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("fruits")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("general_condition")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("hot_line_oil_filter")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("importance_indices")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("inspection")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("inspection_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("lightning_arrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("load_history")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("load_pattern_per_years")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("maintank")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("manufacturer")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("ngr")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_aging")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_contamination")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_furan")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_insulate")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_compartment")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_contact")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_control_cab")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_model")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_oil_contamination")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_type")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("perform_draft_result")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_part")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_score")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_sub_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_type")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("performance_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("person")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("pollutions")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("posts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("probability_of_force_outages")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("public_images")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("radiator_cooling")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("regulatingpt")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("report")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("social_aspects")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("station")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("students")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("sun_flower")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("system_locations")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("system_stabilities")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("tarrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tbushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("thermo_scan")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tran_status")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("trans_control_cab")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("transformer")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("transformer_history_move")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("visual_bushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("web_link")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("web_tool")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("winding_type")[0m
+  [4;36;1mSQL (4.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStudents (20100831130325)
+Migrating to CreateBrands (20100831132834)
+Migrating to AddBrandIdToTransformer (20100831140020)
+Migrating to AddColumnsToBrand (20100831143654)
+Migrating to CreateBusVoltageHvs (20100831173429)
+Migrating to CreateBusVoltageLvs (20100831173442)
+Migrating to CreateProbabilityOfForceOutages (20100831173509)
+Migrating to CreateSocialAspects (20100831173520)
+Migrating to CreateSystemLocations (20100831173535)
+Migrating to CreateApplicationUses (20100831173553)
+Migrating to CreateSystemStabilities (20100831173603)
+Migrating to CreatePollutions (20100831173618)
+Migrating to CreateDamageOfProperties (20100831173649)
+Migrating to CreateLoadPatternPerYears (20100831173713)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("application_uses")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("arrester")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("brands")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("bus_voltage_hvs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bus_voltage_lvs")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("bushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("chart_present")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("conservator_tank")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("damage_of_properties")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_cor")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("elec_dcr")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_exc")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_imp_single")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("elec_imp_three")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_ins_auto")[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mPRAGMA index_list("elec_ins_three")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("elec_ins_two")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("elec_rat")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("equipment")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("equipment_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("failure_condition")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("failure_condition_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("fruits")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("general_condition")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("hot_line_oil_filter")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("importance_indices")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("inspection")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("inspection_detail")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("lightning_arrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("load_history")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("load_pattern_per_years")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("maintank")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("manufacturer")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("ngr")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_aging")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_contamination")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oil_furan")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oil_insulate")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_compartment")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_contact")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_control_cab")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_dga")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_model")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("oltc_oil_contamination")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("oltc_type")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("perform_draft_result")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_part")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_score")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("perform_sub_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("perform_type")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("performance_group")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("person")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("pollutions")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("posts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("probability_of_force_outages")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("public_images")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("radiator_cooling")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("regulatingpt")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("report")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("social_aspects")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("station")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("students")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("sun_flower")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("system_locations")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("system_stabilities")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("tarrester")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tbushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("thermo_scan")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tran_status")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("trans_control_cab")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("transformer")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("transformer_history_move")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("visual_bushing")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("web_link")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("web_tool")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("winding_type")[0m
+  [4;36;1mBrand Delete all (7.6ms)[0m   [0;1mDELETE FROM "brands" WHERE 1=1[0m
+  [4;35;1mBrand Create (0.5ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ASEA', '2010-08-31 18:56:27', '2010-08-31 18:56:27')[0m
+  [4;36;1mBrand Create (0.6ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('National', '2010-08-31 18:56:27', '2010-08-31 18:56:27')[0m
+  [4;35;1mBrand Create (1.0ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Schorch', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siemens', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Tira Thai', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Takaoka', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Alstom', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Trafo Union', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meiden', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Rade Koncar', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Toshiba', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elektro Bauag', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ABB', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Fuji', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Mitsubishi', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('OSAKA', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Daihen', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Jeumont Schneider', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meidensha', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Ekarat Daihen', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('TMT & D', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Chenyang', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Volta Werke', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elin', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Hyundai', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siriwiwat', '2010-08-31 18:56:28', '2010-08-31 18:56:28')[0m
+  [4;35;1mApplicationUse Delete all (0.8ms)[0m   [0mDELETE FROM "application_uses" WHERE 1=1[0m
+  [4;36;1mApplicationUse Create (0.3ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', 'Mobile')[0m
+  [4;35;1mApplicationUse Create (0.3ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', 'Cold Standby')[0m
+  [4;36;1mApplicationUse Create (0.5ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', 'Host Standby')[0m
+  [4;35;1mApplicationUse Create (0.6ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', 'In-Service')[0m
+  [4;36;1mBusVoltageHv Delete all (0.9ms)[0m   [0;1mDELETE FROM "bus_voltage_hvs" WHERE 1=1[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '69')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '115')[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '230')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '500')[0m
+  [4;35;1mBusVoltageLv Delete all (1.0ms)[0m   [0mDELETE FROM "bus_voltage_lvs" WHERE 1=1[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '22')[0m
+  [4;35;1mBusVoltageLv Create (0.4ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '33')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '69')[0m
+  [4;35;1mBusVoltageLv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '115')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 18:56:28', '2010-08-31 18:56:28', '230')[0m
+  [4;36;1mBrand Delete all (7.0ms)[0m   [0;1mDELETE FROM "brands" WHERE 1=1[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ASEA', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('National', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Schorch', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siemens', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Tira Thai', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.5ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Takaoka', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.5ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Alstom', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Trafo Union', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meiden', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Rade Koncar', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Toshiba', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.5ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elektro Bauag', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ABB', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Fuji', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.5ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Mitsubishi', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('OSAKA', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Daihen', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Jeumont Schneider', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meidensha', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Ekarat Daihen', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('TMT & D', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Chenyang', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Volta Werke', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elin', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Hyundai', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;36;1mBrand Create (1.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siriwiwat', '2010-08-31 19:24:58', '2010-08-31 19:24:58')[0m
+  [4;35;1mApplicationUse Delete all (3.0ms)[0m   [0mDELETE FROM "application_uses" WHERE 1=1[0m
+  [4;36;1mApplicationUse Create (0.3ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', 'Mobile')[0m
+  [4;35;1mApplicationUse Create (0.4ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', 'Cold Standby')[0m
+  [4;36;1mApplicationUse Create (0.4ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', 'Host Standby')[0m
+  [4;35;1mApplicationUse Create (0.3ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', 'In-Service')[0m
+  [4;36;1mBusVoltageHv Delete all (2.9ms)[0m   [0;1mDELETE FROM "bus_voltage_hvs" WHERE 1=1[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '69')[0m
+  [4;36;1mBusVoltageHv Create (0.5ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '115')[0m
+  [4;35;1mBusVoltageHv Create (0.8ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '230')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '500')[0m
+  [4;35;1mBusVoltageLv Delete all (2.8ms)[0m   [0mDELETE FROM "bus_voltage_lvs" WHERE 1=1[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '22')[0m
+  [4;35;1mBusVoltageLv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '33')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '69')[0m
+  [4;35;1mBusVoltageLv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '115')[0m
+  [4;36;1mBusVoltageLv Create (0.5ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:24:58', '2010-08-31 19:24:58', '230')[0m
+  [4;35;1mDamageOfProperty Delete all (0.8ms)[0m   [0mDELETE FROM "damage_of_properties" WHERE 1=1[0m
+  [4;36;1mBrand Delete all (6.1ms)[0m   [0;1mDELETE FROM "brands" WHERE 1=1[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ASEA', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('National', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Schorch', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siemens', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (1.0ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Tira Thai', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Takaoka', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Alstom', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Trafo Union', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meiden', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.6ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Rade Koncar', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Toshiba', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elektro Bauag', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ABB', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Fuji', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Mitsubishi', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('OSAKA', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Daihen', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Jeumont Schneider', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meidensha', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.6ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Ekarat Daihen', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('TMT & D', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.5ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Chenyang', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Volta Werke', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elin', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Hyundai', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siriwiwat', '2010-08-31 19:25:46', '2010-08-31 19:25:46')[0m
+  [4;35;1mApplicationUse Delete all (2.6ms)[0m   [0mDELETE FROM "application_uses" WHERE 1=1[0m
+  [4;36;1mApplicationUse Create (0.3ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', 'Mobile')[0m
+  [4;35;1mApplicationUse Create (0.3ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', 'Cold Standby')[0m
+  [4;36;1mApplicationUse Create (0.3ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', 'Host Standby')[0m
+  [4;35;1mApplicationUse Create (0.3ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', 'In-Service')[0m
+  [4;36;1mBusVoltageHv Delete all (2.6ms)[0m   [0;1mDELETE FROM "bus_voltage_hvs" WHERE 1=1[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '69')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '115')[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '230')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '500')[0m
+  [4;35;1mBusVoltageLv Delete all (2.6ms)[0m   [0mDELETE FROM "bus_voltage_lvs" WHERE 1=1[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '22')[0m
+  [4;35;1mBusVoltageLv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '33')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '69')[0m
+  [4;35;1mBusVoltageLv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '115')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:25:46', '2010-08-31 19:25:46', '230')[0m
+  [4;35;1mDamageOfProperty Delete all (0.8ms)[0m   [0mDELETE FROM "damage_of_properties" WHERE 1=1[0m
+  [4;36;1mBrand Delete all (6.6ms)[0m   [0;1mDELETE FROM "brands" WHERE 1=1[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ASEA', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('National', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Schorch', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siemens', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Tira Thai', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Takaoka', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Alstom', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Trafo Union', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meiden', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Rade Koncar', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Toshiba', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elektro Bauag', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ABB', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Fuji', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Mitsubishi', '2010-08-31 19:26:03', '2010-08-31 19:26:03')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('OSAKA', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Daihen', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Jeumont Schneider', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meidensha', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Ekarat Daihen', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('TMT & D', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Chenyang', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Volta Werke', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elin', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Hyundai', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siriwiwat', '2010-08-31 19:26:04', '2010-08-31 19:26:04')[0m
+  [4;35;1mApplicationUse Delete all (2.1ms)[0m   [0mDELETE FROM "application_uses" WHERE 1=1[0m
+  [4;36;1mApplicationUse Create (0.7ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', 'Mobile')[0m
+  [4;35;1mApplicationUse Create (0.3ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', 'Cold Standby')[0m
+  [4;36;1mApplicationUse Create (0.3ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', 'Host Standby')[0m
+  [4;35;1mApplicationUse Create (0.3ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', 'In-Service')[0m
+  [4;36;1mBusVoltageHv Delete all (2.6ms)[0m   [0;1mDELETE FROM "bus_voltage_hvs" WHERE 1=1[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '69')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '115')[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '230')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '500')[0m
+  [4;35;1mBusVoltageLv Delete all (2.8ms)[0m   [0mDELETE FROM "bus_voltage_lvs" WHERE 1=1[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '22')[0m
+  [4;35;1mBusVoltageLv Create (0.5ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '33')[0m
+  [4;36;1mBusVoltageLv Create (0.4ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '69')[0m
+  [4;35;1mBusVoltageLv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '115')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '230')[0m
+  [4;35;1mDamageOfProperty Delete all (0.9ms)[0m   [0mDELETE FROM "damage_of_properties" WHERE 1=1[0m
+  [4;36;1mDamageOfProperty Create (0.3ms)[0m   [0;1mINSERT INTO "damage_of_properties" ("created_at", "updated_at", "value", "message") VALUES('2010-08-31 19:26:04', '2010-08-31 19:26:04', '1', 'มผีนงักันไฟ (Fire Wall)')[0m
+  [4;36;1mBrand Delete all (6.4ms)[0m   [0;1mDELETE FROM "brands" WHERE 1=1[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ASEA', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('National', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Schorch', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siemens', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Tira Thai', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Takaoka', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Alstom', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Trafo Union', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meiden', '2010-08-31 19:28:14', '2010-08-31 19:28:14')[0m
+  [4;36;1mBrand Create (1.2ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Rade Koncar', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Toshiba', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elektro Bauag', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('ABB', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Fuji', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Mitsubishi', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('OSAKA', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Daihen', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Jeumont Schneider', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Meidensha', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Ekarat Daihen', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.5ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('TMT & D', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.3ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Chenyang', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.4ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Volta Werke', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.5ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Elin', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mBrand Create (0.3ms)[0m   [0mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Hyundai', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;36;1mBrand Create (0.4ms)[0m   [0;1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES('Siriwiwat', '2010-08-31 19:28:15', '2010-08-31 19:28:15')[0m
+  [4;35;1mApplicationUse Delete all (2.7ms)[0m   [0mDELETE FROM "application_uses" WHERE 1=1[0m
+  [4;36;1mApplicationUse Create (0.4ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Mobile')[0m
+  [4;35;1mApplicationUse Create (0.3ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Cold Standby')[0m
+  [4;36;1mApplicationUse Create (0.3ms)[0m   [0;1mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Host Standby')[0m
+  [4;35;1mApplicationUse Create (0.4ms)[0m   [0mINSERT INTO "application_uses" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'In-Service')[0m
+  [4;36;1mBusVoltageHv Delete all (4.8ms)[0m   [0;1mDELETE FROM "bus_voltage_hvs" WHERE 1=1[0m
+  [4;35;1mBusVoltageHv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '69')[0m
+  [4;36;1mBusVoltageHv Create (0.4ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '115')[0m
+  [4;35;1mBusVoltageHv Create (0.4ms)[0m   [0mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '230')[0m
+  [4;36;1mBusVoltageHv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_hvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '500')[0m
+  [4;35;1mBusVoltageLv Delete all (2.6ms)[0m   [0mDELETE FROM "bus_voltage_lvs" WHERE 1=1[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '22')[0m
+  [4;35;1mBusVoltageLv Create (0.3ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '33')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '69')[0m
+  [4;35;1mBusVoltageLv Create (0.5ms)[0m   [0mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '115')[0m
+  [4;36;1mBusVoltageLv Create (0.3ms)[0m   [0;1mINSERT INTO "bus_voltage_lvs" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '230')[0m
+  [4;35;1mDamageOfProperty Delete all (2.9ms)[0m   [0mDELETE FROM "damage_of_properties" WHERE 1=1[0m
+  [4;36;1mDamageOfProperty Create (0.3ms)[0m   [0;1mINSERT INTO "damage_of_properties" ("created_at", "updated_at", "value", "message") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '1', 'มผีนงักันไฟ (Fire Wall)')[0m
+  [4;35;1mDamageOfProperty Create (0.5ms)[0m   [0mINSERT INTO "damage_of_properties" ("created_at", "updated_at", "value", "message") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '2', 'มีOil Pitch')[0m
+  [4;36;1mDamageOfProperty Create (0.3ms)[0m   [0;1mINSERT INTO "damage_of_properties" ("created_at", "updated_at", "value", "message") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '3', 'ระยะหางระหวางหมอแปลง > 11m สําหรับหมอแปลง Loading และ > 15m สาํหรบัหมอแปลง Tie หรอื ไมมีหมอแปลงรอบขาง')[0m
+  [4;35;1mDamageOfProperty Create (0.3ms)[0m   [0mINSERT INTO "damage_of_properties" ("created_at", "updated_at", "value", "message") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '4', 'มีระบบดับเพลิง หรือสารดบัเ')[0m
+  [4;36;1mDamageOfProperty Create (0.4ms)[0m   [0;1mINSERT INTO "damage_of_properties" ("created_at", "updated_at", "value", "message") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', '5', 'ไมอย')[0m
+  [4;35;1mPollution Delete all (0.8ms)[0m   [0mDELETE FROM "pollutions" WHERE 1=1[0m
+  [4;36;1mPollution Create (0.3ms)[0m   [0;1mINSERT INTO "pollutions" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Light	(16 mm/kV)')[0m
+  [4;35;1mPollution Create (0.3ms)[0m   [0mINSERT INTO "pollutions" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Medium (20 mm/kV)')[0m
+  [4;36;1mPollution Create (0.4ms)[0m   [0;1mINSERT INTO "pollutions" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'High	(25 mm/kV)')[0m
+  [4;35;1mPollution Create (0.3ms)[0m   [0mINSERT INTO "pollutions" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Very high(31 mm/kV)')[0m
+  [4;36;1mProbabilityOfForceOutage Delete all (0.9ms)[0m   [0;1mDELETE FROM "probability_of_force_outages" WHERE 1=1[0m
+  [4;35;1mProbabilityOfForceOutage Create (0.3ms)[0m   [0mINSERT INTO "probability_of_force_outages" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'AA')[0m
+  [4;36;1mProbabilityOfForceOutage Create (0.3ms)[0m   [0;1mINSERT INTO "probability_of_force_outages" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'BB')[0m
+  [4;35;1mProbabilityOfForceOutage Create (0.4ms)[0m   [0mINSERT INTO "probability_of_force_outages" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'CC')[0m
+  [4;36;1mProbabilityOfForceOutage Create (0.3ms)[0m   [0;1mINSERT INTO "probability_of_force_outages" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'DD')[0m
+  [4;35;1mProbabilityOfForceOutage Create (0.3ms)[0m   [0mINSERT INTO "probability_of_force_outages" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'EE')[0m
+  [4;36;1mSocialAspect Delete all (0.8ms)[0m   [0;1mDELETE FROM "social_aspects" WHERE 1=1[0m
+  [4;35;1mSocialAspect Create (0.3ms)[0m   [0mINSERT INTO "social_aspects" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'นอกเมอืง')[0m
+  [4;36;1mSocialAspect Create (0.3ms)[0m   [0;1mINSERT INTO "social_aspects" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'เมอืง')[0m
+  [4;35;1mSocialAspect Create (0.5ms)[0m   [0mINSERT INTO "social_aspects" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'อุตสาหกรรม')[0m
+  [4;36;1mSystemLocation Delete all (0.9ms)[0m   [0;1mDELETE FROM "system_locations" WHERE 1=1[0m
+  [4;35;1mSystemLocation Create (0.3ms)[0m   [0mINSERT INTO "system_locations" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Step 1')[0m
+  [4;36;1mSystemLocation Create (0.4ms)[0m   [0;1mINSERT INTO "system_locations" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Step 2')[0m
+  [4;35;1mSystemLocation Create (0.3ms)[0m   [0mINSERT INTO "system_locations" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Step 3')[0m
+  [4;36;1mSystemLocation Create (0.4ms)[0m   [0;1mINSERT INTO "system_locations" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Step 4')[0m
+  [4;35;1mSystemLocation Create (0.4ms)[0m   [0mINSERT INTO "system_locations" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Step 5')[0m
+  [4;36;1mSystemLocation Create (0.3ms)[0m   [0;1mINSERT INTO "system_locations" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'No Shed or Tie Transformer')[0m
+  [4;35;1mSystemStability Delete all (0.8ms)[0m   [0mDELETE FROM "system_stabilities" WHERE 1=1[0m
+  [4;36;1mSystemStability Create (0.3ms)[0m   [0;1mINSERT INTO "system_stabilities" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Loading 115/22 or 33 kV')[0m
+  [4;35;1mSystemStability Create (0.4ms)[0m   [0mINSERT INTO "system_stabilities" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Loading 230/69 kV')[0m
+  [4;36;1mSystemStability Create (0.3ms)[0m   [0;1mINSERT INTO "system_stabilities" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Loading 230/115 kV')[0m
+  [4;35;1mSystemStability Create (0.3ms)[0m   [0mINSERT INTO "system_stabilities" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Tie 230/115 kV')[0m
+  [4;36;1mSystemStability Create (0.4ms)[0m   [0;1mINSERT INTO "system_stabilities" ("created_at", "updated_at", "value") VALUES('2010-08-31 19:28:15', '2010-08-31 19:28:15', 'Tie 500/230 kV')[0m

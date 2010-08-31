@@ -1,0 +1,4 @@
+Light	(16 mm/kV)
+Medium (20 mm/kV)
+High	(25 mm/kV)
+Very high(31 mm/kV)

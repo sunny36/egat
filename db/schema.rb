@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100831143654) do
+ActiveRecord::Schema.define(:version => 20100831173713) do
+
+  create_table "application_uses", :force => true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "arrester", :force => true do |t|
     t.integer  "version"
@@ -48,13 +54,13 @@ ActiveRecord::Schema.define(:version => 20100831143654) do
   end
 
   create_table "bus_voltage_hvs", :force => true do |t|
-    t.integer  "value",      :limit => 0
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "bus_voltage_lvs", :force => true do |t|
-    t.integer  "value",      :limit => 0
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -115,6 +121,13 @@ ActiveRecord::Schema.define(:version => 20100831143654) do
     t.decimal  "oilfail_oltc"
     t.decimal  "perform_type"
     t.decimal  "transformer"
+  end
+
+  create_table "damage_of_properties", :force => true do |t|
+    t.string   "value"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "elec_cor", :force => true do |t|
@@ -668,11 +681,11 @@ ActiveRecord::Schema.define(:version => 20100831143654) do
   end
 
   create_table "load_pattern_per_years", :force => true do |t|
-    t.integer  "lt_pt_6",                :limit => 0
-    t.integer  "pt_6_one",               :limit => 0
-    t.integer  "one_one_pt_two",         :limit => 0
-    t.integer  "one_pt_two_one_pt_five", :limit => 0
-    t.integer  "gt_pt_five",             :limit => 0
+    t.integer  "lteq_0_pt_6"
+    t.integer  "gt_0_pt_6_and_lteq_1"
+    t.integer  "gt_1_and_lteq_1_pt_2"
+    t.integer  "gt_1_pt_2_and_lteq_1_pt_5"
+    t.integer  "gt_1_pt_5"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -1099,6 +1112,12 @@ ActiveRecord::Schema.define(:version => 20100831143654) do
     t.string  "username"
   end
 
+  create_table "pollutions", :force => true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -1192,6 +1211,12 @@ ActiveRecord::Schema.define(:version => 20100831143654) do
   end
 
   create_table "system_locations", :force => true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "system_stabilities", :force => true do |t|
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"

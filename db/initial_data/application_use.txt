@@ -1,0 +1,4 @@
+Mobile
+Cold Standby
+Host Standby
+In-Service
