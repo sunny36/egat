@@ -1,0 +1,19 @@
+<% semantic_form_for @transformer_information do |f| %>
+  <% f.inputs do %>
+    <%= f.input :bus_voltage_hv %>
+    <%= f.input :bus_voltage_lv %>
+    <%= f.input :system_fault_level_hv %>
+    <%= f.input :system_fault_level_lv %>
+    <%= f.input :probability_of_force_outage %>
+    <%= f.input :social_aspect %>
+    <%= f.input :system_location %>
+    <%= f.label :public_image %>
+    <%= f.enum_select :public_image %>
+    <%= f.label :n1_criteria %>
+    <%= f.enum_select :n1_criteria %>
+    <%= f.input :application_use %>
+    <%= f.input :system_stability %>
+    <%= f.input :pollution %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>

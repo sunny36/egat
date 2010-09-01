@@ -1,6 +1,6 @@
-Step 1
-Step 2
-Step 3
-Step 4
-Step 5
-No Shed or Tie Transformer
+Step 1, 1, Very Low
+Step 2, 2, Low
+Step 3, 3, Moderate
+Step 4, 4, High
+Step 5, 5, Very High
+No Shed or Tie Transformer, 6, Extremely High

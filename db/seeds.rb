@@ -52,7 +52,8 @@ open("db/initial_data/pollution.txt") do |pollutions|
 end
 
 ProbabilityOfForceOutage.delete_all
-open("db/initial_data/probability_of_force_outage.txt") do |probability_of_force_outages|
+filename = "db/initial_data/probability_of_force_outage.txt"
+open(filename) do |probability_of_force_outages|
   probability_of_force_outages.read.each_line do |probability_of_force_outage|
     ProbabilityOfForceOutage.create({:value => probability_of_force_outage.strip})
   end
@@ -68,7 +69,9 @@ end
 SystemLocation.delete_all
 open("db/initial_data/system_location.txt") do |system_locations|
   system_locations.read.each_line do |system_location|
-    SystemLocation.create({:value => system_location.strip})
+    value, score, score_message = system_location.split(',')
+    SystemLocation.create({:value => value.strip, :score => score.strip, 
+                           :score_message => score_message.strip})
   end
 end
 

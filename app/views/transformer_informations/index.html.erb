@@ -1,0 +1,19 @@
+
+
+<table>
+  <tr>
+    <th>Bus Voltage Hv</th>
+    <th>Bus Voltage Lv</th>
+  </tr>
+  <% for transformer_information in @transformer_informations %>
+    <tr>
+      <td><%=h transformer_information.bus_voltage_hv_id %></td>
+      <td><%=h transformer_information.bus_voltage_lv_id %></td>
+      <td><%= link_to "Show", transformer_information %></td>
+      <td><%= link_to "Edit", edit_transformer_information_path(transformer_information) %></td>
+      <td><%= link_to "Destroy", transformer_information, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Transformer Information", new_transformer_information_path %></p>

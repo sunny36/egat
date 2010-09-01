@@ -1,0 +1,16 @@
+<% title "Transformer Information" %>
+
+<p>
+  <strong>Bus Voltage Hv:</strong>
+  <%=h @transformer_information.bus_voltage_hv_id %>
+</p>
+<p>
+  <strong>Bus Voltage Lv:</strong>
+  <%=h @transformer_information.bus_voltage_lv_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_transformer_information_path(@transformer_information) %> |
+  <%= link_to "Destroy", @transformer_information, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", transformer_informations_path %>
+</p>

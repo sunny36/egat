@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100831173713) do
+ActiveRecord::Schema.define(:version => 20100901111458) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1214,6 +1214,8 @@ ActiveRecord::Schema.define(:version => 20100831173713) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "score"
+    t.string   "score_message"
   end
 
   create_table "system_stabilities", :force => true do |t|
@@ -1458,6 +1460,9 @@ ActiveRecord::Schema.define(:version => 20100831173713) do
     t.decimal  "oldstation"
     t.decimal  "transformer"
   end
+
+# Could not dump table "transformer_informations" because of following StandardError
+#   Unknown type 'enum' for column 'public_image'
 
   create_table "visual_bushing", :force => true do |t|
     t.integer  "version"
