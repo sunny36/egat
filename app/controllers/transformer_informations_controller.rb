@@ -9,6 +9,11 @@ class TransformerInformationsController < ApplicationController
   
   def new
     @transformer_information = TransformerInformation.new
+    @bus_voltage_hvs = BusVoltageHv.find(:all, :order => 'value')
+    @bus_voltage_lvs = BusVoltageLv.find(:all, :order => 'value')
+    @probability_of_force_outages = ProbabilityOfForceOutage.find(:all, :order => 'value')    
+    @social_aspects = SocialAspect.find(:all, :order => 'value')
+    @system_locations = SystemLocation.find(:all, :order => 'value')
   end
   
   def create

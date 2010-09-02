@@ -1,17 +1,55 @@
-<% semantic_form_for @transformer_information do |f| %>
-  <% f.inputs do %>
-    <%= f.input :bus_voltage_hv %>
-    <%= f.input :bus_voltage_lv %>
-    <%= f.input :system_fault_level_hv %>
-    <%= f.input :system_fault_level_lv %>
-    <%= f.input :probability_of_force_outage %>
-    <%= f.input :social_aspect %>
-    <%= f.input :system_location %>
-
-    <%= f.input :n1_criteria %>
-    <%= f.input :application_use %>
-    <%= f.input :system_stability %>
-    <%= f.input :pollution %>
-  <% end %>
-  <%= f.buttons %>
+<% form_for @transformer_information do |f| %>
+  <div class="span-8"> 
+    <%= label :transformer_information, :bus_voltage_hv_id, 
+        "Bus Voltage HV side" %>
+    <%= f.collection_select(:bus_voltage_hv_id,  @bus_voltage_hvs, :id, :value, 
+                            {:prompt => true})
+    %>
+  </div>
+  <div class="span-8"> 
+    <%= label :transformer_information, :system_fault_level_hv,
+              'System Fault Level: HV side' %>
+    <%= f.text_field :system_fault_level_hv, :size => 10%>
+  </div>
+  <div class="span-8 last">
+  </div>
+  <div class="span-8"> 
+    <%= label :transformer_information, :bus_voltage_lv_id, 
+        "Bus Voltage LV side" %>
+    <%= f.collection_select(:bus_voltage_lv_id,  @bus_voltage_lvs, :id, :value, 
+                            {:prompt => true})
+    %>
+  </div>
+  <div class="span-8"> 
+    <%= label :transformer_information, :system_fault_level_lv,
+              'System Fault Level: LV side' %>
+    <%= f.text_field :system_fault_level_lv, :size => 10%>
+  </div>
+  <div class="span-8 last">
+  </div>
+  <div class="span-8"> 
+    <%= label :transformer_information, :probability_of_force_outage_id, 
+        "Probability Of Force Outage" %>
+    <%= f.collection_select(:probability_of_force_outage_id,  
+                            @probability_of_force_outages, :id, :value, 
+                            {:prompt => true})
+    %>
+  </div>
+  <div class="span-8"> 
+    <%= label :transformer_information, :social_aspect_id,
+              'Social Aspect' %>
+    <%= f.collection_select(:social_aspect_id,  @social_aspects, :id, :value, 
+                            {:prompt => true})
+    %>
+  </div>
+  <div class="span-8 last"> 
+  </div>
+  <div class="span-8"> 
+    <%= label :transformer_information, :system_location_id, 
+        "System Location" %>
+    <%= f.collection_select(:system_location_id,  @system_locations, :id, 
+                            :value, {:prompt => true})
+    %>
+  </div>
+  
 <% end %>
