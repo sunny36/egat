@@ -1,0 +1,3 @@
+<%= label :transformer_information, :system_stability_id, "System Stability" %>
+<%= f.collection_select(:system_stability_id,  @system_stabilities, :id, :value, 
+                        {:prompt => true}) %>        

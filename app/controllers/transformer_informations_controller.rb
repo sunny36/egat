@@ -16,6 +16,8 @@ class TransformerInformationsController < ApplicationController
     @system_locations = SystemLocation.find(:all, :order => 'value')
     @public_images = PublicImage.find(:all, :order => 'value')
     @n1_criterias = N1Criteria.find(:all, :order => 'value')
+    @application_uses = ApplicationUse.find(:all, :order => 'value')
+    @system_stabilities = SystemStability.find(:all, :order => 'value')
   end
   
   def create
