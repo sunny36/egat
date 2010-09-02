@@ -1,0 +1,4 @@
+<%= label :transformer_information, :system_location_id, 
+    "System Location" %>
+<%= f.collection_select(:system_location_id,  @system_locations, :id, 
+                        :value, {:prompt => true}) %>        

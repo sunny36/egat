@@ -1,0 +1,7 @@
+<%= label :transformer_information, 
+          :probability_of_force_outage_id, 
+          "Probability Of Force Outage" %>
+<%= f.collection_select(:probability_of_force_outage_id,  
+                        @probability_of_force_outages, :id, 
+                        :value, 
+                        {:prompt => true}) %>

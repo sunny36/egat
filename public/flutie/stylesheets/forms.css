@@ -22,7 +22,7 @@ form ol li.file {
 
 form abbr { border-bottom: 0; }
 
-label { display: block; }
+label { margin-right: 10px;; }
 .required label { font-weight: bold; }
 .checkbox_field label, .radio_field label { font-weight: normal; }
 
@@ -58,7 +58,7 @@ fieldset.buttons li { display: inline; }
 
 /* Text fields */
 input[type="text"], input[type="password"] {
-  width: 300px;
+  /*width: 300px;*/
   padding: 3px 2px;
   font-size: inherit;
 }
@@ -96,8 +96,7 @@ textarea {
 
 /* Select fields */
 fieldset .select select {
-  width:200px;
-  font-size: .9em;
+  font-size: inherit;
 } 
 optgroup { margin: 0 0 .5em 0; }
 

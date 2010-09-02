@@ -1,0 +1,6 @@
+<%= label :transformer_information, :bus_voltage_lv_id, 
+    "Bus Voltage LV side" %>
+<%= f.collection_select(:bus_voltage_lv_id,  @bus_voltage_lvs, 
+                        :id, 
+                        :value, {:prompt => true})
+%>        
