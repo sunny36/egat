@@ -90,3 +90,12 @@ open("db/initial_data/n1_criteria.txt") do |n1_criterias|
                        :score_message => score_message.strip})
   end
 end
+
+PublicImage.delete_all
+open("db/initial_data/public_image.txt") do |public_images|
+  public_images.read.each_line do |public_image|
+    value, score, score_message = public_image.split(',')
+    PublicImage.create({:value => value.strip, :score => score.strip, 
+                       :score_message => score_message.strip})
+  end
+end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902080421) do
+ActiveRecord::Schema.define(:version => 20100902224458) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1140,6 +1140,8 @@ ActiveRecord::Schema.define(:version => 20100902080421) do
 
   create_table "public_images", :force => true do |t|
     t.string   "value"
+    t.integer  "score"
+    t.string   "score_message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -1483,6 +1485,7 @@ ActiveRecord::Schema.define(:version => 20100902080421) do
     t.integer  "system_stability_id"
     t.integer  "pollution_id"
     t.integer  "n1_criteria_id"
+    t.integer  "public_image_id"
   end
 
   create_table "visual_bushing", :force => true do |t|
