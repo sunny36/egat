@@ -7,8 +7,8 @@ class TransformerInformation < ActiveRecord::Base
   belongs_to :application_use, :class_name => "ApplicationUse", :foreign_key => "application_use_id"
   belongs_to :system_stability, :class_name => "SystemStability", :foreign_key => "system_stability_id"
   belongs_to :pollution, :class_name => "Pollution", :foreign_key => "pollution_id"
+  belongs_to :n1_criteria, :class_name => "N1Criteria", :foreign_key => "n1_criteria_id"
+  #enum_attr :public_image, %w(yes no)
   
-  enum_attr :public_image, %w(yes no)
-  enum_attr :n1_criteria, %w(yes no)
   
 end

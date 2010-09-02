@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100901111458) do
+ActiveRecord::Schema.define(:version => 20100902080421) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -706,6 +706,14 @@ ActiveRecord::Schema.define(:version => 20100901111458) do
     t.integer "version"
     t.string  "name"
     t.string  "tel_no"
+  end
+
+  create_table "n1_criterias", :force => true do |t|
+    t.string   "value"
+    t.integer  "score"
+    t.string   "score_message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ngr", :force => true do |t|
@@ -1461,8 +1469,21 @@ ActiveRecord::Schema.define(:version => 20100901111458) do
     t.decimal  "transformer"
   end
 
-# Could not dump table "transformer_informations" because of following StandardError
-#   Unknown type 'enum' for column 'public_image'
+  create_table "transformer_informations", :force => true do |t|
+    t.integer  "bus_voltage_hv_id"
+    t.integer  "bus_voltage_lv_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "system_fault_level_hv"
+    t.float    "system_fault_level_lv"
+    t.integer  "probability_of_force_outage_id"
+    t.integer  "social_aspect_id"
+    t.integer  "system_location_id"
+    t.integer  "application_use_id"
+    t.integer  "system_stability_id"
+    t.integer  "pollution_id"
+    t.integer  "n1_criteria_id"
+  end
 
   create_table "visual_bushing", :force => true do |t|
     t.integer  "version"

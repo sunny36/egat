@@ -81,3 +81,12 @@ open("db/initial_data/system_stability.txt") do |system_stabilities|
     SystemStability.create({:value => system_stability.strip})
   end
 end
+
+N1Criteria.delete_all
+open("db/initial_data/n1_criteria.txt") do |n1_criterias|
+  n1_criterias.read.each_line do |n1_criteria|
+    value, score, score_message = n1_criteria.split(',')
+    N1Criteria.create({:value => value.strip, :score => score.strip, 
+                       :score_message => score_message.strip})
+  end
+end
