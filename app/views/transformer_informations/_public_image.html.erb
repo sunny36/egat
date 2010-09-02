@@ -1,0 +1,3 @@
+<%= label :transformer_information, :public_image_id, "Public Image" %>
+<%= f.collection_select(:public_image_id,  @public_images, :id, :value, 
+                        {:prompt => true}) %>        

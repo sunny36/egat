@@ -14,6 +14,8 @@ class TransformerInformationsController < ApplicationController
     @probability_of_force_outages = ProbabilityOfForceOutage.find(:all, :order => 'value')    
     @social_aspects = SocialAspect.find(:all, :order => 'value')
     @system_locations = SystemLocation.find(:all, :order => 'value')
+    @public_images = PublicImage.find(:all, :order => 'value')
+    @n1_criterias = N1Criteria.find(:all, :order => 'value')
   end
   
   def create
