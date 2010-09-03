@@ -1,5 +1,6 @@
-AA
-BB
-CC
-DD
-EE
+AA, 1, Very Low
+BB, 2, Low
+CC, 3, Moderate
+DD, 4, High
+EE, 5, Very High
+ , 6, Extremely High

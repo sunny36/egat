@@ -57,7 +57,10 @@ ProbabilityOfForceOutage.delete_all
 filename = "db/initial_data/probability_of_force_outage.txt"
 open(filename) do |probability_of_force_outages|
   probability_of_force_outages.read.each_line do |probability_of_force_outage|
-    ProbabilityOfForceOutage.create({:value => probability_of_force_outage.strip})
+    value, score, score_message = probability_of_force_outage.split(',')
+    ProbabilityOfForceOutage.create({:value => value.strip,
+                                     :score => score.strip, 
+                                     :score_message => score_message.strip})
   end
 end
 
