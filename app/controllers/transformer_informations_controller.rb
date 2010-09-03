@@ -9,6 +9,7 @@ class TransformerInformationsController < ApplicationController
   
   def new
     @transformer_information = TransformerInformation.new
+    @transformer_information.build_load_pattern_per_year
     @bus_voltage_hvs = BusVoltageHv.find(:all, :order => 'value')
     @bus_voltage_lvs = BusVoltageLv.find(:all, :order => 'value')
     @probability_of_force_outages = ProbabilityOfForceOutage.find(:all, :order => 'value')    
