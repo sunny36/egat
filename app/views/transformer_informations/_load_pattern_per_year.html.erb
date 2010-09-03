@@ -1,0 +1,52 @@
+<% f.fields_for :load_pattern_per_year do |lppy_f| %>
+<fieldset class="inputs">
+  <ol>
+    <table>
+      <tr>
+        <td>Load Factor</td>
+        <td>Number of Months</td>
+      </tr>
+      <tr>
+        <td><%= label :load_pattern_per_year, :lteq_0_pt_6, "<= 0.6" %>
+        <td>
+          <%= lppy_f.select :lteq_0_pt_6, %w{0 1 2 3 3 4 5 6 7 8 9 10 11 12} %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= label :load_pattern_per_year, :gt_0_pt_6_and_lteq_1, 
+                    "0.6 < LF <= 1" %>
+        <td>
+          <%= lppy_f.select :gt_0_pt_6_and_lteq_1, 
+              %w{0 1 2 3 3 4 5 6 7 8 9 10 11 12} %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= label :load_pattern_per_year, :gt_1_and_lteq_1_pt_2, 
+                    "1 < LF <= 1.2" %>
+        <td>
+          <%= lppy_f.select :gt_1_and_lteq_1_pt_2, 
+              %w{0 1 2 3 3 4 5 6 7 8 9 10 11 12} %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= label :load_pattern_per_year, :gt_1_pt_2_and_lteq_1_pt_5, 
+                    "1.2 < LF <= 1.5" %>
+        <td>
+          <%= lppy_f.select :gt_1_pt_2_and_lteq_1_pt_5, 
+              %w{0 1 2 3 3 4 5 6 7 8 9 10 11 12} %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= label :load_pattern_per_year, :gt_1_pt_5, "> 1.5" %>
+        <td>
+          <%= lppy_f.select :gt_1_pt_5, %w{0 1 2 3 3 4 5 6 7 8 9 10 11 12} %>
+        </td>
+      </tr>      
+    </table>
+  </ol>
+</fieldset>
+<% end %>
