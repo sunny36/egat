@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902224458) do
+ActiveRecord::Schema.define(:version => 20100903202308) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -678,6 +678,15 @@ ActiveRecord::Schema.define(:version => 20100902224458) do
     t.string   "work_order"
     t.decimal  "perform_type"
     t.decimal  "transformer"
+  end
+
+  create_table "load_pattern_factors", :force => true do |t|
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "score"
+    t.string   "score_message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "load_pattern_per_years", :force => true do |t|

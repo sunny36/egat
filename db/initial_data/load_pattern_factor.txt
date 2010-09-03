@@ -1,0 +1,6 @@
+0, 20, 1, Very Low
+21, 40, 2, Low
+41, 65, 3, Moderate
+66, 85, 4, High
+86, , 5, Very High
+ , , 6, Extremely High

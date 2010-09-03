@@ -99,3 +99,13 @@ open("db/initial_data/public_image.txt") do |public_images|
                        :score_message => score_message.strip})
   end
 end
+
+LoadPatternFactor.delete_all
+open("db/initial_data/load_pattern_factor.txt") do |load_pattern_factors|
+  load_pattern_factors.read.each_line do |load_pattern_factor|
+    start, stop, score, score_message = load_pattern_factor.split(',')
+    LoadPatternFactor.create({:start => start.strip, :end => stop.strip, 
+                        :score => score.strip, 
+                        :score_message => score_message.strip})
+  end
+end
