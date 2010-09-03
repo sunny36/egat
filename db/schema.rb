@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100903202308) do
+ActiveRecord::Schema.define(:version => 20100903210640) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -697,6 +697,8 @@ ActiveRecord::Schema.define(:version => 20100903202308) do
     t.integer  "gt_1_pt_5"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "transformer_information_id"
+    t.integer  "load_pattern_factor_id"
   end
 
   create_table "maintank", :force => true do |t|
