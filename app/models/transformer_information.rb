@@ -16,4 +16,5 @@ class TransformerInformation < ActiveRecord::Base
              :foreign_key => "n1_criteria_id"
   belongs_to :public_image, :class_name => "PublicImage", 
              :foreign_key => "public_image_id"
+  has_one :LoadPatternPerYear
 end
