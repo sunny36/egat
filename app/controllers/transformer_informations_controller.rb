@@ -16,9 +16,9 @@ class TransformerInformationsController < ApplicationController
     @social_aspects = SocialAspect.find(:all, :order => 'value')
     @system_locations = SystemLocation.find(:all, :order => 'value')
     @public_images = PublicImage.find(:all, :order => 'value')
-    @n1_criterias = N1Criteria.find(:all, :order => 'value')
+    @n1_criterias = N1Criteria.find(:all, :conditions => "value IS NOT NULL", :order => 'value')
     @application_uses = ApplicationUse.find(:all, :order => 'value')
-    @system_stabilities = SystemStability.find(:all, :order => 'value')
+    @system_stabilities = SystemStability.find(:all, :conditions => "value IS NOT NULL", :order => 'value')
     @pollutions = Pollution.find(:all, :order => 'value')
   end
   
