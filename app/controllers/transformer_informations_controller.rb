@@ -18,6 +18,7 @@ class TransformerInformationsController < ApplicationController
     @n1_criterias = N1Criteria.find(:all, :order => 'value')
     @application_uses = ApplicationUse.find(:all, :order => 'value')
     @system_stabilities = SystemStability.find(:all, :order => 'value')
+    @pollutions = Pollution.find(:all, :order => 'value')
   end
   
   def create
