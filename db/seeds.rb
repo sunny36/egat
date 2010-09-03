@@ -2,7 +2,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
-#   
+#
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
@@ -42,7 +42,7 @@ DamageOfProperty.delete_all
 open("db/initial_data/damage_of_property.txt") do |damage_of_properties|
   damage_of_properties.read.each_line do |damage_of_property|
     value, message = damage_of_property.split(',')
-    DamageOfProperty.create({:value => value.strip, :message => message.strip})                             
+    DamageOfProperty.create({:value => value.strip, :message => message.strip})
   end
 end
 
@@ -59,7 +59,7 @@ open(filename) do |probability_of_force_outages|
   probability_of_force_outages.read.each_line do |probability_of_force_outage|
     value, score, score_message = probability_of_force_outage.split(',')
     ProbabilityOfForceOutage.create({:value => value.strip,
-                                     :score => score.strip, 
+                                     :score => score.strip,
                                      :score_message => score_message.strip})
   end
 end
@@ -67,7 +67,9 @@ end
 SocialAspect.delete_all
 open("db/initial_data/social_aspect.txt") do |social_aspects|
   social_aspects.read.each_line do |social_aspect|
-    SocialAspect.create({:value => social_aspect.strip})
+    value, score, score_message = social_aspect.split(',')
+    SocialAspect.create({:value => value.strip, :score => score.strip,
+                         :score_message => score_message.strip })
   end
 end
 
@@ -75,7 +77,7 @@ SystemLocation.delete_all
 open("db/initial_data/system_location.txt") do |system_locations|
   system_locations.read.each_line do |system_location|
     value, score, score_message = system_location.split(',')
-    SystemLocation.create({:value => value.strip, :score => score.strip, 
+    SystemLocation.create({:value => value.strip, :score => score.strip,
                            :score_message => score_message.strip})
   end
 end
@@ -85,7 +87,7 @@ open("db/initial_data/system_stability.txt") do |system_stabilities|
   system_stabilities.read.each_line do |system_stability|
     value, score, score_message = system_stability.split(',')
     SystemStability.create({:value => value.strip,
-                            :score => score.strip, 
+                            :score => score.strip,
                             :score_message => score_message.strip})
   end
 end
@@ -94,7 +96,7 @@ N1Criteria.delete_all
 open("db/initial_data/n1_criteria.txt") do |n1_criterias|
   n1_criterias.read.each_line do |n1_criteria|
     value, score, score_message = n1_criteria.split(',')
-    N1Criteria.create({:value => value.strip, :score => score.strip, 
+    N1Criteria.create({:value => value.strip, :score => score.strip,
                        :score_message => score_message.strip})
   end
 end
@@ -103,8 +105,8 @@ PublicImage.delete_all
 open("db/initial_data/public_image.txt") do |public_images|
   public_images.read.each_line do |public_image|
     value, score, score_message = public_image.split(',')
-    PublicImage.create({:value => value.strip, :score => score.strip, 
-                       :score_message => score_message.strip})
+    PublicImage.create({:value => value.strip, :score => score.strip,
+                        :score_message => score_message.strip})
   end
 end
 
@@ -112,8 +114,8 @@ LoadPatternFactor.delete_all
 open("db/initial_data/load_pattern_factor.txt") do |load_pattern_factors|
   load_pattern_factors.read.each_line do |load_pattern_factor|
     start, stop, score, score_message = load_pattern_factor.split(',')
-    LoadPatternFactor.create({:start => start.strip, :end => stop.strip, 
-                        :score => score.strip, 
-                        :score_message => score_message.strip})
+    LoadPatternFactor.create({:start => start.strip, :end => stop.strip,
+                              :score => score.strip,
+                              :score_message => score_message.strip})
   end
 end

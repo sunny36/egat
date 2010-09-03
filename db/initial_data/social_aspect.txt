@@ -1,3 +1,6 @@
-นอกเมอืง
-เมอืง
-อุตสาหกรรม
+นอกเมอืง, 1, Very Low
+เมอืง, 2, Low
+อุตสาหกรรม, 3, Moderate
+ , 4, High 
+ , 5, Very High
+ , 6, Extremely High
