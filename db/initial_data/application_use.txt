@@ -1,4 +1,6 @@
-Mobile
-Cold Standby
-Host Standby
-In-Service
+Mobile, 1, Very Low
+Cold Standby, 2, Low
+Host Standby, 3, Moderate
+In-Service, 4, High
+ , 5, Very High
+ , 6, Extremely High
