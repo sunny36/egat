@@ -1,19 +1,18 @@
 class LoadPatternPerYear < ActiveRecord::Base
   belongs_to :transformer_information
   belongs_to :load_pattern_factor
-  
   before_save :assign_score
   
   protected
   def assign_score
     lpf = (self.lpf_numerator.to_f / self.lpf_denominator) * 100.to_f
-    load_pattern_factor = LoadPatternFactor.all
+    #Get all LoadPatternFactor that contain some values in start or end. 
+    load_pattern_factor = LoadPatternFactor.find(:all, :conditions => ["start >=0 or end >=0"])
     load_pattern_factor.each do |i|
-      unless i.start.nil? && i.end.nil?
-        if lpf.between?(i.start, i.end)
-          self.load_pattern_factor_id = i.id
-        end        
-      end
+      i.end = 100 if i.end.nil? # If end is nil means it does not have an upper bound
+      if lpf.between?(i.start, i.end)
+        self.load_pattern_factor_id = i.id
+      end        
     end
   end
   
