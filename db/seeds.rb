@@ -18,7 +18,9 @@ end
 ApplicationUse.delete_all
 open("db/initial_data/application_use.txt") do |application_uses|
   application_uses.read.each_line do |application_use|
-    ApplicationUse.create({:value => application_use.strip})
+    value, score, score_message = application_use.split(',')
+    ApplicationUse.create({:value => value.strip, :score => score.strip,
+                           :score_message => score_message.strip})
   end
 end
 
