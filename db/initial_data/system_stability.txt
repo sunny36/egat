@@ -1,5 +1,6 @@
-Loading 115/22 or 33 kV
-Loading 230/69 kV
-Loading 230/115 kV
-Tie 230/115 kV
-Tie 500/230 kV
+Loading 115/22 or 33 kV, 1, Very Low
+Loading 230/69 kV, 2, Low
+Loading 230/115 kV, 3, Moderate
+Tie 230/115 kV, 4, High
+Tie 500/230 kV, 5, Very High
+, 6, Extremely High

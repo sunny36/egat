@@ -78,7 +78,10 @@ end
 SystemStability.delete_all
 open("db/initial_data/system_stability.txt") do |system_stabilities|
   system_stabilities.read.each_line do |system_stability|
-    SystemStability.create({:value => system_stability.strip})
+    value, score, score_message = system_stability.split(',')
+    SystemStability.create({:value => value.strip,
+                            :score => score.strip, 
+                            :score_message => score_message.strip})
   end
 end
 
