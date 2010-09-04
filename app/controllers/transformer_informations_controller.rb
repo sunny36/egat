@@ -13,8 +13,9 @@ class TransformerInformationsController < ApplicationController
     @bus_voltage_hvs = BusVoltageHv.find(:all, :order => 'value')
     @bus_voltage_lvs = BusVoltageLv.find(:all, :order => 'value')
     @probability_of_force_outages = ProbabilityOfForceOutage.find(:all, 
-      :conditions => "value IS NOT NULL", :order => 'value')    
-    @social_aspects = SocialAspect.find(:all, :order => 'value')
+        :conditions => "value IS NOT NULL", :order => 'value')    
+    @social_aspects = SocialAspect.find(:all, 
+        :conditions => "value IS NOT NULL", :order => 'value')
     @system_locations = SystemLocation.find(:all, :order => 'value')
     @public_images = PublicImage.find(:all, :order => 'value')
     @n1_criterias = N1Criteria.find(:all, 
