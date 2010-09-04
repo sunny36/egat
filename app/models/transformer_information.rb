@@ -17,6 +17,6 @@ class TransformerInformation < ActiveRecord::Base
   belongs_to :public_image, :class_name => "PublicImage", 
              :foreign_key => "public_image_id"
   has_one :load_pattern_per_year
-  
+  attr_accessor :system_fault_level_hv_mva, :system_fault_level_lv_mva
   accepts_nested_attributes_for :load_pattern_per_year
 end
