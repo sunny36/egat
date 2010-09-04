@@ -49,7 +49,9 @@ end
 Pollution.delete_all
 open("db/initial_data/pollution.txt") do |pollutions|
   pollutions.read.each_line do |pollution|
-    Pollution.create({:value => pollution.strip})
+    value, score, score_message = pollution.split(',')
+    Pollution.create({:value => value.strip, :score => score.strip, 
+                      :score_message => score_message.strip})
   end
 end
 
