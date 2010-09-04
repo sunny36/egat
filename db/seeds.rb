@@ -121,3 +121,11 @@ open("db/initial_data/load_pattern_factor.txt") do |load_pattern_factors|
                               :score_message => score_message.strip})
   end
 end
+
+BusVoltage.delete_all
+open("db/initial_data/bus_voltage.txt") do |bus_voltages|
+  bus_voltages.read.each_line do |bus_voltage|
+    start, stop = bus_voltage.split(',')
+    BusVoltage.create({:start => start.strip, :end => stop.strip})
+  end
+end
