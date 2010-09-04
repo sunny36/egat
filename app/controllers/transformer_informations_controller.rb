@@ -25,7 +25,8 @@ class TransformerInformationsController < ApplicationController
         :conditions => "value IS NOT NULL", :order => 'value')
     @system_stabilities = SystemStability.find(:all, 
         :conditions => "value IS NOT NULL", :order => 'value')
-    @pollutions = Pollution.find(:all, :order => 'value')
+    @pollutions = Pollution.find(:all, :conditions => "value IS NOT NULL",
+        :order => 'value')
   end
   
   def create
