@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904101108) do
+ActiveRecord::Schema.define(:version => 20100905084846) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1244,6 +1244,16 @@ ActiveRecord::Schema.define(:version => 20100904101108) do
   create_table "sun_flower", :force => true do |t|
     t.integer "version"
     t.string  "owner"
+  end
+
+  create_table "system_fault_levels", :force => true do |t|
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "score"
+    t.string   "score_message"
+    t.integer  "bus_voltage_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "system_locations", :force => true do |t|
