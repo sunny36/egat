@@ -10,23 +10,6 @@ class TransformerInformationsController < ApplicationController
   def new
     @transformer_information = TransformerInformation.new
     @transformer_information.build_load_pattern_per_year
-    @bus_voltage_hvs = BusVoltageHv.find(:all, :order => 'value')
-    @bus_voltage_lvs = BusVoltageLv.find(:all, :order => 'value')
-    @probability_of_force_outages = ProbabilityOfForceOutage.find(:all, 
-        :conditions => "value IS NOT NULL", :order => 'value')    
-    @social_aspects = SocialAspect.find(:all, 
-        :conditions => "value IS NOT NULL", :order => 'value')
-    @system_locations = SystemLocation.find(:all, :order => 'value')
-    @public_images = PublicImage.find(:all, :conditions => "value IS NOT NULL",
-        :order => 'value')
-    @n1_criterias = N1Criteria.find(:all, 
-        :conditions => "value IS NOT NULL", :order => 'value')
-    @application_uses = ApplicationUse.find(:all,
-        :conditions => "value IS NOT NULL", :order => 'value')
-    @system_stabilities = SystemStability.find(:all, 
-        :conditions => "value IS NOT NULL", :order => 'value')
-    @pollutions = Pollution.find(:all, :conditions => "value IS NOT NULL",
-        :order => 'value')
   end
   
   def create

@@ -1,40 +1,59 @@
+<style type="text/css">
+	.ui-autocomplete {
+		max-height: 300px;
+		overflow-y: auto;
+}
+</style>
+<%= error_messages_for :transformer_information, 
+  :header_message => "Please Try Again!", :class => 'error' %>
 <% form_for @transformer_information do |f| %>
   <fieldset class="inputs">
     <ol>
       <table>
         <tr>
+        </tr>
+        <td>
+          <li class="string required">
+            <%= f.label 'Transformer Name' %>
+            <%= f.text_field :transformer_name, :size => 15%>
+          </li>
+        </td>
+        <td></td>
+        <tr>
           <td>
-            <li class="select">
+            <li class="select required">
               <%= render :partial => 'bus_voltage_hv', :locals => {:f => f} %>
             </li>            
           </td>
           <td>
-            <li>
+            <li class="required">
               <%= render :partial => 'system_fault_level_hv',
                          :locals => {:f => f} %>
             </li>
           </td>
           <td>
-            <li>
+            <li class="required">
               <%= f.text_field :system_fault_level_hv_mva, :size => 10 %>
+              &nbsp;<label>[MVA]<label>
             </li>
           </td>
         </tr>
         <tr>
           <td>
-            <li>
+            <li class="select required">
               <%= render :partial => 'bus_voltage_lv', :locals => {:f => f} %>
             </li>
           </td>
           <td>
-            <li>
+            <li class="required">
               <%= render :partial => 'system_fault_level_lv',
                          :locals => {:f => f} %>
             </li>
           </td>
           <td>
-            <li>
-              <%= f.text_field :system_fault_level_hv_mva, :size => 10 %>
+            <li class="required">
+              <%= f.text_field :system_fault_level_lv_mva, :size => 10 %>
+              &nbsp;<label>[MVA]<label>
             </li>            
           </td>
         </tr>
@@ -116,4 +135,4 @@
   <%= render :partial => 'load_pattern_per_year', :locals => {:f => f} %>
   <%= f.submit 'Create' %>
 <% end %>
-</div>
+

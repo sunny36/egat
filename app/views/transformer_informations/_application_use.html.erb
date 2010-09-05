@@ -1,3 +1,6 @@
 <%= label :transformer_information, :application_use_id, "Application Use" %>
-<%= f.collection_select(:application_use_id,  @application_uses, :id, :value, 
-                        {:prompt => true}) %>        
+<%= @application_uses = ApplicationUse.find(:all, 
+                                            :conditions => "value IS NOT NULL", 
+                                            :order => 'value')
+f.collection_select(:application_use_id,  @application_uses, :id, :value, 
+                    {:prompt => true}) %>        

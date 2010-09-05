@@ -1,4 +1,8 @@
-<%= label :transformer_information, :social_aspect_id,
-          'Social Aspect' %>
-<%= f.collection_select(:social_aspect_id,  @social_aspects, :id, 
-                        :value, {:prompt => true}) %>
+<%= label :transformer_information, :social_aspect_id,'Social Aspect' %>
+<%= 
+  @social_aspects = SocialAspect.find(:all, 
+                                      :conditions => "value IS NOT NULL", 
+                                      :order => 'value')
+  f.collection_select(:social_aspect_id,  @social_aspects, :id, 
+                      :value, {:prompt => true}) 
+%>

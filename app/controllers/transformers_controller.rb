@@ -2,8 +2,21 @@ class TransformersController < ApplicationController
 
   def index
     @transformers = Transformer.find(:all, :order => "id")
+    if request.xhr?
+      unless params[:term].nil?
+        @transformers = Transformer.find(:all, :order => "id", 
+                                         :conditions => ["transformer_name like ?", 
+                                                         params[:term]+"%"])
+      end
+      @transformers = @transformers.collect { |i| { 
+        'id' => i.id, 'label' => i.transformer_name, 
+        'value' => i.transformer_name 
+        } 
+      }
+    end
     respond_to do |format|
-      format.html 
+      format.html
+      format.js 
     end
   end
 
