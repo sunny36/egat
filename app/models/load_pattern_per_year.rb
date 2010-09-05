@@ -5,7 +5,12 @@ class LoadPatternPerYear < ActiveRecord::Base
   
   protected
   def assign_score
-    lpf = (self.lpf_numerator.to_f / self.lpf_denominator) * 100.to_f
+    unless self.lpf_numerator.to_f.zero?
+      lpf = (self.lpf_numerator.to_f / self.lpf_denominator) * 100.to_f
+    else 
+      lpf = 0.0
+    end
+    
     #Get all LoadPatternFactor that contain some values in start or end. 
     load_pattern_factor = LoadPatternFactor.find(:all, :conditions => ["start >=0 or end >=0"])
     load_pattern_factor.each do |i|
