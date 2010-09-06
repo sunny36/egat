@@ -13,6 +13,5 @@
 #
 
 class LoadPatternFactor < ActiveRecord::Base
-  @@WEIGHT = 4
   has_many :load_pattern_per_year
 end
