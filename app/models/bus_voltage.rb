@@ -12,4 +12,5 @@
 
 class BusVoltage < ActiveRecord::Base
   has_many :system_fault_level
+  has_many :transformer_information
 end
