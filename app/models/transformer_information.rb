@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100906080424
+# Schema version: 20100906162356
 #
 # Table name: transformer_informations
 #
@@ -21,6 +21,7 @@
 #  system_fault_level_id          :integer
 #  transformer_id                 :integer
 #  recorded_date                  :date
+#  bus_voltage_id                 :integer
 #
 
 class TransformerInformation < ActiveRecord::Base
