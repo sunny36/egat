@@ -21,6 +21,7 @@ class TransformerInformation < ActiveRecord::Base
   belongs_to :transformer, :class_name => "Transformer", 
     :foreign_key => "transformer_id"
   has_one :load_pattern_per_year
+  has_and_belongs_to_many :damage_of_properties
   attr_accessor :system_fault_level_hv_mva, :system_fault_level_lv_mva, 
     :transformer_name
 
