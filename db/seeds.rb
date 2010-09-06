@@ -7,8 +7,20 @@
 #   Major.create(:name => 'Daley', :city => cities.first)
 
 
+def truncate_db_table(table)
+     config = ActiveRecord::Base.configurations[Rails.env]
+     ActiveRecord::Base.establish_connection
+     case config["adapter"]
+       when "mysql"
+         ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
+       when "sqlite", "sqlite3"
+         ActiveRecord::Base.connection.execute("DELETE FROM #{table}")
+         ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence where name='#{table}'")
+         ActiveRecord::Base.connection.execute("VACUUM")
+     end
+   end
 
-Brand.delete_all
+truncate_db_table("brands")
 open("db/initial_data/brands.txt") do |brands|
   brands.read.each_line do |brand|
     name, score, score_message = brand.split(',')
