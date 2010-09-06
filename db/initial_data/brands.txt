@@ -1,26 +1,26 @@
-ASEA
-National
-Schorch
-Siemens
-Tira Thai
-Takaoka
-Alstom
-Trafo Union
-Meiden
-Rade Koncar
-Toshiba
-Elektro Bauag
-ABB
-Fuji
-Mitsubishi
-OSAKA
-Daihen
-Jeumont Schneider
-Meidensha
-Ekarat Daihen
-TMT & D
-Chenyang
-Volta Werke
-Elin
-Hyundai
-Siriwiwat
+ASEA, 1, Very Low
+National, 1, Very Low
+Schorch, 1, Very Low
+Siemens, 1, Very Low
+Tira Thai, 1, Very Low
+Takaoka, 1, Very Low
+Alstom, 2, Low
+Trafo Union, 2, Low
+Meiden, 2, Low
+Rade Koncar, 2, Low
+Toshiba, 3, Moderate
+Elektro Bauag, 4, High
+ABB, 4, High
+Fuji, 5, Very High
+Mitsubishi, 5, Very High
+OSAKA, 5, Very High
+Daihen, 5, Very High
+Jeumont Schneider, 5, Very High
+Meidensha, 5, Very High
+Ekarat Daihen, 5, Very High
+TMT & D, 5, Very High
+Chenyang, 5, Very High
+Volta Werke, 5, Very High
+Elin, 5, Very High
+Hyundai, 5, Very High
+Siriwiwat, 5, Very High

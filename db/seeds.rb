@@ -9,9 +9,11 @@
 
 
 Brand.delete_all
-open("db/brands.txt") do |brands|
+open("db/initial_data/brands.txt") do |brands|
   brands.read.each_line do |brand|
-    Brand.create({:name => brand.strip})
+    name, score, score_message = brand.split(',')
+    Brand.create({:name => name.strip, :score => score.strip, 
+                  :score_message => score_message.strip})
   end
 end
 
