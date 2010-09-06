@@ -67,35 +67,34 @@ img {
           </td>
         </tr>
         <tr>
-          <td>
-            <li>
+          <td colspan="2">
+            <li class="select required">
               <%= render :partial => 'probability_of_force_outage',
                          :locals => {:f => f} %>
             </li>
           </td>
           <td></td>
-          <td></td>
         </tr>
         <tr>
           <td>
-            <li><%= render :partial => 'social_aspect', :locals => {:f => f} %>
+            <li class="select required">
+              <%= render :partial => 'social_aspect', :locals => {:f => f} %>
             </li>
           </td>
           <td></td>
           <td></td>          
         </tr>
         <tr>
-          <td>
-            <li>
+          <td colspan="2">
+            <li class="select required">
               <%= render :partial => 'system_location', :locals => {:f => f}%>
             </li>
           </td>
-          <td></td>
           <td></td>          
         </tr>
         <tr>
           <td>
-            <li>
+            <li class="select required">
               <%= render :partial => 'public_image', :locals => {:f => f}%>
             </li>
           </td>
@@ -104,7 +103,7 @@ img {
         </tr>
         <tr>
           <td>
-            <li>
+            <li class="select required">
               <%= render :partial => 'n1_criteria', :locals => {:f => f}%>
             </li>
           </td>
@@ -113,7 +112,7 @@ img {
         </tr>        
         <tr>
           <td>
-            <li>
+            <li class="select required">
               <%= render :partial => 'application_use', :locals => {:f => f}%>
             </li>
           </td>
@@ -121,17 +120,16 @@ img {
           <td></td>          
         </tr>        
         <tr>
-          <td>
-            <li>
+          <td colspan="2">
+            <li class="select required">
               <%= render :partial => 'system_stability', :locals => {:f => f}%>
             </li>
           </td>
-          <td></td>
           <td></td>          
         </tr>        
         <tr>
           <td>
-            <li>
+            <li class="select required">
               <%= render :partial => 'pollution', :locals => {:f => f}%>
             </li>
           </td>
