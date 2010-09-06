@@ -1,3 +1,20 @@
+# == Schema Information
+# Schema version: 20100906080424
+#
+# Table name: load_pattern_per_years
+#
+#  id                         :integer         not null, primary key
+#  lteq_0_pt_6                :integer
+#  gt_0_pt_6_and_lteq_1       :integer
+#  gt_1_and_lteq_1_pt_2       :integer
+#  gt_1_pt_2_and_lteq_1_pt_5  :integer
+#  gt_1_pt_5                  :integer
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  transformer_information_id :integer
+#  load_pattern_factor_id     :integer
+#
+
 class LoadPatternPerYear < ActiveRecord::Base
   belongs_to :transformer_information
   belongs_to :load_pattern_factor

@@ -1,3 +1,28 @@
+# == Schema Information
+# Schema version: 20100906080424
+#
+# Table name: transformer_informations
+#
+#  id                             :integer         not null, primary key
+#  bus_voltage_hv_id              :integer
+#  bus_voltage_lv_id              :integer
+#  created_at                     :datetime
+#  updated_at                     :datetime
+#  system_fault_level_hv          :float
+#  system_fault_level_lv          :float
+#  probability_of_force_outage_id :integer
+#  social_aspect_id               :integer
+#  system_location_id             :integer
+#  application_use_id             :integer
+#  system_stability_id            :integer
+#  pollution_id                   :integer
+#  n1_criteria_id                 :integer
+#  public_image_id                :integer
+#  system_fault_level_id          :integer
+#  transformer_id                 :integer
+#  recorded_date                  :date
+#
+
 class TransformerInformation < ActiveRecord::Base
   belongs_to :bus_voltage_hv
   belongs_to :bus_voltage_lv
