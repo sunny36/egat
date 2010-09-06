@@ -3,6 +3,9 @@
 		max-height: 300px;
 		overflow-y: auto;
 }
+img {
+  margin: 0;
+}
 </style>
 <%= error_messages_for :transformer_information, 
   :header_message => "Please Try Again!", :class => 'error' %>
@@ -10,15 +13,21 @@
   <fieldset class="inputs">
     <ol>
       <table>
-        <tr>
+        <tr>        
+          <td>
+            <li class="string required">
+              <%= f.label 'Transformer Name' %>
+              <%= f.text_field :transformer_name, :size => 15%>
+            </li>
+          </td>          
+          <td>
+            <li class="string required">
+              <%= f.label 'Recorded Date' %>
+              <%= f.text_field :recorded_date, :size => 10%>            
+            </li>
+          </td>
+          <td></td>
         </tr>
-        <td>
-          <li class="string required">
-            <%= f.label 'Transformer Name' %>
-            <%= f.text_field :transformer_name, :size => 15%>
-          </li>
-        </td>
-        <td></td>
         <tr>
           <td>
             <li class="select required">

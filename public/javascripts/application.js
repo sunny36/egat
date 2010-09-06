@@ -4,9 +4,6 @@ jQuery.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 });
 
-var busVoltageHv = 0.0; 
-var busVoltageLv = 0.0; 
-
 $(document).ready(function() {
   $.get('/transformers', function(data) {
     var myObject = eval('(' + data + ')');
@@ -62,4 +59,10 @@ $(document).ready(function() {
     }
   }
 
+  
+    $("#transformer_information_recorded_date").datepicker({
+  			showOn: 'both',
+  			buttonImage: '/images/icon_calendar.gif',
+  			buttonImageOnly: true,
+  		});
 });
