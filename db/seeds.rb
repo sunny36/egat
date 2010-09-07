@@ -148,7 +148,7 @@ SystemFaultLevel.delete_all
 open("db/initial_data/system_fault_level1.txt") do |system_fault_levels|
   system_fault_levels.read.each_line do |system_fault_level|
     start, stop, score, score_message = system_fault_level.split(',')
-    bus_voltage = BusVoltage.find(:first, :conditions => ["start = '0' and end = '115'"])
+    bus_voltage = BusVoltage.find(:first, :conditions => ["start = '116'"])
     SystemFaultLevel.create({:start => start.strip, :end => stop.strip, 
                        :score => score.strip, 
                        :score_message => score_message.strip,
@@ -158,7 +158,7 @@ end
 open("db/initial_data/system_fault_level2.txt") do |system_fault_levels|
   system_fault_levels.read.each_line do |system_fault_level|
     start, stop, score, score_message = system_fault_level.split(',')
-    bus_voltage = BusVoltage.find(:first, :conditions => ["start = '116'"])
+    bus_voltage = BusVoltage.find(:first, :conditions => ["start = '0' and end = '115'"])
     SystemFaultLevel.create({:start => start.strip, :end => stop.strip, 
                              :score => score.strip, 
                              :score_message => score_message.strip,
