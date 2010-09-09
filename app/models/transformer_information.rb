@@ -55,13 +55,57 @@ class TransformerInformation < ActiveRecord::Base
   accepts_nested_attributes_for :load_pattern_per_year
 
   validate :transformer_name_must_be_valid
+  before_save :add_transformer_id
 
   def system_fault_level_score
     [system_fault_level_lv_score, system_fault_level_hv_score].max
   end
   
+  def damage_of_property_score
+    value = []
+    self.damage_of_properties.each do |i|
+      value << i.value.to_i
+    end
+    very_low = [1, 2, 3, 4]
+    low = [[1,4], [3,4], [1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]]
+    moderate = [[1], [3], [4], [1, 2], [3, 2], [4, 2], [1,3]]
+    high = [2]
+    very_high = [5]
+    @score = 0
+    @score = 1 if (value - very_low).empty?
+    low.each do |i|
+      @score = 2 if (value - i).empty?
+    end
+    moderate.each do |i|
+      @score = 3 if (value - i).empty?
+    end
+    @score = 4 if (value - high).empty?
+    @score = 5 if (value - very_high).empty?
+    return @score
+  end
+  
+  def importance_index    
+    (((load_pattern_per_year.load_pattern_factor.score * 4) + 
+      (system_location.score * 4) + (n1_criteria.score * 5) + 
+      (system_stability.score * 4) + (application_use.score * 4)  + 
+      (system_fault_level_score * 4) + (probability_of_force_outage.score * 4) + 
+      (damage_of_property_score * 3) + (social_aspect.score * 3) + 
+      (public_image.score * 1) + (pollution.score * 1) + 
+      (transformer.brand.score * 2)).to_f / 
+     ((5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) +
+      (5 * 3) + (5 * 3) + (5 * 1) + (4 * 1) + (5 * 2)).to_f * 100.to_f )    
+  end
+  
+  def percent_hi
+    rand * 100
+  end
   
   protected
+  def add_transformer_id
+    @transformer = Transformer.find_by_transformer_name(transformer_name)
+    self.transformer_id = @transformer.id
+  end
+  
   def system_fault_level_hv_mva
     return nil if bus_voltage_hv.nil? || system_fault_level_hv.nil?
     1.732 * bus_voltage_hv.value.to_f * system_fault_level_hv.to_f
@@ -96,6 +140,5 @@ class TransformerInformation < ActiveRecord::Base
         return i.score
       end
     end
-  end
-    
+  end  
 end
