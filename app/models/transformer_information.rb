@@ -56,20 +56,27 @@ class TransformerInformation < ActiveRecord::Base
 
   validate :transformer_name_must_be_valid
 
+  def system_fault_level_score
+    [system_fault_level_lv_score, system_fault_level_hv_score].max
+  end
+  
   
   protected
+  def system_fault_level_hv_mva
+    return nil if bus_voltage_hv.nil? || system_fault_level_hv.nil?
+    1.732 * bus_voltage_hv.value.to_f * system_fault_level_hv.to_f
+  end
+  
+  def system_fault_level_lv_mva
+    return nil if bus_voltage_lv.nil? || system_fault_level_lv.nil?
+    1.732 * bus_voltage_lv.value.to_f * system_fault_level_lv.to_f
+  end
+  
   def transformer_name_must_be_valid
     @transformer = Transformer.find_by_transformer_name(transformer_name)
     errors.add_to_base('Please select a valid transformer') if @transformer.nil?
   end
 
-  def system_fault_level_hv_mva
-    1.732 * bus_voltage_hv.value.to_f * system_fault_level_hv.to_f
-  end
-  
-  def system_fault_level_lv_mva
-    1.732 * bus_voltage_lv.value.to_f * system_fault_level_lv.to_f
-  end
   
   def system_fault_level_hv_score
     @system_fault_levels = BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
@@ -90,9 +97,5 @@ class TransformerInformation < ActiveRecord::Base
       end
     end
   end
-  
-  def system_fault_level_score
-    [system_fault_level_lv_score, system_fault_level_hv_score].max
-  end
-  
+    
 end
