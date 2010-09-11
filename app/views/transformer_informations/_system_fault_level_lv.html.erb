@@ -1,4 +1,10 @@
 <%= label :transformer_information, :system_fault_level_lv,
-  'System Fault Level: LV side' %>
+  'System Fault Level: LV side' 
+%>
+<% unless @transformer_information.system_fault_level_lv.nil? %> 
+  <%= f.text_field :system_fault_level_lv, :size => 5%>
+  <% else %>
   <%= f.text_field :system_fault_level_lv, :value => '0', :size => 5%>
-  &nbsp;<label>[kA]<label>
+<% end %>
+
+&nbsp;<label>[kA]<label>
