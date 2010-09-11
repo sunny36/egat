@@ -1,0 +1,14 @@
+<fieldset>
+  <h5 class="legend"><span class="label">Damage Of Property</span></h5>
+  <ol>
+    <% for damage_of_property in DamageOfProperty.find(:all)%>                
+    <li>
+    <label>
+      <%= check_box_tag 'transformer_information[damage_of_property_ids][]', 
+        damage_of_property.id, 
+        @transformer_information.damage_of_properties.include?(damage_of_property)%>
+        <%= damage_of_property.value  + ' ' + damage_of_property.message %>
+    </li>
+    <% end %>
+  </ol>
+</fieldset>
