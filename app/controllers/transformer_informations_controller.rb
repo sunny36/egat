@@ -42,4 +42,14 @@ class TransformerInformationsController < ApplicationController
     flash[:notice] = "Successfully destroyed transformer information."
     redirect_to transformer_informations_url
   end
+
+  def redirect_to_edit_if_exists
+    if request.xhr?
+      @transformer_information = TransformerInformation.find_by_transformer_id(params[:id])
+    end
+    respond_to do |format|
+      format.html 
+      format.js 
+    end
+  end
 end

@@ -86,23 +86,32 @@ $(document).ready(function() {
             });
           },
           change: function( event, ui ) {
-            alert("asjhfsdjf");
-            if (!ui.item) {
-              var matcher = new RegExp("^" + $.ui.autocomplete.
-                                       escapeRegex($(this).val() ) + "$", "i"),
-              valid = false;
-              select.children("option").each(function() {
-                if (this.value.match(matcher)) {
-                  this.selected = valid = true;
-                  return false;
-                }
-              });
-              if (!valid) {
-                // remove invalid value, as it didn't match anything
-                $(this).val("");
-                select.val("");
-              }
-            }
+            $.get('/transformer_informations/redirect_to_edit_if_exists',
+                  {id : $('#transformer_information_transformer_id').val()}, 
+                  function (data) {
+                    var transformer_information = eval('(' + data + ')');
+                    if (transformer_information != null) {
+                      window.location.href = 'edit/' + 
+                        transformer_information["transformer_information"]["id"];
+                    } else {
+                      if (!ui.item) {
+                        var matcher = new RegExp("^" + $.ui.autocomplete.
+                                                 escapeRegex($(this).val() ) + "$", "i"),
+                        valid = false;
+                        select.children("option").each(function() {
+                          if (this.value.match(matcher)) {
+                            this.selected = valid = true;
+                            return false;
+                          }
+                        });
+                        if (!valid) {
+                          // remove invalid value, as it didn't match anything
+                          $(this).val("");
+                          select.val("");
+                        }
+                      }
+                    }
+                  }); 
           }
         }).addClass("ui-widget ui-widget-content ui-corner-left" );
 
