@@ -53,10 +53,17 @@ class TransformerInformation < ActiveRecord::Base
     :transformer_name
 
   accepts_nested_attributes_for :load_pattern_per_year
-
-  validate :transformer_name_must_be_valid
-  before_save :add_transformer_id
-
+  
+  validate :transformer_name_must_be_valid,
+           :at_least_one_damage_of_property_must_be_checked
+  validates_presence_of :recorded_date, :bus_voltage_hv_id, 
+                        :system_fault_level_hv, :bus_voltage_lv_id, 
+                        :system_fault_level_lv, :probability_of_force_outage_id,
+                        :social_aspect_id, :system_location_id, 
+                        :public_image_id, :n1_criteria_id, :application_use_id,
+                        :system_stability_id, :pollution_id
+  validates_numericality_of :system_fault_level_hv, :system_fault_level_lv
+                        
   def system_fault_level_score
     [system_fault_level_lv_score, system_fault_level_hv_score].max
   end
@@ -101,10 +108,6 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   protected
-  def add_transformer_id
-    @transformer = Transformer.find_by_transformer_name(transformer_name)
-    self.transformer_id = @transformer.id
-  end
   
   def system_fault_level_hv_mva
     return nil if bus_voltage_hv.nil? || system_fault_level_hv.nil?
@@ -117,8 +120,12 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   def transformer_name_must_be_valid
-    @transformer = Transformer.find_by_transformer_name(transformer_name)
+    @transformer = Transformer.find(transformer_id)
     errors.add_to_base('Please select a valid transformer') if @transformer.nil?
+  end
+  
+  def at_least_one_damage_of_property_must_be_checked
+    errors.add(:damage_of_properties, 'must have at least one checkbox ticked') if damage_of_property_ids.nil? || damage_of_property_ids.empty? 
   end
 
   
