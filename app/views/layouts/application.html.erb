@@ -1,39 +1,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Students: <%= controller.action_name %></title>
-  <%= javascript_include_tag 'jquery-1.4.2.min', 'jquery-ui-1.8.4.custom.min' %>
-  <%= yield :javascript %>
-  <%= stylesheet_link_tag :flutie, 'jquery-ui-1.8.4.custom' %>
-  <style type="text/css">
-  /* These are styles to make the page look nice */
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Students: <%= controller.action_name %></title>
+    <%= javascript_include_tag 'jquery-1.4.2.min', 
+      'jquery-ui-1.8.4.custom.min' 
+    %>
+    <%= yield :javascript %>
+    <%= stylesheet_link_tag 'flutie/reset', 'flutie/defaults', 'flutie/type' %>
+    <%= yield :flutie %>
+    <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
+    <style type="text/css">
+      /* These are styles to make the page look nice */
 
-  body { background-color: #dadada;}
-  .content {
-    background: #fff;
-    padding: 40px;
-    margin: 40px auto;
-    width: 880px;
-    -moz-border-radius: 24px;
-    -webkit-border-radius: 24px;
-  }
-  div#colmns {width:800px}
-  div#columns div {float:left;}
-  
-  </style>
-  
-</head>
-<body>
+      body { background-color: #dadada;}
+      .content {
+        background: #fff;
+        padding: 40px;
+        margin: 40px auto;
+        width: 880px;
+        -moz-border-radius: 24px;
+        -webkit-border-radius: 24px;
+      }
+      div#colmns {width:800px}
+      div#columns div {float:left;}
+
+    </style>
+
+  </head>
+  <body>
 
 
 
-<div class="content"> 
-  <p style="color: green"><%= notice %></p>
-<%= yield %>
-</div>
+    <div class="content"> 
+      <p style="color: green"><%= notice %></p>
+      <%= yield %>
+    </div>
 
-</body>
+  </body>
 </html>
