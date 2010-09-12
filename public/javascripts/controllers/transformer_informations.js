@@ -56,8 +56,10 @@ $(document).ready(function() {
         var select = this.element.hide(),
         selected = select.children(":selected"),
         value = selected.val() ? selected.text() : "";
-        var input = $("<input size='12'>").insertAfter(select).val(value).
-          autocomplete({
+        var input = $("<input size='12'>")
+        .insertAfter(select)
+        .val(value)
+        .autocomplete({
           delay: 0,
           minLength: 0,
           source: function(request, response) {
@@ -67,14 +69,15 @@ $(document).ready(function() {
               var text = $(this).text();
               if (this.value && (!request.term || matcher.test(text)))
                 return {
-                  label: text.
-                    replace(new RegExp(
-                      "(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.
-                                              escapeRegex(request.term) +
-                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"), 
-                  "<strong>$1</strong>"),
-                  value: text,
-                  option: this
+                  label: text
+                  .replace(new RegExp(
+                    "(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.
+                                            escapeRegex(request.term) +
+                                              ")(?![^<>]*>)(?![^&;]+;)", 
+                                              "gi"), 
+                                              "<strong>$1</strong>"),
+                                              value: text,
+                                              option: this
                 };
             }));
           },
@@ -86,6 +89,7 @@ $(document).ready(function() {
             });
           },
           change: function( event, ui ) {
+            $.blockUI(); 
             $.get('/transformer_informations/redirect_to_edit_if_exists',
                   {id : $('#transformer_information_transformer_id').val()}, 
                   function (data) {
@@ -110,6 +114,7 @@ $(document).ready(function() {
                           select.val("");
                         }
                       }
+                      $.unblockUI(); 
                     }
                   }); 
           }
@@ -204,7 +209,7 @@ $(document).ready(function() {
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
                            'px;color:#666;font-size:smaller">Fair</div>');
-     o = plot.pointOffset({ x: -4.2, y: 80});
+      o = plot.pointOffset({ x: -4.2, y: 80});
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
                            'px;color:#666;font-size:smaller">Poor</div>');
