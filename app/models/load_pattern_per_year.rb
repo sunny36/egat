@@ -29,7 +29,7 @@ class LoadPatternPerYear < ActiveRecord::Base
     end
     
     #Get all LoadPatternFactor that contain some values in start or end. 
-    load_pattern_factor = LoadPatternFactor.find(:all, :conditions => ["start >=0 or end >=0"])
+    load_pattern_factor = LoadPatternFactor.find(:all)
     load_pattern_factor.each do |i|
       i.end = 100 if i.end.nil? # If end is nil means it does not have an upper bound
       if lpf.between?(i.start, i.end)
