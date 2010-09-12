@@ -63,7 +63,16 @@ class TransformerInformation < ActiveRecord::Base
                         :public_image_id, :n1_criteria_id, :application_use_id,
                         :system_stability_id, :pollution_id
   validates_numericality_of :system_fault_level_hv, :system_fault_level_lv
-                        
+  
+  def self.get_data_points 
+    points = []
+    transformer_informations = self.find(:all, :order => "id")
+    transformer_informations.each { |e| 
+      points << [e.transformer.transformer_name,  e.importance_index, e.percent_hi]
+    }
+    return points 
+  end
+
   def system_fault_level_score
     [system_fault_level_lv_score, system_fault_level_hv_score].max
   end

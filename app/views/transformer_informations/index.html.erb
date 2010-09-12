@@ -1,19 +1,16 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag 'jquery.flot.min.js','jquery.flot.selection.min.js',
+                           'controllers/transformer_informations.js'%>
+<% end %>
 
+<div id="placeholder" style="width:900px;height:480px"></div>
+<p>One of the goals of Flot is to support user interactions. Try
+pointing and clicking on the points.</p>
 
-<table>
-  <tr>
-    <th>Bus Voltage Hv</th>
-    <th>Bus Voltage Lv</th>
-  </tr>
-  <% for transformer_information in @transformer_informations %>
-    <tr>
-      <td><%=h transformer_information.bus_voltage_hv_id %></td>
-      <td><%=h transformer_information.bus_voltage_lv_id %></td>
-      <td><%= link_to "Show", transformer_information %></td>
-      <td><%= link_to "Edit", edit_transformer_information_path(transformer_information) %></td>
-      <td><%= link_to "Destroy", transformer_information, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<p id="hoverdata">Mouse hovers at
+(<span id="x">0</span>, <span id="y">0</span>). <span id="clickdata"></span></p>
 
-<p><%= link_to "New Transformer Information", new_transformer_information_path %></p>
+<p>A tooltip is easy to build with a bit of jQuery code and the
+data returned from the plot.</p>
+
+<p><input id="enableTooltip" type="checkbox">Enable tooltip</p>

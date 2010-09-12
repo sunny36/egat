@@ -150,8 +150,85 @@ $(document).ready(function() {
 
   $(function() {
     $("#transformer_information_transformer_id").combobox();
-    $("#toggle").click(function() {
-      $("#transformer_information_transformer_id").toggle();
+  });
+
+  $(function () {
+    $.get('/transformer_informations?q=data_points', function(data) {
+      var data_points = eval('(' + data + ')');
+      console.log(data_points);
+      var points = []; 
+      var transformer_names = []; 
+      for (var i = 0; i < data_points.length; ++i) { 
+        points.push([parseFloat(data_points[i][1]), parseFloat(data_points[i][2])]);
+        transformer_names.push(data_points[i][0]); 
+      }
+      console.log(points); 
+      console.log(transformer_names); 
+      var placeholder = $("#placeholder"); 
+      var options = {
+        series: {lines: { show: false }, points: { show: true }
+        },
+        grid: { 
+          hoverable: true, 
+          clickable: true,
+          markings: [
+            {xaxis: {from: 0, to: 40}, yaxis: {from: 0, to: 40 }, color: 'rgb(146, 208, 80)'}, 
+            {xaxis: {from: 40, to: 60}, yaxis: {from: 0, to: 40 }, color: 'rgb(206, 224, 36)'}, 
+            {xaxis: {from: 60, to: 100}, yaxis: {from: 0, to: 40 }, color: 'rgb(245, 125, 25)'},
+            {xaxis: {from: 0, to: 40}, yaxis: {from: 40, to: 60 }, color: 'rgb(206, 224, 36)'},
+            {xaxis: {from: 40, to: 60}, yaxis: {from: 40, to: 60 }, color: 'rgb(255, 255, 0)'},
+            {xaxis: {from: 60, to: 100}, yaxis: {from: 40, to: 60 }, color: 'rgb(252, 152, 4)'},
+            {xaxis: {from: 0, to: 40}, yaxis: {from: 60, to: 100 }, color: 'rgb(245, 125, 25)'},
+            {xaxis: {from: 40, to: 60}, yaxis: {from: 60, to: 100 }, color: 'rgb(252, 152, 4)'},
+            {xaxis: {from: 60, to: 100}, yaxis: {from: 60, to: 100 }, color: 'rgb(255, 0, 5)'},
+          ]
+        },
+        yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] },
+        xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] },
+      }
+      var plot = $.plot(placeholder, [ { data: points}], options);
+
+      function showTooltip(x, y, contents) {
+        $('<div id="tooltip">' + contents + '</div>').css({
+          position: 'absolute',
+          display: 'none',
+          top: y + 5,
+          left: x + 5,
+          border: '1px solid #fdd',
+          padding: '2px',
+          'background-color': '#fee',
+          opacity: 0.90
+        }).appendTo("body").fadeIn(200);
+      }
+
+      var previousPoint = null;
+      $("#placeholder").bind("plothover", function (event, pos, item) {
+        $("#x").text(pos.x.toFixed(2));
+        $("#y").text(pos.y.toFixed(2));
+        if (item) {
+          if (previousPoint != item.datapoint) {
+            previousPoint = item.datapoint;
+            $("#tooltip").remove();
+            var x = item.datapoint[0].toFixed(2),
+            y = item.datapoint[1].toFixed(2);
+            showTooltip(item.pageX, item.pageY, 
+                        transformer_names[item.dataIndex] + "(" + x + "," + y + ")"); 
+          }
+        }
+        else {
+          $("#tooltip").remove();
+          previousPoint = null;            
+        }
+      });
+
+      $("#placeholder").bind("plotclick", function (event, pos, item) {
+        if (item) {
+          console.log(points); 
+          $("#clickdata").text("You clicked point " + item.dataIndex + " in " + transformer_names[item.dataIndex]  + ".");
+          plot.highlight(item.series, item.datapoint);
+        }
+      });
+
     });
   });
 

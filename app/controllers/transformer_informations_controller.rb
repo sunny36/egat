@@ -1,6 +1,14 @@
 class TransformerInformationsController < ApplicationController
   def index
-    @transformer_informations = TransformerInformation.all
+    if request.xhr?
+      @data_points = TransformerInformation.get_data_points.to_json
+    else 
+      @transformer_informations = TransformerInformation.all
+    end
+    respond_to do |format|
+      format.html 
+      format.js 
+    end
   end
   
   def show
