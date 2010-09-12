@@ -155,15 +155,12 @@ $(document).ready(function() {
   $(function () {
     $.get('/transformer_informations?q=data_points', function(data) {
       var data_points = eval('(' + data + ')');
-      console.log(data_points);
       var points = []; 
       var transformer_names = []; 
       for (var i = 0; i < data_points.length; ++i) { 
         points.push([parseFloat(data_points[i][1]), parseFloat(data_points[i][2])]);
         transformer_names.push(data_points[i][0]); 
       }
-      console.log(points); 
-      console.log(transformer_names); 
       var placeholder = $("#placeholder"); 
       var options = {
         series: {lines: { show: false }, points: { show: true }
@@ -250,7 +247,6 @@ $(document).ready(function() {
 
       $("#placeholder").bind("plotclick", function (event, pos, item) {
         if (item) {
-          console.log(points); 
           $("#clickdata").text("You clicked point " + item.dataIndex + " in " + transformer_names[item.dataIndex]  + ".");
           plot.highlight(item.series, item.datapoint);
         }
