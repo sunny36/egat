@@ -129,7 +129,7 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   def transformer_name_must_be_valid
-    @transformer = Transformer.find(transformer_id)
+    @transformer = Transformer.find(transformer_id) unless transformer_id.nil?
     errors.add_to_base('Please select a valid transformer') if @transformer.nil?
   end
   
