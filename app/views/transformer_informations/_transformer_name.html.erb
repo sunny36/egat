@@ -1,5 +1,5 @@
 <%= label :transformer_information, :transformer_id, "Transformer Name" %>
-<% if controller.action_name == 'new' %>
+<% if controller.action_name == 'new' || controller.action_name == 'create' %>
   <%= 
     @transformers = Transformer.find(:all, :order => 'transformer_name')    
     f.collection_select(:transformer_id,  @transformers, :id, :transformer_name, {:prompt => true}) 
