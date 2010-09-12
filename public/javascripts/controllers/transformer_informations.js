@@ -187,6 +187,33 @@ $(document).ready(function() {
         xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] },
       }
       var plot = $.plot(placeholder, [ { data: points}], options);
+      o = plot.pointOffset({ x: 15, y: -1.2});
+      placeholder.append('<div style="position:absolute;left:' + 
+                         (o.left + 4) + 'px;top:' + o.top + 
+                           'px;color:#666;font-size:smaller">Low</div>');
+      o = plot.pointOffset({ x: 45, y: -1.2});
+      placeholder.append('<div style="position:absolute;left:' + 
+                         (o.left + 4) + 'px;top:' + o.top + 
+                           'px;color:#666;font-size:smaller">Moderate</div>');
+      o = plot.pointOffset({ x: 75, y: -1.2});
+      placeholder.append('<div style="position:absolute;left:' + 
+                         (o.left + 4) + 'px;top:' + o.top + 
+                           'px;color:#666;font-size:smaller">High</div>');
+      o = plot.pointOffset({ x: -4.2, y: 20});
+      placeholder.append('<div style="position:absolute;left:' + 
+                         (o.left + 4) + 'px;top:' + o.top + 
+                           'px;color:#666;font-size:smaller">Good</div>'); 
+      o = plot.pointOffset({ x: -4.2, y: 50});
+      placeholder.append('<div style="position:absolute;left:' + 
+                         (o.left + 4) + 'px;top:' + o.top + 
+                           'px;color:#666;font-size:smaller">Fair</div>');
+     o = plot.pointOffset({ x: -4.2, y: 80});
+      placeholder.append('<div style="position:absolute;left:' + 
+                         (o.left + 4) + 'px;top:' + o.top + 
+                           'px;color:#666;font-size:smaller">Poor</div>');
+
+
+
 
       function showTooltip(x, y, contents) {
         $('<div id="tooltip">' + contents + '</div>').css({
