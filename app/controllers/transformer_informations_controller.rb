@@ -24,7 +24,7 @@ class TransformerInformationsController < ApplicationController
     @transformer_information = TransformerInformation.new(params[:transformer_information])
     if @transformer_information.save
       flash[:notice] = "Successfully created transformer information."
-      redirect_to @transformer_information
+      redirect_to transformer_informations_url
     else
       render :action => 'new'
     end
@@ -38,7 +38,7 @@ class TransformerInformationsController < ApplicationController
     @transformer_information = TransformerInformation.find(params[:id])
     if @transformer_information.update_attributes(params[:transformer_information])
       flash[:notice] = "Successfully updated transformer information."
-      redirect_to @transformer_information
+      redirect_to transformer_informations_url
     else
       render :action => 'edit'
     end
