@@ -103,7 +103,7 @@ class TransformerInformation < ActiveRecord::Base
   def importance_index    
     (((load_pattern_per_year.load_pattern_factor.score * 4) + 
       (system_location.score * 4) + (n1_criteria.score * 5) + 
-      (system_stability.score * 4) + (application_use.score * 4)  + 
+      (system_stability.score * 4) + (application_use.score * 3)  + 
       (system_fault_level_score * 4) + (probability_of_force_outage.score * 4) + 
       (damage_of_property_score * 3) + (social_aspect.score * 3) + 
       (public_image.score * 1) + (pollution.score * 1) + 
@@ -139,7 +139,8 @@ class TransformerInformation < ActiveRecord::Base
 
   
   def system_fault_level_hv_score
-    @system_fault_levels = BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
+    @system_fault_levels = 
+      BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
     @system_fault_levels.each do |i|
       i.end = 100000000 if i.end.nil?
       if system_fault_level_hv_mva.between?(i.start, i.end)
@@ -149,7 +150,8 @@ class TransformerInformation < ActiveRecord::Base
   end
 
   def system_fault_level_lv_score
-    @system_fault_levels = BusVoltage.system_fault_level(self.bus_voltage_lv.value.to_i)
+    @system_fault_levels = 
+      BusVoltage.system_fault_level(self.bus_voltage_lv.value.to_i)
     @system_fault_levels.each do |i|
       i.end = 100000000 if i.end.nil?
       if system_fault_level_lv_mva.between?(i.start, i.end)
