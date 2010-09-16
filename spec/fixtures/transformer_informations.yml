@@ -1,7 +1,7 @@
 one:
   transformer_id: <= Transformer.first.id %>
-  bus_voltage_hv_id: <%= BusVoltageHv.find_by_value("230").id %>
-  system_fault_level_hv: 44.34
-  bus_voltage_lv_id: <%= BusVoltageLv.find_by_value("115").id %>
-  system_fault_level_lv: 3.52
+  bus_voltage_hv_id: <%= BusVoltageHv.find_by_value("115").id %>
+  system_fault_level_hv: 1.915
+  bus_voltage_lv_id: <%= BusVoltageLv.find_by_value("22").id %>
+  system_fault_level_lv: 5.3017
   

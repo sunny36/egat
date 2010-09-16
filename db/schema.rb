@@ -12,11 +12,11 @@
 ActiveRecord::Schema.define(:version => 20100906162356) do
 
   create_table "application_uses", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "score"
-    t.string   "score_message"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "score"
+    t.string    "score_message"
   end
 
   create_table "arrester", :force => true do |t|
@@ -58,22 +58,22 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "bus_voltage_hvs", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "bus_voltage_lvs", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "bus_voltages", :force => true do |t|
-    t.integer  "start"
-    t.integer  "end"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "start"
+    t.integer   "end"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "bushing", :force => true do |t|
@@ -135,17 +135,17 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "damage_of_properties", :force => true do |t|
-    t.string   "value"
-    t.string   "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "value"
+    t.string    "message"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "damage_of_properties_transformer_informations", :id => false, :force => true do |t|
-    t.integer  "damage_of_property_id"
-    t.integer  "transformer_information_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "damage_of_property_id"
+    t.integer   "transformer_information_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "elec_cor", :force => true do |t|
@@ -699,24 +699,24 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "load_pattern_factors", :force => true do |t|
-    t.integer  "start"
-    t.integer  "end"
-    t.integer  "score"
-    t.string   "score_message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "start"
+    t.integer   "end"
+    t.integer   "score"
+    t.string    "score_message"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "load_pattern_per_years", :force => true do |t|
-    t.integer  "lteq_0_pt_6"
-    t.integer  "gt_0_pt_6_and_lteq_1"
-    t.integer  "gt_1_and_lteq_1_pt_2"
-    t.integer  "gt_1_pt_2_and_lteq_1_pt_5"
-    t.integer  "gt_1_pt_5"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "transformer_information_id"
-    t.integer  "load_pattern_factor_id"
+    t.integer   "lteq_0_pt_6"
+    t.integer   "gt_0_pt_6_and_lteq_1"
+    t.integer   "gt_1_and_lteq_1_pt_2"
+    t.integer   "gt_1_pt_2_and_lteq_1_pt_5"
+    t.integer   "gt_1_pt_5"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "transformer_information_id"
+    t.integer   "load_pattern_factor_id"
   end
 
   create_table "maintank", :force => true do |t|
@@ -738,11 +738,11 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "n1_criterias", :force => true do |t|
-    t.string   "value"
-    t.integer  "score"
-    t.string   "score_message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "value"
+    t.integer   "score"
+    t.string    "score_message"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "ngr", :force => true do |t|
@@ -1150,11 +1150,11 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "pollutions", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "score"
-    t.string   "score_message"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "score"
+    t.string    "score_message"
   end
 
   create_table "posts", :force => true do |t|
@@ -1164,19 +1164,19 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "probability_of_force_outages", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "score"
-    t.string   "score_message"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "score"
+    t.string    "score_message"
   end
 
   create_table "public_images", :force => true do |t|
-    t.string   "value"
-    t.integer  "score"
-    t.string   "score_message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "value"
+    t.integer   "score"
+    t.string    "score_message"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "radiator_cooling", :force => true do |t|
@@ -1229,11 +1229,11 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "social_aspects", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "score"
-    t.string   "score_message"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "score"
+    t.string    "score_message"
   end
 
   create_table "station", :force => true do |t|
@@ -1256,29 +1256,29 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "system_fault_levels", :force => true do |t|
-    t.integer  "start"
-    t.integer  "end"
-    t.integer  "score"
-    t.string   "score_message"
-    t.integer  "bus_voltage_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "start"
+    t.integer   "end"
+    t.integer   "score"
+    t.string    "score_message"
+    t.integer   "bus_voltage_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "system_locations", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "score"
-    t.string   "score_message"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "score"
+    t.string    "score_message"
   end
 
   create_table "system_stabilities", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "score"
-    t.string   "score_message"
+    t.string    "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "score"
+    t.string    "score_message"
   end
 
   create_table "tarrester", :force => true do |t|
@@ -1519,24 +1519,24 @@ ActiveRecord::Schema.define(:version => 20100906162356) do
   end
 
   create_table "transformer_informations", :force => true do |t|
-    t.integer  "bus_voltage_hv_id"
-    t.integer  "bus_voltage_lv_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.float    "system_fault_level_hv"
-    t.float    "system_fault_level_lv"
-    t.integer  "probability_of_force_outage_id"
-    t.integer  "social_aspect_id"
-    t.integer  "system_location_id"
-    t.integer  "application_use_id"
-    t.integer  "system_stability_id"
-    t.integer  "pollution_id"
-    t.integer  "n1_criteria_id"
-    t.integer  "public_image_id"
-    t.integer  "system_fault_level_id"
-    t.integer  "transformer_id"
-    t.date     "recorded_date"
-    t.integer  "bus_voltage_id"
+    t.integer   "bus_voltage_hv_id"
+    t.integer   "bus_voltage_lv_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.float     "system_fault_level_hv"
+    t.float     "system_fault_level_lv"
+    t.integer   "probability_of_force_outage_id"
+    t.integer   "social_aspect_id"
+    t.integer   "system_location_id"
+    t.integer   "application_use_id"
+    t.integer   "system_stability_id"
+    t.integer   "pollution_id"
+    t.integer   "n1_criteria_id"
+    t.integer   "public_image_id"
+    t.integer   "system_fault_level_id"
+    t.integer   "transformer_id"
+    t.date      "recorded_date"
+    t.integer   "bus_voltage_id"
   end
 
   create_table "visual_bushing", :force => true do |t|
