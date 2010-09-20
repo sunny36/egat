@@ -14,13 +14,13 @@ $(document).ready(function() {
   function setSystemFaultLevelHvMva() {
     var busVoltageHv = parseFloat(
       $('#transformer_information_bus_voltage_hv_id :selected').text()); 
-      var systemFaultLevelHv = parseFloat(
-        $('#transformer_information_system_fault_level_hv').val());
-        if (!isNaN(busVoltageHv) && !isNaN(systemFaultLevelHv)) {
-          var systemFaultLevelHvMva = 1.732 * busVoltageHv * systemFaultLevelHv; 
-          $('#transformer_information_system_fault_level_hv_mva').
-            val(systemFaultLevelHvMva); 
-        }
+    var systemFaultLevelHv = parseFloat(
+      $('#transformer_information_system_fault_level_hv').val());
+    if (!isNaN(busVoltageHv) && !isNaN(systemFaultLevelHv)) {
+      var systemFaultLevelHvMva = 1.732 * busVoltageHv * systemFaultLevelHv; 
+      $('#transformer_information_system_fault_level_hv_mva').
+        val(systemFaultLevelHvMva); 
+    }
   }
 
   $('#transformer_information_bus_voltage_lv_id').change(function () {
@@ -34,13 +34,13 @@ $(document).ready(function() {
   function setSystemFaultLevelLvMva() {
     var busVoltageLv = parseFloat(
       $('#transformer_information_bus_voltage_lv_id :selected').text()); 
-      var systemFaultLevelLv = parseFloat(
-        $('#transformer_information_system_fault_level_lv').val());
-        if (!isNaN(busVoltageLv) && !isNaN(systemFaultLevelLv)) {
-          var systemFaultLevelLvMva = 1.732 * busVoltageLv * systemFaultLevelLv; 
-          $('#transformer_information_system_fault_level_lv_mva').
-            val(systemFaultLevelLvMva); 
-        }
+    var systemFaultLevelLv = parseFloat(
+      $('#transformer_information_system_fault_level_lv').val());
+    if (!isNaN(busVoltageLv) && !isNaN(systemFaultLevelLv)) {
+      var systemFaultLevelLvMva = 1.732 * busVoltageLv * systemFaultLevelLv; 
+      $('#transformer_information_system_fault_level_lv_mva').
+        val(systemFaultLevelLvMva); 
+    }
   }
 
   $("#transformer_information_recorded_date").datepicker({
@@ -57,98 +57,101 @@ $(document).ready(function() {
         selected = select.children(":selected"),
         value = selected.val() ? selected.text() : "";
         var input = $("<input size='12'>")
-        .insertAfter(select)
-        .val(value)
-        .autocomplete({
-          delay: 0,
-          minLength: 0,
-          source: function(request, response) {
-            var matcher = new RegExp($.ui.autocomplete.
-                                     escapeRegex(request.term), "i");
-            response(select.children( "option" ).map(function() {
-              var text = $(this).text();
-              if (this.value && (!request.term || matcher.test(text)))
-                return {
-                  label: text
-                  .replace(new RegExp(
-                    "(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.
-                                            escapeRegex(request.term) +
-                                              ")(?![^<>]*>)(?![^&;]+;)", 
-                                              "gi"), 
-                                              "<strong>$1</strong>"),
-                                              value: text,
-                                              option: this
-                };
-            }));
-          },
-          select: function( event, ui ) {
-            ui.item.option.selected = true;
-            select.val(ui.item.option.value );
-            self._trigger("selected", event, {
-              item: ui.item.option
-            });
-          },
-          change: function( event, ui ) {
-            $.blockUI(); 
-            $.get('/transformer_informations/redirect_to_edit_if_exists',
-                  {id : $('#transformer_information_transformer_id').val()}, 
-                  function (data) {
-                    var transformer_information = eval('(' + data + ')');
-                    if (transformer_information != null) {
-                      window.location.href = 'edit/' + 
-                        transformer_information["transformer_information"]["id"];
-                    } else {
-                      if (!ui.item) {
-                        var matcher = new RegExp("^" + $.ui.autocomplete.
-                                                 escapeRegex($(this).val() ) + "$", "i"),
-                        valid = false;
-                        select.children("option").each(function() {
-                          if (this.value.match(matcher)) {
-                            this.selected = valid = true;
-                            return false;
+          .insertAfter(select)
+          .val(value)
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: function(request, response) {
+              var matcher = new RegExp($.ui.autocomplete.
+                                       escapeRegex(request.term), "i");
+              response(select.children( "option" ).map(function() {
+                var text = $(this).text();
+                if (this.value && (!request.term || matcher.test(text)))
+                  return {
+                    label: text
+                      .replace(new RegExp(
+                        "(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.
+                          escapeRegex(request.term) +
+                          ")(?![^<>]*>)(?![^&;]+;)", 
+                        "gi"), 
+                               "<strong>$1</strong>"),
+                    value: text,
+                    option: this
+                  };
+              }));
+            },
+            select: function( event, ui ) {
+              ui.item.option.selected = true;
+              select.val(ui.item.option.value );
+              self._trigger("selected", event, {
+                item: ui.item.option
+              });
+            },
+            change: function( event, ui ) {
+              $.blockUI(); 
+              $.get('/transformer_informations/redirect_to_edit_if_exists',
+                    {id : $('#transformer_information_transformer_id').val()}, 
+                    function (data) {
+                      var transformer_information = eval('(' + data + ')');
+                      if (transformer_information != null) {
+                        window.location.href = 'edit/' + 
+                          transformer_information["transformer_information"]["id"];
+                      } else {
+                        if (!ui.item) {
+                          var matcher = new RegExp("^" + $.ui
+                                                   .autocomplete
+                                                   .escapeRegex($(this)
+                                                                .val()) + 
+                                                   "$", "i"),
+                          valid = false;
+                          select.children("option").each(function() {
+                            if (this.value.match(matcher)) {
+                              this.selected = valid = true;
+                              return false;
+                            }
+                          });
+                          if (!valid) {
+                            // remove invalid value, as it didn't match anything
+                            $(this).val("");
+                            select.val("");
                           }
-                        });
-                        if (!valid) {
-                          // remove invalid value, as it didn't match anything
-                          $(this).val("");
-                          select.val("");
                         }
+                        $.unblockUI(); 
                       }
-                      $.unblockUI(); 
-                    }
-                  }); 
-          }
-        }).addClass("ui-widget ui-widget-content ui-corner-left" );
+                    }); 
+            }
+          }).addClass("ui-widget ui-widget-content ui-corner-left" );
 
         input.data("autocomplete")._renderItem = function( ul, item ) {
           return $( "<li></li>" ).
             data( "item.autocomplete", item ).
-              append( "<a>" + item.label + "</a>" ).
-                appendTo( ul );
+            append( "<a>" + item.label + "</a>" ).
+            appendTo( ul );
         };
 
         $( "<button>&nbsp;</button>" ).
           attr("tabIndex", -1 ).attr( "title", "Show All Items" ).
-            insertAfter( input ).button({
-          icons: {
-            primary: "ui-icon-triangle-1-s"
-          },
-          text: false
-        })
-        .removeClass( "ui-corner-all" )
-        .addClass( "ui-corner-right ui-button-icon" )
-        .click(function() {
-          // close if already visible
-          if ( input.autocomplete( "widget" ).is( ":visible" ) ) {
-            input.autocomplete( "close" );
-            return false;
-          }
+          insertAfter( input ).button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .removeClass( "ui-corner-all" )
+          .addClass( "ui-corner-right ui-button-icon" )
+          .click(function() {
+            // close if already visible
+            if ( input.autocomplete( "widget" ).is( ":visible" ) ) {
+              input.autocomplete( "close" );
+              return false;
+            }
 
-          // pass empty string as value to search for, displaying all results
-          input.autocomplete( "search", "" );
-          input.focus();
-          return false;
-        });
+            // pass empty string as value to search for, displaying all results
+            input.autocomplete( "search", "" );
+            input.focus();
+            return false;
+          });
       }
     });
   })(jQuery);
@@ -163,26 +166,35 @@ $(document).ready(function() {
       var points = []; 
       var transformer_names = []; 
       for (var i = 0; i < data_points.length; ++i) { 
-        points.push([parseFloat(data_points[i][1]), parseFloat(data_points[i][2])]);
+        points.push([parseFloat(data_points[i][1]), 
+                     parseFloat(data_points[i][2])]);
         transformer_names.push(data_points[i][0]); 
       }
       var placeholder = $("#placeholder"); 
       var options = {
-        series: {lines: { show: false }, points: { show: true }
-        },
+        series: {lines: { show: false }, points: { show: true }},
         grid: { 
           hoverable: true, 
           clickable: true,
           markings: [
-            {xaxis: {from: 0, to: 40}, yaxis: {from: 0, to: 40 }, color: 'rgb(146, 208, 80)'}, 
-            {xaxis: {from: 40, to: 60}, yaxis: {from: 0, to: 40 }, color: 'rgb(206, 224, 36)'}, 
-            {xaxis: {from: 60, to: 100}, yaxis: {from: 0, to: 40 }, color: 'rgb(245, 125, 25)'},
-            {xaxis: {from: 0, to: 40}, yaxis: {from: 40, to: 60 }, color: 'rgb(206, 224, 36)'},
-            {xaxis: {from: 40, to: 60}, yaxis: {from: 40, to: 60 }, color: 'rgb(255, 255, 0)'},
-            {xaxis: {from: 60, to: 100}, yaxis: {from: 40, to: 60 }, color: 'rgb(252, 152, 4)'},
-            {xaxis: {from: 0, to: 40}, yaxis: {from: 60, to: 100 }, color: 'rgb(245, 125, 25)'},
-            {xaxis: {from: 40, to: 60}, yaxis: {from: 60, to: 100 }, color: 'rgb(252, 152, 4)'},
-            {xaxis: {from: 60, to: 100}, yaxis: {from: 60, to: 100 }, color: 'rgb(255, 0, 5)'},
+            {xaxis: {from: 0, to: 40}, yaxis: {from: 0, to: 40 }, 
+             color: 'rgb(146, 208, 80)'}, 
+            {xaxis: {from: 40, to: 60}, yaxis: {from: 0, to: 40 }, 
+             color: 'rgb(206, 224, 36)'}, 
+            {xaxis: {from: 60, to: 100}, yaxis: {from: 0, to: 40 }, 
+             color: 'rgb(245, 125, 25)'},
+            {xaxis: {from: 0, to: 40}, yaxis: {from: 40, to: 60 }, 
+             color: 'rgb(206, 224, 36)'},
+            {xaxis: {from: 40, to: 60}, yaxis: {from: 40, to: 60 }, 
+             color: 'rgb(255, 255, 0)'},
+            {xaxis: {from: 60, to: 100}, yaxis: {from: 40, to: 60 }, 
+             color: 'rgb(252, 152, 4)'},
+            {xaxis: {from: 0, to: 40}, yaxis: {from: 60, to: 100 }, 
+             color: 'rgb(245, 125, 25)'},
+            {xaxis: {from: 40, to: 60}, yaxis: {from: 60, to: 100 }, 
+             color: 'rgb(252, 152, 4)'},
+            {xaxis: {from: 60, to: 100}, yaxis: {from: 60, to: 100 }, 
+             color: 'rgb(255, 0, 5)'},
           ]
         },
         yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] },
@@ -192,30 +204,27 @@ $(document).ready(function() {
       o = plot.pointOffset({ x: 15, y: -1.2});
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
-                           'px;color:#666;font-size:smaller">Low</div>');
+                         'px;color:#666;font-size:smaller">Low</div>');
       o = plot.pointOffset({ x: 45, y: -1.2});
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
-                           'px;color:#666;font-size:smaller">Moderate</div>');
+                         'px;color:#666;font-size:smaller">Moderate</div>');
       o = plot.pointOffset({ x: 75, y: -1.2});
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
-                           'px;color:#666;font-size:smaller">High</div>');
+                         'px;color:#666;font-size:smaller">High</div>');
       o = plot.pointOffset({ x: -4.2, y: 20});
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
-                           'px;color:#666;font-size:smaller">Good</div>'); 
+                         'px;color:#666;font-size:smaller">Good</div>'); 
       o = plot.pointOffset({ x: -4.2, y: 50});
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
-                           'px;color:#666;font-size:smaller">Fair</div>');
+                         'px;color:#666;font-size:smaller">Fair</div>');
       o = plot.pointOffset({ x: -4.2, y: 80});
       placeholder.append('<div style="position:absolute;left:' + 
                          (o.left + 4) + 'px;top:' + o.top + 
-                           'px;color:#666;font-size:smaller">Poor</div>');
-
-
-
+                         'px;color:#666;font-size:smaller">Poor</div>');
 
       function showTooltip(x, y, contents) {
         $('<div id="tooltip">' + contents + '</div>').css({
@@ -241,7 +250,8 @@ $(document).ready(function() {
             var x = item.datapoint[0].toFixed(2),
             y = item.datapoint[1].toFixed(2);
             showTooltip(item.pageX, item.pageY, 
-                        transformer_names[item.dataIndex] + "(" + x + "," + y + ")"); 
+                        transformer_names[item.dataIndex] + 
+                        "(" + x + "," + y + ")"); 
           }
         }
         else {
@@ -252,12 +262,43 @@ $(document).ready(function() {
 
       $("#placeholder").bind("plotclick", function (event, pos, item) {
         if (item) {
-          $("#clickdata").text("You clicked point " + item.dataIndex + " in " + transformer_names[item.dataIndex]  + ".");
+          $("#clickdata").text("You clicked point " + item.dataIndex + " in " 
+                               + transformer_names[item.dataIndex]  + ".");
           plot.highlight(item.series, item.datapoint);
         }
       });
-
     });
   });
+
+  $("#damage_of_property_1, #damage_of_property_2, #damage_of_property_3," +
+    "#damage_of_property_4").click(function() {
+    if ($('#damage_of_property_1').attr('checked') || 
+        $('#damage_of_property_2').attr('checked') ||
+        $('#damage_of_property_3').attr('checked') ||
+        $('#damage_of_property_4').attr('checked')) {
+      $('#damage_of_property_5').attr('disabled', true); 
+    } 
+    if (!$('#damage_of_property_1').attr('checked') && 
+        !$('#damage_of_property_2').attr('checked') &&
+        !$('#damage_of_property_3').attr('checked') &&
+        !$('#damage_of_property_4').attr('checked')) {
+      $('#damage_of_property_5').attr('disabled', false); 
+    }
+  });
+
+  $('#damage_of_property_5').click(function () {
+    if ($('#damage_of_property_5').attr('checked')) { 
+      $('#damage_of_property_1').attr('disabled', true); 
+      $('#damage_of_property_2').attr('disabled', true); 
+      $('#damage_of_property_3').attr('disabled', true); 
+      $('#damage_of_property_4').attr('disabled', true); 
+    }
+    if (!$('#damage_of_property_5').attr('checked')) { 
+      $('#damage_of_property_1').attr('disabled', false); 
+      $('#damage_of_property_2').attr('disabled', false); 
+      $('#damage_of_property_3').attr('disabled', false); 
+      $('#damage_of_property_4').attr('disabled', false); 
+    }
+  }); 
 
 });
