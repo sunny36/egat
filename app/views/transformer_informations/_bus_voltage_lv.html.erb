@@ -1,4 +1,4 @@
 <%= label :transformer_information, :bus_voltage_lv_id, "Bus Voltage LV side" %>
-<%= @bus_voltage_lvs = BusVoltageLv.find(:all, :order => 'value')
+<%= @bus_voltage_lvs = BusVoltageLv.find(:all, :order => 'CAST(value AS UNSIGNED)')
 f.collection_select(:bus_voltage_lv_id,  @bus_voltage_lvs, :id, :value, 
                     {:prompt => true}) %>&nbsp;<label>[kV]</label>
