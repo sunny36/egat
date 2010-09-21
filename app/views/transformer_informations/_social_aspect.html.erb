@@ -2,7 +2,7 @@
 <%= 
   @social_aspects = SocialAspect.find(:all, 
                                       :conditions => "value IS NOT NULL", 
-                                      :order => 'value')
+                                      :order => 'score')
   f.collection_select(:social_aspect_id,  @social_aspects, :id, 
                       :value, {:prompt => true}) 
 %>
