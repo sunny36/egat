@@ -1,6 +1,6 @@
 <%= label :transformer_information, :n1_criteria_id, "N1 Criteria" %>
 <%= @n1_criterias = N1Criteria.find(:all, 
                                     :conditions => "value IS NOT NULL", 
-                                    :order => 'value')
+                                    :order => 'score')
 f.collection_select(:n1_criteria_id,  @n1_criterias, :id, :value, 
                     {:prompt => true}) %>        

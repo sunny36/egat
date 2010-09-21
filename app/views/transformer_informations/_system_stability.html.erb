@@ -1,6 +1,6 @@
 <%= label :transformer_information, :system_stability_id, "System Stability" %>
 <%= @system_stabilities = SystemStability.find(:all, 
                                                :conditions => "value IS NOT NULL", 
-                                               :order => 'value')
+                                               :order => 'score')
 f.collection_select(:system_stability_id,  @system_stabilities, :id, :value, 
                     {:prompt => true}) %>        

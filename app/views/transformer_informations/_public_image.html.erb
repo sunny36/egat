@@ -1,5 +1,5 @@
 <%= label :transformer_information, :public_image_id, "Public Image" %>
 <%=     @public_images = PublicImage.find(:all, :conditions => "value IS NOT NULL",
-                                          :order => 'value')
+                                          :order => 'score')
 f.collection_select(:public_image_id,  @public_images, :id, :value, 
                     {:prompt => true}) %>        
