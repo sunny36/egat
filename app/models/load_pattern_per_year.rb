@@ -19,8 +19,18 @@ class LoadPatternPerYear < ActiveRecord::Base
   belongs_to :transformer_information
   belongs_to :load_pattern_factor
   before_save :assign_score
+  validate :sum_must_not_more_than_12_months
 
   protected
+
+  def sum_must_not_more_than_12_months
+    sum = lteq_0_pt_6 + gt_0_pt_6_and_lteq_1 + gt_1_and_lteq_1_pt_2 + 
+          gt_1_pt_2_and_lteq_1_pt_5 + gt_1_pt_5
+    if sum > 12
+      errors.add_to_base("Sum of Load Pattern should not exceed 12 months")
+    end
+  end
+
   def assign_score
     unless self.lpf_numerator.to_f.zero?
       lpf = (self.lpf_numerator.to_f / self.lpf_denominator) * 100.to_f
