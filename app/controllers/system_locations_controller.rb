@@ -7,10 +7,6 @@ class SystemLocationsController < ApplicationController
     end
   end
 
-  def edit
-    debugger
-  end
-
   def update
     @system_location = SystemLocation.find(params[:id])
     params[:system_location] = { 
