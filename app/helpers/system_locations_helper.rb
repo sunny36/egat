@@ -1,0 +1,2 @@
+module SystemLocationsHelper
+end

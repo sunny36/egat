@@ -1,0 +1,9 @@
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'grid.locale-en.js'%>
+  <%= javascript_include_tag 'jquery.jqGrid.min.js'%>
+  <%= javascript_include_tag 'controllers/system_locations'%>
+<% end %>
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag 'ui.jqgrid.css' %>
+<% end %>
+<table id="system_locations"></table>
