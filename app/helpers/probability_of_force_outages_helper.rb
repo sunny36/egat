@@ -1,0 +1,2 @@
+module ProbabilityOfForceOutagesHelper
+end
