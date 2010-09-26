@@ -12,7 +12,7 @@ $(document).ready(function() {
     ],
     viewrecords: true,
     height: 'auto', 
-    caption:"N1 Criteria", 
+    caption:"N-1 Criteria", 
     onSelectRow: function(id){ 
       if(id && id!==lastsel2){ 
         jQuery('#n1_criterias').jqGrid('restoreRow', lastsel2); 
