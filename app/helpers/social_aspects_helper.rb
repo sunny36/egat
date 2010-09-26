@@ -1,0 +1,2 @@
+module SocialAspectsHelper
+end
