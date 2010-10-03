@@ -1,7 +1,10 @@
 <%= label :transformer_information, :probability_of_force_outage_id, 
   "Probability Of Force Outage" %>
-  <%= @probability_of_force_outages = ProbabilityOfForceOutage.find(
-    :all, :conditions => "value IS NOT NULL", :order => 'score')    
-    f.collection_select(:probability_of_force_outage_id,  
-                        @probability_of_force_outages, :id, :value, 
+<%= @probability_of_force_outages = [['1', 1], ['2', 1],
+                                     ['3', 2], ['4', 2],
+                                     ['5', 3], ['6', 3],
+                                     ['7', 4], ['8', 4],
+                                     ['9', 5], ['10', 5]]  
+    f.select(:probability_of_force_outage_id,  
+                        @probability_of_force_outages, 
                         {:prompt => true}) %>
