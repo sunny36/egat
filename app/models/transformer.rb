@@ -33,4 +33,15 @@ class Transformer < ActiveRecord::Base
   set_table_name "transformer"
   belongs_to :brand
   has_one :transformer_information
+  
+  def self.find_all_by_transformer_name_initials(names)
+    conditions = "transformer_name like ?"
+    names[1..names.length].each { |name|
+      conditions += ' ' + 'OR transformer_name like ?'
+    }
+    names = names.map { |name| name + '%'}
+    x = [conditions] + names
+    self.find(:all, :conditions => x)
+  end
+  
 end
