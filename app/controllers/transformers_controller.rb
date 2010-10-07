@@ -1,19 +1,22 @@
 class TransformersController < ApplicationController
 
-  def index
-    @transformers = Transformer.find(:all, :order => "id")
+  def index    
     if request.xhr?
-      unless params[:term].nil?
-        @transformers = Transformer.find(:all, :order => "id", 
-                                         :conditions => ["transformer_name like ?", 
-                                                         params[:term]+"%"])
+      unless params[:region].nil?
+        stations = Station.find_all_by_region(params[:region])
+        names = stations.collect { |s| s.name }
+        @transformers = Transformer.find_all_by_transformer_name_initials(names)
+        @transformer_informations = TransformerInformation.find_all_by_transformers(@transformers)
+        ActiveRecord::Base.include_root_in_json = false
+        @transformer_informations = @transformer_informations.to_json(:only => [:id], 
+                                                                      :methods => :importance_index, 
+                                                                      :include => {:transformer => {:only => [:id, :transformer_name, :egatsn] }})
+        # @transformers = Transformer.all(:conditions => ["id in (?)",
+        #                                 @transformer_informations.collect { |t| t.transformer_id}])
       end
-      @transformers = @transformers.collect { |i| { 
-        'id' => i.id, 'label' => i.transformer_name, 
-        'value' => i.transformer_name 
-        } 
-      }
-    end
+    else
+      @transformers = Transformer.find(:all, :order => "id")
+    end    
     respond_to do |format|
       format.html
       format.js 

@@ -4,5 +4,54 @@
                            'controllers/transformer_informations.js'%>
 <% end %>
 
-<div id="placeholder" style="width:480px;height:480px"></div>
 
+
+<% form_for :station do |f| -%>
+<div class="grid_3">
+  <%= f.label(:station, "เขต")%>
+</div>
+<div class="grid_3">
+  <%= 
+      @stations = Station.find(:all, :group => "region")
+      f.collection_select(:station, @stations, :id, :region, :prompt => true)
+  %>
+</div>
+<div class="clear"></div> 
+<div id="transformer_name_label" class="grid_3">
+  <label for="station_transformer_name">ชื่อหม้อแปลงไฟฟ้า</labe>
+</div>
+<div id="transformer_name_select" class="grid_3">
+  <select id="station_transformer_name" name="station[transformer_name]"></select>
+</div>
+<script id="transformer_names" type="text/x-jquery-tmpl">
+  <option value=${$data["transformer"]["id"]}> ${$data["transformer"]["transformer_name"]} </option>
+</script>
+<% end -%>
+<div class="clear"></div> 
+<div class="grid_16">
+<div id="placeholder" style="width:320px;height:320px"></div>
+</div>
+<div class="clear"></div> 
+
+<div id="transformers" class="grid_6">
+  <table id="transformers_table">
+    <thead>
+      <th>Device No.</th>
+      <th>Equipment No.</th>
+      <th>Importance Index System(%)<th>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<script id="transformers_script" type="text/x-jquery-tmpl">
+  <tr>
+    <td>${$data["transformer"]["transformer_name"]}</td>
+    <td>${$data["transformer"]["egatsn"]}</td>
+    <td>${importance_index}</td>
+  </tr>
+</script>
+
+</div>

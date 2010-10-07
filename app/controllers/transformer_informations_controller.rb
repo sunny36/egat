@@ -1,7 +1,16 @@
 class TransformerInformationsController < ApplicationController
   def index
     if request.xhr?
-      @data_points = TransformerInformation.get_data_points.to_json
+      if params[:region]
+        debugger
+        @stations = Station.find_all_by_region(params[:region])
+        names = @stations.collect { |s| s.name }
+        transformers = Transformer.find_all_by_transformer_name_initials(names)
+        @data_points = TransformerInformation.get_data_points_by_transformers(transformers)
+        @data_points = @data_points.to_json
+      else
+        @data_points = TransformerInformation.get_data_points.to_json
+      end      
     else 
       @transformer_informations = TransformerInformation.all
     end

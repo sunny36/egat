@@ -64,13 +64,25 @@ class TransformerInformation < ActiveRecord::Base
                         :system_stability_id, :pollution_id
   validates_numericality_of :system_fault_level_hv, :system_fault_level_lv
   
-  def self.get_data_points 
+  def self.find_all_by_transformers(transformers)
+    self.find(:all, :conditions => ["transformer_id in (?)", 
+                                    transformers.collect { |t| t.id }])
+  end
+  
+  def self.get_data_points     
+    self.get_points(self.find(:all, :order => "id"))    
+  end
+  
+  def self.get_data_points_by_transformers(transformers)
+    self.get_points(self.find_all_by_transformers(transformers))
+  end
+  
+  def self.get_points(transformer_informations)
     points = []
-    transformer_informations = self.find(:all, :order => "id")
     transformer_informations.each { |e| 
       points << [e.transformer.transformer_name,  e.importance_index, e.percent_hi]
     }
-    return points 
+    return points     
   end
 
   def system_fault_level_score

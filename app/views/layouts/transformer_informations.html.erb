@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Transformer Information: <%= controller.action_name %></title>
+    <%= javascript_include_tag 'jquery-1.4.2.min', 
+                               'jquery-ui-1.8.4.custom.min', 'jquery.blockUI', 
+                               'jquery.tmpl'
+    %>
+    <%= yield :javascript %>
+    <%= stylesheet_link_tag '960', 'template', 'nav', 'colour' %>
+    <%= yield :stylesheet %>
+  </head>
+  <body>
+   <h1 id="head">EGAT - PTU</h1>
+    <ul class="nav main"> 
+      <li> 
+        <a href="12/">Importance Index</a> 
+        <ul> 
+          <li><a href="#">Graph</a></li> 
+          <li><a href="#">New</a></li> 
+          <li><a href="#">Edit</a> 
+          </li> 
+        </ul> 
+      </li> 
+    </ul> 
+    
+    <div id="content" class="container_16 clearfix">
+      <%= yield %>
+    </div>
+
+    <div id="foot">
+      <i>Copyright (c) </i>
+    </div>
+    
+  </body>
+</html>
