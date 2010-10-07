@@ -10,6 +10,7 @@
     %>
     <%= yield :javascript %>
     <%= stylesheet_link_tag '960', 'template', 'nav', 'colour' %>
+    <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
     <%= yield :stylesheet %>
   </head>
   <body>
@@ -18,8 +19,8 @@
       <li> 
         <a href="12/">Importance Index</a> 
         <ul> 
-          <li><a href="#">Graph</a></li> 
-          <li><a href="#">New</a></li> 
+          <li><a href="/transformer_informations">Graph</a></li> 
+          <li><a href="/transformer_informations/new">New</a></li> 
           <li><a href="#">Edit</a> 
           </li> 
         </ul> 
