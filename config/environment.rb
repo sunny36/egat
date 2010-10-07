@@ -41,7 +41,8 @@ Rails::Initializer.run do |config|
 end
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance| 
   if html_tag =~ /<label/
-     %(<span class="fieldWithErrors">#{html_tag}</span>)
+    t = html_tag.split('</')
+    %(#{t[0]}<small>**</small></#{t[1]})
   else
     html_tag
   end

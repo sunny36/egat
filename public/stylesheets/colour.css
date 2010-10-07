@@ -2,7 +2,7 @@ body {
 	background:#F7F4E9 url(body.png) repeat-x top center;
 }
 small {
-	color:#888
+	color: red;
 }
 
 th,#navigation,.active,input[type=submit],.pagination a:hover,.date td a:hover{
