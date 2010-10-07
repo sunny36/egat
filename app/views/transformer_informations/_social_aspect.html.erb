@@ -1,3 +1,4 @@
+<p>
 <%= label :transformer_information, :social_aspect_id,'Social Aspect' %>
 <%= 
   @social_aspects = SocialAspect.find(:all, 
@@ -6,3 +7,4 @@
   f.collection_select(:social_aspect_id,  @social_aspects, :id, 
                       :value, {:prompt => true}) 
 %>
+</p>

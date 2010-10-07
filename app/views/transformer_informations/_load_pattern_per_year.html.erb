@@ -1,50 +1,50 @@
 <% f.fields_for :load_pattern_per_year do |lppy_f| %>            
 <h5 class="legend"><span class="label">Load Pattern</span></h5>
-<ol>
-  <table>
-    <thead>
-      <tr>
-        <th>Load Factor</th>
-        <th>Number of Months</th>
-      </tr>
-    </thead>
+<table>
+  <thead>
     <tr>
-      <td><%= label :load_pattern_per_year, :lteq_0_pt_6, "<= 0.6" %>
-      <td>
-        <%= lppy_f.select (:lteq_0_pt_6, (0..12).to_a)%>
-      </td>
+      <th>Load Factor</th>
+      <th>Number of Months</th>
     </tr>
-    <tr>
-      <td>
-        <%= label :load_pattern_per_year, :gt_0_pt_6_and_lteq_1, 
-                  "0.6 < LF <= 1" %>
-      <td>
-        <%= lppy_f.select :gt_0_pt_6_and_lteq_1, (0..12).to_a %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= label :load_pattern_per_year, :gt_1_and_lteq_1_pt_2, 
-                  "1 < LF <= 1.2" %>
-      <td>
-        <%= lppy_f.select :gt_1_and_lteq_1_pt_2, (0..12).to_a %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= label :load_pattern_per_year, :gt_1_pt_2_and_lteq_1_pt_5, 
-                  "1.2 < LF <= 1.5" %>
-      <td>
-      <%= lppy_f.select :gt_1_pt_2_and_lteq_1_pt_5, (0..12).to_a %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= label :load_pattern_per_year, :gt_1_pt_5, "> 1.5" %>
-      <td>
-        <%= lppy_f.select :gt_1_pt_5, (0..12).to_a %>
-      </td>
-    </tr>                        
-  </table>
-</ol>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= label :load_pattern_per_year, :lteq_0_pt_6, "<= 0.6" %>
+    <td>
+      <%= lppy_f.select (:lteq_0_pt_6, (0..12).to_a)%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label :load_pattern_per_year, :gt_0_pt_6_and_lteq_1, 
+                "0.6 < LF <= 1" %>
+    <td>
+      <%= lppy_f.select :gt_0_pt_6_and_lteq_1, (0..12).to_a %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label :load_pattern_per_year, :gt_1_and_lteq_1_pt_2, 
+                "1 < LF <= 1.2" %>
+    <td>
+      <%= lppy_f.select :gt_1_and_lteq_1_pt_2, (0..12).to_a %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label :load_pattern_per_year, :gt_1_pt_2_and_lteq_1_pt_5, 
+                "1.2 < LF <= 1.5" %>
+    <td>
+    <%= lppy_f.select :gt_1_pt_2_and_lteq_1_pt_5, (0..12).to_a %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label :load_pattern_per_year, :gt_1_pt_5, "> 1.5" %>
+    <td>
+      <%= lppy_f.select :gt_1_pt_5, (0..12).to_a %>
+    </td>
+  </tr>                    
+  </tbody>    
+</table>
 <% end %>

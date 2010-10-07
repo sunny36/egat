@@ -6,152 +6,85 @@
 img {
   margin: 0;
 }
+.grid_8 input {
+  width: 400px;
+}
 </style>
 <%= error_messages_for :transformer_information, 
   :header_message => "Please Try Again!", :class => 'error' %>
 <% form_for @transformer_information do |f| %>
-  <fieldset class="inputs">
-    <ol>
-      <table>
-        <tr>
-          <td>
-            <li class="string required">
-            <%= render :partial => 'transformer_name', :locals =>{:f => f} %>
-            </li>            
-          </td>
-          <td>
-            <li class="string required">
-              <%= label :transformer_information, :recorded_date, "Recorded Date" %>
-              <%= f.text_field :recorded_date, :size => 8%>            
-            </li>
-          </td>          
-        </tr>
-        <tr>
-          <td>
-            <li class="select required">
-              <%= render :partial => 'bus_voltage_hv', :locals => {:f => f} %>
-            </li>            
-          </td>
-          <td>
-            <li class="required">
-              <%= render :partial => 'system_fault_level_hv',
-                         :locals => {:f => f} %>
-            </li>
-          </td>
-          <td>
-            <li class="required">
-              <%= f.text_field :system_fault_level_hv_mva, :size => 5 %>
-              &nbsp;<label>[MVA]<label>
-            </li>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <li class="select required">
-              <%= render :partial => 'bus_voltage_lv', :locals => {:f => f} %>
-            </li>
-          </td>
-          <td>
-            <li class="required">
-              <%= render :partial => 'system_fault_level_lv',
-                         :locals => {:f => f} %>
-            </li>
-          </td>
-          <td>
-            <li class="required">
-              <%= f.text_field :system_fault_level_lv_mva, :size => 5 %>
-              &nbsp;<label>[MVA]<label>
-            </li>            
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <li class="select required">
-              <%= render :partial => 'probability_of_force_outage',
-                         :locals => {:f => f} %>
-            </li>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <li class="select required">
-              <%= render :partial => 'social_aspect', :locals => {:f => f} %>
-            </li>
-          </td>
-          <td></td>
-          <td></td>          
-        </tr>
-        <tr>
-          <td colspan="2">
-            <li class="select required">
-              <%= render :partial => 'system_location', :locals => {:f => f}%>
-            </li>
-          </td>
-          <td></td>          
-        </tr>
-        <tr>
-          <td>
-            <li class="select required">
-              <%= render :partial => 'public_image', :locals => {:f => f}%>
-            </li>
-          </td>
-          <td></td>
-          <td></td>          
-        </tr>
-        <tr>
-          <td>
-            <li class="select required">
-              <%= render :partial => 'n1_criteria', :locals => {:f => f}%>
-            </li>
-          </td>
-          <td></td>
-          <td></td>          
-        </tr>        
-        <tr>
-          <td>
-            <li class="select required">
-              <%= render :partial => 'application_use', :locals => {:f => f}%>
-            </li>
-          </td>
-          <td></td>
-          <td></td>          
-        </tr>        
-        <tr>
-          <td colspan="2">
-            <li class="select required">
-              <%= render :partial => 'system_stability', :locals => {:f => f}%>
-            </li>
-          </td>
-          <td></td>          
-        </tr>        
-        <tr>
-          <td>
-            <li class="select required">
-              <%= render :partial => 'pollution', :locals => {:f => f}%>
-            </li>
-          </td>
-          <td></td>
-          <td></td>          
-        </tr>
-        <tr>
-          <td colspan="3">
-            <li class="check_boxes optional">                
-            <%= render :partial => 'damage_of_propertry', 
-              :locals =>{:f => f, :transformer_information => @transformer_information}  %>
-            </li>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="1">
-            <li>
-            <%= render :partial => 'load_pattern_per_year', :locals =>{:f => f}  %>
-            </li>
-          </td>
-        </tr>
-      </table>
-    </ol>
-  </fieldset>
-  <%= f.submit 'Save' %>
+  <div class="grid_8">
+    <%= render :partial => 'transformer_name', :locals =>{:f => f} %>
+  </div>
+  <div class="grid_8">
+    <p>
+      <%= label :transformer_information, :recorded_date, "Recorded Date" %>
+      <%= f.text_field :recorded_date, :size => 8%>              
+    </p>
+  </div>
+  <div class="clear"></div> 
+  <div class="grid_4">
+    <%= render :partial => 'bus_voltage_hv', :locals => {:f => f} %>
+  </div>
+  
+  <div class="grid_5">
+    <%= render :partial => 'system_fault_level_hv', :locals => {:f => f} %>    
+  </div>
+  <div class="grid_5">
+    <p>
+    <label for="system_fault_level_hv_mva">[MVA]></label>
+    <%= f.text_field :system_fault_level_hv_mva, :size => 5 %>    
+    </p>
+  </div>
+  <div class="clear"></div> 
+  <div class="grid_4">
+    <%= render :partial => 'bus_voltage_lv', :locals => {:f => f} %>
+  </div>
+  <div class="grid_5">
+    <%= render :partial => 'system_fault_level_lv', :locals => {:f => f} %>    
+  </div>
+  <div class="grid_5">
+    <p>
+    <label for="system_fault_level_lv_mva">[MVA]</label>
+    <%= f.text_field :system_fault_level_lv_mva, :size => 5 %>    
+    </p>
+  </div>
+  <div class="clear"></div> 
+  <div class="grid_8">
+    <%= render :partial => 'probability_of_force_outage', :locals => {:f => f} %>
+  </div>
+  <div class="grid_8">
+    <%= render :partial => 'social_aspect', :locals => {:f => f} %>
+  </div>
+  <div class="grid_8">
+    <%= render :partial => 'system_location', :locals => {:f => f} %>
+  </div>
+  <div class="grid_8">
+    <%= render :partial => 'public_image', :locals => {:f => f} %>
+  </div>
+  <div class="grid_8">
+    <%= render :partial => 'n1_criteria', :locals => {:f => f} %>
+  </div>
+  <div class="grid_8">
+    <%= render :partial => 'application_use', :locals => {:f => f} %>
+  </div>
+  <div class="grid_8">
+    <%= render :partial => 'system_stability', :locals => {:f => f} %>
+  </div>
+  <div class="grid_8">
+    <%= render :partial => 'pollution', :locals => {:f => f} %>
+  </div>
+  <%= render :partial => 'damage_of_propertry', 
+             :locals =>{:f => f, :transformer_information => @transformer_information}  
+  %>
+
+  <%= render :partial => 'load_pattern_per_year', :locals =>{:f => f}  %>
+
+  
+  
+
+  <div class="grid_16">
+    <%= f.submit 'Save' %>
+  </div>
 <% end %>
 

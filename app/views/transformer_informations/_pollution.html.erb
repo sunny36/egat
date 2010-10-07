@@ -1,5 +1,7 @@
+<p>
 <%= label :transformer_information, :pollution_id, "Pollution" %>
 <%= @pollutions = Pollution.find(:all, :conditions => "value IS NOT NULL",
                                  :order => 'score')
 f.collection_select(:pollution_id,  @pollutions, :id, :value, 
                     {:prompt => true}) %>        
+</p>
