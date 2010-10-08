@@ -63,4 +63,13 @@ class LoadPatternPerYear < ActiveRecord::Base
          self.gt_1_and_lteq_1_pt_2 + self.gt_1_pt_2_and_lteq_1_pt_5 + 
          self.gt_1_pt_5)
   end
+  
+  def percentage
+    unless self.lpf_numerator.to_f.zero?
+      lpf = (self.lpf_numerator.to_f / self.lpf_denominator) * 100.to_f
+    else 
+      lpf = 0.0
+    end
+    return lpf
+  end
 end
