@@ -6,34 +6,23 @@
     <title>Transformer Information: <%= controller.action_name %></title>
     <%= javascript_include_tag 'jquery-1.4.2.min', 
                                'jquery-ui-1.8.4.custom.min', 'jquery.blockUI', 
-                               'jquery.tmpl'
+                               'jquery.tmpl', 'facybox'
     %>
     <%= yield :javascript %>
-    <%= stylesheet_link_tag '960', 'template', 'nav', 'colour' %>
+    <%= stylesheet_link_tag '960', 'template', 'nav', 'colour', 'facybox', 'faceplant' %>
     <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
     <%= yield :stylesheet %>
   </head>
   <body>
-   <h1 id="head">EGAT - PTU</h1>
-    <ul class="nav main"> 
-      <li> 
-        <a href="12/">Importance Index</a> 
-        <ul> 
-          <li><a href="/transformer_informations">Graph</a></li> 
-          <li><a href="/transformer_informations/new">New</a></li> 
-          <li><a href="#">Edit</a> 
-          </li> 
-        </ul> 
-      </li> 
-    </ul> 
-    
+    <% unless @no_header %>
+      <%= render :partial => 'layouts/header' %>    
+    <% end %>
     <div id="content" class="container_16 clearfix">
       <%= yield %>
     </div>
-
-    <div id="foot">
-      <i>Copyright (c) </i>
-    </div>
+    <% unless @no_footer %>
+      <%= render :partial => 'layouts/footer' %>
+    <% end %>
     
   </body>
 </html>
