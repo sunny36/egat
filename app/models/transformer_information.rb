@@ -77,12 +77,27 @@ class TransformerInformation < ActiveRecord::Base
     self.get_points(self.find_all_by_transformers(transformers))
   end
   
+  def self.get_data_points_by_transformer_id(transformer_id)
+    self.get_points([self.find_by_transformer_id(transformer_id)]);
+  end
+  
   def self.get_points(transformer_informations)
     points = []
     transformer_informations.each { |e| 
       points << [e.transformer.transformer_name,  e.importance_index, e.percent_hi]
     }
     return points     
+  end
+
+  def d
+    risks = Risk.all
+    risk = nil
+    risks.each do |r|
+      if ((importance_index + percent_hi)/Math.sqrt(2)).between?(r.start, r.end)
+        risk = r
+      end
+    end
+    risk
   end
 
   def system_fault_level_score
@@ -125,7 +140,7 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   def percent_hi
-    rand * 100
+    overall_condition
   end
   
   protected

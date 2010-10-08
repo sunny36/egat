@@ -8,6 +8,9 @@ class TransformerInformationsController < ApplicationController
         transformers = Transformer.find_all_by_transformer_name_initials(names)
         @data_points = TransformerInformation.get_data_points_by_transformers(transformers)
         @data_points = @data_points.to_json
+      elsif params[:transformer_id]
+        @data_points = TransformerInformation.get_data_points_by_transformer_id(params[:transformer_id])
+        @data_points = @data_points.to_json        
       else
         @data_points = TransformerInformation.get_data_points.to_json
       end      

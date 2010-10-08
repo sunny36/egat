@@ -33,12 +33,15 @@
 </div>
 <div class="clear"></div> 
 
-<div id="transformers" class="grid_6">
+<div id="transformers" class="grid_16">
   <table id="transformers_table">
     <thead>
       <th>Device No.</th>
       <th>Equipment No.</th>
-      <th>Importance Index System(%)<th>
+      <th>Overall Condition(%)</th>
+      <th>Importance Index System(%)</th>
+      <th>Risk</th>
+      <th>Action</th>
     </thead>
     <tbody>
     </tbody>
@@ -50,7 +53,10 @@
   <tr>
     <td>${$data["transformer"]["transformer_name"]}</td>
     <td>${$data["transformer"]["egatsn"]}</td>
+    <td>${percent_hi}</td>
     <td>${importance_index}</td>
+    <td>${$data["d"]["risk"]}</td>
+    <td>${$data["d"]["action"]}</td>
   </tr>
 </script>
 

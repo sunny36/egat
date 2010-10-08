@@ -231,7 +231,6 @@ $(document).ready(function() {
     if (region != 'Please select') {
       $.get('/transformers?region=' + region, function(data) {
         var transformers = eval('(' + data + ')');
-        console.log(transformers);
         $("#station_transformer_name").html("");
         $('#transformer_names').tmpl(transformers).appendTo('#station_transformer_name');
         $("#station_transformer_name").prepend("<option value='' selected='selected'></option>");
@@ -253,6 +252,32 @@ $(document).ready(function() {
         }
         plotImportanceIndex(points, transformer_names);
       });      
+    }
+  });
+  
+  $('#station_transformer_name').change(function () {
+    var transformer_id = $('#station_transformer_name :selected').val();
+    if (!isNaN(transformer_id)) {
+      var url = '/transformers?transformer_id=' + transformer_id;
+      $.get(url, function (data) {
+        var transformer = eval('(' + data + ')');
+        $("#transformers_table tbody").children().remove();
+        $('#transformers_script').tmpl(transformer).appendTo('#transformers_table');        
+        $('#transformers').show();        
+      });
+      var url = '/transformer_informations?q=data_points&transformer_id=' + 
+                transformer_id;
+      $.get(url, function(data) {
+        var data_points = eval('(' + data + ')');
+        var points = []; 
+        var transformer_names = []; 
+        for (var i = 0; i < data_points.length; ++i) { 
+          points.push([parseFloat(data_points[i][1]), 
+                       parseFloat(data_points[i][2])]);
+          transformer_names.push(data_points[i][0]); 
+        }
+        plotImportanceIndex(points, transformer_names);
+      });            
     }
   });
   
