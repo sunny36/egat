@@ -212,6 +212,7 @@ var app = {
 
 
 $(document).ready(function() {
+  $('a[rel*=facybox]').facybox();
   app.setupAjax();
   
   app.hideElements(); 
@@ -279,6 +280,11 @@ $(document).ready(function() {
         plotImportanceIndex(points, transformer_names);
       });            
     }
+  });
+  
+  $('.importance_index').live('click', function () {
+    jQuery.facybox({ajax: '/transformer_informations/show/11'});
+    return false;
   });
   
   
