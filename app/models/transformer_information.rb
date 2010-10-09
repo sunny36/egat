@@ -103,6 +103,18 @@ class TransformerInformation < ActiveRecord::Base
   def system_fault_level_score
     [system_fault_level_lv_score, system_fault_level_hv_score].max
   end
+
+  #TODO This must be re-written
+  def system_fault_level_score_message
+    score = [system_fault_level_lv_score, system_fault_level_hv_score].max
+    score_message = "Very Low" if score == 1
+    score_message = "Low" if score == 2
+    score_message = "Moderate" if score == 3
+    score_message = "High" if score == 4
+    score_message = "Very High" if score == 5
+    
+    return score_message
+  end
   
   def damage_of_property_score
     value = []
@@ -125,6 +137,18 @@ class TransformerInformation < ActiveRecord::Base
     @score = 4 if (value - high).empty?
     @score = 5 if (value - very_high).empty?
     return @score
+  end
+  
+  #TODO This must be re-written
+  def damage_of_property_score_message
+    score_message = "Very Low" if damage_of_property_score == 1
+    score_message = "Low" if damage_of_property_score == 2
+    score_message = "Moderate" if damage_of_property_score == 3
+    score_message = "High" if damage_of_property_score == 4
+    score_message = "Very High" if damage_of_property_score == 5
+    
+    return score_message
+    
   end
   
   def importance_index    
