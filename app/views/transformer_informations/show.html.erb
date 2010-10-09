@@ -1,16 +1,124 @@
-<% title "Transformer Information" %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag  'facybox', 'faceplant' %>
+<% end %>
 
-<p>
-  <strong>Bus Voltage Hv:</strong>
-  <%=h @transformer_information.bus_voltage_hv_id %>
-</p>
-<p>
-  <strong>Bus Voltage Lv:</strong>
-  <%=h @transformer_information.bus_voltage_lv_id %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_transformer_information_path(@transformer_information) %> |
-  <%= link_to "Destroy", @transformer_information, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", transformer_informations_path %>
-</p>
+<div class="grid_8">
+  <p>
+    <strong>ชื่อหม้อแปลงไฟฟ้า: </strong>
+    <%= @transformer_information.transformer.transformer_name%>
+  </p>
+</div>
+<div class="grid_8">
+  <p>
+    <strong>Equipment No. </strong>
+    <%= @transformer_information.transformer.egatsn%>
+  </p>
+</div>
+<div class="grid_8">
+  <p>
+    <strong>Transformer Importance: </strong>
+    <%= format("%.2f", @transformer_information.importance_index) %>
+  </p>
+</div>
+<div class="grid_8">
+  <p>
+    <strong>Last Updated: </strong>
+    <%= @transformer_information.recorded_date %>
+  </p>
+</div>
+<div class="grid_16">
+  <table>
+    <thead>
+      <th>No.</th>
+      <th>Importance Index Criteria</th>
+      <th>Description</th>
+      <th>ข้อมูลล่าสุดที่ถูกบันทึก</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;1</td>
+        <td>Load Pattern</td>
+        <td>
+          <%= @transformer_information.load_pattern_per_year.load_pattern_factor.score_message %>
+        </td>
+        <td>
+          <%= format("%.2f", @transformer_information.load_pattern_per_year.percentage) %>
+          %
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;2</td>
+        <td>System Location</td>
+        <td><%= @transformer_information.system_location.score_message %></td>
+        <td><%= @transformer_information.system_location.value %></td>
+      </tr>
+      <tr>
+        <td>&nbsp;3</td>
+        <td>N-1 Criteria</td>
+        <td><%= @transformer_information.n1_criteria.score_message %></td>        
+        <td><%= @transformer_information.n1_criteria.value %></td>
+      </tr>
+      <tr>
+        <td>&nbsp;4</td>
+        <td>System Stability</td>
+        <td><%= @transformer_information.system_stability.score_message %></td>
+        <td><%= @transformer_information.system_stability.value %></td>        
+      </tr>
+      <tr>
+        <td>&nbsp;5</td>
+        <td>Application/Use</td>
+        <td><%= @transformer_information.application_use.score_message %></td>
+        <td><%= @transformer_information.application_use.value %></td>                
+      </tr>
+      <tr>
+        <td>&nbsp;6</td>
+        <td>System Fault Level</td>
+        <td><%= @transformer_information.system_fault_level_score_message %></td> 
+        <td>
+          <%= @transformer_information.system_fault_level_hv %>(HV),&nbsp;
+          <%= @transformer_information.system_fault_level_lv %>(LV)&nbsp;
+        </td>                       
+      </tr>
+      <tr>
+        <td>&nbsp;7</td>
+        <td>Probability of Force Outage</td>
+        <td>
+          <%= @transformer_information.probability_of_force_outage.score_message %>
+        </td>        
+        <td>-</td>                
+      </tr>
+      <tr>
+        <td>&nbsp;8</td>
+        <td>Damage of Property</td>
+        <td>
+          <%= @transformer_information.damage_of_property_score_message %>
+        </td>                
+        <td>-</td>                
+      </tr>
+      <tr>
+        <td>&nbsp;9</td>
+        <td>Social Aspects</td>
+        <td><%= @transformer_information.social_aspect.score_message %></td>                        
+        <td><%= @transformer_information.social_aspect.value %></td>                        
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Public Image</td>
+        <td><%= @transformer_information.public_image.score_message %></td>
+        <td><%= @transformer_information.public_image.value %></td>                        
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Pollution</td>
+        <td><%= @transformer_information.pollution.score_message %></td>                        
+        <td><%= @transformer_information.pollution.value %></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Brand</td>
+        <td><%= @transformer_information.transformer.brand.score_message %></td>
+        <td><%= @transformer_information.transformer.brand.name %></td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
