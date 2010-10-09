@@ -240,6 +240,8 @@ $(document).ready(function() {
         $("#transformers_table tbody").children().remove();
         $('#transformers_script').tmpl(transformers).appendTo('#transformers_table');        
         $('#transformers').show();
+        // http://www.devcurry.com/2009/07/hide-table-column-with-single-line-of.html
+        $('td:nth-child(1),th:nth-child(1)').hide();
       });
       var url = '/transformer_informations?q=data_points&region=' + region;
       $.get(url, function(data) {
@@ -265,9 +267,10 @@ $(document).ready(function() {
         $("#transformers_table tbody").children().remove();
         $('#transformers_script').tmpl(transformer).appendTo('#transformers_table');        
         $('#transformers').show();        
+        $('td:nth-child(1),th:nth-child(1)').hide();
       });
-      var url = '/transformer_informations?q=data_points&transformer_id=' + 
-                transformer_id;
+      url = '/transformer_informations?q=data_points&transformer_id=' + 
+             transformer_id;
       $.get(url, function(data) {
         var data_points = eval('(' + data + ')');
         var points = []; 
@@ -283,7 +286,8 @@ $(document).ready(function() {
   });
   
   $('.importance_index').live('click', function () {
-    jQuery.facybox({ajax: '/transformer_informations/show/11'});
+    var id = $(this).parents('tr:first').find('td:first').text();
+    jQuery.facybox({ajax: '/transformer_informations/show/' + id});
     return false;
   });
   

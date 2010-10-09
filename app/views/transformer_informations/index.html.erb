@@ -36,6 +36,7 @@
 <div id="transformers" class="grid_16">
   <table id="transformers_table">
     <thead>
+      <th>Id</th>
       <th>Device No.</th>
       <th>Equipment No.</th>
       <th>Overall Condition(%)</th>
@@ -51,6 +52,7 @@
 
 <script id="transformers_script" type="text/x-jquery-tmpl">
   <tr>
+    <td>${id}</td>
     <td>${$data["transformer"]["transformer_name"]}</td>
     <td>${$data["transformer"]["egatsn"]}</td>
     <td>${percent_hi}</td>
