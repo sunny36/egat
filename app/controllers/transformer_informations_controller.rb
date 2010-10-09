@@ -25,7 +25,7 @@ class TransformerInformationsController < ApplicationController
   
   def show
     if request.xhr?
-      
+      @no_js = true
       @no_header = true
       @no_footer = true
     end

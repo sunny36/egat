@@ -4,12 +4,13 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Transformer Information: <%= controller.action_name %></title>
-    <%= javascript_include_tag 'jquery-1.4.2.min', 
-                               'jquery-ui-1.8.4.custom.min', 'jquery.blockUI', 
-                               'jquery.tmpl', 'facybox'
-    %>
-    <%= yield :javascript %>
-    
+    <% unless @no_js %>
+      <%= javascript_include_tag 'jquery-1.4.2.min', 
+                                 'jquery-ui-1.8.4.custom.min', 'jquery.blockUI', 
+                                 'jquery.tmpl', 'facybox'
+      %>
+      <%= yield :javascript %>
+    <% end %>
     <%= stylesheet_link_tag '960', 'template', 'nav', 'colour' %>
     <%= stylesheet_link_tag  'facybox', 'faceplant'%>
     <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
