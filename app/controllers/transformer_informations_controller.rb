@@ -24,6 +24,11 @@ class TransformerInformationsController < ApplicationController
   end
   
   def show
+    if request.xhr?
+      
+      @no_header = true
+      @no_footer = true
+    end
     @transformer_information = TransformerInformation.find(params[:id])
   end
   
