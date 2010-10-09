@@ -97,8 +97,9 @@ a.edit, a.delete {
 	background-repeat:no-repeat;
 	background-position:left center;
 }
+/* FIXME: The padding breaks facybox close button */
 a {
-	padding:4px;
+	/*padding:4px;*/
 }
 
 /* Table styling */
