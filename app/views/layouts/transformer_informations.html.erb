@@ -9,9 +9,11 @@
                                'jquery.tmpl', 'facybox'
     %>
     <%= yield :javascript %>
-    <%= stylesheet_link_tag '960', 'template', 'nav', 'colour', 'facybox', 'faceplant' %>
+    
+    <%= stylesheet_link_tag '960', 'template', 'nav', 'colour' %>
+    <%= stylesheet_link_tag  'facybox', 'faceplant'%>
     <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
-    <%= yield :stylesheet %>
+    
   </head>
   <body>
     <% unless @no_header %>
