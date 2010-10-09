@@ -231,7 +231,7 @@ $(document).ready(function() {
     var region = $('#station_station :selected').text();
     if (region != 'Please select') {
       $.get('/transformers?region=' + region, function(data) {
-        var transformers = eval('(' + data + ')');
+        var transformers = JSON.parse(data);        
         $("#station_transformer_name").html("");
         $('#transformer_names').tmpl(transformers).appendTo('#station_transformer_name');
         $("#station_transformer_name").prepend("<option value='' selected='selected'></option>");
@@ -263,7 +263,7 @@ $(document).ready(function() {
     if (!isNaN(transformer_id)) {
       var url = '/transformers?transformer_id=' + transformer_id;
       $.get(url, function (data) {
-        var transformer = eval('(' + data + ')');
+        var transformer = JSON.parse(data);        
         $("#transformers_table tbody").children().remove();
         $('#transformers_script').tmpl(transformer).appendTo('#transformers_table');        
         $('#transformers').show();        
