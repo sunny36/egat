@@ -172,6 +172,7 @@ var app = {
     $.getScript('/javascripts/jquery.combobox.js', function () {
       $(function() {
         $("#transformer_information_transformer_id").combobox();
+        $("#transformer_transformer_id").combobox();
       });      
     });
   },
