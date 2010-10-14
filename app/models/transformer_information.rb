@@ -89,11 +89,12 @@ class TransformerInformation < ActiveRecord::Base
     return points     
   end
 
-  def d
+  def risk
     risks = Risk.all
     risk = nil
     risks.each do |r|
-      if ((importance_index + percent_hi)/Math.sqrt(2)).between?(r.start, r.end)
+      d = ((importance_index + percent_hi)/Math.sqrt(2)) 
+      if d.round.between?(r.start, r.end)
         risk = r
       end
     end
@@ -152,19 +153,25 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   def importance_index    
-    (((load_pattern_per_year.load_pattern_factor.score * 4) + 
-      (system_location.score * 4) + (n1_criteria.score * 5) + 
-      (system_stability.score * 4) + (application_use.score * 3)  + 
-      (system_fault_level_score * 4) + (probability_of_force_outage.score * 4) + 
-      (damage_of_property_score * 3) + (social_aspect.score * 3) + 
-      (public_image.score * 1) + (pollution.score * 1) + 
+    ii = (((load_pattern_per_year.load_pattern_factor.score * 4) + 
+      (system_location.score * 4) + 
+      (n1_criteria.score * 5) + 
+      (system_stability.score * 4) + 
+      (application_use.score * 3)  + 
+      (system_fault_level_score * 4) + 
+      (probability_of_force_outage.score * 4) + 
+      (damage_of_property_score * 3) + 
+      (social_aspect.score * 3) + 
+      (public_image.score * 1) + 
+      (pollution.score * 1) + 
       (transformer.brand.score * 2)).to_f / 
      ((5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) +
-      (5 * 3) + (5 * 3) + (5 * 1) + (4 * 1) + (5 * 2)).to_f * 100.to_f )    
+      (5 * 3) + (5 * 3) + (5 * 1) + (4 * 1) + (5 * 2)).to_f * 100.to_f )
+    ii.round_with_precision(2)    
   end
   
   def percent_hi
-    overall_condition
+     return 100 - overall_condition
   end
   
   protected
