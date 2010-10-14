@@ -61,7 +61,8 @@ class TransformerInformation < ActiveRecord::Base
                         :system_fault_level_lv, :probability_of_force_outage_id,
                         :social_aspect_id, :system_location_id, 
                         :public_image_id, :n1_criteria_id, :application_use_id,
-                        :system_stability_id, :pollution_id
+                        :system_stability_id, :pollution_id, 
+                        :overall_condition
   validates_numericality_of :system_fault_level_hv, :system_fault_level_lv
   before_validation :assign_probability_of_force_outage
   
@@ -178,13 +179,15 @@ class TransformerInformation < ActiveRecord::Base
   protected
   
   def assign_probability_of_force_outage
-    probability_of_force_outages = ProbabilityOfForceOutage.all
-    probability_of_force_outages.each do |p|
-      #TODO Remove hard coded values
-      infinity = 1.0/0
-      p.end = infinity if p.end.nil?
-      self.probability_of_force_outage = p if 
-        self.probability_of_force_outage_value.between?(p.start, p.end)
+    unless probability_of_force_outage_value.nil?
+      probability_of_force_outages = ProbabilityOfForceOutage.all
+      probability_of_force_outages.each do |p|
+        #TODO Remove hard coded values
+        infinity = 1.0/0
+        p.end = infinity if p.end.nil?
+        self.probability_of_force_outage = p if 
+          self.probability_of_force_outage_value.between?(p.start, p.end)
+      end
     end
   end
   

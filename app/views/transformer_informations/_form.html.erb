@@ -79,7 +79,10 @@ img {
   %>
 
   <%= render :partial => 'load_pattern_per_year', :locals =>{:f => f}  %>
-
+  <div class="clear"></div>
+  <div class="grid_8">
+    <%= render :partial => 'overall_condition', :locals => {:f => f} %>
+  </div>
   
   
 
