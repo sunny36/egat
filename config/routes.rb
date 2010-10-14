@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :transformer_informations, :collection => {:redirect_to_edit_if_exists => :get}
+  map.resources :transformer_informations, 
+                :collection => {:redirect_to_edit_if_exists => :get, 
+                                :search => :get}
 
   map.resources :students
   map.resources :transformers

@@ -77,4 +77,12 @@ class TransformerInformationsController < ApplicationController
       format.js 
     end
   end
+  
+  def search 
+    if params[:transformer_id]
+      @transformer_informations = 
+        TransformerInformation.find_all_by_transformer_id(
+        params[:transformer_id])
+    end
+  end
 end
