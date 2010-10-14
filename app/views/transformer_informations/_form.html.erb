@@ -23,27 +23,27 @@ img {
     </p>
   </div>
   <div class="clear"></div> 
-  <div class="grid_4">
+  <div class="grid_6">
     <%= render :partial => 'bus_voltage_hv', :locals => {:f => f} %>
   </div>
   
-  <div class="grid_5">
+  <div class="grid_6">
     <%= render :partial => 'system_fault_level_hv', :locals => {:f => f} %>    
   </div>
-  <div class="grid_5">
+  <div class="grid_4">
     <p>
-    <label for="system_fault_level_hv_mva">[MVA]></label>
+    <label for="system_fault_level_hv_mva">[MVA]</label>
     <%= f.text_field :system_fault_level_hv_mva, :size => 5 %>    
     </p>
   </div>
   <div class="clear"></div> 
-  <div class="grid_4">
+  <div class="grid_6">
     <%= render :partial => 'bus_voltage_lv', :locals => {:f => f} %>
   </div>
-  <div class="grid_5">
+  <div class="grid_6">
     <%= render :partial => 'system_fault_level_lv', :locals => {:f => f} %>    
   </div>
-  <div class="grid_5">
+  <div class="grid_4">
     <p>
     <label for="system_fault_level_lv_mva">[MVA]</label>
     <%= f.text_field :system_fault_level_lv_mva, :size => 5 %>    
