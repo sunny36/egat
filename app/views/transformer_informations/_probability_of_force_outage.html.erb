@@ -1,14 +1,6 @@
 <p>
-<%= label :transformer_information, :probability_of_force_outage_id, 
-
-  "Probability Of Force Outage" %>
-<%= @probability_of_force_outages = [['0', 61], ['1', 61],
-                                     ['2', 62], ['3', 62],
-                                     ['4', 63], ['5', 63],
-                                     ['6', 64], ['7', 64],
-                                     ['8', 65], ['9', 65],
-                                     ['10', 65]]  
-    f.select(:probability_of_force_outage_id,  
-                        @probability_of_force_outages, 
-                        {:prompt => true}) %>
+  <%= label :transformer_information, :probability_of_force_outage_id, 
+            "Probability Of Force Outage" 
+  %>
+  <%= f.select(:probability_of_force_outage_value,  (1..10), {:prompt => true}) %>
 </p>
