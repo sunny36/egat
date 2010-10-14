@@ -28,73 +28,73 @@ class TransformerInformation < ActiveRecord::Base
   belongs_to :bus_voltage_hv
   belongs_to :bus_voltage_lv
   belongs_to :probability_of_force_outage
-  belongs_to :social_aspect, :class_name => "SocialAspect",
+  belongs_to :social_aspect, :class_name => "SocialAspect", 
     :foreign_key => "social_aspect_id"
-  belongs_to :system_location, :class_name => "SystemLocation",
+  belongs_to :system_location, :class_name => "SystemLocation", 
     :foreign_key => "system_location_id"
-  belongs_to :application_use, :class_name => "ApplicationUse",
+  belongs_to :application_use, :class_name => "ApplicationUse", 
     :foreign_key => "application_use_id"
-  belongs_to :system_stability, :class_name => "SystemStability",
+  belongs_to :system_stability, :class_name => "SystemStability", 
     :foreign_key => "system_stability_id"
-  belongs_to :pollution, :class_name => "Pollution",
+  belongs_to :pollution, :class_name => "Pollution", 
     :foreign_key => "pollution_id"
-  belongs_to :n1_criteria, :class_name => "N1Criteria",
+  belongs_to :n1_criteria, :class_name => "N1Criteria", 
     :foreign_key => "n1_criteria_id"
-  belongs_to :public_image, :class_name => "PublicImage",
+  belongs_to :public_image, :class_name => "PublicImage", 
     :foreign_key => "public_image_id"
-  belongs_to :system_fault_level, :class_name => "SystemFaultLevel",
+  belongs_to :system_fault_level, :class_name => "SystemFaultLevel", 
     :foreign_key => "system_fault_level_id"
-  belongs_to :transformer, :class_name => "Transformer",
+  belongs_to :transformer, :class_name => "Transformer", 
     :foreign_key => "transformer_id"
   has_one :load_pattern_per_year
   has_and_belongs_to_many :damage_of_properties
   belongs_to :bus_voltage
-  attr_accessor :system_fault_level_hv_mva, :system_fault_level_lv_mva,
+  attr_accessor :system_fault_level_hv_mva, :system_fault_level_lv_mva, 
     :transformer_name
 
   accepts_nested_attributes_for :load_pattern_per_year
-
+  
   validate :transformer_name_must_be_valid,
-    :at_least_one_damage_of_property_must_be_checked
-  validates_presence_of :recorded_date, :bus_voltage_hv_id,
-    :system_fault_level_hv, :bus_voltage_lv_id,
-    :system_fault_level_lv, :probability_of_force_outage_id,
-    :social_aspect_id, :system_location_id,
-    :public_image_id, :n1_criteria_id, :application_use_id,
-    :system_stability_id, :pollution_id
+           :at_least_one_damage_of_property_must_be_checked
+  validates_presence_of :recorded_date, :bus_voltage_hv_id, 
+                        :system_fault_level_hv, :bus_voltage_lv_id, 
+                        :system_fault_level_lv, :probability_of_force_outage_id,
+                        :social_aspect_id, :system_location_id, 
+                        :public_image_id, :n1_criteria_id, :application_use_id,
+                        :system_stability_id, :pollution_id
   validates_numericality_of :system_fault_level_hv, :system_fault_level_lv
   before_validation :assign_probability_of_force_outage
-
+  
   def self.find_all_by_transformers(transformers)
-    self.find(:all, :conditions => ["transformer_id in (?)",
+    self.find(:all, :conditions => ["transformer_id in (?)", 
                                     transformers.collect { |t| t.id }])
   end
-
-  def self.get_data_points
-    self.get_points(self.find(:all, :order => "id"))
+  
+  def self.get_data_points     
+    self.get_points(self.find(:all, :order => "id"))    
   end
-
+  
   def self.get_data_points_by_transformers(transformers)
     self.get_points(self.find_all_by_transformers(transformers))
   end
-
+  
   def self.get_data_points_by_transformer_id(transformer_id)
     self.get_points([self.find_by_transformer_id(transformer_id)]);
   end
-
+  
   def self.get_points(transformer_informations)
     points = []
-    transformer_informations.each { |e|
+    transformer_informations.each { |e| 
       points << [e.transformer.transformer_name,  e.importance_index, e.percent_hi]
     }
-    return points
+    return points     
   end
 
   def risk
     risks = Risk.all
     risk = nil
     risks.each do |r|
-      d = ((importance_index + percent_hi)/Math.sqrt(2))
+      d = ((importance_index + percent_hi)/Math.sqrt(2)) 
       if d.round.between?(r.start, r.end)
         risk = r
       end
@@ -166,71 +166,67 @@ class TransformerInformation < ActiveRecord::Base
       (public_image.score * 1) + 
       (pollution.score * 1) + 
       (transformer.brand.score * 2)).to_f / 
-           ((5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4)
-            +
-            (5 * 3) + (5 * 3) + (5 * 1) + (4 * 1) + (5 * 2)).to_f * 100.to_f )
-      ii.round_with_precision(2)
+     ((5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) +
+      (5 * 3) + (5 * 3) + (5 * 1) + (4 * 1) + (5 * 2)).to_f * 100.to_f )
+    ii.round_with_precision(2)    
+  end
+  
+  def percent_hi
+     return 100 - overall_condition
+  end
+  
+  protected
+  
+  def assign_probability_of_force_outage
+    probability_of_force_outages = ProbabilityOfForceOutage.all
+    probability_of_force_outages.each do |p|
+      #TODO Remove hard coded values
+      infinity = 1.0/0
+      p.end = infinity if p.end.nil?
+      self.probability_of_force_outage = p if 
+        self.probability_of_force_outage_value.between?(p.start, p.end)
     end
+  end
+  
+  def system_fault_level_hv_mva
+    return nil if bus_voltage_hv.nil? || system_fault_level_hv.nil?
+    1.732 * bus_voltage_hv.value.to_f * system_fault_level_hv.to_f
+  end
+  
+  def system_fault_level_lv_mva
+    return nil if bus_voltage_lv.nil? || system_fault_level_lv.nil?
+    1.732 * bus_voltage_lv.value.to_f * system_fault_level_lv.to_f
+  end
+  
+  def transformer_name_must_be_valid
+    @transformer = Transformer.find(transformer_id) unless transformer_id.nil?
+    errors.add_to_base('Please select a valid transformer') if @transformer.nil?
+  end
+  
+  def at_least_one_damage_of_property_must_be_checked
+    errors.add(:damage_of_properties, 'must have at least one checkbox ticked') if damage_of_property_ids.nil? || damage_of_property_ids.empty? 
+  end
 
-    def percent_hi
-      return 100 - overall_condition
+  
+  def system_fault_level_hv_score
+    @system_fault_levels = 
+      BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
+    @system_fault_levels.each do |i|
+      i.end = 100000000 if i.end.nil?
+      if system_fault_level_hv_mva.between?(i.start, i.end)
+        return i.score
+      end
     end
+  end
 
-    protected
-
-      def assign_probability_of_force_outage
-        probability_of_force_outage = ProbabilityOfForceOutage.all
-        probability_of_force_outage.each do |p|
-          #TODO remove hard coded values
-          p.end = 100 if p.end.nil?
-          self.probability_of_force_outage = p if
-          self.probability_of_force_outage_value.between?(p.start, p.end)
-        end
+  def system_fault_level_lv_score
+    @system_fault_levels = 
+      BusVoltage.system_fault_level(self.bus_voltage_lv.value.to_i)
+    @system_fault_levels.each do |i|
+      i.end = 100000000 if i.end.nil?
+      if system_fault_level_lv_mva.between?(i.start, i.end)
+        return i.score
       end
-
-      def system_fault_level_hv_mva
-        return nil if bus_voltage_hv.nil? || system_fault_level_hv.nil?
-        1.732 * bus_voltage_hv.value.to_f * system_fault_level_hv.to_f
-      end
-
-      def system_fault_level_lv_mva
-        return nil if bus_voltage_lv.nil? || system_fault_level_lv.nil?
-        1.732 * bus_voltage_lv.value.to_f * system_fault_level_lv.to_f
-      end
-
-      def transformer_name_must_be_valid
-        @transformer =
-          Transformer.find(transformer_id) unless transformer_id.nil?
-        error_message = 'Please select a valid transformer'
-        errors.add_to_base(error_message) if @transformer.nil?
-      end
-
-      def at_least_one_damage_of_property_must_be_checked
-        error_message = 'must have at least one checkbox ticked'
-        errors.add(:damage_of_properties, error_message) if
-        damage_of_property_ids.nil? || damage_of_property_ids.empty?
-      end
-
-
-      def system_fault_level_hv_score
-        @system_fault_levels =
-          BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
-        @system_fault_levels.each do |i|
-          i.end = 100000000 if i.end.nil?
-          if system_fault_level_hv_mva.between?(i.start, i.end)
-            return i.score
-          end
-        end
-      end
-
-      def system_fault_level_lv_score
-        @system_fault_levels =
-          BusVoltage.system_fault_level(self.bus_voltage_lv.value.to_i)
-        @system_fault_levels.each do |i|
-          i.end = 100000000 if i.end.nil?
-          if system_fault_level_lv_mva.between?(i.start, i.end)
-            return i.score
-          end
-        end
-      end
+    end
+  end  
 end
