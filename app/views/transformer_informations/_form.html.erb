@@ -50,30 +50,34 @@ img {
     </p>
   </div>
   <div class="clear"></div> 
-  <div class="grid_8">
+  <div class="grid_6">
     <%= render :partial => 'probability_of_force_outage', :locals => {:f => f} %>
   </div>
-  <div class="grid_8">
+  <div class="grid_6">
     <%= render :partial => 'social_aspect', :locals => {:f => f} %>
   </div>
-  <div class="grid_8">
+  <div class="clear"></div> 
+  <div class="grid_6">
     <%= render :partial => 'system_location', :locals => {:f => f} %>
   </div>
-  <div class="grid_8">
+  <div class="grid_6">
     <%= render :partial => 'public_image', :locals => {:f => f} %>
   </div>
-  <div class="grid_8">
+  <div class="clear"></div> 
+  <div class="grid_6">
     <%= render :partial => 'n1_criteria', :locals => {:f => f} %>
   </div>
-  <div class="grid_8">
+  <div class="grid_6">
     <%= render :partial => 'application_use', :locals => {:f => f} %>
   </div>
-  <div class="grid_8">
+  <div class="clear"></div> 
+  <div class="grid_6">
     <%= render :partial => 'system_stability', :locals => {:f => f} %>
   </div>
-  <div class="grid_8">
+  <div class="grid_6">
     <%= render :partial => 'pollution', :locals => {:f => f} %>
   </div>
+  <div class="clear"></div> 
   <%= render :partial => 'damage_of_propertry', 
              :locals =>{:f => f, :transformer_information => @transformer_information}  
   %>
