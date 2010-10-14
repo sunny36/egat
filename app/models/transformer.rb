@@ -32,7 +32,7 @@
 class Transformer < ActiveRecord::Base
   set_table_name "transformer"
   belongs_to :brand
-  has_one :transformer_information
+  has_many :transformer_information
   
   def self.find_all_by_transformer_name_initials(names)
     conditions = "transformer_name like ?"
