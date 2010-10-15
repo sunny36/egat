@@ -66,15 +66,15 @@ function plotImportanceIndex(points, transformer_names) {
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">High</div>');
-  o = plot.pointOffset({ x: -4.2, y: 20});
+  o = plot.pointOffset({ x: -11.2, y: 20});
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Good</div>'); 
-  o = plot.pointOffset({ x: -4.2, y: 50});
+  o = plot.pointOffset({ x: -9.2, y: 50});
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Fair</div>');
-  o = plot.pointOffset({ x: -4.2, y: 80});
+  o = plot.pointOffset({ x: -10.2, y: 80});
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Poor</div>'); 
