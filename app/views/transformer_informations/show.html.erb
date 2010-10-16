@@ -31,13 +31,19 @@
     <thead>
       <th>No.</th>
       <th>Importance Index Criteria</th>
+      <th>Importance</th>
       <th>Description</th>
       <th>ข้อมูลล่าสุดที่ถูกบันทึก</th>
     </thead>
     <tbody>
       <tr>
         <td>&nbsp;1</td>
-        <td>Load Pattern</td>
+        <td>Load Pattern</td>        
+        <td>
+          <%= 
+            score_color(@transformer_information.load_pattern_per_year.load_pattern_factor.score) 
+          %>
+        </td>
         <td>
           <%= @transformer_information.load_pattern_per_year.load_pattern_factor.score_message %>
         </td>
@@ -49,30 +55,39 @@
       <tr>
         <td>&nbsp;2</td>
         <td>System Location</td>
+        <td>
+          <%= score_color(@transformer_information.system_location.score) %>
+        </td>        
         <td><%= @transformer_information.system_location.score_message %></td>
         <td><%= @transformer_information.system_location.value %></td>
       </tr>
       <tr>
         <td>&nbsp;3</td>
         <td>N-1 Criteria</td>
+        <td><%= score_color(@transformer_information.n1_criteria.score) %></td>                
         <td><%= @transformer_information.n1_criteria.score_message %></td>        
         <td><%= @transformer_information.n1_criteria.value %></td>
       </tr>
       <tr>
         <td>&nbsp;4</td>
         <td>System Stability</td>
+        <td><%= score_color(@transformer_information.system_stability.score) %></td>                
         <td><%= @transformer_information.system_stability.score_message %></td>
         <td><%= @transformer_information.system_stability.value %></td>        
       </tr>
       <tr>
         <td>&nbsp;5</td>
         <td>Application/Use</td>
+        <td><%= score_color(@transformer_information.application_use.score) %></td>                
         <td><%= @transformer_information.application_use.score_message %></td>
         <td><%= @transformer_information.application_use.value %></td>                
       </tr>
       <tr>
         <td>&nbsp;6</td>
         <td>System Fault Level</td>
+        <td>
+          <%= score_color(@transformer_information.system_fault_level_score) %>
+        </td>                
         <td><%= @transformer_information.system_fault_level_score_message %></td> 
         <td>
           <%= @transformer_information.system_fault_level_hv %>(HV),&nbsp;
@@ -83,6 +98,9 @@
         <td>&nbsp;7</td>
         <td>Probability of Force Outage</td>
         <td>
+          <%= score_color(@transformer_information.probability_of_force_outage.score) %>
+        </td>                        
+        <td>
           <%= @transformer_information.probability_of_force_outage.score_message %>
         </td>        
         <td><%= @transformer_information.probability_of_force_outage_value %></td>                
@@ -90,6 +108,9 @@
       <tr>
         <td>&nbsp;8</td>
         <td>Damage of Property</td>
+        <td>
+          <%= score_color(@transformer_information.damage_of_property_score) %>
+        </td>                        
         <td>
           <%= @transformer_information.damage_of_property_score_message %>
         </td>                
@@ -100,31 +121,42 @@
             <% end %>
           <% else %>
             -
-          <% end %>
-                    
+          <% end %>                    
         </td>                
       </tr>
       <tr>
         <td>&nbsp;9</td>
         <td>Social Aspects</td>
+        <td>
+          <%= score_color(@transformer_information.social_aspect.score) %>
+        </td>                                
         <td><%= @transformer_information.social_aspect.score_message %></td>                        
         <td><%= @transformer_information.social_aspect.value %></td>                        
       </tr>
       <tr>
         <td>10</td>
         <td>Public Image</td>
+        <td>
+          <%= score_color(@transformer_information.public_image.score) %>
+        </td>                                
         <td><%= @transformer_information.public_image.score_message %></td>
         <td><%= @transformer_information.public_image.value %></td>                        
       </tr>
       <tr>
         <td>11</td>
         <td>Pollution</td>
+        <td>
+          <%= score_color(@transformer_information.pollution.score) %>
+        </td>                                
         <td><%= @transformer_information.pollution.score_message %></td>                        
         <td><%= @transformer_information.pollution.value %></td>
       </tr>
       <tr>
         <td>12</td>
         <td>Brand</td>
+        <td>
+          <%= score_color(@transformer_information.transformer.brand.score) %>
+        </td>                                
         <td><%= @transformer_information.transformer.brand.score_message %></td>
         <td><%= @transformer_information.transformer.brand.name %></td>
       </tr>      
