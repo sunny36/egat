@@ -1,25 +1,29 @@
 <% content_for :javascript do %>
-  <%= javascript_include_tag 'controllers/transformer_informations'%>
+<%= javascript_include_tag 'controllers/transformer_informations'%>
 <% end %>
-<% content_for :flutie do %>
-  <%= stylesheet_link_tag 'flutie/forms', 'flutie/tables', 'flutie/lists' %>
+<% content_for :css do %>
+
 <% end %>
 <style type="text/css">
   /* TODO shouldn't be necessary */
   .ui-button { margin-left: -1px; }
-  .ui-button-icon-only .ui-button-text { height: 1.2em; padding: 0.35em;  margin-top: -0.2em; } 
+  .ui-button-icon-only .ui-button-text { 
+  height: 1.2em; 
+  padding: 0.35em;  
+  margin-top: -0.2em; 
+  } 
   .ui-autocomplete-input { margin: 0; padding: 3px 2px; }
   .fieldWithErrors {
-    padding: 2px;
-    background-color: red;
+  padding: 2px;
+  background-color: red;
 
   }
-  	.ui-autocomplete {
-  		max-height: 300px;
-  		overflow-y: auto;
+  .ui-autocomplete {
+  max-height: 300px;
+  overflow-y: auto;
   }
   .grid_8 input {
-    width: 400px;
+  width: 400px;
   }
 </style>
 
@@ -28,60 +32,60 @@
 <div id="content" class="container_16 clearfix">
   <div class="grid_8">
     <% form_tag({:action => "search"}, {:method => 'get'}) do %>
-      <p>
-        <%= label :transformer_information, :transformer_id, "Transformer Name" 
-        %>
-        <%= select('transformer', 'transformer_id', 
-                   Transformer.all.collect { |t| [t.transformer_name, t.id] }, 
-                   {:selected => params[:transformer_id].to_i, 
-                    :include_blank => true}, {:name => 'transformer_id'})                    
-        %>  
-      </p>
+    <p>
+      <%= label :transformer_information, :transformer_id, "Transformer Name" 
+          %>
+      <%= select('transformer', 'transformer_id', 
+          Transformer.all.collect { |t| [t.transformer_name, t.id] }, 
+          {:selected => params[:transformer_id].to_i, 
+      :include_blank => true}, {:name => 'transformer_id'})                    
+      %>  
+    </p>
   </div>
   <div class="grid_2">
     <p>
-    <label>&nbsp;</label>
-    <%= submit_tag "Search", :name => nil %>
+      <label>&nbsp;</label>
+      <%= submit_tag "Search", :name => nil %>
     </p>
     <% end -%>
   </div>
   <div class="clear"></div> 
   <div class="grid_16">
     <% if !@transformer_informations.blank? %>
-      <table>
-        <thead>
-          <tr>
-            <th>Transformer Name</th>
-            <th>Recorded Date</th>
-            <th colspan="2" width="10%">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for transformer_information in @transformer_informations %>
-            <tr>
-              <td>
-                <%= transformer_information.transformer.transformer_name %>
-              </td>
-              <td><%= transformer_information.recorded_date %></td>
-              <td>
-                <%= 
-                  link_to 'Edit', 
-                          edit_transformer_information_path(
-                          transformer_information.id), 
-                          :class => 'edit' 
-                %>
-              </td>
-              <td>
-                <%= link_to 'Delete', transformer_information, 
-                            :confirm => 'Are you sure?', :method => :delete, 
-                            :class => 'delete' %>
-              </td>
-            </tr>            
-          <% end %>          
-        </tbody>
-      </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Transformer Name</th>
+          <th>Recorded Date</th>
+          <th colspan="2" width="10%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for transformer_information in @transformer_informations %>
+        <tr>
+          <td>
+            <%= transformer_information.transformer.transformer_name %>
+          </td>
+          <td><%= transformer_information.recorded_date %></td>
+          <td>
+            <%= 
+               link_to 'Edit', 
+               edit_transformer_information_path(
+               transformer_information.id), 
+               :class => 'edit' 
+            %>
+          </td>
+          <td>
+            <%= link_to 'Delete', transformer_information, 
+                :confirm => 'Are you sure?', :method => :delete, 
+            :class => 'delete' %>
+          </td>
+        </tr>            
+        <% end %>          
+      </tbody>
+    </table>
     <% else %>
-      
+    
     <% end %>
     
   </div>

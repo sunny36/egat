@@ -169,12 +169,33 @@ var app = {
   },
   
   setupTransformerNameComboxBox: function () {
-    $.getScript('/javascripts/jquery.combobox.js', function () {
-      $(function() {
-        $("#transformer_information_transformer_id").combobox();
-        $("#transformer_transformer_id").combobox();
-      });      
-    });
+    if ($('#transformer_transformer_id').length > 0) {
+      var converted = new Ext.form.ComboBox({
+        typeAhead: true,
+        triggerAction: 'all',
+        transform:'transformer_transformer_id',
+        width:135,
+        forceSelection:true
+      });
+    }
+    if ($('#transformer_information_transformer_id').length > 0) {
+      var converted = new Ext.form.ComboBox({
+        typeAhead: true,
+        triggerAction: 'all',
+        transform:'transformer_information_transformer_id',
+        width:340,
+        forceSelection:true
+      });
+    }
+
+
+
+    // $.getScript('/javascripts/jquery.combobox.js', function () {
+    //   $(function() {
+    //     $("#transformer_information_transformer_id").combobox();
+    //     $("#transformer_transformer_id").combobox();
+    //   });      
+    // });
   },
   
   setupDamageOfProperty: function () {
@@ -222,10 +243,12 @@ $(document).ready(function() {
   
   app.setupRecordedDate();
   
-  app.getPointsForGraphs();
+  if ($('#placeholder').lenght > 0) {
+    app.getPointsForGraphs();
+  }
 
   app.setupTransformerNameComboxBox();
-  
+
   app.setupDamageOfProperty();
   
   $('#station_station').change(function() {

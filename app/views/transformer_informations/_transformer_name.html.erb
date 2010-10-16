@@ -1,12 +1,13 @@
 <p>
-<%= label :transformer_information, :transformer_id, "Transformer Name" %>
-<% if controller.action_name == 'new' || controller.action_name == 'create' %>
+  <%= label :transformer_information, :transformer_id, "Transformer Name" %>
+  <% if controller.action_name == 'new' || controller.action_name == 'create' %>
   <%= 
-    @transformers = Transformer.find(:all, :order => 'transformer_name')    
-    f.collection_select(:transformer_id,  @transformers, :id, :transformer_name, {:prompt => true}) 
+     @transformers = Transformer.find(:all, :order => 'transformer_name')    
+  f.collection_select(:transformer_id,  @transformers, :id,
+  :transformer_name,{:include_blank => true}) 
   %>  
-<% else %>
+  <% else %>
   <strong><%= @transformer_information.transformer.transformer_name %></strong>
-<% end %>
+  <% end %>
 </p>
 
