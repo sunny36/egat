@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101015135904) do
+ActiveRecord::Schema.define(:version => 20101016202402) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -639,13 +639,12 @@ ActiveRecord::Schema.define(:version => 20101015135904) do
   end
 
   create_table "importance_indices", :force => true do |t|
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "importance"
+    t.string   "action"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "bus_voltage"
-    t.integer  "bus_voltage_hv_id"
-    t.integer  "bus_voltage_lv_id"
-    t.float    "system_fault_level_hv"
-    t.float    "system_fault_level_lv"
   end
 
   create_table "inspection", :force => true do |t|
