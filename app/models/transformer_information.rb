@@ -25,6 +25,8 @@
 #
 
 class TransformerInformation < ActiveRecord::Base
+  named_scope :most_recent, :conditions => {:recent => true}
+  
   belongs_to :bus_voltage_hv
   belongs_to :bus_voltage_lv
   belongs_to :probability_of_force_outage
@@ -65,22 +67,23 @@ class TransformerInformation < ActiveRecord::Base
                         :overall_condition
   validates_numericality_of :system_fault_level_hv, :system_fault_level_lv
   before_validation :assign_probability_of_force_outage
+  before_create :update_recent
   
   def self.find_all_by_transformers(transformers)
-    self.find(:all, :conditions => ["transformer_id in (?)", 
-                                    transformers.collect { |t| t.id }])
+    self.most_recent.find(:all, :conditions => ["transformer_id in (?)", 
+                                transformers.collect { |t| t.id }])
   end
   
   def self.get_data_points     
-    self.get_points(self.find(:all, :order => "id"))    
+    self.get_points(self.most_recent.find(:all, :order => "id"))    
   end
   
   def self.get_data_points_by_transformers(transformers)
-    self.get_points(self.find_all_by_transformers(transformers))
+    self.get_points(self.most_recent.find_all_by_transformers(transformers))
   end
   
   def self.get_data_points_by_transformer_id(transformer_id)
-    self.get_points([self.find_by_transformer_id(transformer_id)]);
+    self.get_points([self.most_recent.find_by_transformer_id(transformer_id)])
   end
   
   def self.get_points(transformer_informations)
@@ -177,6 +180,16 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   protected
+
+  def update_recent
+    self.recent = true
+    id = self.transformer_id
+    transformer_information =
+      TransformerInformation.find_by_transformer_id_and_recent(id, true)
+    transformer_information.recent = false
+    transformer_information.save
+  end
+  
   
   def assign_probability_of_force_outage
     unless probability_of_force_outage_value.nil?
