@@ -17,4 +17,17 @@ module TransformerInformationsHelper
       return "<span>-</span>"
     end
   end
+  
+  def importance(importance)
+    case importance
+    when "Low"
+      "<span style=\"background:rgb(146,208,80)\">#{importance}</span>"
+    when "Medium"
+      "<span style=\"background:rgb(255,255,0)\">#{importance}</span>"
+    when "High"
+      "<span style=\"background:rgb(255,0,0)\">#{importance}</span>"
+    else
+      "<span>-</span>"
+    end
+  end
 end
