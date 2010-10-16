@@ -179,6 +179,18 @@ class TransformerInformation < ActiveRecord::Base
      return 100 - overall_condition
   end
   
+  def importance
+    ImportanceIndex.all.each do |ii|
+      return ii.importance if self.importance_index.between?(ii.start, ii.end)
+    end
+  end
+  
+  def action
+    ImportanceIndex.all.each do |ii|
+      return ii.action if self.importance_index.between?(ii.start, ii.end)
+    end
+  end
+  
   protected
 
   def update_recent
