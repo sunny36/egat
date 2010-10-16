@@ -174,7 +174,7 @@ var app = {
         typeAhead: true,
         triggerAction: 'all',
         transform:'transformer_transformer_id',
-        width:135,
+        width:200,
         forceSelection:true
       });
     }
@@ -187,15 +187,6 @@ var app = {
         forceSelection:true
       });
     }
-
-
-
-    // $.getScript('/javascripts/jquery.combobox.js', function () {
-    //   $(function() {
-    //     $("#transformer_information_transformer_id").combobox();
-    //     $("#transformer_transformer_id").combobox();
-    //   });      
-    // });
   },
   
   setupDamageOfProperty: function () {
@@ -243,7 +234,7 @@ $(document).ready(function() {
   
   app.setupRecordedDate();
   
-  if ($('#placeholder').lenght > 0) {
+  if ($('#placeholder').length > 0) {
     app.getPointsForGraphs();
   }
 
