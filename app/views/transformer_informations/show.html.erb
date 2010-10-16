@@ -85,7 +85,7 @@
         <td>
           <%= @transformer_information.probability_of_force_outage.score_message %>
         </td>        
-        <td>-</td>                
+        <td><%= @transformer_information.probability_of_force_outage_value %></td>                
       </tr>
       <tr>
         <td>&nbsp;8</td>
@@ -93,7 +93,16 @@
         <td>
           <%= @transformer_information.damage_of_property_score_message %>
         </td>                
-        <td>-</td>                
+        <td>
+          <% if !@transformer_information.damage_of_properties.blank? %>
+            <% for item in @transformer_information.damage_of_properties %>
+             <%= item.value %>&nbsp;<%= item.message %><br/>
+            <% end %>
+          <% else %>
+            -
+          <% end %>
+                    
+        </td>                
       </tr>
       <tr>
         <td>&nbsp;9</td>
