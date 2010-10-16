@@ -25,33 +25,33 @@ function setSystemFaultLevelLvMva() {
 function plotImportanceIndex(points, transformer_names) {
   var placeholder = $("#placeholder"); 
   var options = {
-      series: {lines: { show: false }, points: { show: true }},
-      grid: {
-          hoverable: true,
-          clickable: true,
-          markings: [
-              {xaxis: {from: 0, to: 40}, yaxis: {from: 0, to: 40 },
-                  color: 'rgb(146, 208, 80)'},
-              {xaxis: {from: 40, to: 60}, yaxis: {from: 0, to: 40 },
-                  color: 'rgb(206, 224, 36)'},
-              {xaxis: {from: 60, to: 100}, yaxis: {from: 0, to: 40 },
-                  color: 'rgb(245, 125, 25)'},
-              {xaxis: {from: 0, to: 40}, yaxis: {from: 40, to: 60 },
-                  color: 'rgb(206, 224, 36)'},
-              {xaxis: {from: 40, to: 60}, yaxis: {from: 40, to: 60 },
-                  color: 'rgb(255, 255, 0)'},
-              {xaxis: {from: 60, to: 100}, yaxis: {from: 40, to: 60 },
-                  color: 'rgb(252, 152, 4)'},
-              {xaxis: {from: 0, to: 40}, yaxis: {from: 60, to: 100 },
-                  color: 'rgb(245, 125, 25)'},
-              {xaxis: {from: 40, to: 60}, yaxis: {from: 60, to: 100 },
-                  color: 'rgb(252, 152, 4)'},
-              {xaxis: {from: 60, to: 100}, yaxis: {from: 60, to: 100 },
-                  color: 'rgb(255, 0, 5)'}
-          ]
-      },
-      yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] },
-      xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] }
+    series: {lines: { show: false }, points: { show: true }},
+    grid: {
+      hoverable: true,
+      clickable: true,
+      markings: [
+        {xaxis: {from: 0, to: 40}, yaxis: {from: 0, to: 40 },
+         color: 'rgb(146, 208, 80)'},
+        {xaxis: {from: 40, to: 60}, yaxis: {from: 0, to: 40 },
+         color: 'rgb(206, 224, 36)'},
+        {xaxis: {from: 60, to: 100}, yaxis: {from: 0, to: 40 },
+         color: 'rgb(245, 125, 25)'},
+        {xaxis: {from: 0, to: 40}, yaxis: {from: 40, to: 60 },
+         color: 'rgb(206, 224, 36)'},
+        {xaxis: {from: 40, to: 60}, yaxis: {from: 40, to: 60 },
+         color: 'rgb(255, 255, 0)'},
+        {xaxis: {from: 60, to: 100}, yaxis: {from: 40, to: 60 },
+         color: 'rgb(252, 152, 4)'},
+        {xaxis: {from: 0, to: 40}, yaxis: {from: 60, to: 100 },
+         color: 'rgb(245, 125, 25)'},
+        {xaxis: {from: 40, to: 60}, yaxis: {from: 60, to: 100 },
+         color: 'rgb(252, 152, 4)'},
+        {xaxis: {from: 60, to: 100}, yaxis: {from: 60, to: 100 },
+         color: 'rgb(255, 0, 5)'}
+      ]
+    },
+    yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] },
+    xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] }
   };
   var plot = $.plot(placeholder, [ { data: points}], options);
   o = plot.pointOffset({ x: 15, y: -1.2});
@@ -78,25 +78,25 @@ function plotImportanceIndex(points, transformer_names) {
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Poor</div>'); 
-   var previousPoint = null;
-   $("#placeholder").bind("plothover", function (event, pos, item) {
-     $("#x").text(pos.x.toFixed(2));
-     $("#y").text(pos.y.toFixed(2));
-     if (item) {
-       if (previousPoint != item.datapoint) {
-         previousPoint = item.datapoint;
-         $("#tooltip").remove();
-         var x = item.datapoint[0].toFixed(2),
-         y = item.datapoint[1].toFixed(2);
-         showTooltip(item.pageX, item.pageY, transformer_names[item.dataIndex] + 
-                     "(" + x + "," + y + ")"); 
-       }
-     }
-     else {
-       $("#tooltip").remove();
-       previousPoint = null;            
-     }
-   });
+  var previousPoint = null;
+  $("#placeholder").bind("plothover", function (event, pos, item) {
+    $("#x").text(pos.x.toFixed(2));
+    $("#y").text(pos.y.toFixed(2));
+    if (item) {
+      if (previousPoint != item.datapoint) {
+        previousPoint = item.datapoint;
+        $("#tooltip").remove();
+        var x = item.datapoint[0].toFixed(2),
+        y = item.datapoint[1].toFixed(2);
+        showTooltip(item.pageX, item.pageY, transformer_names[item.dataIndex] + 
+                    "(" + x + "," + y + ")"); 
+      }
+    }
+    else {
+      $("#tooltip").remove();
+      previousPoint = null;            
+    }
+  });
   
 }
 
@@ -271,7 +271,7 @@ $(document).ready(function() {
         $('td:nth-child(1),th:nth-child(1)').hide();
       });
       url = '/transformer_informations?q=data_points&transformer_id=' + 
-             transformer_id;
+        transformer_id;
       $.get(url, function(data) {
         var data_points = eval('(' + data + ')');
         var points = []; 
