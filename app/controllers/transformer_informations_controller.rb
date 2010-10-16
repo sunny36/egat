@@ -2,14 +2,16 @@ class TransformerInformationsController < ApplicationController
   def index
     if request.xhr?
       if params[:region]
-        debugger
         @stations = Station.find_all_by_region(params[:region])
         names = @stations.collect { |s| s.name }
         transformers = Transformer.find_all_by_transformer_name_initials(names)
-        @data_points = TransformerInformation.get_data_points_by_transformers(transformers)
+        @data_points =
+          TransformerInformation.get_data_points_by_transformers(transformers)
         @data_points = @data_points.to_json
       elsif params[:transformer_id]
-        @data_points = TransformerInformation.get_data_points_by_transformer_id(params[:transformer_id])
+        transformer_id = params[:transformer_id]
+        @data_points =
+          TransformerInformation.get_data_points_by_transformer_id(transformer_id)
         @data_points = @data_points.to_json        
       else
         @data_points = TransformerInformation.get_data_points.to_json
@@ -38,7 +40,8 @@ class TransformerInformationsController < ApplicationController
   end
   
   def create
-    @transformer_information = TransformerInformation.new(params[:transformer_information])
+    @transformer_information =
+      TransformerInformation.new(params[:transformer_information])
     if @transformer_information.save
       flash[:notice] = "Successfully created transformer information."
       redirect_to transformer_informations_url
@@ -70,7 +73,8 @@ class TransformerInformationsController < ApplicationController
 
   def redirect_to_edit_if_exists
     if request.xhr?
-      @transformer_information = TransformerInformation.find_by_transformer_id(params[:id])
+      @transformer_information =
+        TransformerInformation.find_by_transformer_id(params[:id])
     end
     respond_to do |format|
       format.html 
@@ -81,8 +85,7 @@ class TransformerInformationsController < ApplicationController
   def search 
     if params[:transformer_id]
       @transformer_informations = 
-        TransformerInformation.find_all_by_transformer_id(
-        params[:transformer_id])
+        TransformerInformation.find_all_by_transformer_id(params[:transformer_id])
     end
   end
 end
