@@ -11,6 +11,8 @@ function setSystemFaultLevelHvMva() {
 }
 
 function setSystemFaultLevelLvMva() {
+  
+  
   var busVoltageLv = parseFloat(
     $('#transformer_information_bus_voltage_lv_id :selected').text()); 
   var systemFaultLevelLv = parseFloat(
@@ -245,20 +247,29 @@ $(document).ready(function() {
   $('#station_station').change(function() {
     var region = $('#station_station :selected').text();
     if (region != 'Please select') {
-      $.get('/transformers?region=' + region, function(data) {
+      $.get('/transformers?region=' + encodeURI(region), function(data) {
+        
         var transformers = JSON.parse(data);        
         $("#station_transformer_name").html("");
-        $('#transformer_names').tmpl(transformers).appendTo('#station_transformer_name');
-        $("#station_transformer_name").prepend("<option value='' selected='selected'></option>");
+        $('#transformer_names')
+          .tmpl(transformers)
+          .appendTo('#station_transformer_name');
+        $("#station_transformer_name")
+          .prepend("<option value='' selected='selected'></option>");
         $('#transformer_name_label').show();
         $('#transformer_name_select').show();
         $("#transformers_table tbody").children().remove();
-        $('#transformers_script').tmpl(transformers).appendTo('#transformers_table');        
+        $('#transformers_script')
+          .tmpl(transformers)
+          .appendTo('#transformers_table');        
         $('#transformers').show();
-        // http://www.devcurry.com/2009/07/hide-table-column-with-single-line-of.html
+        /*
+          http://www.devcurry.com/2009/07/hide-table-column-with-single-line-of.html
+        */
         $('td:nth-child(1),th:nth-child(1)').hide();
       });
-      var url = '/transformer_informations?q=data_points&region=' + region;
+      var url = '/transformer_informations?q=data_points&region=' + 
+        encodeURI(region);
       $.get(url, function(data) {
         var data_points = eval('(' + data + ')');
         var points = []; 
@@ -280,7 +291,9 @@ $(document).ready(function() {
       $.get(url, function (data) {
         var transformer = JSON.parse(data);        
         $("#transformers_table tbody").children().remove();
-        $('#transformers_script').tmpl(transformer).appendTo('#transformers_table');        
+        $('#transformers_script')
+          .tmpl(transformer)
+          .appendTo('#transformers_table');        
         $('#transformers').show();        
         $('td:nth-child(1),th:nth-child(1)').hide();
       });
