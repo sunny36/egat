@@ -39,7 +39,7 @@ class Transformer < ActiveRecord::Base
     names[1..names.length].each { |name|
       conditions += ' ' + 'OR transformer_name like ?'
     }
-    names = names.map { |name| name + '%'}
+    names = names.map { |name| name + '-%'}
     x = [conditions] + names
     self.find(:all, :conditions => x)
   end
