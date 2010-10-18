@@ -1,4 +1,4 @@
-<p>
+<![if !IE]><p><![endif]>
   <%= label :transformer_information, :transformer_id, "Transformer Name" %>
   <% if controller.action_name == 'new' || controller.action_name == 'create' %>
   <%= 
@@ -9,5 +9,5 @@
   <% else %>
   <strong><%= @transformer_information.transformer.transformer_name %></strong>
   <% end %>
-</p>
 
+<![if !IE]></p><![endif]>
