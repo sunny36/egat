@@ -208,8 +208,7 @@ class TransformerInformation < ActiveRecord::Base
       probability_of_force_outages = ProbabilityOfForceOutage.all
       probability_of_force_outages.each do |p|
         #TODO Remove hard coded values
-        infinity = 1.0/0
-        p.end = infinity if p.end.nil?
+        p.end = 100 if p.end.nil?
         self.probability_of_force_outage = p if 
           self.probability_of_force_outage_value.between?(p.start, p.end)
       end
