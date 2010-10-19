@@ -54,7 +54,7 @@ function plotImportanceIndex(points, transformer_names) {
     },
     yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
       axisLabel: 'Probability of Failure',
-                 axisLabelUseCanvas: true,
+                 axisLabelUseCanvas: false,
                  axisLabelFontSizePixels: 12,
                  axisLabelFontFamily: 'Arial' },
     xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
@@ -76,15 +76,15 @@ function plotImportanceIndex(points, transformer_names) {
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">High</div>');
-  o = plot.pointOffset({ x: -11.2, y: 20});
+  o = plot.pointOffset({ x: -8.9, y: 20});
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Good</div>'); 
-  o = plot.pointOffset({ x: -9.2, y: 50});
+  o = plot.pointOffset({ x: -5.9, y: 50});
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Fair</div>');
-  o = plot.pointOffset({ x: -9.0, y: 80});
+  o = plot.pointOffset({ x: -7.9, y: 80});
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Poor</div>'); 
