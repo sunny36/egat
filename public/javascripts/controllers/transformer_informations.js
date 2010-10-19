@@ -52,8 +52,16 @@ function plotImportanceIndex(points, transformer_names) {
          color: 'rgb(255, 0, 5)'}
       ]
     },
-    yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] },
-    xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100] }
+    yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
+      axisLabel: 'Probability of Failure',
+                 axisLabelUseCanvas: true,
+                 axisLabelFontSizePixels: 12,
+                 axisLabelFontFamily: 'Arial' },
+    xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
+      axisLabel: 'Transformer Importance',
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Arial' }
   };
   var plot = $.plot(placeholder, [ { data: points}], options);
   o = plot.pointOffset({ x: 15, y: -1.2});
@@ -76,7 +84,7 @@ function plotImportanceIndex(points, transformer_names) {
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Fair</div>');
-  o = plot.pointOffset({ x: -10.2, y: 80});
+  o = plot.pointOffset({ x: -9.0, y: 80});
   placeholder.append('<div style="position:absolute;left:' + 
                      (o.left + 4) + 'px;top:' + o.top + 
                      'px;color:#666;font-size:smaller">Poor</div>'); 
