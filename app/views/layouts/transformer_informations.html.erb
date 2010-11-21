@@ -10,7 +10,11 @@
           'ext-jquery-adapter', 'ext-all',
           'jquery-ui-1.8.4.custom.min', 
           'jquery.blockUI', 
-                                 'jquery.tmpl', 'facybox', 'json2'
+          'jquery.tmpl', 
+          'facybox', 
+          'json2', 
+          'jquery.url',
+          'jquery.tablesorter.min'
       %>
       <%= yield :javascript %>
     <% end %>
@@ -18,7 +22,26 @@
     <%= stylesheet_link_tag '960', 'template', 'nav', 'colour' %>
     <%= stylesheet_link_tag  'facybox', 'faceplant'%>
     <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
+    <%= stylesheet_link_tag 'controllers/transformer_information' %>
     <%= yield :css %>
+    <style type="text/css">
+    th.headerSortUp { 
+        background-image: url(../img/asc.gif); 
+        background-color: #3399FF; 
+        background-repeat: no-repeat;
+      	background-position: center right;
+      	cursor: pointer;
+      	
+    }
+    th.headerSortDown { 
+        background-image: url(../img/desc.gif); 
+        background-color: #3399FF; 
+        background-repeat: no-repeat;
+      	background-position: center right;
+      	cursor: pointer;
+        
+    }
+    </style>
   </head>
   <body>
     <% unless @no_header %>

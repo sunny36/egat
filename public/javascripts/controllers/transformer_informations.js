@@ -53,15 +53,15 @@ function plotImportanceIndex(points, transformer_names) {
       ]
     },
     yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
-      axisLabel: 'Probability of Failure',
-                 axisLabelUseCanvas: false,
-                 axisLabelFontSizePixels: 12,
-                 axisLabelFontFamily: 'Arial' },
+             axisLabel: 'Probability of Failure',
+             axisLabelUseCanvas: false,
+             axisLabelFontSizePixels: 12,
+             axisLabelFontFamily: 'Arial' },
     xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
-      axisLabel: 'Transformer Importance',
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Arial' }
+             axisLabel: 'Transformer Importance',
+             axisLabelUseCanvas: true,
+             axisLabelFontSizePixels: 12,
+             axisLabelFontFamily: 'Arial' }
   };
   var plot = $.plot(placeholder, [ { data: points}], options);
   o = plot.pointOffset({ x: 15, y: -1.2});
@@ -136,7 +136,6 @@ var app = {
   hideElements: function () {
     $('#transformer_name_label').hide();
     $('#transformer_name_select').hide();
-    $('#transformers').hide();
   },
   
   setupBusVoltageAndSystemFaultLevel: function () {
@@ -166,7 +165,11 @@ var app = {
   },
   
   getPointsForGraphs: function () {
-    $.get('/transformer_informations?q=data_points', function(data) {
+    var url = jQuery.url.attr("path") + "?q=data_points";
+    if (jQuery.url.param("region") != null)  {
+      url += "&region=" + encodeURI(jQuery.url.param("region"));
+    } 
+    $.get(url, function(data) {
       var data_points = eval('(' + data + ')');
       var points = []; 
       var transformer_names = []; 
@@ -236,8 +239,9 @@ var app = {
 
 $(document).ready(function() {
   $('a[rel*=facybox]').facybox();
+
   app.setupAjax();
-  
+
   app.hideElements(); 
   
   app.setupBusVoltageAndSystemFaultLevel();
@@ -251,12 +255,15 @@ $(document).ready(function() {
   app.setupTransformerNameComboxBox();
 
   app.setupDamageOfProperty();
-  
+  $('div.menuSelectAll').checkboxMenu({
+    menuItemClick: function(text, count) { 
+      return confirm('Are you sure you want to ' + text + ' the selected ' + count + ' item(s)?');
+    }});
   $('#station_station').change(function() {
     var region = $('#station_station :selected').text();
     if (region != 'Please select') {
-      $.get('/transformers?region=' + encodeURI(region), function(data) {
-        
+      window.location.replace('/transformer_informations?region=' + encodeURI(region));
+      $.get('/transformers?region=' + encodeURI(region), function(data) {    
         var transformers = JSON.parse(data);        
         $("#station_transformer_name").html("");
         $('#transformer_names')
@@ -271,6 +278,8 @@ $(document).ready(function() {
           .tmpl(transformers)
           .appendTo('#transformers_table');        
         $('#transformers').show();
+        $("#transformers_table").tablesorter(); 
+
         /*
           http://www.devcurry.com/2009/07/hide-table-column-with-single-line-of.html
         */
@@ -299,11 +308,13 @@ $(document).ready(function() {
       $.get(url, function (data) {
         var transformer = JSON.parse(data);        
         $("#transformers_table tbody").children().remove();
+        
         $('#transformers_script')
           .tmpl(transformer)
           .appendTo('#transformers_table');        
         $('#transformers').show();        
         $('td:nth-child(1),th:nth-child(1)').hide();
+        
       });
       url = '/transformer_informations?q=data_points&transformer_id=' + 
         transformer_id;
@@ -326,6 +337,16 @@ $(document).ready(function() {
     jQuery.facybox({ajax: '/transformer_informations/show/' + id});
     return false;
   });
-  
+
+  $('.transformer_checkbox').click(function () {
+    var ids = "";
+    $('.transformer_checkbox:checked').each(function () {
+      ids = ids + $(this).attr('id').split('_')[1] + ",";            
+    });
+    console.log(ids.slice(0, ids.length - 1));
+    var url = '/transformer_informations?' +
+              'transformer_ids=' + ids;
+    window.location.replace(url);
+  });
   
 });

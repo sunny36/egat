@@ -16,8 +16,21 @@ class TransformerInformationsController < ApplicationController
       else
         @data_points = TransformerInformation.get_data_points.to_json
       end      
-    else 
-      @transformer_informations = TransformerInformation.all
+    else
+      if params[:transformer_ids]
+        transformer_ids = params[:transformer_ids].split(',').map { |x| x.to_i }
+        @data_points = 
+          TransformerInformation.get_data_points_by_transformer_ids(transformer_ids)
+        @data_points = @data_points.to_json
+      elsif params[:region]
+        @stations = Station.find_all_by_region(params[:region])
+        names = @stations.collect { |s| s.name }
+        transformers = Transformer.find_all_by_transformer_name_initials(names)
+        @transformer_informations = TransformerInformation.find_all_by_transformers(transformers)
+      else
+        @transformer_informations = TransformerInformation.all
+      end 
+      
     end
     respond_to do |format|
       format.html 

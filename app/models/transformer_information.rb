@@ -86,6 +86,10 @@ class TransformerInformation < ActiveRecord::Base
     self.get_points([self.most_recent.find_by_transformer_id(transformer_id)])
   end
   
+  def self.get_data_points_by_transformer_ids(transformer_ids)
+    self.get_points(self.most_recent.find_all_by_transformer_id(transformer_ids))    
+  end
+  
   def self.get_points(transformer_informations)
     points = []
     transformer_informations.each { |e| 
