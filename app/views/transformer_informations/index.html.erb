@@ -55,6 +55,8 @@
 <div class="clear"></div> 
 <br/>
 <div id="transformers" class="grid_16">
+  
+  
   <table id="transformers_table">
     <thead>
       <tr>
@@ -74,7 +76,11 @@
           <tr>
             <td><%= transformer_information.transformer.id %></td>
             <td><%= transformer_information.transformer.transformer_name %></td>
-            <td><%= transformer_information.transformer.egatsn %></td>
+            <td>
+              <a class="title" href="javascript:void(0)" title="<%= transformer_information.transformer.brand.name %>">
+                <%= transformer_information.transformer.egatsn %>
+              </a>
+            </td>
             <td><%= transformer_information.percent_hi %></td>
             <td><%= transformer_information.importance_index %></td>
             <td><%= transformer_information.risk.risk %></td>

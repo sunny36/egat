@@ -324,6 +324,8 @@ var app = {
 
 
 $(document).ready(function() {
+  $('a.title').cluetip({dropShadow: false, cluetipClass: 'rounded', showTitle: false});
+  
   $('a[rel*=facybox]').facybox();
 
   app.setupAjax();
