@@ -24,6 +24,78 @@ function setSystemFaultLevelLvMva() {
   }
 }
 
+function plotRiskGraph(points, transformer_names) {
+  var d2 = [[39.598, 0], [0, 39.598]];
+  var d3 = [[79.1959594928933, 0], [0, 79.1959594928933]];
+  var d4 = [[100, 0], [0,100]];
+  var d5 = [[118.79393923934, 0], [0, 118.79393923934]];
+  var d6 = [[158.391918985787, 0], [0, 158.391918985787]];
+  var d7 = [[200.818325856979, 0], [0, 200.818325856979]];
+  var options = {
+    grid: {hoverable: true,clickable: true},
+    yaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
+             axisLabel: 'Probability of Failure',
+             axisLabelUseCanvas: false,
+             axisLabelFontSizePixels: 12,
+             axisLabelFontFamily: 'Arial' },
+    xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
+             axisLabel: 'Transformer Importance',
+             axisLabelUseCanvas: true,
+             axisLabelFontSizePixels: 12,
+             axisLabelFontFamily: 'Arial' }
+    }; 
+  $.plot($("#placeholder"), [
+    {
+      data: d7, 
+      lines: { show: true, fill: true, fillColor: 'rgb(255, 0, 0)', lineWidth: 0}
+    },          
+    {
+      data: d6,
+      lines: { show: true, fill: true, fillColor: 'rgb(255, 146, 0)', lineWidth: 0}
+    },          
+    {
+      data: d5,
+      lines: { show: true, fill: true, fillColor: 'rgb(255, 255, 0)', lineWidth: 0}
+    },        
+    {
+      data: d4,
+      lines: { show: true, fill: true, fillColor: 'rgb(255, 255, 0)', lineWidth: 0}
+    },    
+    {
+      data: d3,
+      lines: { show: true, fill: true, fillColor: 'rgb(0, 0, 255)', lineWidth: 0}
+    },
+    {
+      data: d2,
+      lines: { show: true, fill: true, fillColor: 'rgb(0, 255, 0)', lineWidth: 0}
+    },
+    {
+      data: points,
+      lines: { show: false},
+      points: { show: true }
+    }], options);
+  var previousPoint = null;
+    $("#placeholder").bind("plothover", function (event, pos, item) {
+      $("#x").text(pos.x.toFixed(2));
+      $("#y").text(pos.y.toFixed(2));
+      if (item) {
+        if (previousPoint != item.datapoint) {
+          previousPoint = item.datapoint;
+          $("#tooltip").remove();
+          var x = item.datapoint[0].toFixed(2),
+          y = item.datapoint[1].toFixed(2);
+          showTooltip(item.pageX, item.pageY, transformer_names[item.dataIndex] + 
+                      "(" + x + "," + y + ")"); 
+        }
+      }
+      else {
+        $("#tooltip").remove();
+        previousPoint = null;            
+      }
+    });
+  
+}
+
 function plotImportanceIndex(points, transformer_names) {
   var placeholder = $("#placeholder"); 
   var options = {
@@ -173,17 +245,31 @@ var app = {
       var data_points = eval('(' + data + ')');
       var points = []; 
       var transformer_names = []; 
+      var checkedTransformerNames = [];
+      $('.transformer_checkbox:checked').each(function () {
+        checkedTransformerNames.push(
+          $(this).parent().parent().children()[1].innerHTML);
+      });
       for (var i = 0; i < data_points.length; ++i) { 
-        points.push([parseFloat(data_points[i][1]), parseFloat(data_points[i][2])]);
-        transformer_names.push(data_points[i][0]); 
+        if (jQuery.inArray(data_points[i][0], checkedTransformerNames) > -1) {          
+          points.push([parseFloat(data_points[i][1]), parseFloat(data_points[i][2])]);
+          transformer_names.push(data_points[i][0]); 
+          
+        }
       }
-      plotImportanceIndex(points, transformer_names);
+      if (jQuery.url.param("graph") == "risk") { 
+        plotRiskGraph(points, transformer_names);
+      } else {
+        plotImportanceIndex(points, transformer_names);
+      }
+      
     });
   },
   
   setupTransformerNameComboxBox: function () {
+    var converted;
     if ($('#transformer_transformer_id').length > 0) {
-      var converted = new Ext.form.ComboBox({
+      converted = new Ext.form.ComboBox({
         typeAhead: true,
         triggerAction: 'all',
         transform:'transformer_transformer_id',
@@ -192,7 +278,7 @@ var app = {
       });
     }
     if ($('#transformer_information_transformer_id').length > 0) {
-      var converted = new Ext.form.ComboBox({
+      converted = new Ext.form.ComboBox({
         typeAhead: true,
         triggerAction: 'all',
         transform:'transformer_information_transformer_id',
@@ -255,98 +341,68 @@ $(document).ready(function() {
   app.setupTransformerNameComboxBox();
 
   app.setupDamageOfProperty();
-  $('div.menuSelectAll').checkboxMenu({
-    menuItemClick: function(text, count) { 
-      return confirm('Are you sure you want to ' + text + ' the selected ' + count + ' item(s)?');
-    }});
-  $('#station_station').change(function() {
-    var region = $('#station_station :selected').text();
-    if (region != 'Please select') {
-      window.location.replace('/transformer_informations?region=' + encodeURI(region));
-      $.get('/transformers?region=' + encodeURI(region), function(data) {    
-        var transformers = JSON.parse(data);        
-        $("#station_transformer_name").html("");
-        $('#transformer_names')
-          .tmpl(transformers)
-          .appendTo('#station_transformer_name');
-        $("#station_transformer_name")
-          .prepend("<option value='' selected='selected'></option>");
-        $('#transformer_name_label').show();
-        $('#transformer_name_select').show();
-        $("#transformers_table tbody").children().remove();
-        $('#transformers_script')
-          .tmpl(transformers)
-          .appendTo('#transformers_table');        
-        $('#transformers').show();
-        $("#transformers_table").tablesorter(); 
-
-        /*
-          http://www.devcurry.com/2009/07/hide-table-column-with-single-line-of.html
-        */
-        $('td:nth-child(1),th:nth-child(1)').hide();
+  
+  $('#select_all').attr('checked', true);
+  $('.transformer_checkbox').attr('checked', true);
+  
+  $('.transformer_checkbox').change(function () {
+    var allChecked = true;
+    $('.transformer_checkbox').each(function() {
+      if (!$(this).attr('checked')) {
+       allChecked = false;
+      }
+    });
+    if (!allChecked) {
+     $('#select_all').attr('checked', false);
+    } else {
+      $('#select_all').attr('checked', true);
+    }
+    app.getPointsForGraphs();
+  });
+  
+  $('#select_all').change(function () {
+    if ($(this).attr('checked')) {
+      $('.transformer_checkbox').each(function () {
+        $(this).attr('checked', true);
       });
-      var url = '/transformer_informations?q=data_points&region=' + 
-        encodeURI(region);
-      $.get(url, function(data) {
-        var data_points = eval('(' + data + ')');
-        var points = []; 
-        var transformer_names = []; 
-        for (var i = 0; i < data_points.length; ++i) { 
-          points.push([parseFloat(data_points[i][1]), 
-                       parseFloat(data_points[i][2])]);
-          transformer_names.push(data_points[i][0]); 
-        }
-        plotImportanceIndex(points, transformer_names);
+    } else {
+      $('.transformer_checkbox').each(function () {
+        $(this).attr('checked', false);
       });      
     }
   });
   
-  $('#station_transformer_name').change(function () {
-    var transformer_id = $('#station_transformer_name :selected').val();
-    if (!isNaN(transformer_id)) {
-      var url = '/transformers?transformer_id=' + transformer_id;
-      $.get(url, function (data) {
-        var transformer = JSON.parse(data);        
-        $("#transformers_table tbody").children().remove();
-        
-        $('#transformers_script')
-          .tmpl(transformer)
-          .appendTo('#transformers_table');        
-        $('#transformers').show();        
-        $('td:nth-child(1),th:nth-child(1)').hide();
-        
-      });
-      url = '/transformer_informations?q=data_points&transformer_id=' + 
-        transformer_id;
-      $.get(url, function(data) {
-        var data_points = eval('(' + data + ')');
-        var points = []; 
-        var transformer_names = []; 
-        for (var i = 0; i < data_points.length; ++i) { 
-          points.push([parseFloat(data_points[i][1]), 
-                       parseFloat(data_points[i][2])]);
-          transformer_names.push(data_points[i][0]); 
-        }
-        plotImportanceIndex(points, transformer_names);
-      });            
+  
+  $('#station_station').change(function() {
+    var region = $('#station_station :selected').text();
+    var queryString;
+    if (jQuery.url.param("graph") != undefined) {
+      queryString = "?graph=" + jQuery.url.param("graph");
+    }    
+    if (region != 'Please select') {
+      queryString += "&region=" + encodeURI(region); 
+      window.location.replace('/transformer_informations' + queryString);
+    } else {
+      window.location.replace('/transformer_informations' + queryString);
     }
   });
-  
+    
   $('.importance_index').live('click', function () {
     var id = $(this).parents('tr:first').find('td:first').text();
     jQuery.facybox({ajax: '/transformer_informations/show/' + id});
     return false;
   });
 
-  $('.transformer_checkbox').click(function () {
-    var ids = "";
-    $('.transformer_checkbox:checked').each(function () {
-      ids = ids + $(this).attr('id').split('_')[1] + ",";            
-    });
-    console.log(ids.slice(0, ids.length - 1));
-    var url = '/transformer_informations?' +
-              'transformer_ids=' + ids;
-    window.location.replace(url);
-  });
+  // $('.transformer_checkbox').click(function () {
+  //   var ids = "";
+  //   $('.transformer_checkbox:checked').each(function () {
+  //     ids = ids + $(this).attr('id').split('_')[1] + ",";            
+  //   });
+  //   console.log(ids.slice(0, ids.length - 1));
+  //   var url = '/transformer_informations?' +
+  //             'transformer_ids=' + ids;
+  //   window.location.replace(url);
+  // });
   
+  $("#transformers_table").tablesorter(); 
 });

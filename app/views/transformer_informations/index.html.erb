@@ -32,8 +32,25 @@
 </script>
 <% end -%>
 <div class="clear"></div> 
-<div class="grid_16">
+<div class="grid_11">
 <div id="placeholder" style="width:600px;height:400px"></div>
+</div>
+<div id="switchGraph" class="grid_3">
+  <% if params[:graph] == "risk" %>
+    <%= 
+      link_to "คลิกดูกราฟ Risk Matrix", 
+              :controller => "transformer_informations", :action => "index"
+    %>    
+  <% else %>
+    <%= 
+      link_to "คลิกดูกราฟความเสี่ยง", 
+              :controller => "transformer_informations", :action => "index",
+              :graph => "risk" 
+    %>    
+  <% end %>
+  
+
+
 </div>
 <div class="clear"></div> 
 <br/>
@@ -48,7 +65,7 @@
       <th>Importance Index System(%)</th>
       <th>Risk</th>
       <th>Action</th>
-      <th> <input type="checkbox" name="name[]" id="select_all"/></th>
+      <th><input type="checkbox" name="name[]" id="select_all"/></th>
       </tr>
     </thead>
     <tbody>
