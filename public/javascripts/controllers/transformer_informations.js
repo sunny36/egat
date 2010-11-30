@@ -11,8 +11,6 @@ function setSystemFaultLevelHvMva() {
 }
 
 function setSystemFaultLevelLvMva() {
-  
-  
   var busVoltageLv = parseFloat(
     $('#transformer_information_bus_voltage_lv_id :selected').text()); 
   var systemFaultLevelLv = parseFloat(
@@ -377,11 +375,11 @@ $(document).ready(function() {
   
   $('#station_station').change(function() {
     var region = $('#station_station :selected').text();
-    var queryString;
+    var queryString = "?";
     if (jQuery.url.param("graph") != undefined) {
-      queryString = "?graph=" + jQuery.url.param("graph");
+      queryString = "graph=" + jQuery.url.param("graph");
     }    
-    if (region != 'Please select') {
+    if (region != 'All') {
       queryString += "&region=" + encodeURI(region); 
       window.location.replace('/transformer_informations' + queryString);
     } else {

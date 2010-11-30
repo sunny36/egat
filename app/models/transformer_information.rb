@@ -185,13 +185,19 @@ class TransformerInformation < ActiveRecord::Base
   
   def importance
     ImportanceIndex.all.each do |ii|
-      return ii.importance if self.importance_index.between?(ii.start, ii.end)
+      return ii if self.importance_index.between?(ii.start, ii.end)
     end
   end
   
   def action
     ImportanceIndex.all.each do |ii|
       return ii.action if self.importance_index.between?(ii.start, ii.end)
+    end
+  end
+  
+  def risk_probability
+    RiskProbability.all.each do |rp|
+      return rp if self.overall_condition.between?(rp.start, rp.end)
     end
   end
   

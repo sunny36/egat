@@ -17,7 +17,7 @@
   <%= 
       @stations = Station.find(:all, :group => "region")
       f.collection_select(:station, @stations, :region, :region, 
-                          {:prompt => true, :selected => params[:region]})
+                          {:prompt => 'All', :selected => params[:region]})
   %>
 </div>
 <div class="clear"></div> 
