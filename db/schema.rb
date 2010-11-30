@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016202402) do
+ActiveRecord::Schema.define(:version => 20101130071547) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1226,6 +1226,15 @@ ActiveRecord::Schema.define(:version => 20101016202402) do
     t.integer  "real_cause",     :limit => 10, :precision => 10, :scale => 0
     t.integer  "station",        :limit => 10, :precision => 10, :scale => 0
     t.integer  "transformer",    :limit => 10, :precision => 10, :scale => 0
+  end
+
+  create_table "risk_probabilities", :force => true do |t|
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "probability_of_failure"
+    t.string   "action"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "risks", :force => true do |t|

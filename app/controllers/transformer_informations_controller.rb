@@ -101,4 +101,14 @@ class TransformerInformationsController < ApplicationController
         TransformerInformation.find_all_by_transformer_id(params[:transformer_id])
     end
   end
+  
+  def importance_and_risk_table
+    if request.xhr?
+      @no_js = true
+      @no_header = true
+      @no_footer = true
+    end
+    @transformer_information = TransformerInformation.find(params[:id])
+  end
+  
 end

@@ -48,15 +48,10 @@
               :graph => "risk" 
     %>    
   <% end %>
-  
-
-
 </div>
 <div class="clear"></div> 
 <br/>
-<div id="transformers" class="grid_16">
-  
-  
+<div id="transformers" class="grid_16">    
   <table id="transformers_table">
     <thead>
       <tr>
@@ -77,13 +72,22 @@
             <td><%= transformer_information.transformer.id %></td>
             <td><%= transformer_information.transformer.transformer_name %></td>
             <td>
-              <a class="title" href="javascript:void(0)" title="<%= transformer_information.transformer.brand.name %>">
+              <a class="title" href="javascript:void(0)" 
+                 title="<%= transformer_information.transformer.brand.name %>">
                 <%= transformer_information.transformer.egatsn %>
               </a>
             </td>
             <td><%= transformer_information.percent_hi %></td>
-            <td><%= transformer_information.importance_index %></td>
-            <td><%= transformer_information.risk.risk %></td>
+            <td>
+              <% link_to transformer_information, {:rel => 'facybox'} do %>
+                <%= transformer_information.importance_index %>
+              <% end %>
+            </td>
+            <td>
+              <% link_to importance_and_risk_table_transformer_information_url(transformer_information.id), {:rel => 'facybox'} do %>
+                <%= transformer_information.risk.risk %>
+              <% end %>
+            </td>
             <td><%= transformer_information.risk.action %></td>
             <td>
               <input type="checkbox" name="name[]" 
@@ -99,5 +103,4 @@
   </table>
 </div>
 </div>
-
 </div>
