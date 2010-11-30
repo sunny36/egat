@@ -1,0 +1,26 @@
+<div class="grid_16">
+  <table>
+    <thread>
+      <tr>
+        <th>Importance Index</th>
+        <th>Probability of Failure</th>
+        <th>Definition</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>100 % Focus</td>
+        <td> - </td>
+        <td><%= @transformer_information.importance.importance %></td>
+        <td><%= @transformer_information.importance.action %></td>
+      </tr>
+      <tr>
+        <td> - </td>
+        <td>100 % Focus</td>
+        <td><%= @transformer_information.risk.importance %></td>
+        <td><%= @transformer_information.risk.action %></td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
