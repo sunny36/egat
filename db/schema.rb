@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101130202921) do
+ActiveRecord::Schema.define(:version => 20101204185538) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -144,6 +144,17 @@ ActiveRecord::Schema.define(:version => 20101130202921) do
   create_table "damage_of_properties_transformer_informations", :id => false, :force => true do |t|
     t.integer  "damage_of_property_id"
     t.integer  "transformer_information_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dga_gas_scores", :force => true do |t|
+    t.integer  "score"
+    t.string   "score_message"
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "weight"
+    t.integer  "gas_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
