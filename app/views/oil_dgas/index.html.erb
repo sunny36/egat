@@ -1,0 +1,48 @@
+<h1>Listing oil_dgas</h1>
+
+<table>
+  <tr>
+    <th>Test type</th>
+    <th>Test date</th>
+    <th>Work order</th>
+    <th>Co2</th>
+    <th>Co2 score</th>
+    <th>Co</th>
+    <th>Co score</th>
+    <th>H2</th>
+    <th>H2 score</th>
+    <th>C2h2</th>
+    <th>C2h2 score</th>
+    <th>C2h4</th>
+    <th>C2h4 score</th>
+    <th>C4h6</th>
+    <th>C4h6 score</th>
+  </tr>
+
+<% @oil_dgas.each do |oil_dga| %>
+  <tr>
+    <td><%=h oil_dga.test_type %></td>
+    <td><%=h oil_dga.test_date %></td>
+    <td><%=h oil_dga.work_order %></td>
+    <td><%=h oil_dga.co2 %></td>
+    <td><%=h oil_dga.co2_score %></td>
+    <td><%=h oil_dga.co %></td>
+    <td><%=h oil_dga.co_score %></td>
+    <td><%=h oil_dga.h2 %></td>
+    <td><%=h oil_dga.h2_score %></td>
+    <td><%=h oil_dga.c2h2 %></td>
+    <td><%=h oil_dga.c2h2_score %></td>
+    <td><%=h oil_dga.c2h4 %></td>
+    <td><%=h oil_dga.c2h4_score %></td>
+    <td><%=h oil_dga.c4h6 %></td>
+    <td><%=h oil_dga.c4h6_score %></td>
+    <td><%= link_to 'Show', oil_dga %></td>
+    <td><%= link_to 'Edit', edit_oil_dga_path(oil_dga) %></td>
+    <td><%= link_to 'Destroy', oil_dga, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New oil_dga', new_oil_dga_path %>

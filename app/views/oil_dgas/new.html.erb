@@ -1,0 +1,51 @@
+<h1>New oil_dga</h1>
+
+<% form_for(@oil_dga) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :test_type %><br />
+    <%= f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"]) %>
+  </p>
+  <p>
+    <%= f.label :test_date %><br />
+    <%= f.date_select :test_date %>
+  </p>
+  <p>
+    <%= f.label :work_order %><br />
+    <%= f.text_field :work_order %>
+  </p>
+  <p>
+    <%= f.label :co2 %><br />
+    <%= f.text_field :co2 %>
+  </p>
+  <p>
+    <%= f.label :co %><br />
+    <%= f.text_field :co %>
+  </p>
+  <p>
+    <%= f.label :h2 %><br />
+    <%= f.text_field :h2 %>
+  </p>
+  <p>
+    <%= f.label :ch4 %><br />
+    <%= f.text_field :ch4 %>
+  </p>  
+  <p>
+    <%= f.label :c2h2 %><br />
+    <%= f.text_field :c2h2 %>
+  </p>
+  <p>
+    <%= f.label :c2h4 %><br />
+    <%= f.text_field :c2h4 %>
+  </p>
+  <p>
+    <%= f.label :c4h6 %><br />
+    <%= f.text_field :c4h6 %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', oil_dgas_path %>

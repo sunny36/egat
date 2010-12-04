@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101204185538) do
+ActiveRecord::Schema.define(:version => 20101204193348) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -830,6 +830,28 @@ ActiveRecord::Schema.define(:version => 20101204185538) do
     t.string   "work_order"
     t.integer  "perform_type", :limit => 10, :precision => 10, :scale => 0
     t.integer  "transformer",  :limit => 10, :precision => 10, :scale => 0
+  end
+
+  create_table "oil_dgas", :force => true do |t|
+    t.string   "test_type"
+    t.date     "test_date"
+    t.string   "work_order"
+    t.integer  "co2"
+    t.integer  "co2_score"
+    t.integer  "co"
+    t.integer  "co_score"
+    t.integer  "h2"
+    t.integer  "h2_score"
+    t.integer  "ch4"
+    t.integer  "ch4_score"
+    t.integer  "c2h2"
+    t.integer  "c2h2_score"
+    t.integer  "c2h4"
+    t.integer  "c2h4_score"
+    t.integer  "c4h6"
+    t.integer  "c4h6_score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "oil_furan", :force => true do |t|
