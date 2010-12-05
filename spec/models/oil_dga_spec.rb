@@ -288,6 +288,20 @@ describe OilDga do
       test_score([501, 1000], 6)
     end    
     
-  end  
+  end
+  
+  context "%DGAF" do
+    it "should return correct correct %DGAF" do
+      @oil_dga.co2 = 1000
+      @oil_dga.co = 750
+      @oil_dga.h2 = 250
+      @oil_dga.ch4 = 300
+      @oil_dga.c2h2 = 150
+      @oil_dga.c2h4 = 1000
+      @oil_dga.c2h6 = 1000
+      @oil_dga.save!
+      @oil_dga.percent_dgaf.should be_close(72.916, 0.01)
+    end
+  end
   
 end
