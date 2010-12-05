@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205161941) do
+ActiveRecord::Schema.define(:version => 20101205163803) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -654,6 +654,15 @@ ActiveRecord::Schema.define(:version => 20101205161941) do
     t.decimal  "sound",            :precision => 10, :scale => 0
     t.decimal  "transformer",      :precision => 10, :scale => 0
     t.decimal  "vibration",        :precision => 10, :scale => 0
+  end
+
+  create_table "hif_of_oil_dgas", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "percent_dgaf_start"
+    t.integer  "percent_dgaf_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "hot_line_oil_filter", :force => true do |t|
