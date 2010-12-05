@@ -1,17 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>OilDgas: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
-</head>
-<body>
-
-<p style="color: green"><%= notice %></p>
-
-<%= yield %>
-
-</body>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Transformer Information: <%= controller.action_name %></title>
+    <!--[if IE]><%= javascript_include_tag 'extcanvas.min' %><![endif]--> 
+    <% unless @no_js %>
+      <%= 
+        javascript_include_tag 'jquery-1.4.2.min', 'ext-jquery-adapter', 
+                              'ext-all', 'jquery-ui-1.8.4.custom.min', 
+                              'jquery.blockUI', 'jquery.tmpl', 'facybox', 
+                              'json2', 'jquery.url', 'jquery.tablesorter.min',
+                              'jquery.cluetip'
+      %>
+      <%= yield :javascript %>
+    <% end %>
+    <%= stylesheet_link_tag 'ext-all', 'xtheme-gray' %>
+    <%= stylesheet_link_tag '960', 'template', 'nav', 'colour' %>
+    <%= stylesheet_link_tag  'facybox', 'faceplant'%>
+    <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
+    <%= stylesheet_link_tag'jquery.cluetip' %>    
+    <%= stylesheet_link_tag 'controllers/transformer_information' %>
+    
+    <%= yield :css %>
+  </head>
+  <body>
+    <% unless @no_header %>
+      <%= render :partial => 'layouts/header' %>    
+    <% end %>
+    <div id="content" class="container_16 clearfix">
+      <%= yield %>
+    </div>
+    <% unless @no_footer %>
+      <%= render :partial => 'layouts/footer' %>
+    <% end %>
+    
+  </body>
 </html>
