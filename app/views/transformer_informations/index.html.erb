@@ -9,13 +9,13 @@
   
 <% end %>
 
-<% form_for :station do |f| -%>
+<%= form_for :station do |f| -%>
 <div class="grid_3">
   <%= f.label(:station, "เขต")%>
 </div>
 <div class="grid_3">
   <%= 
-      @stations = Station.find(:all, :group => "region")
+      @stations = Station.group("region").all
       f.collection_select(:station, @stations, :region, :region, 
                           {:prompt => 'All', :selected => params[:region]})
   %>

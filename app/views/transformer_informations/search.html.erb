@@ -31,7 +31,7 @@
 <h1>Search</h1> 
 <div id="content" class="container_16 clearfix">
   <div class="grid_4">
-    <% form_tag({:action => "search"}, {:method => 'get'}) do %>
+    <%= form_tag({:action => "search"}, {:method => 'get'}) do %>
     <p>
       <%= label :transformer_information, :transformer_id, "Transformer Name" 
           %>

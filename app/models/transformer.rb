@@ -41,7 +41,7 @@ class Transformer < ActiveRecord::Base
     }
     names = names.map { |name| name + '-%'}
     x = [conditions] + names
-    self.find(:all, :conditions => x)
+    self.where(x).all
   end
   
 end

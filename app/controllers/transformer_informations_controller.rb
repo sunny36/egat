@@ -14,7 +14,7 @@ class TransformerInformationsController < ApplicationController
           TransformerInformation.get_data_points_by_transformer_id(transformer_id)
         @data_points = @data_points.to_json        
       else
-        @data_points = TransformerInformation.get_data_points.to_json
+        @data_points = TransformerInformation.get_data_points
       end      
     else
       if params[:transformer_ids]
@@ -34,7 +34,7 @@ class TransformerInformationsController < ApplicationController
     end
     respond_to do |format|
       format.html 
-      format.js 
+      format.js { render :json => @data_points}
     end
   end
   

@@ -31,7 +31,7 @@ class TransformersController < ApplicationController
         )
       end
     else
-      @transformers = Transformer.find(:all, :order => "id")
+      @transformers = Transformer.order("id").all
     end
     respond_to do |format|
       format.html

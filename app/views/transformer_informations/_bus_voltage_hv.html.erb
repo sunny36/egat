@@ -1,8 +1,12 @@
 <p>
-  <%= label :transformer_information, :bus_voltage_hv_id, "Bus Voltage HV side [kV]" %>
-  <%= @bus_voltage_hvs = BusVoltageHv.find(:all, :order => 'CAST(value as UNSIGNED)')
-      f.collection_select(:bus_voltage_hv_id, @bus_voltage_hvs, :id, :value, 
-                          {:prompt => true}) 
+  <%= 
+    label :transformer_information, :bus_voltage_hv_id, 
+          "Bus Voltage HV side [kV]" 
+  %>
+  <%= 
+    @bus_voltage_hvs = BusVoltageHv.order("CAST(value as UNSIGNED)").all
+    f.collection_select(:bus_voltage_hv_id, @bus_voltage_hvs, :id, :value, 
+                        {:prompt => true}) 
   %>
 </p>
 

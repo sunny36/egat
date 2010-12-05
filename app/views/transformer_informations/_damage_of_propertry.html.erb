@@ -1,5 +1,5 @@
 <h5 class="legend"><span class="label">Damage Of Property</span></h5>
-<% for damage_of_property in DamageOfProperty.find(:all)%>                
+<% for damage_of_property in DamageOfProperty.all %>                
 <div class="grid_1">
   <%= check_box_tag 'transformer_information[damage_of_property_ids][]', 
       damage_of_property.id, 

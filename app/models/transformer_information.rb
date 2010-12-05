@@ -25,7 +25,7 @@
 #
 
 class TransformerInformation < ActiveRecord::Base
-  named_scope :most_recent, :conditions => {:recent => true}
+  scope :most_recent, lambda { where("recent = ?", true)}
   
   belongs_to :bus_voltage_hv
   belongs_to :bus_voltage_lv
@@ -70,12 +70,11 @@ class TransformerInformation < ActiveRecord::Base
   before_create :update_recent
   
   def self.find_all_by_transformers(transformers)
-    self.most_recent.find(:all, :conditions => ["transformer_id in (?)", 
-                                transformers.collect { |t| t.id }])
+    self.most_recent.where("transformer_id in (?)", transformers.collect { |t| t.id }).all
   end
   
   def self.get_data_points     
-    self.get_points(self.most_recent.find(:all, :order => "id"))    
+    self.get_points(self.most_recent.order("id").all)    
   end
   
   def self.get_data_points_by_transformers(transformers)
@@ -176,7 +175,7 @@ class TransformerInformation < ActiveRecord::Base
       (transformer.brand.score * 2)).to_f / 
      ((5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) +
       (5 * 3) + (5 * 3) + (5 * 1) + (4 * 1) + (5 * 2)).to_f * 100.to_f )
-    ii.round_with_precision(2)    
+    ii.round(2)    
   end
   
   def percent_hi

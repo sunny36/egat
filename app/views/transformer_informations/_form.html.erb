@@ -12,7 +12,7 @@ img {
 </style>
 <%= error_messages_for :transformer_information, 
   :header_message => "Please Try Again!", :class => 'error' %>
-<% form_for @transformer_information do |f| %>
+<%= form_for @transformer_information do |f| %>
   <div class="grid_6">
     <%= render :partial => 'transformer_name', :locals =>{:f => f} %>
   </div>

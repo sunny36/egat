@@ -1,6 +1,6 @@
 <h1>Editing Transformer</h1>
 
-<% form_for(@transformer) do |f| %>
+<%= form_for(@transformer) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -10,7 +10,7 @@
   <p>
   <%= f.label :brand_id %><br />
   <%=
-    @brands = Brand.find(:all, :order => "name")
+    @brands = Brand.order("name").all
     f.collection_select(:brand_id, @brands, :id, :name, {:prompt => false})
   %>
     
