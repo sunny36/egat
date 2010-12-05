@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205163803) do
+ActiveRecord::Schema.define(:version => 20101205200640) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1591,6 +1591,7 @@ ActiveRecord::Schema.define(:version => 20101205163803) do
     t.decimal  "status",              :precision => 10, :scale => 0
     t.decimal  "winding_type",        :precision => 10, :scale => 0
     t.integer  "brand_id"
+    t.string   "position"
   end
 
   create_table "transformer_history_move", :force => true do |t|
