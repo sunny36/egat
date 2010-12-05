@@ -248,6 +248,7 @@ class TransformerInformation < ActiveRecord::Base
     @system_fault_levels = 
       BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
     @system_fault_levels.each do |i|
+      #TODO Remove hard coded number
       i.end = 100000000 if i.end.nil?
       if system_fault_level_hv_mva.between?(i.start, i.end)
         return i.score
@@ -259,6 +260,7 @@ class TransformerInformation < ActiveRecord::Base
     @system_fault_levels = 
       BusVoltage.system_fault_level(self.bus_voltage_lv.value.to_i)
     @system_fault_levels.each do |i|
+      #TODO Remove hard coded number
       i.end = 100000000 if i.end.nil?
       if system_fault_level_lv_mva.between?(i.start, i.end)
         return i.score
