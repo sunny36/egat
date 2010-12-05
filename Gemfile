@@ -11,6 +11,7 @@ group :test, :development do
   gem "rspec-rails", "~> 2.0.1"
   gem 'test-unit'
   gem 'factory_girl_rails'
+  gem 'spreadsheet'
 end
 
 # Use unicorn as the web server
