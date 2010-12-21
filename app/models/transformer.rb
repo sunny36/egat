@@ -33,6 +33,7 @@ class Transformer < ActiveRecord::Base
   set_table_name "transformer"
   belongs_to :brand
   has_many :transformer_information
+  has_many :oil_dgas
   
   def self.find_all_by_transformer_name_initials(names)
     conditions = "transformer_name like ?"
