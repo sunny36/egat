@@ -1,5 +1,5 @@
 <p>
-  <%= label :transformer_information, :system_location_id, "System Location" %>
+  <%= label :transformer_information, :system_location_id, "Load Shedding" %>
   <%= @system_locations = SystemLocation.order("score").all
       f.collection_select(:system_location_id,  @system_locations, :id, 
                          :value, {:prompt => true}) %>        
