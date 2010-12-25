@@ -1,4 +1,6 @@
 class OilDga < ActiveRecord::Base
+  belongs_to :transformer
+  
   before_save :set_co2_score, :set_co_score, :set_h2_score, :set_ch4_score, 
               :set_c2h2_score, :set_c2h4_score, :set_c2h6_score
   
