@@ -1,5 +1,5 @@
 <%= f.fields_for :load_pattern_per_year do |lppy_f| %>            
-<h5 class="legend"><span class="label">Load Pattern</span></h5>
+<h5 class="legend"><span class="label">Load Factor</span></h5>
 <table>
   <thead>
     <tr>
@@ -11,7 +11,7 @@
   <tr>
     <td><%= label :load_pattern_per_year, :lteq_0_pt_6, "<= 0.6" %>
     <td>
-      <%= lppy_f.select (:lteq_0_pt_6, (0..12).to_a)%>
+      <%= lppy_f.select :lteq_0_pt_6, (0..12).to_a %>
     </td>
   </tr>
   <tr>
