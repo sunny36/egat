@@ -5,8 +5,8 @@ function setSystemFaultLevelHvMva() {
     $('#transformer_information_system_fault_level_hv').val());
   if (!isNaN(busVoltageHv) && !isNaN(systemFaultLevelHv)) {
     var systemFaultLevelHvMva = 1.732 * busVoltageHv * systemFaultLevelHv; 
-    $('#transformer_information_system_fault_level_hv_mva').
-      val(systemFaultLevelHvMva); 
+    $('#transformer_information_system_fault_level_hv_mva')
+      .val(systemFaultLevelHvMva); 
   }
 }
 
@@ -41,56 +41,42 @@ function plotRiskGraph(points, transformer_names) {
              axisLabelUseCanvas: true,
              axisLabelFontSizePixels: 12,
              axisLabelFontFamily: 'Arial' }
-    }; 
+  }; 
   $.plot($("#placeholder"), [
-    {
-      data: d7, 
-      lines: { show: true, fill: true, fillColor: 'rgb(255, 0, 0)', lineWidth: 0}
-    },          
-    {
-      data: d6,
-      lines: { show: true, fill: true, fillColor: 'rgb(255, 146, 0)', lineWidth: 0}
-    },          
-    {
-      data: d5,
-      lines: { show: true, fill: true, fillColor: 'rgb(255, 255, 0)', lineWidth: 0}
-    },        
-    {
-      data: d4,
-      lines: { show: true, fill: true, fillColor: 'rgb(255, 255, 0)', lineWidth: 0}
-    },    
-    {
-      data: d3,
-      lines: { show: true, fill: true, fillColor: 'rgb(0, 0, 255)', lineWidth: 0}
-    },
-    {
-      data: d2,
-      lines: { show: true, fill: true, fillColor: 'rgb(0, 255, 0)', lineWidth: 0}
-    },
-    {
-      data: points,
-      lines: { show: false},
-      points: { show: true }
-    }], options);
+    {data: d7, lines: {show: true, fill: true, fillColor: 'rgb(255, 0, 0)', 
+                       lineWidth: 0}},         
+    {data: d6, lines: {show: true, fill: true, fillColor: 'rgb(255, 146, 0)', 
+                       lineWidth: 0}},          
+    {data: d5, lines: {show: true, fill: true, fillColor: 'rgb(255, 255, 0)', 
+                       lineWidth: 0}},        
+    {data: d4, lines: {show: true, fill: true, fillColor: 'rgb(255, 255, 0)', 
+                       lineWidth: 0}},    
+    {data: d3, lines: {show: true, fill: true, fillColor: 'rgb(0, 0, 255)', 
+                       lineWidth: 0}},
+    {data: d2, lines: { show: true, fill: true, fillColor: 'rgb(0, 255, 0)', 
+                        lineWidth: 0}},
+    {data: points, lines: { show: false},points: { show: true }}
+  ], options);
+
   var previousPoint = null;
-    $("#placeholder").bind("plothover", function (event, pos, item) {
-      $("#x").text(pos.x.toFixed(2));
-      $("#y").text(pos.y.toFixed(2));
-      if (item) {
-        if (previousPoint != item.datapoint) {
-          previousPoint = item.datapoint;
-          $("#tooltip").remove();
-          var x = item.datapoint[0].toFixed(2),
-          y = item.datapoint[1].toFixed(2);
-          showTooltip(item.pageX, item.pageY, transformer_names[item.dataIndex] + 
-                      "(" + x + "," + y + ")"); 
-        }
-      }
-      else {
+  $("#placeholder").bind("plothover", function (event, pos, item) {
+    $("#x").text(pos.x.toFixed(2));
+    $("#y").text(pos.y.toFixed(2));
+    if (item) {
+      if (previousPoint != item.datapoint) {
+        previousPoint = item.datapoint;
         $("#tooltip").remove();
-        previousPoint = null;            
+        var x = item.datapoint[0].toFixed(2),
+        y = item.datapoint[1].toFixed(2);
+        showTooltip(item.pageX, item.pageY, transformer_names[item.dataIndex] + 
+                    "(" + x + "," + y + ")"); 
       }
-    });
+    }
+    else {
+      $("#tooltip").remove();
+      previousPoint = null;            
+    }
+  });
   
 }
 
@@ -249,8 +235,9 @@ var app = {
           $(this).parent().parent().children()[1].innerHTML);
       });
       for (var i = 0; i < data_points.length; ++i) { 
-        if (jQuery.inArray(data_points[i][0], checkedTransformerNames) > -1) {          
-          points.push([parseFloat(data_points[i][1]), parseFloat(data_points[i][2])]);
+        if (jQuery.inArray(data_points[i][0], checkedTransformerNames) > -1) {
+          points.push(
+            [parseFloat(data_points[i][1]), parseFloat(data_points[i][2])]);
           transformer_names.push(data_points[i][0]); 
           
         }
@@ -322,7 +309,9 @@ var app = {
 
 
 $(document).ready(function() {
-  $('a.title').cluetip({dropShadow: false, cluetipClass: 'rounded', showTitle: false});
+  $('a.title').cluetip({
+    dropShadow: false, cluetipClass: 'rounded', showTitle: false
+  });
   
   $('a[rel*=facybox]').facybox();
 
@@ -349,11 +338,11 @@ $(document).ready(function() {
     var allChecked = true;
     $('.transformer_checkbox').each(function() {
       if (!$(this).attr('checked')) {
-       allChecked = false;
+        allChecked = false;
       }
     });
     if (!allChecked) {
-     $('#select_all').attr('checked', false);
+      $('#select_all').attr('checked', false);
     } else {
       $('#select_all').attr('checked', true);
     }
@@ -370,6 +359,7 @@ $(document).ready(function() {
         $(this).attr('checked', false);
       });      
     }
+    app.getPointsForGraphs();
   });
   
   
@@ -386,23 +376,14 @@ $(document).ready(function() {
       window.location.replace('/transformer_informations' + queryString);
     }
   });
-    
+  
   $('.importance_index').live('click', function () {
     var id = $(this).parents('tr:first').find('td:first').text();
     jQuery.facybox({ajax: '/transformer_informations/show/' + id});
     return false;
   });
 
-  // $('.transformer_checkbox').click(function () {
-  //   var ids = "";
-  //   $('.transformer_checkbox:checked').each(function () {
-  //     ids = ids + $(this).attr('id').split('_')[1] + ",";            
-  //   });
-  //   console.log(ids.slice(0, ids.length - 1));
-  //   var url = '/transformer_informations?' +
-  //             'transformer_ids=' + ids;
-  //   window.location.replace(url);
-  // });
-  
-  $("#transformers_table").tablesorter(); 
+  $("#transformers_table").tablesorter({
+    headers: {7 : {sorter: false}}
+  }); 
 });
