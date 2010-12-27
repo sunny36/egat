@@ -70,7 +70,8 @@ class TransformerInformation < ActiveRecord::Base
   before_create :update_recent
   
   def self.find_all_by_transformers(transformers)
-    self.most_recent.where("transformer_id in (?)", transformers.collect { |t| t.id }).all
+    self.most_recent.
+      where("transformer_id in (?)", transformers.collect { |t| t.id }).all
   end
   
   def self.get_data_points     
@@ -86,13 +87,16 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   def self.get_data_points_by_transformer_ids(transformer_ids)
-    self.get_points(self.most_recent.find_all_by_transformer_id(transformer_ids))    
+    self.
+      get_points(self.most_recent.find_all_by_transformer_id(transformer_ids))
   end
   
   def self.get_points(transformer_informations)
     points = []
     transformer_informations.each { |e| 
-      points << [e.transformer.transformer_name,  e.importance_index, e.percent_hi]
+      points << [e.transformer.transformer_name,
+                 e.importance_index,
+                 e.percent_hi]
     }
     return points     
   end
@@ -120,8 +124,7 @@ class TransformerInformation < ActiveRecord::Base
     score_message = "Low" if score == 2
     score_message = "Moderate" if score == 3
     score_message = "High" if score == 4
-    score_message = "Very High" if score == 5
-    
+    score_message = "Very High" if score == 5    
     return score_message
   end
   
@@ -154,10 +157,8 @@ class TransformerInformation < ActiveRecord::Base
     score_message = "Low" if damage_of_property_score == 2
     score_message = "Moderate" if damage_of_property_score == 3
     score_message = "High" if damage_of_property_score == 4
-    score_message = "Very High" if damage_of_property_score == 5
-    
-    return score_message
-    
+    score_message = "Very High" if damage_of_property_score == 5    
+    return score_message    
   end
   
   def importance_index    
@@ -240,7 +241,10 @@ class TransformerInformation < ActiveRecord::Base
   end
   
   def at_least_one_damage_of_property_must_be_checked
-    errors.add(:damage_of_properties, 'must have at least one checkbox ticked') if damage_of_property_ids.nil? || damage_of_property_ids.empty? 
+    if damage_of_property_ids.nil? || damage_of_property_ids.empty?
+      errors.add(:damage_of_properties,
+                 'must have at least one checkbox ticked')
+    end
   end
 
   
