@@ -1,27 +1,30 @@
 # == Schema Information
-# Schema version: 20100906162356
+# Schema version: 20101205200640
 #
 # Table name: transformer_informations
 #
-#  id                             :integer         not null, primary key
-#  bus_voltage_hv_id              :integer
-#  bus_voltage_lv_id              :integer
-#  created_at                     :datetime
-#  updated_at                     :datetime
-#  system_fault_level_hv          :float
-#  system_fault_level_lv          :float
-#  probability_of_force_outage_id :integer
-#  social_aspect_id               :integer
-#  system_location_id             :integer
-#  application_use_id             :integer
-#  system_stability_id            :integer
-#  pollution_id                   :integer
-#  n1_criteria_id                 :integer
-#  public_image_id                :integer
-#  system_fault_level_id          :integer
-#  transformer_id                 :integer
-#  recorded_date                  :date
-#  bus_voltage_id                 :integer
+#  id                                :integer(4)      not null, primary key
+#  bus_voltage_hv_id                 :integer(4)
+#  bus_voltage_lv_id                 :integer(4)
+#  created_at                        :datetime
+#  updated_at                        :datetime
+#  system_fault_level_hv             :float
+#  system_fault_level_lv             :float
+#  probability_of_force_outage_id    :integer(4)
+#  social_aspect_id                  :integer(4)
+#  system_location_id                :integer(4)
+#  application_use_id                :integer(4)
+#  system_stability_id               :integer(4)
+#  pollution_id                      :integer(4)
+#  n1_criteria_id                    :integer(4)
+#  public_image_id                   :integer(4)
+#  system_fault_level_id             :integer(4)
+#  transformer_id                    :integer(4)
+#  recorded_date                     :date
+#  bus_voltage_id                    :integer(4)
+#  overall_condition                 :float
+#  probability_of_force_outage_value :integer(4)
+#  recent                            :boolean(1)
 #
 
 class TransformerInformation < ActiveRecord::Base

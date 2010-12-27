@@ -1,18 +1,18 @@
 # == Schema Information
-# Schema version: 20100906080424
+# Schema version: 20101205200640
 #
 # Table name: load_pattern_per_years
 #
-#  id                         :integer         not null, primary key
-#  lteq_0_pt_6                :integer
-#  gt_0_pt_6_and_lteq_1       :integer
-#  gt_1_and_lteq_1_pt_2       :integer
-#  gt_1_pt_2_and_lteq_1_pt_5  :integer
-#  gt_1_pt_5                  :integer
+#  id                         :integer(4)      not null, primary key
+#  lteq_0_pt_6                :integer(4)
+#  gt_0_pt_6_and_lteq_1       :integer(4)
+#  gt_1_and_lteq_1_pt_2       :integer(4)
+#  gt_1_pt_2_and_lteq_1_pt_5  :integer(4)
+#  gt_1_pt_5                  :integer(4)
 #  created_at                 :datetime
 #  updated_at                 :datetime
-#  transformer_information_id :integer
-#  load_pattern_factor_id     :integer
+#  transformer_information_id :integer(4)
+#  load_pattern_factor_id     :integer(4)
 #
 
 class LoadPatternPerYear < ActiveRecord::Base

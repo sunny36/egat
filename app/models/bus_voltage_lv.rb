@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 20100906080424
+# Schema version: 20101205200640
 #
 # Table name: bus_voltage_lvs
 #
-#  id         :integer         not null, primary key
+#  id         :integer(4)      not null, primary key
 #  value      :string(255)
 #  created_at :datetime
 #  updated_at :datetime

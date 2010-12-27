@@ -1,13 +1,13 @@
 # == Schema Information
-# Schema version: 20100906080424
+# Schema version: 20101205200640
 #
 # Table name: brands
 #
-#  id            :integer         primary key
-#  created_at    :timestamp
-#  updated_at    :timestamp
+#  id            :integer(4)      not null, primary key
+#  created_at    :datetime
+#  updated_at    :datetime
 #  name          :string(255)
-#  score         :integer
+#  score         :integer(4)
 #  score_message :string(255)
 #
 

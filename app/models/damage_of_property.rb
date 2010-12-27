@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 20100906080424
+# Schema version: 20101205200640
 #
 # Table name: damage_of_properties
 #
-#  id         :integer         not null, primary key
+#  id         :integer(4)      not null, primary key
 #  value      :string(255)
 #  message    :string(255)
 #  created_at :datetime

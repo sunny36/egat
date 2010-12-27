@@ -1,32 +1,33 @@
 # == Schema Information
-# Schema version: 20100906080424
+# Schema version: 20101205200640
 #
 # Table name: transformer
 #
-#  id                  :integer         primary key
-#  version             :integer
+#  id                  :integer(4)      not null, primary key
+#  version             :integer(4)
 #  contract            :string(255)
 #  detail              :string(255)
 #  egatsn              :string(255)
-#  first_energize      :timestamp
+#  first_energize      :datetime
 #  hv                  :float
-#  item                :integer
+#  item                :integer(4)
 #  lv                  :float
 #  manufacturingserial :string(255)
 #  maxcapacity         :float
 #  old_egatsn          :string(255)
-#  phase               :integer
+#  phase               :integer(4)
 #  picture             :string(255)
 #  transformer_name    :string(255)
 #  tv                  :float
 #  vector_group        :string(255)
-#  first_substation    :decimal(, )
-#  manufacturing       :decimal(, )
-#  oltc_manufacturing  :decimal(, )
-#  oltc_model          :decimal(, )
-#  status              :decimal(, )
-#  winding_type        :decimal(, )
-#  brand_id            :integer
+#  first_substation    :integer(10)
+#  manufacturing       :integer(10)
+#  oltc_manufacturing  :integer(10)
+#  oltc_model          :integer(10)
+#  status              :integer(10)
+#  winding_type        :integer(10)
+#  brand_id            :integer(4)
+#  position            :string(255)
 #
 
 class Transformer < ActiveRecord::Base
