@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205200640) do
+ActiveRecord::Schema.define(:version => 20101205204531) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -862,6 +862,7 @@ ActiveRecord::Schema.define(:version => 20101205200640) do
     t.datetime "updated_at"
     t.integer  "c2h6"
     t.integer  "c2h6_score"
+    t.integer  "transformer_id"
   end
 
   create_table "oil_furan", :force => true do |t|
