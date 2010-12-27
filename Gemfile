@@ -12,6 +12,7 @@ group :test, :development do
   gem 'test-unit'
   gem 'factory_girl_rails'
   gem 'spreadsheet'
+  gem 'annotate-models'
 end
 
 # Use unicorn as the web server
