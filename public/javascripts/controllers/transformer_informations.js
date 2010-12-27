@@ -68,8 +68,9 @@ function plotRiskGraph(points, transformer_names) {
         $("#tooltip").remove();
         var x = item.datapoint[0].toFixed(2),
         y = item.datapoint[1].toFixed(2);
-        showTooltip(item.pageX, item.pageY, transformer_names[item.dataIndex] + 
-                    "(" + x + "," + y + ")"); 
+        showTooltip(
+          item.pageX, item.pageY, 
+          transformer_names[item.dataIndex] + "(" + x + "," + y + ")"); 
       }
     }
     else {
@@ -119,6 +120,7 @@ function plotImportanceIndex(points, transformer_names) {
              axisLabelFontSizePixels: 12,
              axisLabelFontFamily: 'Arial' }
   };
+
   var plot = $.plot(placeholder, [ { data: points}], options);
   o = plot.pointOffset({ x: 15, y: -1.2});
   placeholder.append('<div style="position:absolute;left:' + 
@@ -198,15 +200,12 @@ var app = {
     $('#transformer_information_bus_voltage_hv_id').change(function () {
       setSystemFaultLevelHvMva(); 
     });
-
     $('#transformer_information_system_fault_level_hv').blur(function () {
       setSystemFaultLevelHvMva(); 
     });
-    
     $('#transformer_information_bus_voltage_lv_id').change(function () {
       setSystemFaultLevelLvMva(); 
     });
-
     $('#transformer_information_system_fault_level_lv').blur(function () {
       setSystemFaultLevelLvMva(); 
     });    
@@ -251,26 +250,11 @@ var app = {
     });
   },
   
-  setupTransformerNameComboxBox: function () {
-    var converted;
-    if ($('#transformer_transformer_id').length > 0) {
-      converted = new Ext.form.ComboBox({
-        typeAhead: true,
-        triggerAction: 'all',
-        transform:'transformer_transformer_id',
-        width:200,
-        forceSelection:true
-      });
-    }
-    if ($('#transformer_information_transformer_id').length > 0) {
-      converted = new Ext.form.ComboBox({
-        typeAhead: true,
-        triggerAction: 'all',
-        transform:'transformer_information_transformer_id',
-        width:340,
-        forceSelection:true
-      });
-    }
+  setupTransformerNameComboxBox: function (id, width) {
+    var widgetsJsUrl = '/javascripts/widgets.js';
+    $.getScript(widgetsJsUrl, function () {
+      WIDGETS.transformerNameComboBox(id, width)
+    });
   },
   
   setupDamageOfProperty: function () {
@@ -327,7 +311,13 @@ $(document).ready(function() {
     app.getPointsForGraphs();
   }
 
-  app.setupTransformerNameComboxBox();
+  if ($('#transformer_transformer_id').length > 0) {
+    app.setupTransformerNameComboxBox('transformer_transformer_id', 200);
+  }
+  if ($('#transformer_information_transformer_id').length > 0) {
+    app.setupTransformerNameComboxBox(
+      'transformer_information_transformer_id', 200);
+  }
 
   app.setupDamageOfProperty();
   
