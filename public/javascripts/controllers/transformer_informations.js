@@ -36,7 +36,7 @@ function plotRiskGraph(points, transformer_names) {
              axisLabelUseCanvas: false,
              axisLabelFontSizePixels: 12,
              axisLabelFontFamily: 'Arial' },
-    xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100], 
+    xaxis: { min: 0, max: 100, ticks: [0, 40, 60, 100],
              axisLabel: 'Transformer Importance',
              axisLabelUseCanvas: true,
              axisLabelFontSizePixels: 12,
@@ -210,7 +210,7 @@ var app = {
       setSystemFaultLevelLvMva(); 
     });    
   },
-  
+
   setupRecordedDate: function () {
     $("#transformer_information_recorded_date").datepicker({
       showOn: 'both',
@@ -273,7 +273,7 @@ var app = {
           $('#damage_of_property_5').attr('disabled', false); 
         }
       });
-
+    
     $('#damage_of_property_5').click(function () {
       if ($('#damage_of_property_5').attr('checked')) { 
         $('#damage_of_property_1').attr('disabled', true); 

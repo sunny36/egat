@@ -7,6 +7,7 @@ var WIDGETS = {
       width: width,
       forceSelection:true
     });
+    return converted["el"] ["id"];
   }
 }
 

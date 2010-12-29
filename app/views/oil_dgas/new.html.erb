@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'controllers/oil_dgas'%>
+<% end %>
+
 <h1>New oil_dga</h1>
 
 <%= form_for(@oil_dga) do |f| %>
@@ -22,9 +27,57 @@
   </div>  
   <div class="clear"></div> 
   <br/>
+  <div class="grid_3">
+    <%= label :transformer_information, :transformer_id, "หม้อแปลงไฟฟ้า" %>
+  </div>
+  <div class="grid_4">
+    <%= 
+      @transformers = Transformer.order("transformer_name").all
+      f.collection_select(:transformer_id,  @transformers, :id,
+                          :transformer_name,{:include_blank => true}) 
+  %>  
+  </div>
+  <div class="clear"></div> 
+  <div class="grid_8">
+    <p><strong>หม้อแปลงไฟฟ้า :</strong><span id="transformer_name"> - </span></p>
+  </div>
+  <div class="grid_8">
+    <p>
+      <strong>Equipment No. :</strong>
+      <span id="transformer_equipment_no"> - </span>
+    </p>
+  </div>
+  <div class="clear"></div> 
+  <div class="grid_8">
+    <p>
+      <strong>MVA Rating :</strong>
+      <span id="transformer_mva_rating"> - </span>
+    </p>
+  </div>
+  <div class="grid_8">
+    <p>
+      <strong>HV Rating :</strong>
+      <span id="transformer_hv_rating"> - </span>
+    </p>
+  </div>
+  <div class="clear"></div> 
+
+  <div class="grid_8">
+    <p>
+      <strong>First Energized :</strong>
+      <span id="transformer_first_energized"> - </span>
+    </p>
+  </div>
+  <div class="grid_8">
+    <p>
+      <strong>Manufacture :</strong>
+      <span id="transformer_manufacture"> - </span>
+    </p>
+  </div>
+  <div class="clear"></div> 
+
   <div class="grid_1">
     <%= f.label :co2, 'CO2' %>
-
   </div>
   <div class="grid_3">
     <%= f.text_field :co2 %>
