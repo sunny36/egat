@@ -47,15 +47,26 @@
         <td>&nbsp;1</td>
         <td>Load Pattern</td>        
         <td>
-          <%= 
-            score_color(@transformer_information.load_pattern_per_year.load_pattern_factor.score) 
+          <%= 												
+						score_color(
+							@transformer_information.
+							load_pattern_per_year.
+							load_pattern_factor.score) 
           %>
         </td>
         <td>
-          <%= @transformer_information.load_pattern_per_year.load_pattern_factor.score_message %>
+          <%= 	
+						@transformer_information.
+						load_pattern_per_year.
+						load_pattern_factor.
+						score_message 
+					%>
         </td>
         <td>
-          <%= format("%.2f", @transformer_information.load_pattern_per_year.percentage) %>
+          <%= 
+					format("%.2f", 
+								 @transformer_information.load_pattern_per_year.percentage) 
+					%>
           %
         </td>
       </tr>
@@ -78,14 +89,18 @@
       <tr>
         <td>&nbsp;4</td>
         <td>System Stability</td>
-        <td><%= score_color(@transformer_information.system_stability.score) %></td>                
+        <td>
+					<%= score_color(@transformer_information.system_stability.score) %>
+				</td>                
         <td><%= @transformer_information.system_stability.score_message %></td>
         <td><%= @transformer_information.system_stability.value %></td>        
       </tr>
       <tr>
         <td>&nbsp;5</td>
         <td>Application/Use</td>
-        <td><%= score_color(@transformer_information.application_use.score) %></td>                
+        <td>
+					<%= score_color(@transformer_information.application_use.score) %>
+				</td>                
         <td><%= @transformer_information.application_use.score_message %></td>
         <td><%= @transformer_information.application_use.value %></td>                
       </tr>
@@ -95,7 +110,9 @@
         <td>
           <%= score_color(@transformer_information.system_fault_level_score) %>
         </td>                
-        <td><%= @transformer_information.system_fault_level_score_message %></td> 
+        <td>
+					<%= @transformer_information.system_fault_level_score_message %>
+				</td> 
         <td>
           <%= @transformer_information.system_fault_level_hv %>(HV),&nbsp;
           <%= @transformer_information.system_fault_level_lv %>(LV)&nbsp;
@@ -105,12 +122,19 @@
         <td>&nbsp;7</td>
         <td>Probability of Force Outage</td>
         <td>
-          <%= score_color(@transformer_information.probability_of_force_outage.score) %>
+          <%= 
+						score_color(@transformer_information.
+												probability_of_force_outage.score) 
+					%>
         </td>                        
         <td>
-          <%= @transformer_information.probability_of_force_outage.score_message %>
+          <%= 
+						@transformer_information.probability_of_force_outage.score_message 
+					%>
         </td>        
-        <td><%= @transformer_information.probability_of_force_outage_value %></td>                
+        <td>
+					<%= @transformer_information.probability_of_force_outage_value %>
+				</td>                
       </tr>
       <tr>
         <td>&nbsp;8</td>

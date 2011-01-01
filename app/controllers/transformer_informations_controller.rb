@@ -26,7 +26,8 @@ class TransformerInformationsController < ApplicationController
         @stations = Station.find_all_by_region(params[:region])
         names = @stations.collect { |s| s.name }
         transformers = Transformer.find_all_by_transformer_name_initials(names)
-        @transformer_informations = TransformerInformation.find_all_by_transformers(transformers)
+        @transformer_informations = 
+          TransformerInformation.find_all_by_transformers(transformers)
       else
         @transformer_informations = TransformerInformation.all
       end 
@@ -45,6 +46,9 @@ class TransformerInformationsController < ApplicationController
       @no_footer = true
     end
     @transformer_information = TransformerInformation.find(params[:id])
+    respond_to do |format|
+      format.html 
+    end    
   end
   
   def new
@@ -98,7 +102,8 @@ class TransformerInformationsController < ApplicationController
   def search 
     if params[:transformer_id]
       @transformer_informations = 
-        TransformerInformation.find_all_by_transformer_id(params[:transformer_id])
+        TransformerInformation.
+        find_all_by_transformer_id(params[:transformer_id])
     end
   end
   
@@ -109,6 +114,9 @@ class TransformerInformationsController < ApplicationController
       @no_footer = true
     end
     @transformer_information = TransformerInformation.find(params[:id])
+    respond_to do |format|
+      format.html 
+    end        
   end
   
 end
