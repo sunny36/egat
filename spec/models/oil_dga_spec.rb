@@ -303,5 +303,37 @@ describe OilDga do
       @oil_dga.percent_dgaf.should be_close(72.916, 0.01)
     end
   end
+
+  context "Transformer AT-KT7A" do 
+    it "should return correct scores" do
+      @oil_dga.h2 = 47
+      @oil_dga.ch4 = 12
+      @oil_dga.c2h6 = 11
+      @oil_dga.c2h4 = 0
+      @oil_dga.c2h2 = 0
+      @oil_dga.co = 694
+      @oil_dga.co2 = 3635
+      @oil_dga.save!
+      @oil_dga.h2_score.should eql(1)
+      @oil_dga.ch4_score.should eql(1)
+      @oil_dga.c2h6_score.should eql(1)
+      @oil_dga.c2h4_score.should eql(1)
+      @oil_dga.c2h2_score.should eql(1)
+      @oil_dga.co_score.should eql(1)
+      @oil_dga.co2_score.should eql(3)
+    end
+
+    #it "should return correct %DGAF" do
+      #@oil_dga.h2 = 47
+      #@oil_dga.ch4 = 12
+      #@oil_dga.c2h6 = 11
+      #@oil_dga.c2h4 = 0
+      #@oil_dga.c2h2 = 0
+      #@oil_dga.co = 694
+      #@oil_dga.co2 = 3635
+      #@oil_dga.save!
+      #@oil_dga.percent_dgaf.should be_close(18.75, 0.01)
+    #end
+  end
   
 end
