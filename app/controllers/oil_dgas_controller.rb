@@ -1,12 +1,10 @@
 class OilDgasController < ApplicationController
-  # GET /oil_dgas
-  # GET /oil_dgas.xml
   def index
-    @oil_dgas = OilDga.all
-
+    @oil_dgas = OilDga.find_all_by_transformer_id(params[:transformer_id])
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @oil_dgas }
+      ActiveRecord::Base.include_root_in_json = false
+      format.js { render :json => @oil_dgas.to_json }
     end
   end
 
@@ -41,7 +39,6 @@ class OilDgasController < ApplicationController
   # POST /oil_dgas.xml
   def create
     @oil_dga = OilDga.new(params[:oil_dga])
-
     respond_to do |format|
       if @oil_dga.save
         format.html { redirect_to(@oil_dga, :notice => 'OilDga was successfully created.') }

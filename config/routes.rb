@@ -6,8 +6,7 @@ Egat::Application.routes.draw do
       get 'importance_and_risk_table'
       
     end
-    collection do
-      
+    collection do      
       get 'search'
     end
   end
@@ -17,9 +16,12 @@ Egat::Application.routes.draw do
   #               :member => {:importance_and_risk_table => :get}
 
   resources :students
-  resources :transformers
-  # map.resources :students
-  # map.resources :transformers
+  resources :transformers do
+    resources :oil_dgas
+  end
+  
+
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
