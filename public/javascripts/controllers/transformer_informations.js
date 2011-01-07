@@ -359,7 +359,7 @@ $(document).ready(function() {
     var region = $('#station_station :selected').text();
     var queryString = "?";
     if (jQuery.url.param("graph") != undefined) {
-      queryString = "graph=" + jQuery.url.param("graph");
+      queryString += "graph=" + jQuery.url.param("graph");
     }    
     if (region != 'All') {
       queryString += "&region=" + encodeURI(region); 
