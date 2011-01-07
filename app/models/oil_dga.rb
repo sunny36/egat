@@ -48,7 +48,8 @@ class OilDga < ActiveRecord::Base
   
   def hif_factor
     HifOfOilDga.all.each do |i|
-      if percent_dgaf.between?(i.percent_dgaf_start, percent_dgaf_end)
+      i.percent_dgaf_end = 10000000 if i.percent_dgaf_end.nil? 
+      if percent_dgaf.between?(i.percent_dgaf_start, i.percent_dgaf_end)
         return i
       end
     end

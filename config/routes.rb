@@ -18,7 +18,11 @@ Egat::Application.routes.draw do
 
   resources :students
   resources :transformers do
-    resources :oil_dgas
+    resources :oil_dgas do
+      collection do
+        get :graph
+      end
+    end
   end
   
 

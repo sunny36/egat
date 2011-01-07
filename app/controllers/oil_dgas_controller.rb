@@ -1,6 +1,15 @@
 class OilDgasController < ApplicationController
   def index
-    @oil_dgas = OilDga.find_all_by_transformer_id(params[:transformer_id])
+    @oil_dgas = OilDga.where(:transformer_id => params[:transformer_id]).order("test_date DESC")    
+    respond_to do |format|
+      format.html {render :layout => false}# index.html.erb
+      # ActiveRecord::Base.include_root_in_json = false
+      # format.js { render :json => @oil_dgas.to_json }
+    end
+  end
+
+  def graph
+    @oil_dgas = OilDga.where(:transformer_id => params[:transformer_id]).order("test_date DESC")    
     respond_to do |format|
       format.html # index.html.erb
       ActiveRecord::Base.include_root_in_json = false

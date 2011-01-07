@@ -78,7 +78,11 @@
                 <%= transformer_information.transformer.egatsn %>
               </a>
             </td>
-            <td><%= transformer_information.percent_hi %></td>
+            <td>
+							<% link_to transformer_oil_dgas_path(transformer_information.transformer), {:rel => 'facybox'} do %>
+                <%= transformer_information.percent_hi %>
+              <% end %>              							
+						</td>
             <td>
               <% link_to transformer_information, {:rel => 'facybox'} do %>
                 <%= transformer_information.importance_index %>
