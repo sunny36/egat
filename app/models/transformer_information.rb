@@ -200,7 +200,7 @@ class TransformerInformation < ActiveRecord::Base
   
   def risk_probability
     RiskProbability.all.each do |rp|
-      return rp if self.overall_condition.between?(rp.start, rp.end)
+      return rp if self.overall_condition.round.between?(rp.start, rp.end)
     end
   end
   
