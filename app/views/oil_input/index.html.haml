@@ -1,0 +1,27 @@
+%h1
+  Oil Test
+= form_for :oil_dga do |form|
+  .grid_3.prefix_4
+    = label :transformer_information, :transformer_id, "หม้อแปลงไฟฟ้า" 
+  .grid_4
+    = transformer_names_drop_down_list(form)
+  .clear
+    &nbsp;
+  = render :partial => 'transformer_details'
+  #main_tank_dga
+    .grid_4
+      = label 'main_tank_dga', 'Main Tank DGA'
+      = select_tag 'main_tank_dga'
+    .grid_4
+      %br
+      %br
+      = link_to image_tag("icons/icon_addlink.gif", :id => 'main_tank_dga_add', :border=>2, :width => 15, :height => 15), "#" 
+      &nbsp;
+      = link_to image_tag("icons/icon_changelink.gif", :id => 'main_tank_dga_edit', :border=>2, :width => 15, :height => 15), "#" 
+      &nbsp;
+      = link_to image_tag("icons/icon_deletelink.gif", :id => 'main_tank_dga_delete', :border=>0, :width => 15, :height => 15), "#" 
+
+
+
+
+
