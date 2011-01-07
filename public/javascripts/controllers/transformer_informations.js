@@ -186,7 +186,7 @@ var app = {
   setupAjax: function () {
     jQuery.ajaxSetup({ 
       'beforeSend': function(xhr) {
-        xhr.setRequestHeader("Accept", "text/javascript");
+        xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, */*");
       }
     });    
   },
@@ -293,13 +293,15 @@ var app = {
 
 
 $(document).ready(function() {
+	app.setupAjax();
+	
   $('a.title').cluetip({
     dropShadow: false, cluetipClass: 'rounded', showTitle: false
   });
   
   $('a[rel*=facybox]').facybox();
 
-  app.setupAjax();
+ 
 
   app.hideElements(); 
   
