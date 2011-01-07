@@ -8,14 +8,10 @@ class OilDgasController < ApplicationController
     end
   end
 
-  # GET /oil_dgas/1
-  # GET /oil_dgas/1.xml
   def show
     @oil_dga = OilDga.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @oil_dga }
     end
   end
 
@@ -41,11 +37,10 @@ class OilDgasController < ApplicationController
     @oil_dga = OilDga.new(params[:oil_dga])
     respond_to do |format|
       if @oil_dga.save
-        format.html { redirect_to(@oil_dga, :notice => 'OilDga was successfully created.') }
-        format.xml  { render :xml => @oil_dga, :status => :created, :location => @oil_dga }
+        format.html { 
+          redirect_to(@oil_dga, :notice => 'OilDga was successfully created.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @oil_dga.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -54,14 +49,12 @@ class OilDgasController < ApplicationController
   # PUT /oil_dgas/1.xml
   def update
     @oil_dga = OilDga.find(params[:id])
-
     respond_to do |format|
       if @oil_dga.update_attributes(params[:oil_dga])
-        format.html { redirect_to(@oil_dga, :notice => 'OilDga was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { 
+          redirect_to(@oil_dga, :notice => 'OilDga was successfully updated.') }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @oil_dga.errors, :status => :unprocessable_entity }
       end
     end
   end
