@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205204531) do
+ActiveRecord::Schema.define(:version => 20110107134219) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -863,6 +863,8 @@ ActiveRecord::Schema.define(:version => 20101205204531) do
     t.integer  "c2h6"
     t.integer  "c2h6_score"
     t.integer  "transformer_id"
+    t.integer  "c3h6"
+    t.integer  "c3h8"
   end
 
   create_table "oil_furan", :force => true do |t|
@@ -1594,6 +1596,8 @@ ActiveRecord::Schema.define(:version => 20101205204531) do
     t.integer  "brand_id"
     t.string   "position"
   end
+
+  add_index "transformer", ["transformer_name"], :name => "transformer_name"
 
   create_table "transformer_history_move", :force => true do |t|
     t.integer  "version"
