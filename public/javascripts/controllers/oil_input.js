@@ -27,7 +27,7 @@ $(document).ready(function(){
       });
       $.getJSON('/transformers/' + transformerName, function(data) {
         var transformer = data;
-        $.getJSON('/transformers/' + transformer.id + '/oil_dgas', function(data) {
+        $.getJSON('/transformers/' + transformer.id + '/oil_dgas/graph', function(data) {
           var oil_dgas = data;
           $('select#main_tank_dga').append($('<option>').text("").val(""));
           for (var i = 0; i < oil_dgas.length; i++) {
