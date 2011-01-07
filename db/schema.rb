@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110107205151) do
+ActiveRecord::Schema.define(:version => 20110107215035) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -663,6 +663,7 @@ ActiveRecord::Schema.define(:version => 20110107205151) do
     t.integer  "percent_dgaf_end"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "color"
   end
 
   create_table "hot_line_oil_filter", :force => true do |t|
