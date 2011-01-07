@@ -39,13 +39,14 @@
   <% if params[:graph] == "risk" %>
     <%= 
       link_to "คลิกดูกราฟ Risk Matrix", 
-              :controller => "transformer_informations", :action => "index"
+              :controller => "transformer_informations", :action => "index",
+							:region => params[:region]
     %>    
   <% else %>
     <%= 
       link_to "คลิกดูกราฟความเสี่ยง", 
               :controller => "transformer_informations", :action => "index",
-              :graph => "risk" 
+              :graph => "risk", :region => params[:region] 
     %>    
   <% end %>
 </div>
