@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title Home
+    = stylesheet_link_tag '960', 'template', 'nav', 'colour', 'glow/1.7.0/widgets/widgets'
+    = javascript_include_tag 'jquery-1.4.2.min', 'glow/1.7.0/core/core', 'glow/1.7.0/widgets/widgets', 'controllers/home.js'
+
+    = csrf_meta_tag
+    %body
+      = render :partial => 'layouts/header'
+    #content.container_16.clearfix
+      = yield
+
