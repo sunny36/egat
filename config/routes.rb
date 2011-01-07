@@ -1,5 +1,6 @@
 Egat::Application.routes.draw do
   resources :oil_dgas
+  resources :oil_input
 
   resources :transformer_informations do
     member do 
