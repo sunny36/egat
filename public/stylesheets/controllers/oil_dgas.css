@@ -1,0 +1,13 @@
+.grid_3 select, .grid_3 input, .grid_3 textarea {
+  width: 100px;
+
+}
+
+.span-ppm {
+  font-size: 15px;
+}
+
+sub {
+  font-size: 12px;
+  vertical-align: bottom;
+}
