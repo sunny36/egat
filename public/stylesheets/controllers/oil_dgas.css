@@ -1,3 +1,8 @@
+.grid_4 select, .grid_4 input, .grid_4 textarea {
+  width: 100px;
+
+}
+
 .grid_3 select, .grid_3 input, .grid_3 textarea {
   width: 100px;
 
