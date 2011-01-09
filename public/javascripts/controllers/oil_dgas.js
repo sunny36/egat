@@ -26,34 +26,45 @@ var app = {
       /* TODO Get the newId that is returned */
       WIDGETS.transformerNameComboBox(id, width);
     });
-  }
+  },
+
+	getDataPointsForGraph: function() {
+		$.ajax({
+	    url: $.url.attr("path"),
+	    dataType: 'json',
+	    success: function(data) {
+	      var h2_points = [];
+	      var ch4_points = [];
+	      var c2h2_points = [];
+	      var c2h4_points = [];
+	      var c2h6_points = [];
+	      for (var i = 0; i < data.length; i++) {
+	        h2_points.push([data[i].test_date, data[i].h2]);
+	        ch4_points.push([data[i].test_date, data[i].ch4]);
+	        c2h2_points.push([data[i].test_date, data[i].c2h2]);
+	        c2h4_points.push([data[i].test_date, data[i].c2h4]);
+	        c2h6_points.push([data[i].test_date, data[i].c2h6]);
+	      }
+	      plotGraph('h2', 'h2_chart', h2_points, 'H2');
+	      plotGraph('ch4', 'ch4_chart', ch4_points, 'CH4');
+	      plotGraph('c2h2', 'c2h2_chart', c2h2_points, 'C2H2');
+	      plotGraph('c2h4', 'c2h4_chart', c2h2_points, 'C2H4');
+	      plotGraph('c2h6', 'c2h6_chart', c2h2_points, 'C2H6');
+	    }
+	  });	  
+	}
 };
 
 
 $(document).ready(function(){
-  $.ajax({
-    url: $.url.attr("path"),
-    dataType: 'json',
-    success: function(data) {
-      var h2_points = [];
-      var ch4_points = [];
-      var c2h2_points = [];
-      var c2h4_points = [];
-      var c2h6_points = [];
-      for (var i = 0; i < data.length; i++) {
-        h2_points.push([data[i].test_date, data[i].h2]);
-        ch4_points.push([data[i].test_date, data[i].ch4]);
-        c2h2_points.push([data[i].test_date, data[i].c2h2]);
-        c2h4_points.push([data[i].test_date, data[i].c2h4]);
-        c2h6_points.push([data[i].test_date, data[i].c2h6]);
-      }
-      plotGraph('h2', 'h2_chart', h2_points, 'H2');
-      plotGraph('ch4', 'ch4_chart', ch4_points, 'CH4');
-      plotGraph('c2h2', 'c2h2_chart', c2h2_points, 'C2H2');
-      plotGraph('c2h4', 'c2h4_chart', c2h2_points, 'C2H4');
-      plotGraph('c2h6', 'c2h6_chart', c2h2_points, 'C2H6');
-    }
-  });
+
+	if(($('#h2_chart').length > 0) && 
+		 ($('#ch4_chart').length > 0) &&
+		 ($('#c2h2_chart').length > 0) &&
+		 ($('#c2h4_chart').length > 0) &&
+		 ($('#c2h6_chart').length > 0)) {
+		app.getDataPointsForGraph();
+	}
 
   $('button.reset_zoom').click(function () {
     plot[$(this).attr('id')].resetZoom();
