@@ -46,6 +46,28 @@ class OilDga < ActiveRecord::Base
     return (numerator.to_f / denominator.to_f) * 100.0  
   end
   
+  # Validations
+  validates_presence_of :co2, :on => :create, :message => "can't be blank"
+  validates_presence_of :co, :on => :create, :message => "can't be blank"
+  validates_presence_of :h2, :on => :create, :message => "can't be blank"
+  validates_presence_of :ch4, :on => :create, :message => "can't be blank"
+  validates_presence_of :c2h2, :on => :create, :message => "can't be blank"
+  validates_presence_of :c2h4, :on => :create, :message => "can't be blank"
+  validates_presence_of :c2h6, :on => :create, :message => "can't be blank"
+  
+  validates_numericality_of :o2, :on => :create, :message => "is not a number"
+  validates_numericality_of :n2, :on => :create, :message => "is not a number"
+  validates_numericality_of :co2, :on => :create, :message => "is not a number"
+  validates_numericality_of :co, :on => :create, :message => "is not a number"
+  validates_numericality_of :h2, :on => :create, :message => "is not a number"
+  validates_numericality_of :ch4, :on => :create, :message => "is not a number"
+  validates_numericality_of :c2h2, :on => :create, :message => "is not a number"
+  validates_numericality_of :c2h4, :on => :create, :message => "is not a number"
+  validates_numericality_of :c2h6, :on => :create, :message => "is not a number"
+  validates_numericality_of :c3h6, :on => :create, :message => "is not a number"
+  validates_numericality_of :c3h8, :on => :create, :message => "is not a number"
+  #End Validations
+  
   def hif_factor
     HifOfOilDga.all.each do |i|
       i.percent_dgaf_end = 10000000 if i.percent_dgaf_end.nil? 
@@ -124,8 +146,5 @@ class OilDga < ActiveRecord::Base
       end
     end
   end
-  
-
-  
   
 end
