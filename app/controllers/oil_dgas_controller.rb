@@ -47,7 +47,7 @@ class OilDgasController < ApplicationController
     respond_to do |format|
       if @oil_dga.save
         format.html { 
-          redirect_to(@oil_dga, :notice => 'OilDga was successfully created.') }
+          redirect_to(oil_input_index_path, :notice => 'OilDga was successfully created.') }
       else
         format.html { render :action => "new" }
       end
@@ -73,10 +73,11 @@ class OilDgasController < ApplicationController
   def destroy
     @oil_dga = OilDga.find(params[:id])
     @oil_dga.destroy
-
     respond_to do |format|
       format.html { redirect_to(oil_dgas_url) }
       format.xml  { head :ok }
+      ActiveRecord::Base.include_root_in_json = false
+      format.js { render :json => OilDga.all.to_json }
     end
   end
 end

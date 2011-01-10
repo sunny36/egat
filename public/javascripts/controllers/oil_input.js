@@ -5,7 +5,55 @@ var app = {
       /* TODO Get the newId that is returned */
       WIDGETS.transformerNameComboBox(id, width);
     });
-  }
+  },
+
+	getTransformerDetails: function(transformerName, callback) {
+		$.getJSON('/transformers/' + transformerName, function(data) {
+			var transformer = data;
+			callback(transformer.id)
+		});
+	},
+	
+	redirectToEditMainTankDga: function(transformerId) {
+		var oilDgaId = $('#main_tank_dga :selected').val();
+		window.location.replace(
+			'/transformers/' + transformerId + '/oil_dgas/' + oilDgaId + '/edit');
+	},
+	
+	deleteMainTankDga: function() {
+		if ($('#main_tank_dga :selected').val().length > 0) { 
+			var oilDgaDate = $('#main_tank_dga :selected').text();
+			var transformerName = $('#ext-gen5').attr('value'); 
+	    var message = 
+				'Are you sure you want to delete the Main Tank DGA entry on ' + 
+				oilDgaDate + ' for ' + transformerName + '?';
+			if (confirm(message))	{
+				app.getTransformerDetails(transformerName, app.ajaxRequestDeleteOilDga);
+			}	else {
+				return;
+			}										
+		} else {
+			alert('Please make a selection.');
+			return;			
+		}					
+	},
+	
+	ajaxRequestDeleteOilDga: function(transformerId) {
+		var oilDgaId = $('#main_tank_dga :selected').val();
+		$.ajax({
+			type: 'DELETE',
+			url: '/transformers/' + transformerId + '/oil_dgas/' + oilDgaId,
+			data: {
+				authenticity_token: $('meta[name=csrf-token]').attr('content')
+			},
+			dataType: 'json',
+			success: function(data) {
+				var oilDgas = data;
+				$("select#main_tank_dga option[value='" + oilDgaId + "']").remove();
+				$("select#main_tank_dga").val("");
+			}
+		});					
+	}
 };
 
 $(document).ready(function(){
@@ -31,8 +79,7 @@ $(document).ready(function(){
           var oil_dgas = data;
           $('select#main_tank_dga').append($('<option>').text("").val(""));
           for (var i = 0; i < oil_dgas.length; i++) {
-            $('select#main_tank_dga')
-            .append($('<option>').text(oil_dgas[i].test_date).val(oil_dgas[i].id));
+            $('select#main_tank_dga').append($('<option>').text(oil_dgas[i].test_date).val(oil_dgas[i].id));
           }
           $('#main_tank_dga').slideDown();
         });
@@ -44,6 +91,17 @@ $(document).ready(function(){
     window.location.replace('/oil_dgas/new');
   });
 
+	$('#main_tank_dga_edit').click(function() {		
+		if ($('#main_tank_dga :selected').val().length > 0) {
+			var transformerName = $('#ext-gen5').attr('value'); 
+			app.getTransformerDetails(transformerName, app.redirectToEditMainTankDga);
+		} else {
+			alert('Please make a selection.');
+		}
+  });
 
-
+	$('#main_tank_dga_delete').click(function() {
+		app.deleteMainTankDga();
+  });
+  
 });
