@@ -3,20 +3,25 @@
     <thead>
       <tr>
         <th>Transformer Condition Criteria</th>
-        <th>HIF</th>
+        <th>Health Index Factor</th>
         <th>Condition</th>
         <th>Recent Date</th>
       </tr>
     </thead>
     <tbody>      
       <tr>
-        <td>Recent Date</td>
-        <td><%= @oil_dgas.first.hif_factor.hi_factor %></td>
-        <td>
-					<%= hif_color(@oil_dgas.first.hif_factor, @oil_dgas) %>
-				</td>
-        <td><%= @oil_dgas.first.test_date %></td>
+        <td>Main Tank DGA</td>
+				<% if @oil_dgas.count > 0 %>
+					<td><%= @oil_dgas.first.hif_factor.hi_factor %></td>
+	        <td>
+						<%= hif_color(@oil_dgas.first.hif_factor, @oil_dgas) %>
+					</td>
+	        <td><%= @oil_dgas.first.test_date %></td>	        
+				<% end %>
       </tr>
+			<tr>
+				<td>Furan</td>
+			</tr>
     </tbody>
   </table>
 </div>
