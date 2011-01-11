@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110107215035) do
+ActiveRecord::Schema.define(:version => 20110111075255) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1659,6 +1659,24 @@ ActiveRecord::Schema.define(:version => 20110107215035) do
     t.decimal  "pocelain_status_lv", :precision => 10, :scale => 0
     t.decimal  "pocelain_status_tv", :precision => 10, :scale => 0
     t.decimal  "transformer",        :precision => 10, :scale => 0
+  end
+
+  create_table "visual_inspection_conditions", :force => true do |t|
+    t.string   "name"
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "score"
+    t.string   "score_message"
+    t.integer  "visual_inspection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "condition"
+  end
+
+  create_table "visual_inspections", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "web_link", :force => true do |t|
