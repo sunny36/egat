@@ -1,4 +1,5 @@
 Egat::Application.routes.draw do
+  resources :visual_inspection
   resources :oil_dgas
   resources :oil_input
 
