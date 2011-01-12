@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110111130021) do
+ActiveRecord::Schema.define(:version => 20110112044344) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1661,7 +1661,7 @@ ActiveRecord::Schema.define(:version => 20110111130021) do
   end
 
   create_table "visual_inspection_conditions", :force => true do |t|
-    t.string   "name"
+    t.string   "description"
     t.integer  "start"
     t.integer  "end"
     t.string   "condition"
@@ -1670,6 +1670,7 @@ ActiveRecord::Schema.define(:version => 20110111130021) do
     t.integer  "visual_inspection_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "visual_inspections", :force => true do |t|
