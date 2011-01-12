@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110111075255) do
+ActiveRecord::Schema.define(:version => 20110111130021) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -641,18 +641,17 @@ ActiveRecord::Schema.define(:version => 20110111075255) do
     t.datetime "updated_at"
   end
 
-  create_table "general_condition", :force => true do |t|
-    t.integer  "version"
+  create_table "general_conditions", :force => true do |t|
     t.string   "test_by"
     t.datetime "test_date"
     t.string   "work_order"
     t.decimal  "animal_protect",   :precision => 10, :scale => 0
     t.decimal  "foundation",       :precision => 10, :scale => 0
     t.decimal  "ground_connector", :precision => 10, :scale => 0
-    t.decimal  "percentload",      :precision => 10, :scale => 0
+    t.decimal  "maxload",          :precision => 10, :scale => 0
     t.decimal  "perform_type",     :precision => 10, :scale => 0
     t.decimal  "sound",            :precision => 10, :scale => 0
-    t.decimal  "transformer",      :precision => 10, :scale => 0
+    t.decimal  "transformer_id",   :precision => 10, :scale => 0
     t.decimal  "vibration",        :precision => 10, :scale => 0
   end
 
@@ -1665,12 +1664,12 @@ ActiveRecord::Schema.define(:version => 20110111075255) do
     t.string   "name"
     t.integer  "start"
     t.integer  "end"
+    t.string   "condition"
     t.integer  "score"
     t.string   "score_message"
     t.integer  "visual_inspection_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "condition"
   end
 
   create_table "visual_inspections", :force => true do |t|
