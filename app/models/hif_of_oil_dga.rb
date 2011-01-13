@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101205200640
+# Schema version: 20110111130021
 #
 # Table name: hif_of_oil_dgas
 #
@@ -10,6 +10,7 @@
 #  percent_dgaf_end   :integer(4)
 #  created_at         :datetime
 #  updated_at         :datetime
+#  color              :string(255)
 #
 
 class HifOfOilDga < ActiveRecord::Base
