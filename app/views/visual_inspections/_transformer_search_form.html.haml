@@ -1,0 +1,7 @@
+= form_for :transformer do |form|
+  .grid_6.prefix_4.suffix_6
+    %p
+      = label :transformer, :transformer_id, "หม้อแปลงไฟฟ้า" 
+      = transformer_names_drop_down_list(form)
+  .grid_12.prefix_4
+    = form.submit 'Search'

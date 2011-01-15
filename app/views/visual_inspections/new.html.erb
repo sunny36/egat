@@ -1,0 +1,61 @@
+<div id="transformer_search">
+  <%= form_for [@transformer, @visual_inspection] do |f| -%>
+    <p>
+      <%= label :visual_inspection, :transformer_id,  "หม้อแปลงไฟฟ้า" %>
+      <%= transformer_names_drop_down_list(f, :transformer_id) %>
+    </p>
+    <p>
+      <%= f.label :test_type %>
+      <%= f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"]) %>
+    </p>
+    <p>
+      <%= f.label :test_by %>
+      <%= f.text_field :test_by%>      
+    </p>
+    <p>
+      <%= f.label :oltc_counter, 'OLTC Counter'%>
+      <%= f.text_field :oltc_counter%>
+    </p>    
+    <p>
+      <%= f.label :work_order, 'Work Order'%>
+      <%= f.text_field :work_order%>
+    </p>
+  <% end -%>
+</div>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">1. สภาพทั่วไป</a></li>
+    <li><a href="#tabs-2">2. Bushing Condition</a></li>
+  </ul>
+  <div id="tabs-1">
+    <h2>1. สภาพทั่วไป</h2>
+    <%= form_for :general_conditions do |general_condition_form|%>
+      <%= 
+        render :partial => 'general_conditions/max_load', 
+               :locals =>{:form => general_condition_form}
+      %>
+      <%= 
+        render :partial => 'general_conditions/sound', 
+               :locals =>{:form => general_condition_form}
+      %>
+      <%= 
+        render :partial => 'general_conditions/vibration', 
+               :locals =>{:form => general_condition_form}
+      %>
+      <%= 
+        render :partial => 'general_conditions/ground_connector', 
+               :locals =>{:form => general_condition_form}
+      %>
+      <%= 
+        render :partial => 'general_conditions/foundation', 
+               :locals =>{:form => general_condition_form}
+      %>
+      <%= 
+        render :partial => 'general_conditions/animal_protect', 
+               :locals =>{:form => general_condition_form}
+      %>
+    <% end -%>        
+  </div>
+</div>    
+
+
