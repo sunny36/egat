@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110115140727) do
+ActiveRecord::Schema.define(:version => 20110115144540) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -669,14 +669,15 @@ ActiveRecord::Schema.define(:version => 20110115140727) do
     t.string   "test_by"
     t.datetime "test_date"
     t.string   "work_order"
-    t.decimal  "animal_protect",   :precision => 10, :scale => 0
-    t.decimal  "foundation",       :precision => 10, :scale => 0
-    t.decimal  "ground_connector", :precision => 10, :scale => 0
-    t.decimal  "maxload",          :precision => 10, :scale => 0
-    t.decimal  "perform_type",     :precision => 10, :scale => 0
-    t.decimal  "sound",            :precision => 10, :scale => 0
-    t.decimal  "transformer_id",   :precision => 10, :scale => 0
-    t.decimal  "vibration",        :precision => 10, :scale => 0
+    t.decimal  "animal_protect",       :precision => 10, :scale => 0
+    t.decimal  "foundation",           :precision => 10, :scale => 0
+    t.decimal  "ground_connector",     :precision => 10, :scale => 0
+    t.decimal  "maxload",              :precision => 10, :scale => 0
+    t.decimal  "perform_type",         :precision => 10, :scale => 0
+    t.decimal  "sound",                :precision => 10, :scale => 0
+    t.decimal  "transformer_id",       :precision => 10, :scale => 0
+    t.decimal  "vibration",            :precision => 10, :scale => 0
+    t.integer  "visual_inspection_id"
   end
 
   create_table "hif_of_oil_dgas", :force => true do |t|
@@ -1685,6 +1686,7 @@ ActiveRecord::Schema.define(:version => 20110115140727) do
     t.date     "test_date"
     t.string   "oltc_counter"
     t.string   "work_order"
+    t.integer  "transformer_id"
   end
 
   create_table "web_link", :force => true do |t|
