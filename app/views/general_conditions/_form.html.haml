@@ -1,0 +1,10 @@
+= form_for ([transformer, general_condition]) do |form|
+  = render :partial => 'general_conditions/max_load', :locals =>{:form => form}
+  = render :partial => 'general_conditions/sound', :locals =>{:form => form}
+  = render :partial => 'general_conditions/vibration', :locals =>{:form => form}
+  = render :partial => 'general_conditions/ground_connector', :locals =>{:form => form}
+  = render :partial => 'general_conditions/foundation', :locals =>{:form => form}
+  = render :partial => 'general_conditions/animal_protect', :locals =>{:form => form}
+  .grid_16
+    = form.submit 'Save'
+
