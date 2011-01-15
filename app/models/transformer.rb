@@ -35,6 +35,9 @@ class Transformer < ActiveRecord::Base
   belongs_to :brand
   has_many :transformer_information
   has_many :oil_dgas
+  has_many :general_condition
+  has_many :bushing_condition
+  has_many :visual_inspection
   
   def self.find_all_by_transformer_name_initials(names)
     conditions = "transformer_name like ?"
@@ -44,6 +47,14 @@ class Transformer < ActiveRecord::Base
     names = names.map { |name| name + '-%'}
     x = [conditions] + names
     self.where(x).all
+  end
+
+  def self.find_by_id_or_transformer_name(id)
+    if id.to_i > 0
+      transformer = Transformer.find_by_id(id) 
+    else
+      transformer = Transformer.find_by_id_or_transformer_name(id)
+    end
   end
   
 end

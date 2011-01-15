@@ -10,4 +10,6 @@
 #
 
 class VisualInspection < ActiveRecord::Base
+  has_many :general_condition
+  belongs_to :transformer
 end
