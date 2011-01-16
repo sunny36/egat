@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/thedarkone/rails-dev-boost.git
+  revision: e6f3025ec5146c60836acbaf4549a517443bf216
+  specs:
+    rails-dev-boost (0.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -126,6 +132,7 @@ DEPENDENCIES
   haml
   mysql2
   rails (= 3.0.3)
+  rails-dev-boost!
   rspec-rails (~> 2.0.1)
   ruby-debug19
   spreadsheet

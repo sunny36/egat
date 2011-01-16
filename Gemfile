@@ -8,6 +8,10 @@ gem 'rails', '3.0.3'
 gem 'mysql2'
 gem 'haml'
 
+group :development do 
+  gem 'rails-dev-boost', :git => 'https://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
+end
+
 group :test, :development do
   gem "rspec-rails", "~> 2.0.1"
   gem 'test-unit'
