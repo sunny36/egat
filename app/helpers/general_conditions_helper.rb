@@ -1,13 +1,13 @@
 module GeneralConditionsHelper
   def max_load_label
-    visual_inspection_condition =
-      VisualInspectionCondition.where("name = 'maxload'")
-    label :general_condition, :maxload,
-      visual_inspection_condition.first.description
+    label_for :maxload
   end
-
+  
   def max_load_select_list(form)
-    maxload_list = VisualInspectionCondition.where("name = 'maxload'").order("score")
+    maxload_list =
+      VisualInspectionCondition.
+      where("table_name = 'general_conditions' AND name = 'maxload'").
+      order("score")
     maxload_list.each do |maxload|
       if maxload.start == 0
         maxload.condition = "<#{maxload.end + 1}%"
@@ -17,74 +17,64 @@ module GeneralConditionsHelper
         maxload.condition = "#{maxload.start} - #{maxload.end}%"
       end
     end
-    form.collection_select(:maxload, maxload_list, :id, :condition, 
+    form.collection_select(:maxload, maxload_list, :id, :condition,
                            {:include_blank => true})
   end
 
   def sound_label
-    sound_label_string = 
-      VisualInspectionCondition.where("name = 'sound'").first.description
-    label :general_condition, :sound, sound_label_string
+    label_for :sound
   end
 
   def sound_select_list(form)
-    sound_list = VisualInspectionCondition.where("name = 'sound'").order("score")
-    form.collection_select(:sound, sound_list, :id, :condition,
-                           {:include_blank => true})
-   
+    select_list_for :sound, form
   end
-
+  
   def vibration_label
-    vibration_label_string = 
-      VisualInspectionCondition.where("name = 'vibration'").first.description
-    label :general_condition, :vibration, vibration_label_string
+    label_for :vibration
   end
 
   def vibration_select_list(form)
-   vibration_list = 
-     VisualInspectionCondition.where("name = 'vibration'").order("score") 
-   form.collection_select(:vibration, vibration_list, :id, :condition,
-                          {:include_blank => true})
+    select_list_for :vibration, form
   end
 
   def ground_connector_label
-    ground_connector_label_string = 
-      VisualInspectionCondition.
-      where("name = 'ground_connector'").first.description
-    label :general_condition, :ground_connector, ground_connector_label_string
+    label_for :ground_connector
   end
 
   def ground_connector_select_list(form)
-   ground_connector_list = 
-     VisualInspectionCondition.where("name = 'ground_connector'").order("score") 
-   form.collection_select(:ground_connector, ground_connector_list, :id, 
-                          :condition, {:include_blank => true})
+    select_list_for :ground_connector, form
   end
 
   def foundation_label
-    foundation_label_string = 
-      VisualInspectionCondition.where("name = 'foundation'").first.description
-    label :general_condition, :foundation, foundation_label_string
+    label_for :foundation
   end
 
   def foundation_select_list(form)
-   foundation_list = 
-     VisualInspectionCondition.where("name = 'foundation'").order("score") 
-   form.collection_select(:foundation, foundation_list, :id, :condition,
-                          {:include_blank => true})
+    select_list_for :foundation, form
   end
 
   def animal_protect_label
-    animal_protect_label_string = 
-      VisualInspectionCondition.
-      where("name = 'animal_protect'").first.description
-    label :general_condition, :animal_protect, animal_protect_label_string
+    label_for :animal_protect
   end
 
   def animal_protect_select_list(form)
-   animal_protect_list = 
-     VisualInspectionCondition.where("name = 'animal_protect'").order("score") 
-   form.collection_select(:animal_protect, animal_protect_list, :id, 
-                          :condition, {:include_blank => true})
+    select_list_for :animal_protect, form
   end
+  
+  def label_for(field_name, required = true)
+    label_string = VisualInspectionCondition.
+      where("table_name = 'general_conditions' AND name = ?", field_name.to_s).
+      first.description
+    label_string = label_string + " *" if required
+    label :general_condition, field_name, label_string
+  end
+  
+  def select_list_for(field_name, form)
+    list = VisualInspectionCondition.
+      where("table_name = 'general_conditions' AND name = ?", field_name.to_s).
+      order("score")
+    form.collection_select(field_name, list, :id, :condition, 
+                           {:include_blank => true})    
+  end
+    
 end
