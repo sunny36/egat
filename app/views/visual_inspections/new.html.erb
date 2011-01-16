@@ -1,8 +1,10 @@
+<%= error_messages_for :visual_inspection, 
+  :header_message => "Please Try Again!", :class => 'error' %>
 <div id="transformer_search">
   <%= form_for [@transformer, @visual_inspection] do |f| -%>
     <div class="prefix_6 grid_4 suffix_6">
       <p>
-        <%= label :visual_inspection, :transformer_id,  "หม้อแปลงไฟฟ้า" %>
+        <%= f.label :transformer_id, "หม้อแปลงไฟฟ้า" %>
         <%= transformer_names_drop_down_list(f, :transformer_id) %>
       </p>
     </div>
