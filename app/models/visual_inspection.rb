@@ -10,6 +10,8 @@
 #
 
 class VisualInspection < ActiveRecord::Base
-  has_many :general_condition
+  has_one :general_condition
   belongs_to :transformer
+  
+  accepts_nested_attributes_for :general_condition
 end
