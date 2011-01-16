@@ -1,8 +1,9 @@
 Egat::Application.routes.draw do
-  resources :visual_inspection
+  
   resources :oil_dgas
   resources :oil_input
-
+  
+  
   resources :transformer_informations do
     member do 
       get 'importance_and_risk_table'
@@ -12,18 +13,23 @@ Egat::Application.routes.draw do
       get 'search'
     end
   end
-  # map.resources :transformer_informations, 
-  #               :collection => {:redirect_to_edit_if_exists => :get, 
-  #                               :search => :get},
-  #               :member => {:importance_and_risk_table => :get}
 
-  resources :students
+  resources :visual_inspections do
+    collection do
+      get 'search'
+    end
+  end
+  resources :general_conditions
+  
   resources :transformers do
+    resources :visual_inspections    
+    resources :bushing_conditions
     resources :oil_dgas do
       collection do
         get :graph
       end
     end
+    
   end
   
 
