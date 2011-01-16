@@ -12,6 +12,9 @@
     = csrf_meta_tag
     %body
       = render :partial => 'layouts/header'
-    #content.container_16.clearfix
+    #content.container_16.clearfix      
+      - if notice
+        %p.success
+          = notice
       = yield
 
