@@ -21,18 +21,29 @@ var APP = {
   },
 
   onTransformerNamChange: function(transformerId) {
-    window.location.href = "/transformers/" + transformerId + "/visual_inspection";
-  }
+    window.location.href = "/transformers/" + transformerId + "/visual_inspections";
+  },
+
+	setupDatePicker: function(id) {
+		$(id).datepicker({
+	    dateFormat: 'dd/mm/yy',
+	    buttonImage: "images/icon_calendar.gif"
+	  });	  
+	}
 };
 $(function() {
   if ($('#transformer_id').length > 0) {
-    APP.setupTransformerNameComboxBox();
+    APP.setupTransformerNameComboxBox('transformer_id');
   }
 
 	if ($('#visual_inspection_transformer_id').length > 0) {
     APP.setupTransformerNameComboxBox('visual_inspection_transformer_id');
   }
   
+	if ($('#visual_inspection_test_date').length > 0) {
+		APP.setupDatePicker('#visual_inspection_test_date');
+	}
+
 
 
 	$("#tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');

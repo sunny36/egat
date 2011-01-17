@@ -79,17 +79,17 @@
               </a>
             </td>
             <td>
-							<% link_to transformer_oil_dgas_path(transformer_information.transformer), {:rel => 'facybox'} do %>
+							<% link_to transformer_overall_conditions_path(transformer_information.transformer), {:rel => 'facebox'} do %>
                 <%= transformer_information.percent_hi %>
               <% end %>              							
 						</td>
             <td>
-              <% link_to transformer_information, {:rel => 'facybox'} do %>
+              <% link_to transformer_information, {:rel => 'facebox'} do %>
                 <%= transformer_information.importance_index %>
               <% end %>
             </td>
             <td>
-              <% link_to importance_and_risk_table_transformer_information_url(transformer_information.id), {:rel => 'facybox'} do %>
+              <% link_to importance_and_risk_table_transformer_information_url(transformer_information.id), {:rel => 'facebox'} do %>
                 <%= transformer_information.risk.risk %>
               <% end %>
             </td>
