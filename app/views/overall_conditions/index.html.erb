@@ -1,0 +1,24 @@
+<div class="grid_16">
+  <table>
+    <thead>
+      <th>No.</th>
+      <th>Transformer Condition Criteria</th>
+      <th>HIF</th>
+      <th>Condition</th>
+      <th>ข้อมูลล่าสุดที่ถูกบันทึก</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;1</td>
+        <td>General Condition</td>        
+        <td><%= general_condition_hi_factor(@general_condition) %></td>
+        <td>
+          <%= 
+            general_condition_factor_color(@general_condition, @visual_inspection, @transformer) 
+          %>
+        </td>
+        <td><%= general_condition_recent_date(@visual_inspection) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
