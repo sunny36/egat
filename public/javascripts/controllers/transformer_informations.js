@@ -299,8 +299,9 @@ $(document).ready(function() {
     dropShadow: false, cluetipClass: 'rounded', showTitle: false
   });
   
-  $('a[rel*=facybox]').facybox();
-
+ 	$.facebox.settings.closeImage = '/images/facebox/closelabel.png';
+	$.facebox.settings.loadingImage = '/images/facebox/loading.gif';
+	$('a[rel*=facebox]').facebox()
  
 
   app.hideElements(); 
