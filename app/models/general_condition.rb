@@ -29,4 +29,61 @@ class GeneralCondition < ActiveRecord::Base
   validates_presence_of :ground_connector, :message => "can't be blank"
   validates_presence_of :foundation, :message => "can't be blank"
   validates_presence_of :animal_protect, :message => "can't be blank"
+
+  def percent_general_condition_factor
+    (numerator/denominator) * 100.0
+  end
+  
+  def numerator
+    (max_load_times_weight + 
+     sound_times_weight + 
+     vibration_times_weight + 
+     ground_connector_times_weight + 
+     foundation_times_weight + 
+     animal_protect_times_weight).to_f
+  end
+  
+  def denominator 
+    fields = [:maxload, :sound, :vibration, :ground_connector, :foundation, :animal_protect]
+    sum = 0
+    fields.each do |f|
+      sum += (VisualInspectionCondition.max_score(f, :general_conditions) * 
+              VisualInspectionCondition.weight(f, :general_conditions)).to_f      
+    end
+    return sum
+  end
+
+  def max_load_times_weight
+    VisualInspectionCondition.find(self.maxload).score.to_i *
+    VisualInspectionCondition.weight(:maxload, :general_conditions)
+  end
+
+  def sound_times_weight
+    VisualInspectionCondition.find(self.sound).score.to_i *
+    VisualInspectionCondition.weight(:sound, :general_conditions)
+  end
+  
+  
+  def vibration_times_weight
+    VisualInspectionCondition.find(self.vibration).score.to_i *
+    VisualInspectionCondition.weight(:vibration, :general_conditions)
+  end
+  
+  def ground_connector_times_weight
+    VisualInspectionCondition.find(self.ground_connector).score.to_i *
+    VisualInspectionCondition.weight(:ground_connector, :general_conditions)
+  end
+
+  def foundation_times_weight
+    VisualInspectionCondition.find(self.foundation).score.to_i *
+    VisualInspectionCondition.weight(:foundation, :general_conditions)
+  end
+
+  def animal_protect_times_weight
+    VisualInspectionCondition.find(self.animal_protect).score.to_i *
+    VisualInspectionCondition.weight(:animal_protect, :general_conditions)
+  end
+  
+  
+  
 end

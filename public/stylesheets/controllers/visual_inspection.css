@@ -1,3 +1,9 @@
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
 /* Vertical Tabs ----------------------------------*/
 .ui-tabs-vertical { 
 	width: 68em; 
