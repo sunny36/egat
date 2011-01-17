@@ -19,10 +19,13 @@ Egat::Application.routes.draw do
       get 'search'
     end
   end
-  resources :general_conditions
+  
   
   resources :transformers do
-    resources :visual_inspections    
+    resources :overall_conditions
+    resources :visual_inspections do 
+      resources :general_conditions
+    end    
     resources :bushing_conditions
     resources :oil_dgas do
       collection do
