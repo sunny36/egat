@@ -20,6 +20,12 @@
 class VisualInspectionCondition < ActiveRecord::Base
 
   def self.weight(field_name, table_name)
-    self.where("name = ? AND table_name = ?", field_name.to_s, table_name.to_s).first.weight.to_i
+    self.where("name = ? AND table_name = ?", field_name.to_s, table_name.to_s).
+    first.weight.to_i
+  end
+  
+  def self.max_score(field_name, table_name)
+    self.where("name = ? AND table_name = ?", field_name.to_s, table_name.to_s).
+    order("score DESC").first.score.to_i
   end
 end
