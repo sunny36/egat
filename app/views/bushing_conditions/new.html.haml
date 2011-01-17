@@ -1,0 +1,56 @@
+= form_for ([@transformer, @bushing_condition]) do |form|
+  %h4 2.1 ด้าน HV
+  = render :partial => 'porcelain_status_hv'
+  = render :partial => 'porcelain_clean_hv'
+  = render :partial => 'oil_fail_hv'
+  = render :partial => 'oil_level_hv'
+  .grid_5.suffix_11
+    %p
+      = oil_color_hv_label
+      = oil_color_hv_select_list(form)  
+  %h4 2.2 ด้าน  LV
+  .grid_5.suffix_11
+    %p
+      = porcelain_status_lv_label
+      = porcelain_status_lv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = porcelain_clean_lv_label
+      = porcelain_clean_lv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = oil_fail_lv_label
+      = oil_fail_lv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = oil_level_lv_label
+      = oil_level_lv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = oil_color_lv_label
+      = oil_color_lv_select_list(form)  
+  %h4 2.3 ด้าน  TV
+  .grid_5.suffix_11
+    %p
+      = porcelain_status_tv_label
+      = porcelain_status_tv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = porcelain_clean_tv_label
+      = porcelain_clean_tv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = oil_fail_tv_label
+      = oil_fail_tv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = oil_level_tv_label
+      = oil_level_tv_select_list(form)
+  .grid_5.suffix_11
+    %p
+      = oil_color_tv_label
+      = oil_color_tv_select_list(form)  
+  .grid_16
+    = form.submit 'Save'
+
+
