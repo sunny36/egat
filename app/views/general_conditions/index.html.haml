@@ -1,0 +1,42 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th General Condition 
+        %th 
+          = hi_factor_color(@general_condition.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% General Condition Factor = 
+          = number_with_precision(@general_condition.percent_general_condition_factor, :precision => 2)
+      %tr
+        %td 
+          = description(:maxload)
+        %td
+          = maxload_condition(@general_condition)
+      %tr
+        %td 
+          = description(:sound)
+        %td
+          = sound_condition(@general_condition)        
+      %tr
+        %td 
+          = description(:vibration)
+        %td
+          = vibration_condition(@general_condition)
+      %tr
+        %td 
+          = description(:ground_connector)
+        %td
+          = ground_connector_condition(@general_condition)        
+      %tr
+        %td 
+          = description(:foundation)
+        %td
+          = foundation_condition(@general_condition)
+      %tr
+        %td 
+          = description(:animal_protect)
+        %td
+          = animal_protect_condition(@general_condition)        
