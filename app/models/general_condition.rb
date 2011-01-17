@@ -30,6 +30,13 @@ class GeneralCondition < ActiveRecord::Base
   validates_presence_of :foundation, :message => "can't be blank"
   validates_presence_of :animal_protect, :message => "can't be blank"
 
+  def hi_factor
+    GeneralConditionFactor.all.each do |i|
+      i.end = 100 if i.end.nil?
+      return i.hi_factor if percent_general_condition_factor.round.between?(i.start, i.end)
+    end
+  end
+  
   def percent_general_condition_factor
     (numerator/denominator) * 100.0
   end
