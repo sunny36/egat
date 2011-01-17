@@ -23,13 +23,10 @@ class GeneralCondition < ActiveRecord::Base
   belongs_to :visual_inspection
 
   #Validations
-  validates_presence_of :maxload, :on => :create, :message => "can't be blank"
-  validates_presence_of :sound, :on => :create, :message => "can't be blank"
-  validates_presence_of :vibration, :on => :create, :message => "can't be blank"
-  validates_presence_of :ground_connector, :on =>
-    :create, :message => "can't be blank"
-  validates_presence_of :foundation, :on => :create,
-    :message => "can't be blank"
-  validates_presence_of :animal_protect, :on => :create,
-    :message => "can't be blank"
+  validates_presence_of :maxload, :message => "can't be blank"
+  validates_presence_of :sound, :message => "can't be blank"
+  validates_presence_of :vibration, :message => "can't be blank"
+  validates_presence_of :ground_connector, :message => "can't be blank"
+  validates_presence_of :foundation, :message => "can't be blank"
+  validates_presence_of :animal_protect, :message => "can't be blank"
 end

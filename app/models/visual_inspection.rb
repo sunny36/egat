@@ -21,10 +21,10 @@ class VisualInspection < ActiveRecord::Base
   accepts_nested_attributes_for :general_condition
   
   #Validations
-  validates_presence_of :test_type, :on => :create, :message => "can't be blank"
-  validates_presence_of :test_by, :on => :create, :message => "can't be blank"
-  validates_presence_of :test_date, :on => :create, :message => "can't be blank"
-  validates_presence_of :oltc_counter, :on => :create, :message => "can't be blank"
-  validates_presence_of :work_order, :on => :create, :message => "can't be blank"
-  validates_presence_of :transformer_id, :on => :create, :message => "can't be blank"
+  validates_presence_of :test_type, :message => "can't be blank"
+  validates_presence_of :test_by, :message => "can't be blank"
+  validates_presence_of :test_date, :message => "can't be blank"
+  validates_presence_of :oltc_counter, :message => "can't be blank"
+  validates_presence_of :work_order, :message => "can't be blank"
+  validates_presence_of :transformer_id, :message => "can't be blank"
 end
