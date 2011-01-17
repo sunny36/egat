@@ -1,8 +1,7 @@
 module VisualInspectionsHelper
   include GeneralConditionsHelper
   def javascript_includes
-    javascript_include_tag('jquery-1.4.2.min',
-                           'jquery-ui-1.8.4.custom.min',
+    javascript_include_tag('jquery-ui-1.8.4.custom.min',
                            'ext-jquery-adapter', 'ext-all',
                            'jquery.url',
                            'controllers/visual_inspection')
@@ -23,4 +22,17 @@ module VisualInspectionsHelper
     end
   end
 
+  def edit_visual_inspection_link(transformer, visual_inspection)
+    link_to('Edit',
+            edit_transformer_visual_inspection_path(transformer,
+                                                    visual_inspection),
+            :class => 'edit')
+  end
+
+  def delete_visual_inspection_link(transformer, visual_inspection)
+    link_to('Delete',
+            transformer_visual_inspection_path(transformer,
+                                               visual_inspection),
+            :confirm => 'Are you sure?', :method => :delete, :class => 'delete')
+  end
 end

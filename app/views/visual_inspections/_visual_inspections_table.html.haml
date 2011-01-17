@@ -1,0 +1,13 @@
+%table#visual_inspections_table
+  %thead
+    %tr
+      %th Date
+      %th Action
+  %tbody
+  - @visual_inspections.each do |visual_inspection|
+    %tr
+      %td
+        = visual_inspection.test_date.strftime("%d/%m/%Y")
+      %td
+        = edit_visual_inspection_link(@transformer, visual_inspection)
+        = delete_visual_inspection_link(@transformer, visual_inspection)

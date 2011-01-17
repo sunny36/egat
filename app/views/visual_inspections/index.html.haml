@@ -1,9 +1,5 @@
 %h1 Visual Inspection
-= form_for :transformer do |form|
-  .grid_6.prefix_4.suffix_6
-    %p
-      = label :transformer, :transformer_id, "หม้อแปลงไฟฟ้า" 
-      = transformer_names_drop_down_list(form)
-  .grid_12.prefix_4
-    = form.submit 'Search'
-  = render :partial => 'transformer_details', :locals => {:transformer => @transformer}
+= render :partial => 'transformer_search_form'
+#visual_inspections.grid_16
+  %h2 รายการ Visual Inspection ที่เคยบันทึกของหม้อแปลงตัวนี้  
+  = render :partial => 'visual_inspections_table'
