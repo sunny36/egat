@@ -1,12 +1,16 @@
-Factory.define :oil_dga do |od|
-  od.test_type "Commisioning"
-  od.test_date { Date.today.to_s }
-  od.work_order "XXX"
-  od.co2 0
-  od.co 0
-  od.h2 0
-  od.ch4 0
-  od.c2h2 0
-  od.c2h4 0
-  od.c2h6 0  
+Factory.define :oil_dga do |oil_dga|
+  oil_dga.test_type "Commisioning"
+  oil_dga.test_date { Date.today.to_s }
+  oil_dga.work_order "XXX"
+  oil_dga.o2 0
+  oil_dga.n2 0
+  oil_dga.co2 0
+  oil_dga.co 0
+  oil_dga.h2 0
+  oil_dga.ch4 0
+  oil_dga.c2h2 0
+  oil_dga.c2h4 0
+  oil_dga.c2h6 0  
+  oil_dga.c3h6 0
+  oil_dga.c3h8 0
 end
