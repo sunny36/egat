@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110117054000) do
+ActiveRecord::Schema.define(:version => 20110118024006) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -110,6 +110,16 @@ ActiveRecord::Schema.define(:version => 20110117054000) do
     t.string   "yeartv"
     t.decimal  "perform_type", :precision => 10, :scale => 0
     t.decimal  "transformer",  :precision => 10, :scale => 0
+  end
+
+  create_table "bushing_condition_factors", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "color"
   end
 
   create_table "bushing_conditions", :force => true do |t|
