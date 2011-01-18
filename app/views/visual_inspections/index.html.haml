@@ -1,5 +1,6 @@
 %h1 Visual Inspection
 = render :partial => 'transformer_search_form'
 #visual_inspections.grid_16
+  = link_to 'เพ่ิมรายการใหม่', new_transformer_visual_inspection_path(@transformer)
   %h2 รายการ Visual Inspection ที่เคยบันทึกของหม้อแปลงตัวนี้  
   = render :partial => 'visual_inspections_table'

@@ -4,10 +4,7 @@
   = render :partial => 'porcelain_clean_hv'
   = render :partial => 'oil_fail_hv'
   = render :partial => 'oil_level_hv'
-  .grid_5.suffix_11
-    %p
-      = oil_color_hv_label
-      = oil_color_hv_select_list(form)  
+  = render :partial => 'oil_color_hv'
   %h4 2.2 ด้าน  LV
   .grid_5.suffix_11
     %p
