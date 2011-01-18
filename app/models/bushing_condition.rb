@@ -29,4 +29,26 @@
 
 class BushingCondition < ActiveRecord::Base
   belongs_to :transformer
+
+  def denominator(side)
+    fields = get_fields_for(side)
+    sum = 0
+    fields.each do |f|
+      sum += (VisualInspectionCondition.max_score(f, :bushing_conditions) *
+              VisualInspectionCondition.weight(f, :bushing_conditions)).to_f
+    end
+    return sum
+  end
+  
+  def get_fields_for(side)
+    fields = ['porcelain_status', 'porcelain_clean', 'oil_fail', 'oil_level', 
+              'oil_color']
+    if side == :hv
+      fields.map {|item| item + '_hv'}
+    elsif side == :lv
+      fields.map {|item| item + '_lv'}      
+    elsif side == :tv
+      fields.map {|item| item + '_tv'}      
+    end          
+  end
 end
