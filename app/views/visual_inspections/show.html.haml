@@ -1,0 +1,30 @@
+%p
+  %strong Transformer Name:
+  = @visual_inspection.transformer.transformer_name
+%p
+  %strong วาระการตรวจสอบ:
+  = @visual_inspection.test_type
+%p
+  %strong ผู้ตรวจสอบ
+  = @visual_inspection.test_by
+%p
+  %strong วันท่ีตรวจสอบ
+  = @visual_inspection.test_date.strftime("%d/%m/%Y")
+%p
+  %strong OLTC Counter
+  = @visual_inspection.oltc_counter
+%p
+  %strong เลขที่ใบสั่งงาน
+  = @visual_inspection.work_order
+.clear
+  &nbsp;
+#tabs
+  %ul 
+    %li
+      %a{:href => "#tabs-1"} 1. สภาพทั่วไป
+    %li
+      %a{:href => "#tabs-2"} 2. Bushing Condition
+  #tabs-1
+    %h2 1. สภาพทั่วไป
+  #tabs-2
+    %h2 2. สภาพทั่วไป

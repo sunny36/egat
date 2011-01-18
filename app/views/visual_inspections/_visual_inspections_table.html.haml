@@ -8,6 +8,9 @@
     %tr
       %td
         = visual_inspection.test_date.strftime("%d/%m/%Y")
-      %td
+      %td{:colspan => 3}
+        = show_visual_inspection_link(@transformer, visual_inspection)
+        |
         = edit_visual_inspection_link(@transformer, visual_inspection)
+        |
         = delete_visual_inspection_link(@transformer, visual_inspection)

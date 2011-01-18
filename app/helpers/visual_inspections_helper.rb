@@ -35,4 +35,8 @@ module VisualInspectionsHelper
                                                visual_inspection),
             :confirm => 'Are you sure?', :method => :delete, :class => 'delete')
   end
+  
+  def show_visual_inspection_link(transformer, visual_inspection)
+    link_to('Show', transformer_visual_inspection_path(transformer, visual_inspection))
+  end
 end
