@@ -10,19 +10,19 @@
     </div>
     <div class="grid_3">
       <p>
-        <%= f.label :test_type %>
-        <%= f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"]) %>
+        <%= f.label :test_type, 'วาระการตรวจสอบ' %>
+        <%= f.select(:test_type, ["Commissioning", "Weekly", "1 year"]) %>
       </p>
     </div>
     <div class="grid_3">
       <p>
-        <%= f.label :test_by %>
+        <%= f.label :test_by, 'ผู้ตรวจสอบ' %>
         <%= f.text_field :test_by%>      
       </p>
     </div>
     <div class="grid_3">
       <p>
-        <%= f.label :test_date %>
+        <%= f.label :test_date, 'วันท่ีตรวจสอบ' %>
         <%= f.text_field :test_date%>      
       </p>
     </div>    
@@ -34,7 +34,7 @@
     </div>
     <div class="grid_3">
       <p>
-        <%= f.label :work_order, 'Work Order'%>
+        <%= f.label :work_order, 'เลขที่ใบสั่งงาน'%>
         <%= f.text_field :work_order%>
       </p>
     </div>
