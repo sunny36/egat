@@ -1,4 +1,4 @@
 .grid_5.suffix_7
   %p
-    = animal_protect_label(form)
-    = animal_protect_select_list(form)
+    = label_for(:animal_protect, :general_conditions, form)
+    = select_list_for(:animal_protect, :general_conditions, form)
