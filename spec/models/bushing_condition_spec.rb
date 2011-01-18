@@ -13,7 +13,7 @@ describe BushingCondition do
   
   it "should return the correct denominator given side" do 
     bushing_condition = BushingCondition.new
-    bushing_condition.denominator(:hv).should be_close(90.0, 0.01)
+    bushing_condition.denominator(:hv).should be_close(65.0, 0.01)
   end
   
 end
