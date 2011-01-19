@@ -38,6 +38,7 @@ class Transformer < ActiveRecord::Base
   has_many :general_condition
   has_many :bushing_condition
   has_many :visual_inspection
+  has_many :winding_type
   
   def self.find_all_by_transformer_name_initials(names)
     conditions = "transformer_name like ?"
