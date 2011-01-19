@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119061815) do
+ActiveRecord::Schema.define(:version => 20110119072810) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1637,7 +1637,7 @@ ActiveRecord::Schema.define(:version => 20110119061815) do
     t.decimal  "first_substation",    :precision => 10, :scale => 0
     t.decimal  "manufacturing",       :precision => 10, :scale => 0
     t.decimal  "status",              :precision => 10, :scale => 0
-    t.decimal  "winding_type",        :precision => 10, :scale => 0
+    t.decimal  "winding_type_id",     :precision => 10, :scale => 0
     t.integer  "brand_id"
     t.string   "position"
     t.string   "oltc_manufacturer"
@@ -1718,9 +1718,8 @@ ActiveRecord::Schema.define(:version => 20110119061815) do
     t.integer "version"
   end
 
-  create_table "winding_type", :force => true do |t|
-    t.integer "version"
-    t.string  "description"
+  create_table "winding_types", :force => true do |t|
+    t.string "description"
   end
 
 end
