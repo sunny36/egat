@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110118024006) do
+ActiveRecord::Schema.define(:version => 20110119061815) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -113,13 +113,13 @@ ActiveRecord::Schema.define(:version => 20110118024006) do
   end
 
   create_table "bushing_condition_factors", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "hi_factor"
     t.string   "condition"
     t.integer  "start"
     t.integer  "end"
     t.string   "color"
+    t.datetime "updated_at"
+    t.datetime "created_at"
   end
 
   create_table "bushing_conditions", :force => true do |t|
@@ -1636,12 +1636,12 @@ ActiveRecord::Schema.define(:version => 20110118024006) do
     t.string   "vector_group"
     t.decimal  "first_substation",    :precision => 10, :scale => 0
     t.decimal  "manufacturing",       :precision => 10, :scale => 0
-    t.decimal  "oltc_manufacturing",  :precision => 10, :scale => 0
-    t.decimal  "oltc_model",          :precision => 10, :scale => 0
     t.decimal  "status",              :precision => 10, :scale => 0
     t.decimal  "winding_type",        :precision => 10, :scale => 0
     t.integer  "brand_id"
     t.string   "position"
+    t.string   "oltc_manufacturer"
+    t.string   "oltc_type"
   end
 
   add_index "transformer", ["transformer_name"], :name => "transformer_name"
