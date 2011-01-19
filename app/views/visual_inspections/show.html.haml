@@ -1,6 +1,30 @@
 %p
   %strong Transformer Name:
   = @visual_inspection.transformer.transformer_name
+%p 
+  %strong Equipment No. 
+  = @visual_inspection.transformer.egatsn
+%p 
+  %strong MVA Rating: 
+  = @visual_inspection.transformer.maxcapacity.to_s + " MVA"
+%p
+  %strong HV Rating: 
+  = @visual_inspection.transformer.hv.to_s + " kV"
+%p 
+  %strong First Energized: 
+  = @visual_inspection.transformer.first_energize.strftime("%d/%m/%Y")
+%p 
+  %strong OLTC Manufacturer: 
+  = @visual_inspection.transformer.oltc_manufacturer
+%p 
+  %strong OLTC Type: 
+  = @visual_inspection.transformer.oltc_type
+%p
+  %strong Vectory Group: 
+  = @visual_inspection.transformer.vector_group
+%p
+  %strong Winding Type: 
+  = WindingType.find(@visual_inspection.transformer.winding_type_id).description
 %p
   %strong วาระการตรวจสอบ:
   = @visual_inspection.test_type
