@@ -190,6 +190,21 @@ small {
 	padding-left:10px;
 }
 
+dt {
+  float: left;
+  width: 200px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+dd {
+  float: left;
+  font-size: 17px;
+}
+dt, dd {
+  display: inline;
+}
+
 input, textarea, select{
 	border:1px solid;
 	font-family:inherit;
