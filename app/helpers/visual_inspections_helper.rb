@@ -1,4 +1,8 @@
 module VisualInspectionsHelper
+
+  include TransformersHelper
+
+
   def javascript_includes
     javascript_include_tag('jquery-ui-1.8.4.custom.min',
                            'ext-jquery-adapter', 'ext-all',
@@ -76,6 +80,38 @@ module VisualInspectionsHelper
     end
     form.collection_select(:maxload, maxload_list, :id, :condition,
                            {:include_blank => true})
+  end
+
+  def description_for(field_name, table_name, remove_leading_number = true)
+    description = VisualInspectionCondition.where("name = ? AND table_name = ?", 
+                                                  field_name.to_s, 
+                                                  table_name.to_s).
+                                                  first.description
+    if remove_leading_number
+      description.split(" ", 2).second
+    else 
+      description
+    end
+  end
+
+  def condition(visual_inspection, klass, field_name)
+    id = klass.find_by_visual_inspection_id(visual_inspection.id).
+      send(field_name.to_s)
+    visual_inspection_condition = VisualInspectionCondition.find(id)
+    unless (visual_inspection_condition.start.nil? && 
+            visual_inspection_condition.end.nil?)
+      if visual_inspection_condition.start == 0
+        condition = "<=#{visual_inspection_condition.end}%"
+      elsif visual_inspection_condition.end.nil?
+        condition = ">#{visual_inspection_condition.start - 1}%"
+      else
+        condition = 
+          "#{visual_inspection_condition.start} - #{visual_inspection_condition.end}"
+      end
+    else
+      condition = visual_inspection_condition.condition
+    end
+    return condition
   end
 
 

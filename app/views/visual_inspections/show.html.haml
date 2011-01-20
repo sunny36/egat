@@ -1,47 +1,76 @@
-%p
-  %strong Transformer Name:
-  = @visual_inspection.transformer.transformer_name
-%p 
-  %strong Equipment No. 
-  = @visual_inspection.transformer.egatsn
-%p 
-  %strong MVA Rating: 
-  = @visual_inspection.transformer.maxcapacity.to_s + " MVA"
-%p
-  %strong HV Rating: 
-  = @visual_inspection.transformer.hv.to_s + " kV"
-%p 
-  %strong First Energized: 
-  = @visual_inspection.transformer.first_energize.strftime("%d/%m/%Y")
-%p 
-  %strong OLTC Manufacturer: 
-  = @visual_inspection.transformer.oltc_manufacturer
-%p 
-  %strong OLTC Type: 
-  = @visual_inspection.transformer.oltc_type
-%p
-  %strong Vectory Group: 
-  = @visual_inspection.transformer.vector_group
-%p
-  %strong Winding Type: 
-  = WindingType.find(@visual_inspection.transformer.winding_type_id).description
-%p
-  %strong วาระการตรวจสอบ:
-  = @visual_inspection.test_type
-%p
-  %strong ผู้ตรวจสอบ
-  = @visual_inspection.test_by
-%p
-  %strong วันท่ีตรวจสอบ
-  = @visual_inspection.test_date.strftime("%d/%m/%Y")
-%p
-  %strong OLTC Counter
-  = @visual_inspection.oltc_counter
-%p
-  %strong เลขที่ใบสั่งงาน
-  = @visual_inspection.work_order
+%h1 Visual Inspection
+%dl
+  .grid_8
+    %dt Transformer Name
+    %dd
+      = " : " + @visual_inspection.transformer.transformer_name
+  .grid_8
+    %dt Equipment No. 
+    %dd
+      = " : " + @visual_inspection.transformer.egatsn
+  .grid_8
+    %dt MVA Rating
+    %dd
+      = " : " + @visual_inspection.transformer.maxcapacity.to_s + " MVA"
+  .grid_8
+    %dt HV Rating 
+    %dd
+      = " : " + @visual_inspection.transformer.hv.to_s + " kV"
+  .grid_8
+    %dt First Energized: 
+    %dd
+      = " : " + @visual_inspection.transformer.first_energize.strftime("%d/%m/%Y")
+  .grid_8
+    %dt Manufacturer
+    %dd
+      = " : " + @visual_inspection.transformer.brand.name
+  .grid_8
+    %dt OLTC Manufacturer 
+    %dd
+      = " : " + @visual_inspection.transformer.oltc_manufacturer
+  .grid_8
+    %dt OLTC Type 
+    %dd
+      = " : " + @visual_inspection.transformer.oltc_type
+  .grid_8
+    %dt Vectory Group
+    %dd
+      = " : " + @visual_inspection.transformer.vector_group
+  .grid_8
+    %dt Winding Type 
+    %dd
+      = " : " + transformer_winding_type(@visual_inspection.transformer)
 .clear
   &nbsp;
+
+%br
+%hr
+
+%dl
+  .grid_8
+    %dt วาระการตรวจสอบ
+    %dd
+      = " : " + @visual_inspection.test_type
+  .grid_8
+    %dt ผู้ตรวจสอบ
+    %dd
+      = " : " + @visual_inspection.test_by
+  .grid_8
+    %dt วันท่ีตรวจสอบ
+    %dd
+      = " : " + @visual_inspection.test_date.strftime("%d/%m/%Y")
+  .grid_8
+    %dt OLTC Counter
+    %dd
+      = " : " + @visual_inspection.oltc_counter
+  .grid_8
+    %dt เลขที่ใบสั่งงาน
+    %dd
+      = " : " + @visual_inspection.work_order
+.clear
+  &nbsp;
+%br
+%hr
 #tabs
   %ul 
     %li
@@ -50,5 +79,40 @@
       %a{:href => "#tabs-2"} 2. Bushing Condition
   #tabs-1
     %h2 1. สภาพทั่วไป
+    %dl
+      .grid_8.suffix_8
+        %dt 
+          = description_for(:maxload, :general_conditions)
+        %dd 
+          = " : " + condition(@visual_inspection, GeneralCondition, :maxload)
+      .grid_8.suffix_8
+        %dt 
+          = description_for(:sound, :general_conditions)
+        %dd 
+          = " : " + condition(@visual_inspection, GeneralCondition, :sound)
+      .grid_8.suffix_8
+        %dt 
+          = description_for(:vibration, :general_conditions)
+        %dd 
+          = " : " + condition(@visual_inspection, GeneralCondition, :vibration)
+      .grid_8.suffix_8
+        %dt 
+          = description_for(:ground_connector, :general_conditions)
+        %dd 
+          = " : " + condition(@visual_inspection, GeneralCondition, :ground_connector)
+      .grid_8.suffix_8
+        %dt 
+          = description_for(:foundation, :general_conditions)
+        %dd 
+          = " : " + condition(@visual_inspection, GeneralCondition, :foundation)
+      .grid_8.suffix_8
+        %dt 
+          = description_for(:animal_protect, :general_conditions)
+        %dd 
+          = " : " + condition(@visual_inspection, GeneralCondition, :animal_protect)
+
+
+
+
   #tabs-2
     %h2 2. สภาพทั่วไป
