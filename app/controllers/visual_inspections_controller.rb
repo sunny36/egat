@@ -13,6 +13,7 @@ class VisualInspectionsController < ApplicationController
     @transformer = Transformer.find(params[:transformer_id])
     @visual_inspection = VisualInspection.new
     @visual_inspection.build_general_condition
+    @visual_inspection.build_bushing_condition
   end
 
   def create
