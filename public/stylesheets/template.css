@@ -177,6 +177,11 @@ th, td {
 
 /* Forms */
 
+legend {
+	font-weight: bold;
+	font-size: 19px;
+}
+
 label {
   display:block;
   font-size:17px;

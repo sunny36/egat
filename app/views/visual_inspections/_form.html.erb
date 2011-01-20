@@ -45,7 +45,7 @@
         <li><a href="#tabs-2">2. Bushing Condition</a></li>
       </ul>
       <div id="tabs-1">
-        <h2>1. สภาพทั่วไป</h2>
+        <h2>1. สภาพทั่วไป *</h2>
         <%= f.fields_for :general_condition do |general_condition_f|%>
           <%= 
             render :partial => 'general_conditions/max_load', 
@@ -74,7 +74,89 @@
         <% end -%>        
       </div>
       <div id="tabs-2">
-        <h2>2. สภาพทั่วไป</h2>
+        <h2>2. Bushing Condition</h2>
+        <%= f.fields_for :bushing_condition do |bushing_condition_f|%>
+          <fieldset>
+            <legend>2.1 ด้าน HV. *</legend>
+            <%= 
+              render :partial => 'bushing_conditions/porcelain_status_hv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/porcelain_status_hv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/porcelain_clean_hv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/oil_fail_hv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/oil_level_hv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/oil_color_hv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>            
+          <fieldset>
+            <legend>2.2 ด้าน LV. *</legend>
+            <%= 
+              render :partial => 'bushing_conditions/porcelain_status_lv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>            
+            <%=
+              render :partial => 'bushing_conditions/porcelain_status_lv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/porcelain_clean_lv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/oil_fail_lv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/oil_level_lv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>
+            <%=
+              render :partial => 'bushing_conditions/oil_color_lv', 
+                     :locals =>{:form => bushing_condition_f}
+            %>                                    
+          </fieldset>        
+            <fieldset>
+              <legend>2.3 ด้าน TV.</legend>
+              <%= 
+                render :partial => 'bushing_conditions/porcelain_status_tv', 
+                       :locals =>{:form => bushing_condition_f}
+              %>            
+              <%=
+                render :partial => 'bushing_conditions/porcelain_status_tv', 
+                       :locals =>{:form => bushing_condition_f}
+              %>
+              <%=
+                render :partial => 'bushing_conditions/porcelain_clean_tv', 
+                       :locals =>{:form => bushing_condition_f}
+              %>
+              <%=
+                render :partial => 'bushing_conditions/oil_fail_tv', 
+                       :locals =>{:form => bushing_condition_f}
+              %>
+              <%=
+                render :partial => 'bushing_conditions/oil_level_tv', 
+                       :locals =>{:form => bushing_condition_f}
+              %>
+              <%=
+                render :partial => 'bushing_conditions/oil_color_tv', 
+                       :locals =>{:form => bushing_condition_f}
+              %>                        
+            <fieldset>                  
+        <% end -%>                        
       </div>
     </div>
     <div class="prefix_4 grid_4">
