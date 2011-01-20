@@ -29,7 +29,23 @@
 
 class BushingCondition < ActiveRecord::Base
   belongs_to :transformer
+  belongs_to :visual_inspection
+  
+  #----------------------------Validations--------------------------------------
+  validates_presence_of :porcelain_status_hv, :message => "can't be blank"
+  validates_presence_of :porcelain_clean_hv, :message => "can't be blank"
+  validates_presence_of :oil_level_hv, :message => "can't be blank"
+  validates_presence_of :oil_fail_hv, :message => "can't be blank"
+  validates_presence_of :oil_color_hv, :message => "can't be blank"
 
+  validates_presence_of :porcelain_status_lv, :message => "can't be blank"
+  validates_presence_of :porcelain_clean_lv, :message => "can't be blank"
+  validates_presence_of :oil_level_lv, :message => "can't be blank"
+  validates_presence_of :oil_fail_lv, :message => "can't be blank"
+  validates_presence_of :oil_color_lv, :message => "can't be blank"  
+
+  #-----------------------------------------------------------------------------
+    
   def denominator(side)
     fields = get_fields_for(side)
     sum = 0

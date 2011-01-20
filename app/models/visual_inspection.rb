@@ -16,9 +16,11 @@
 
 class VisualInspection < ActiveRecord::Base
   has_one :general_condition
+  has_one :bushing_condition
   belongs_to :transformer
   
   accepts_nested_attributes_for :general_condition
+  accepts_nested_attributes_for :bushing_condition
   
   #Validations
   validates_presence_of :test_type, :message => "can't be blank"
