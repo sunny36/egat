@@ -10,11 +10,10 @@ module VisualInspectionsHelper
                            'controllers/visual_inspection')
   end
 
-  def transformer_names_drop_down_list(form, id, selected=nil)
+  def transformer_names_drop_down_list(form, id)
     @transformers = Transformer.order("transformer_name").all
-    form.collection_select(id,  @transformers, :id,
-                           :transformer_name,
-                           {:include_blank => true, :selected => selected})
+    form.collection_select(id,  @transformers, :id, :transformer_name, 
+                           {:include_blank => true})
   end
 
   def vector_group(transformer)
@@ -54,9 +53,6 @@ module VisualInspectionsHelper
   end
 
   def select_list_for(field_name, table_name, form)
-    if field_name == :general_conditions && field_name == :maxload
-      return general_conditions_max_load_select_list
-    end
     list = 
       VisualInspectionCondition.where("table_name = ? AND name = ?", 
                                       table_name.to_s, field_name.to_s).
