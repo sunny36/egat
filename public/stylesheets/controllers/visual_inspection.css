@@ -1,3 +1,17 @@
+label.inline {
+	width: 280px;
+	display: inline !important;
+	float: left;
+}
+
+.grid_12 select {
+	width: 200px;
+}
+
+select {
+	display: inline !important;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;

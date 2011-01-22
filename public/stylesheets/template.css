@@ -224,7 +224,7 @@ select {
 
 input[type="submit"], input[type="reset"] {
 	cursor:pointer;
-	width:auto !important;
+	width:auto;
 }
 
 /* Error and Success messages */
