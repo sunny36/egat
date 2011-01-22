@@ -42,12 +42,45 @@ var APP = {
 	},
 	
 	showFirstTabContainingErrors: function() {
-		if ($('#tabs-1').find('.field_with_errors').length > 0) {
+		if ($('#general_condition').find('.field_with_errors').length > 0) {
 			$("#tabs").tabs("option", "selected", 0);
-		} else if ($('#tabs-2').find('.field_with_errors').length > 0) {
+		} else if ($('#bushing_condition').find('.field_with_errors').length > 0) {
 			$("#tabs").tabs("option", "selected", 1);
 		}
+	},
+	
+	onNextClicked: function(tabName) {
+		$('button.next').click(function () {
+			var selected = $("#tabs").tabs("option", "selected");
+			$("#tabs").tabs({ selected: selected + 1});				
+			return false;			
+		});
+	}, 
+	
+	onPreviousClicked: function(tabName) {
+		$('button.previous').click(function () {
+			var selected = $("#tabs").tabs("option", "selected");
+			$("#tabs").tabs({ selected: selected - 1});				
+			return false;			
+		});
+	}, 
+	
+	hideSaveButton: function() {
+		$('#visual_inspection_submit').hide();
+	},
+	
+	onLastTabShowSaveButton: function() {
+		$("#tabs").tabs({
+		   show: function(event, ui) {
+				if (ui.index == 1) {
+					$('#visual_inspection_submit').show();
+				} else {
+					$('#visual_inspection_submit').hide();
+				}
+			}
+		});
 	}
+	
 };
 $(function() {
   if ($('#transformer_id').length > 0) {
@@ -69,4 +102,13 @@ $(function() {
 		APP.showFirstTabContainingErrors();
 	}
 	
+	if ($('button.next').length > 0) {
+		APP.onNextClicked();		
+	}
+	if ($('button.previous').length > 0) {
+		APP.onPreviousClicked();		
+	}
+	
+	APP.hideSaveButton();
+	APP.onLastTabShowSaveButton();
 });

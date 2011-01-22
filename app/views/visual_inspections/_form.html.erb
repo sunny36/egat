@@ -41,129 +41,21 @@
     <div class="clear"></div>
     <div id="tabs">
       <ul>
-        <li><a href="#tabs-1">1. สภาพทั่วไป</a></li>
-        <li><a href="#tabs-2">2. Bushing Condition</a></li>
+        <li><a href="#general_condition">1. สภาพทั่วไป</a></li>
+        <li><a href="#bushing_condition">2. Bushing Condition</a></li>
       </ul>
-      <div id="tabs-1">
+      <div id="general_condition">
         <h2>1. สภาพทั่วไป *</h2>
-        <%= f.fields_for :general_condition do |general_condition_f|%>
-          <%= 
-            render :partial => 'general_conditions/max_load', 
-                   :locals =>{:form => general_condition_f}
-          %>
-          <%= 
-            render :partial => 'general_conditions/sound', 
-                   :locals =>{:form => general_condition_f}
-          %>
-          <%= 
-            render :partial => 'general_conditions/vibration', 
-                   :locals =>{:form => general_condition_f}
-          %>
-          <%= 
-            render :partial => 'general_conditions/ground_connector', 
-                   :locals =>{:form => general_condition_f}
-          %>
-          <%= 
-            render :partial => 'general_conditions/foundation', 
-                   :locals =>{:form => general_condition_f}
-          %>
-          <%= 
-            render :partial => 'general_conditions/animal_protect', 
-                   :locals =>{:form => general_condition_f}
-          %>
-        <% end -%>        
+        <%= render :partial => 'general_condition_form', :locals => {:f => f} %>
       </div>
-      <div id="tabs-2">
+      <div id="bushing_condition">
         <h2>2. Bushing Condition</h2>
-        <%= f.fields_for :bushing_condition do |bushing_condition_f|%>
-          <fieldset>
-            <legend>2.1 ด้าน HV. *</legend>
-            <%= 
-              render :partial => 'bushing_conditions/porcelain_status_hv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/porcelain_status_hv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/porcelain_clean_hv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/oil_fail_hv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/oil_level_hv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/oil_color_hv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>            
-          <fieldset>
-            <legend>2.2 ด้าน LV. *</legend>
-            <%= 
-              render :partial => 'bushing_conditions/porcelain_status_lv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>            
-            <%=
-              render :partial => 'bushing_conditions/porcelain_status_lv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/porcelain_clean_lv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/oil_fail_lv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/oil_level_lv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>
-            <%=
-              render :partial => 'bushing_conditions/oil_color_lv', 
-                     :locals =>{:form => bushing_condition_f}
-            %>                                    
-          </fieldset>        
-            <fieldset>
-              <legend>2.3 ด้าน TV.</legend>
-              <%= 
-                render :partial => 'bushing_conditions/porcelain_status_tv', 
-                       :locals =>{:form => bushing_condition_f}
-              %>            
-              <%=
-                render :partial => 'bushing_conditions/porcelain_status_tv', 
-                       :locals =>{:form => bushing_condition_f}
-              %>
-              <%=
-                render :partial => 'bushing_conditions/porcelain_clean_tv', 
-                       :locals =>{:form => bushing_condition_f}
-              %>
-              <%=
-                render :partial => 'bushing_conditions/oil_fail_tv', 
-                       :locals =>{:form => bushing_condition_f}
-              %>
-              <%=
-                render :partial => 'bushing_conditions/oil_level_tv', 
-                       :locals =>{:form => bushing_condition_f}
-              %>
-              <%=
-                render :partial => 'bushing_conditions/oil_color_tv', 
-                       :locals =>{:form => bushing_condition_f}
-              %>                        
-            <fieldset>                  
-        <% end -%>                        
+        <%= render :partial => 'bushing_condition_form', :locals => {:f => f} %>
       </div>
     </div>
-    <div class="prefix_4 grid_4">
+    <div class="prefix_3 grid_4">
       <p>
-        <%= f.submit "Save", :disable_with => 'Saveing...' %>
+        <%= f.submit "Save", :disable_with => 'Saveing...',  :class => "slick-back" %>
       </p>
   <% end -%>
 </div>
-
-

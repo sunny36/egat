@@ -1,0 +1,30 @@
+<%= f.fields_for :general_condition do |general_condition_f|%>
+  <%= 
+    render :partial => 'general_conditions/max_load', 
+           :locals =>{:form => general_condition_f}
+  %>
+  <%= 
+    render :partial => 'general_conditions/sound', 
+           :locals =>{:form => general_condition_f}
+  %>
+  <%= 
+    render :partial => 'general_conditions/vibration', 
+           :locals =>{:form => general_condition_f}
+  %>
+  <%= 
+    render :partial => 'general_conditions/ground_connector', 
+           :locals =>{:form => general_condition_f}
+  %>
+  <%= 
+    render :partial => 'general_conditions/foundation', 
+           :locals =>{:form => general_condition_f}
+  %>
+  <%= 
+    render :partial => 'general_conditions/animal_protect', 
+           :locals =>{:form => general_condition_f}
+  %>
+  <div class="clear"></div>                                       
+  <div class="grid_11">
+    <button class="clean-gray next">Next</button>
+  </div>
+<% end -%>        

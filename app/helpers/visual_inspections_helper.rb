@@ -49,7 +49,7 @@ module VisualInspectionsHelper
                                       table_name.to_s, field_name.to_s).
                                       first.description
     label_string = label_string + " *" if required
-    form.label field_name, label_string
+    form.label field_name, label_string, {:class => "inline"}
   end
 
   def select_list_for(field_name, table_name, form)
