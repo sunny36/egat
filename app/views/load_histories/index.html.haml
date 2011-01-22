@@ -1,0 +1,13 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Load History
+        %th 
+          = hi_factor_color(@general_condition.load_history_hi_factor)
+    %tbody 
+      %tr
+        %td 
+          = description(:maxload)
+        %td 
+          = maxload_condition(@general_condition)

@@ -10,6 +10,18 @@
     <tbody>
       <tr>
         <td>&nbsp;1</td>
+        <td>Load History</td>        
+        <td><%= @general_condition.load_history_hi_factor %></td>
+        <td>
+          <%= 
+            load_history_factor_color(@general_condition, @visual_inspection, 
+                                      @transformer) 
+          %>
+        </td>
+        <td><%= recent_date(@visual_inspection) %></td>
+      </tr>      
+      <tr>
+        <td>&nbsp;1</td>
         <td>General Condition</td>        
         <td><%= hi_factor(@general_condition) %></td>
         <td>
@@ -19,9 +31,9 @@
           %>
         </td>
         <td><%= recent_date(@visual_inspection) %></td>
-        </tr>
+      </tr>
         <tr>
-        <td>&nbsp;2</td>
+        <td>&nbsp;1</td>
         <td>Bushing Condition</td>        
         <td><%= hi_factor(@bushing_condition) %></td>
         <td>

@@ -20,6 +20,20 @@ module OverallConditionsHelper
     end
   end
   
+  def load_history_factor_color(general_condition, visual_inspection, transformer)
+    unless general_condition.nil?
+      load_history_factor = 
+        LoadHistoryFactor.where("hi_factor = ?", 
+                                 general_condition.load_history_hi_factor).first
+      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" + 
+              "#{load_history_factor.color});\">" + "</span>"
+      link = 
+        transformer_visual_inspection_load_histories_path(transformer, 
+        visual_inspection)
+      return link_to(color.html_safe, link)
+    end
+  end
+  
   def bushing_condition_factor_color(bushing_condition, visual_inspection, transformer)
     unless bushing_condition.nil?
       bushing_condition_factor = 
