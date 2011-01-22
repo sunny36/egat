@@ -46,13 +46,25 @@ class BushingCondition < ActiveRecord::Base
 
   #-----------------------------------------------------------------------------
 
-   def percent_bushing_condition_factor
+  def hi_factor
+    BushingConditionFactor.all.each do |i|
+      i.end = 100 if i.end.nil?
+      return i.hi_factor if percent_bushing_condition_factor.round.between?(i.start, i.end)
+    end
+  end
+  
+   def percent_bushing_condition_factor(*args)
+    if args.length == 1
+      side = args.first
+      return (numerator(side)/denominator(side)) * 100
+    end
     hv = (numerator(:hv)/denominator(:hv)) * 100
     lv = (numerator(:lv)/denominator(:lv)) * 100
     tv = (numerator(:tv)/denominator(:tv)) * 100
     return [hv, lv, tv].min
    end
 
+   
    def numerator(side)
     fields = get_fields_for(side)
     sum = 0
