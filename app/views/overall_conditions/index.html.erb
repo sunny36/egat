@@ -11,13 +11,26 @@
       <tr>
         <td>&nbsp;1</td>
         <td>General Condition</td>        
-        <td><%= general_condition_hi_factor(@general_condition) %></td>
+        <td><%= hi_factor(@general_condition) %></td>
         <td>
           <%= 
-            general_condition_factor_color(@general_condition, @visual_inspection, @transformer) 
+            general_condition_factor_color(@general_condition, 
+                                           @visual_inspection, @transformer) 
           %>
         </td>
-        <td><%= general_condition_recent_date(@visual_inspection) %></td>
+        <td><%= recent_date(@visual_inspection) %></td>
+        </tr>
+        <tr>
+        <td>&nbsp;2</td>
+        <td>Bushing Condition</td>        
+        <td><%= hi_factor(@bushing_condition) %></td>
+        <td>
+          <%= 
+            bushing_condition_factor_color(@bushing_condition, 
+                                           @visual_inspection, @transformer) 
+          %>
+        </td>
+        <td><%= recent_date(@visual_inspection) %></td>
       </tr>
     </tbody>
   </table>
