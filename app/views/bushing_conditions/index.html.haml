@@ -1,0 +1,83 @@
+.grid_9.suffix_7
+  %table
+    %thead
+      %tr
+        %th{:colspan =>2} Bushing Condition
+        %th 
+          = hi_factor_color(@bushing_condition.hi_factor)
+    %tbody
+      %tr
+        %td
+          \%Factor of HV Bushing Condition
+        %td 
+          = number_with_precision(@bushing_condition.percent_bushing_condition_factor(:hv), 
+                                  :precision => 2)
+      %tr
+        %td
+          \%Factor of LV Bushing Condition
+        %td 
+          = number_with_precision(@bushing_condition.percent_bushing_condition_factor(:lv), 
+                                  :precision => 2)
+      %tr
+        %td
+          \%Factor of TV Bushing Condition
+        %td 
+          = number_with_precision(@bushing_condition.percent_bushing_condition_factor(:tv), 
+                                  :precision => 2)              
+.clear
+  &nbsp;
+.grid_10.suffix_6
+  %table
+    %thead
+      %tr
+        %th{:colspan =>2} &nbsp;
+        %th{:colspan =>2} HV
+        %th{:colspan =>2} LV
+        %th{:colspan =>2} TV
+    %tbody
+      %tr
+        %td{:colspan =>2}
+          = description(:porcelain_status_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.porcelain_status_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.porcelain_status_lv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.porcelain_status_tv)
+      %tr
+        %td{:colspan =>2}
+          = description(:porcelain_clean_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.porcelain_clean_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.porcelain_clean_lv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.porcelain_clean_tv)
+      %tr
+        %td{:colspan =>2}
+          = description(:oil_fail_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_fail_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_fail_lv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_fail_tv)
+      %tr
+        %td{:colspan =>2}
+          = description(:oil_level_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_level_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_level_lv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_level_tv)
+      %tr
+        %td{:colspan =>2}
+          = description(:oil_color_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_color_hv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_color_lv)
+        %td{:colspan =>2}
+          = condition(@bushing_condition.oil_color_tv)
+        
