@@ -26,6 +26,7 @@ Egat::Application.routes.draw do
     resources :visual_inspections do 
       resources :general_conditions
       resources :bushing_conditions
+      resources :load_histories
     end    
     
     resources :oil_dgas do
