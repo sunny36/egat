@@ -30,6 +30,13 @@ class GeneralCondition < ActiveRecord::Base
   validates_presence_of :foundation, :message => "can't be blank"
   validates_presence_of :animal_protect, :message => "can't be blank"
 
+  def load_history_hi_factor
+    visual_inspection_condition = VisualInspectionCondition.find(self.maxload)
+    LoadHistoryFactor.where("start = ? AND end = ?", 
+                            visual_inspection_condition.start, 
+                            visual_inspection_condition.end).first.hi_factor
+  end
+  
   def hi_factor
     GeneralConditionFactor.all.each do |i|
       i.end = 100 if i.end.nil?
