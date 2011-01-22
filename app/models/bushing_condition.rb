@@ -45,7 +45,24 @@ class BushingCondition < ActiveRecord::Base
   validates_presence_of :oil_color_lv, :message => "can't be blank"  
 
   #-----------------------------------------------------------------------------
-    
+
+   def percent_bushing_condition_factor
+    hv = (numerator(:hv)/denominator(:hv)) * 100
+    lv = (numerator(:lv)/denominator(:lv)) * 100
+    tv = (numerator(:tv)/denominator(:tv)) * 100
+    return [hv, lv, tv].min
+   end
+
+   def numerator(side)
+    fields = get_fields_for(side)
+    sum = 0
+    fields.each do |f|
+      sum += (VisualInspectionCondition.find(self.send(f)).score.to_i * 
+              VisualInspectionCondition.weight(f, :bushing_conditions)).to_f
+    end 
+    return sum
+   end
+  
   def denominator(side)
     fields = get_fields_for(side)
     sum = 0
