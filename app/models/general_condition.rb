@@ -32,9 +32,14 @@ class GeneralCondition < ActiveRecord::Base
 
   def load_history_hi_factor
     visual_inspection_condition = VisualInspectionCondition.find(self.maxload)
-    LoadHistoryFactor.where("start = ? AND end = ?", 
-                            visual_inspection_condition.start, 
-                            visual_inspection_condition.end).first.hi_factor
+    unless visual_inspection_condition.end.nil?
+      LoadHistoryFactor.where("start = ? AND end = ?", 
+                              visual_inspection_condition.start, 
+                              visual_inspection_condition.end).first.hi_factor
+    else
+      LoadHistoryFactor.where("start = ?", 
+                              visual_inspection_condition.start).first.hi_factor
+    end
   end
   
   def hi_factor
