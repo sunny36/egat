@@ -1392,7 +1392,9 @@ ActiveRecord::Schema.define(:version => 20110124063555) do
     t.decimal "pocelain_status_lv",   :precision => 10, :scale => 0
     t.decimal "pocelain_status_tv",   :precision => 10, :scale => 0
     t.decimal "transformer",          :precision => 10, :scale => 0
-    t.integer "surge_counter"
+    t.integer "surge_counter_hv"
+    t.integer "surge_counter_lv"
+    t.integer "surge_counter_tv"
     t.integer "visual_inspection_id"
   end
 
