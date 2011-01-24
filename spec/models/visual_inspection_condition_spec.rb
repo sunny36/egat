@@ -43,4 +43,16 @@ describe VisualInspectionCondition do
       
     end
   end
+
+  context "Surge Arrester" do 
+    it "should return the correct weight" do 
+    hv_fields = ['porcelain_status_hv', 'porcelain_clean_hv', 
+                 'ground_connector_hv', 'surge_counter_hv']
+      hv_fields.each do |item|
+        VisualInspectionCondition.weight(item, :bushing_conditions).should eql(5)
+      end
+      
+    end
+  end
+
 end
