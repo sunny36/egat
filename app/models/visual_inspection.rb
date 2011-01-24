@@ -17,10 +17,12 @@
 class VisualInspection < ActiveRecord::Base
   has_one :general_condition
   has_one :bushing_condition
+  has_one :surge_arrester
   belongs_to :transformer
   
   accepts_nested_attributes_for :general_condition
   accepts_nested_attributes_for :bushing_condition
+  accepts_nested_attributes_for :surge_arrester
   
   #Validations
   validates_presence_of :test_type, :message => "can't be blank"
