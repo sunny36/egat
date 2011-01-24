@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110124063443) do
+ActiveRecord::Schema.define(:version => 20110124063555) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1382,17 +1382,18 @@ ActiveRecord::Schema.define(:version => 20110124063443) do
   end
 
   create_table "surge_arresters", :force => true do |t|
-    t.decimal "ground_connector_hv", :precision => 10, :scale => 0
-    t.decimal "ground_connector_lv", :precision => 10, :scale => 0
-    t.decimal "ground_connector_tv", :precision => 10, :scale => 0
-    t.decimal "pocelain_clean_hv",   :precision => 10, :scale => 0
-    t.decimal "pocelain_clean_lv",   :precision => 10, :scale => 0
-    t.decimal "pocelain_clean_tv",   :precision => 10, :scale => 0
-    t.decimal "pocelain_status_hv",  :precision => 10, :scale => 0
-    t.decimal "pocelain_status_lv",  :precision => 10, :scale => 0
-    t.decimal "pocelain_status_tv",  :precision => 10, :scale => 0
-    t.decimal "transformer",         :precision => 10, :scale => 0
+    t.decimal "ground_connector_hv",  :precision => 10, :scale => 0
+    t.decimal "ground_connector_lv",  :precision => 10, :scale => 0
+    t.decimal "ground_connector_tv",  :precision => 10, :scale => 0
+    t.decimal "pocelain_clean_hv",    :precision => 10, :scale => 0
+    t.decimal "pocelain_clean_lv",    :precision => 10, :scale => 0
+    t.decimal "pocelain_clean_tv",    :precision => 10, :scale => 0
+    t.decimal "pocelain_status_hv",   :precision => 10, :scale => 0
+    t.decimal "pocelain_status_lv",   :precision => 10, :scale => 0
+    t.decimal "pocelain_status_tv",   :precision => 10, :scale => 0
+    t.decimal "transformer",          :precision => 10, :scale => 0
     t.integer "surge_counter"
+    t.integer "visual_inspection_id"
   end
 
   create_table "system_fault_levels", :force => true do |t|
