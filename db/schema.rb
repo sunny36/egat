@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110122130101) do
+ActiveRecord::Schema.define(:version => 20110124062425) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -746,27 +746,6 @@ ActiveRecord::Schema.define(:version => 20110122130101) do
     t.decimal "visual_inspection", :precision => 10, :scale => 0
   end
 
-  create_table "lightning_arrester", :force => true do |t|
-    t.integer  "version"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "ground_connector_hv", :precision => 10, :scale => 0
-    t.decimal  "ground_connector_lv", :precision => 10, :scale => 0
-    t.decimal  "ground_connector_tv", :precision => 10, :scale => 0
-    t.decimal  "leakage_current_hv",  :precision => 10, :scale => 0
-    t.decimal  "leakage_current_lv",  :precision => 10, :scale => 0
-    t.decimal  "leakage_current_tv",  :precision => 10, :scale => 0
-    t.decimal  "perform_type",        :precision => 10, :scale => 0
-    t.decimal  "pocelain_clean_hv",   :precision => 10, :scale => 0
-    t.decimal  "pocelain_clean_lv",   :precision => 10, :scale => 0
-    t.decimal  "pocelain_clean_tv",   :precision => 10, :scale => 0
-    t.decimal  "pocelain_status_hv",  :precision => 10, :scale => 0
-    t.decimal  "pocelain_status_lv",  :precision => 10, :scale => 0
-    t.decimal  "pocelain_status_tv",  :precision => 10, :scale => 0
-    t.decimal  "transformer",         :precision => 10, :scale => 0
-  end
-
   create_table "load_history", :force => true do |t|
     t.integer  "version"
     t.integer  "n0"
@@ -1400,6 +1379,27 @@ ActiveRecord::Schema.define(:version => 20110122130101) do
   create_table "sun_flower", :force => true do |t|
     t.integer "version"
     t.string  "owner"
+  end
+
+  create_table "surge_arresters", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "ground_connector_hv", :precision => 10, :scale => 0
+    t.decimal  "ground_connector_lv", :precision => 10, :scale => 0
+    t.decimal  "ground_connector_tv", :precision => 10, :scale => 0
+    t.decimal  "leakage_current_hv",  :precision => 10, :scale => 0
+    t.decimal  "leakage_current_lv",  :precision => 10, :scale => 0
+    t.decimal  "leakage_current_tv",  :precision => 10, :scale => 0
+    t.decimal  "perform_type",        :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_hv",   :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_lv",   :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_tv",   :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_hv",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_lv",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_tv",  :precision => 10, :scale => 0
+    t.decimal  "transformer",         :precision => 10, :scale => 0
   end
 
   create_table "system_fault_levels", :force => true do |t|
