@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110124063555) do
+ActiveRecord::Schema.define(:version => 20110124101918) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1385,12 +1385,12 @@ ActiveRecord::Schema.define(:version => 20110124063555) do
     t.decimal "ground_connector_hv",  :precision => 10, :scale => 0
     t.decimal "ground_connector_lv",  :precision => 10, :scale => 0
     t.decimal "ground_connector_tv",  :precision => 10, :scale => 0
-    t.decimal "pocelain_clean_hv",    :precision => 10, :scale => 0
-    t.decimal "pocelain_clean_lv",    :precision => 10, :scale => 0
-    t.decimal "pocelain_clean_tv",    :precision => 10, :scale => 0
-    t.decimal "pocelain_status_hv",   :precision => 10, :scale => 0
-    t.decimal "pocelain_status_lv",   :precision => 10, :scale => 0
-    t.decimal "pocelain_status_tv",   :precision => 10, :scale => 0
+    t.decimal "porcelain_clean_hv",   :precision => 10, :scale => 0
+    t.decimal "porcelain_clean_lv",   :precision => 10, :scale => 0
+    t.decimal "porcelain_clean_tv",   :precision => 10, :scale => 0
+    t.decimal "porcelain_status_hv",  :precision => 10, :scale => 0
+    t.decimal "porcelain_status_lv",  :precision => 10, :scale => 0
+    t.decimal "porcelain_status_tv",  :precision => 10, :scale => 0
     t.decimal "transformer",          :precision => 10, :scale => 0
     t.integer "surge_counter_hv"
     t.integer "surge_counter_lv"
