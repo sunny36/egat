@@ -17,12 +17,44 @@
       render :partial => 'surge_arresters/surge_counter_hv', 
         :locals =>{:form => surge_arrester_f}
       %>
-
     <fieldset>
-      <legend>2.2 ด้าน LV. *</legend>
+      <legend>3.2 ด้าน LV. *</legend>
+      <%=
+        render :partial => 'surge_arresters/porcelain_status_lv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
+      <%=
+        render :partial => 'surge_arresters/porcelain_clean_lv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
+      <%=
+        render :partial => 'surge_arresters/ground_connector_lv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
+      <%=
+        render :partial => 'surge_arresters/surge_counter_lv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
     </fieldset>        
     <fieldset>
-      <legend>2.3 ด้าน TV.</legend>
+      <legend>3.3 ด้าน TV.</legend>
+      <%=
+        render :partial => 'surge_arresters/porcelain_status_tv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
+      <%=
+        render :partial => 'surge_arresters/porcelain_clean_tv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
+      <%=
+        render :partial => 'surge_arresters/ground_connector_tv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
+      <%=
+        render :partial => 'surge_arresters/surge_counter_tv', 
+          :locals =>{:form => surge_arrester_f}
+        %>
+
     </fieldset>
     <div class="clear"></div>                                       
     <div class="grid_3">
