@@ -1,0 +1,32 @@
+<%= f.fields_for :surge_arrester do |surge_arrester_f|%>
+  <fieldset>
+    <legend>3.1 ด้าน HV. *</legend>
+    <%=
+      render :partial => 'surge_arresters/porcelain_status_hv', 
+        :locals =>{:form => surge_arrester_f}
+      %>
+    <%=
+      render :partial => 'surge_arresters/porcelain_clean_hv', 
+        :locals =>{:form => surge_arrester_f}
+      %>
+    <%=
+      render :partial => 'surge_arresters/ground_connector_hv', 
+        :locals =>{:form => surge_arrester_f}
+      %>
+    <%=
+      render :partial => 'surge_arresters/surge_counter_hv', 
+        :locals =>{:form => surge_arrester_f}
+      %>
+
+    <fieldset>
+      <legend>2.2 ด้าน LV. *</legend>
+    </fieldset>        
+    <fieldset>
+      <legend>2.3 ด้าน TV.</legend>
+    </fieldset>
+    <div class="clear"></div>                                       
+    <div class="grid_3">
+      <button class="minimal previous">Previous</button>
+    </div>                
+    <div class="clear"></div>                                       
+  <% end -%>                        

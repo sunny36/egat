@@ -43,6 +43,7 @@
       <ul>
         <li><a href="#general_condition">1. สภาพทั่วไป</a></li>
         <li><a href="#bushing_condition">2. Bushing Condition</a></li>
+        <li><a href="#surge_arrester">3. Surge Arrester</a></li>
       </ul>
       <div id="general_condition">
         <h2>1. สภาพทั่วไป *</h2>
@@ -52,6 +53,10 @@
         <h2>2. Bushing Condition</h2>
         <%= render :partial => 'bushing_condition_form', :locals => {:f => f} %>
       </div>
+      <div id="surge_arrester">
+        <h2>3. Surge Arrester</h2>
+        <%= render :partial => 'surge_arrester_form', :locals => {:f => f} %>
+      </div>      
     </div>
     <div class="prefix_3 grid_4">
       <p>

@@ -14,6 +14,7 @@ class VisualInspectionsController < ApplicationController
     @visual_inspection = VisualInspection.new
     @visual_inspection.build_general_condition
     @visual_inspection.build_bushing_condition
+    @visual_inspection.build_surge_arrester
   end
 
   def create
