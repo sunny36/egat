@@ -1,5 +1,5 @@
 class SurgeArrester < ActiveRecord::Base
-  belongs_to :visual_inspection_id
+  belongs_to :visual_inspection
 
   def hi_factor
     BushingConditionFactor.all.each do |i|
