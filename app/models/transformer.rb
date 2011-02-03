@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101205200640
+# Schema version: 20110203165120
 #
 # Table name: transformer
 #
@@ -22,12 +22,12 @@
 #  vector_group        :string(255)
 #  first_substation    :integer(10)
 #  manufacturing       :integer(10)
-#  oltc_manufacturing  :integer(10)
-#  oltc_model          :integer(10)
 #  status              :integer(10)
-#  winding_type        :integer(10)
+#  winding_type_id     :integer(10)
 #  brand_id            :integer(4)
 #  position            :string(255)
+#  oltc_manufacturer   :string(255)
+#  oltc_type           :string(255)
 #
 
 class Transformer < ActiveRecord::Base

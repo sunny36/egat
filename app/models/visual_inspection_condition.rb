@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110115144540
+# Schema version: 20110203165120
 #
 # Table name: visual_inspection_conditions
 #
@@ -12,6 +12,7 @@
 #  table_name           :string(255)
 #  score                :integer(4)
 #  score_message        :string(255)
+#  weight               :integer(4)
 #  visual_inspection_id :integer(4)
 #  created_at           :datetime
 #  updated_at           :datetime

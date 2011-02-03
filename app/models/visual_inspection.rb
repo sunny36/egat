@@ -18,8 +18,10 @@ class VisualInspection < ActiveRecord::Base
   has_one :general_condition
   has_one :bushing_condition
   has_one :surge_arrester
+  has_one :conservator_tank
   belongs_to :transformer
 
+  accepts_nested_attributes_for :conservator_tank
   accepts_nested_attributes_for :surge_arrester
   accepts_nested_attributes_for :general_condition
   accepts_nested_attributes_for :bushing_condition

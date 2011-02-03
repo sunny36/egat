@@ -1,3 +1,25 @@
+# == Schema Information
+# Schema version: 20110203165120
+#
+# Table name: surge_arresters
+#
+#  id                   :integer(4)      not null, primary key
+#  ground_connector_hv  :integer(10)
+#  ground_connector_lv  :integer(10)
+#  ground_connector_tv  :integer(10)
+#  porcelain_clean_hv   :integer(10)
+#  porcelain_clean_lv   :integer(10)
+#  porcelain_clean_tv   :integer(10)
+#  porcelain_status_hv  :integer(10)
+#  porcelain_status_lv  :integer(10)
+#  porcelain_status_tv  :integer(10)
+#  transformer          :integer(10)
+#  surge_counter_hv     :integer(4)
+#  surge_counter_lv     :integer(4)
+#  surge_counter_tv     :integer(4)
+#  visual_inspection_id :integer(4)
+#
+
 class SurgeArrester < ActiveRecord::Base
   belongs_to :visual_inspection
 
