@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110203164836) do
+ActiveRecord::Schema.define(:version => 20110203165120) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -152,16 +152,17 @@ ActiveRecord::Schema.define(:version => 20110203164836) do
   end
 
   create_table "conservator_tanks", :force => true do |t|
-    t.decimal "breather_maintank",  :precision => 10, :scale => 0
-    t.decimal "breather_oltc",      :precision => 10, :scale => 0
-    t.decimal "corrosion_maintank", :precision => 10, :scale => 0
-    t.decimal "corrosion_oltc",     :precision => 10, :scale => 0
-    t.decimal "jel_color_maintank", :precision => 10, :scale => 0
-    t.decimal "jel_color_oltc",     :precision => 10, :scale => 0
-    t.decimal "oil_level_maintank", :precision => 10, :scale => 0
-    t.decimal "oil_level_oltc",     :precision => 10, :scale => 0
-    t.decimal "oilfail_maintank",   :precision => 10, :scale => 0
-    t.decimal "oilfail_oltc",       :precision => 10, :scale => 0
+    t.decimal "breather_maintank",    :precision => 10, :scale => 0
+    t.decimal "breather_oltc",        :precision => 10, :scale => 0
+    t.decimal "corrosion_maintank",   :precision => 10, :scale => 0
+    t.decimal "corrosion_oltc",       :precision => 10, :scale => 0
+    t.decimal "jel_color_maintank",   :precision => 10, :scale => 0
+    t.decimal "jel_color_oltc",       :precision => 10, :scale => 0
+    t.decimal "oil_level_maintank",   :precision => 10, :scale => 0
+    t.decimal "oil_level_oltc",       :precision => 10, :scale => 0
+    t.decimal "oilfail_maintank",     :precision => 10, :scale => 0
+    t.decimal "oilfail_oltc",         :precision => 10, :scale => 0
+    t.integer "visual_inspection_id"
   end
 
   create_table "damage_of_properties", :force => true do |t|
