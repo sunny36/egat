@@ -18,6 +18,10 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'spreadsheet'
   gem 'annotate-models'
+  gem 'autotest'
+  gem 'autotest-rails-pure'
+  gem 'autotest-fsevent'
+  gem 'autotest-growl'
 end
 
 # Use unicorn as the web server
