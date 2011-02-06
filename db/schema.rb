@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110206174635) do
+ActiveRecord::Schema.define(:version => 20110206175133) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1590,20 +1590,6 @@ ActiveRecord::Schema.define(:version => 20110206174635) do
     t.string  "description"
   end
 
-  create_table "trans_control_cab", :force => true do |t|
-    t.integer  "version"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "animal",           :precision => 10, :scale => 0
-    t.decimal  "control_humidity", :precision => 10, :scale => 0
-    t.decimal  "corrosion",        :precision => 10, :scale => 0
-    t.decimal  "perform_type",     :precision => 10, :scale => 0
-    t.decimal  "pragen",           :precision => 10, :scale => 0
-    t.decimal  "transformer",      :precision => 10, :scale => 0
-    t.decimal  "wiring_control",   :precision => 10, :scale => 0
-  end
-
   create_table "transformer", :force => true do |t|
     t.integer  "version"
     t.string   "contract"
@@ -1632,6 +1618,15 @@ ActiveRecord::Schema.define(:version => 20110206174635) do
   end
 
   add_index "transformer", ["transformer_name"], :name => "transformer_name"
+
+  create_table "transformer_control_cabinets", :force => true do |t|
+    t.decimal "animal",               :precision => 10, :scale => 0
+    t.decimal "control_humidity",     :precision => 10, :scale => 0
+    t.decimal "corrosion",            :precision => 10, :scale => 0
+    t.decimal "pragen",               :precision => 10, :scale => 0
+    t.decimal "wiring_control",       :precision => 10, :scale => 0
+    t.integer "visual_inspection_id"
+  end
 
   create_table "transformer_history_move", :force => true do |t|
     t.integer  "version"
