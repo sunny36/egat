@@ -19,13 +19,14 @@ class VisualInspection < ActiveRecord::Base
   has_one :bushing_condition
   has_one :surge_arrester
   has_one :conservator_tank
+  has_one :main_tank
   belongs_to :transformer
 
   accepts_nested_attributes_for :conservator_tank
   accepts_nested_attributes_for :surge_arrester
   accepts_nested_attributes_for :general_condition
   accepts_nested_attributes_for :bushing_condition
-
+  accepts_nested_attributes_for :main_tank
   
   #Validations
   validates_presence_of :test_type, :message => "can't be blank"

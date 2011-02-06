@@ -55,18 +55,4 @@ describe VisualInspectionCondition do
     end
   end
 
-  context "Conservator Tank" do 
-    it "should return the correct weight" do 
-      fields = ['corrosion_maintank', 
-                'oil_fail_maintank', 'oil_level_maintank', 'jel_color_maintank', 
-                'breather_maintank']
-      
-      fields.each do |item|
-        VisualInspectionCondition.weight(item, :conservator_tanks).should eql(5)
-      end
-      
-    end
-  end
-
-  
 end
