@@ -3,6 +3,7 @@ require 'spec_helper'
 describe ConservatorTank do
 
   before(:each) do
+    ConservatorTank.send(:public, *ConservatorTank.private_instance_methods)  
     @conservator_tank = Factory.build(:conservator_tank)
   end
 
