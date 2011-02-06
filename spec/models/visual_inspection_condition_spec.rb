@@ -49,10 +49,24 @@ describe VisualInspectionCondition do
     hv_fields = ['porcelain_status_hv', 'porcelain_clean_hv', 
                  'ground_connector_hv', 'surge_counter_hv']
       hv_fields.each do |item|
-        VisualInspectionCondition.weight(item, :bushing_conditions).should eql(5)
+        VisualInspectionCondition.weight(item, :surge_arresters).should eql(5)
       end
       
     end
   end
 
+  context "Conservator Tank" do 
+    it "should return the correct weight" do 
+      fields = ['corrosion_maintank', 
+                'oil_fail_maintank', 'oil_level_maintank', 'jel_color_maintank', 
+                'breather_maintank']
+      
+      fields.each do |item|
+        VisualInspectionCondition.weight(item, :conservator_tanks).should eql(5)
+      end
+      
+    end
+  end
+
+  
 end
