@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110206151332) do
+ActiveRecord::Schema.define(:version => 20110206161535) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -706,15 +706,10 @@ ActiveRecord::Schema.define(:version => 20110206151332) do
     t.string   "color"
   end
 
-  create_table "hot_line_oil_filter", :force => true do |t|
-    t.integer  "version"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "corrosion",    :precision => 10, :scale => 0
-    t.decimal  "perform_type", :precision => 10, :scale => 0
-    t.decimal  "pressure",     :precision => 10, :scale => 0
-    t.decimal  "transformer",  :precision => 10, :scale => 0
+  create_table "hot_line_oil_filters", :force => true do |t|
+    t.decimal "corrosion",            :precision => 10, :scale => 0
+    t.decimal "pressure",             :precision => 10, :scale => 0
+    t.integer "visual_inspection_id"
   end
 
   create_table "importance_indices", :force => true do |t|
