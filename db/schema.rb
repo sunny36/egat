@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110206175133) do
+ActiveRecord::Schema.define(:version => 20110206175519) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -802,17 +802,12 @@ ActiveRecord::Schema.define(:version => 20110206175133) do
     t.datetime "updated_at"
   end
 
-  create_table "ngr", :force => true do |t|
-    t.integer  "version"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "base_status",      :precision => 10, :scale => 0
-    t.decimal  "ground_connector", :precision => 10, :scale => 0
-    t.decimal  "ngr_status",       :precision => 10, :scale => 0
-    t.decimal  "perform_type",     :precision => 10, :scale => 0
-    t.decimal  "pocelain_clean",   :precision => 10, :scale => 0
-    t.decimal  "transformer",      :precision => 10, :scale => 0
+  create_table "ngrs", :force => true do |t|
+    t.decimal "base_status",          :precision => 10, :scale => 0
+    t.decimal "ground_connector",     :precision => 10, :scale => 0
+    t.decimal "ngr_status",           :precision => 10, :scale => 0
+    t.decimal "pocelain_clean",       :precision => 10, :scale => 0
+    t.integer "visual_inspection_id"
   end
 
   create_table "oil_aging", :force => true do |t|
