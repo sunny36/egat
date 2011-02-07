@@ -20,6 +20,7 @@ class VisualInspection < ActiveRecord::Base
   has_one :surge_arrester
   has_one :conservator_tank
   has_one :main_tank
+  has_one :hot_line_oil_filter
   belongs_to :transformer
 
   accepts_nested_attributes_for :conservator_tank
@@ -27,6 +28,7 @@ class VisualInspection < ActiveRecord::Base
   accepts_nested_attributes_for :general_condition
   accepts_nested_attributes_for :bushing_condition
   accepts_nested_attributes_for :main_tank
+  accepts_nested_attributes_for :hot_line_oil_filter
   
   #Validations
   validates_presence_of :test_type, :message => "can't be blank"
