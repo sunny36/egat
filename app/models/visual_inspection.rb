@@ -21,6 +21,7 @@ class VisualInspection < ActiveRecord::Base
   has_one :conservator_tank
   has_one :main_tank
   has_one :hot_line_oil_filter
+  has_one :radiator_cooling_system
   belongs_to :transformer
 
   accepts_nested_attributes_for :conservator_tank
@@ -29,6 +30,7 @@ class VisualInspection < ActiveRecord::Base
   accepts_nested_attributes_for :bushing_condition
   accepts_nested_attributes_for :main_tank
   accepts_nested_attributes_for :hot_line_oil_filter
+  accepts_nested_attributes_for :radiator_cooling_system
   
   #Validations
   validates_presence_of :test_type, :message => "can't be blank"
