@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110206175519) do
+ActiveRecord::Schema.define(:version => 20110207140628) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1268,18 +1268,13 @@ ActiveRecord::Schema.define(:version => 20110206175519) do
     t.integer "visual_inspection_id"
   end
 
-  create_table "regulatingpt", :force => true do |t|
-    t.integer  "version"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "oil_color",       :precision => 10, :scale => 0
-    t.decimal  "oil_fail",        :precision => 10, :scale => 0
-    t.decimal  "oil_level",       :precision => 10, :scale => 0
-    t.decimal  "perform_type",    :precision => 10, :scale => 0
-    t.decimal  "pocelain_clean",  :precision => 10, :scale => 0
-    t.decimal  "pocelain_status", :precision => 10, :scale => 0
-    t.decimal  "transformer",     :precision => 10, :scale => 0
+  create_table "regulating_pts", :force => true do |t|
+    t.decimal "oil_color",            :precision => 10, :scale => 0
+    t.decimal "oil_fail",             :precision => 10, :scale => 0
+    t.decimal "oil_level",            :precision => 10, :scale => 0
+    t.decimal "pocelain_clean",       :precision => 10, :scale => 0
+    t.decimal "pocelain_status",      :precision => 10, :scale => 0
+    t.integer "visual_inspection_id"
   end
 
   create_table "report", :force => true do |t|
