@@ -1,0 +1,22 @@
+= f.fields_for :ngr do |ngr|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :ngr_status, :ngrs, ngr
+        = select_list_for :ngr_status, :ngrs, ngr
+    .grid_12
+      %p
+        = label_for :base_status, :ngrs, ngr
+        = select_list_for :base_status, :ngrs, ngr
+    .grid_12
+      %p
+        = label_for :pocelain_clean, :ngrs, ngr
+        = select_list_for :pocelain_clean, :ngrs, ngr
+    .grid_12
+      %p
+        = label_for :ground_connector, :ngrs, ngr
+        = select_list_for :ground_connector, :ngrs, ngr
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear
