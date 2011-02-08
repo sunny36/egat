@@ -53,6 +53,9 @@
           %a{:href => "#oltc_compartment"} 11. OLTC Compartment
         %li
           %a{:href => "#oltc_control_cabinet"} 12. OLTC Control Cabinet                  
+        %li
+          %a{:href => "#thermo_scan"} 13. Thermo Scan
+        
       #general_condition
         %h2 1. สภาพทั่วไป *
         = render :partial => 'general_condition_form', :locals => {:f => f}
@@ -89,6 +92,9 @@
       #oltc_control_cabinet
         %h2 12. OLTC Control Cabinet
         = render :partial => 'oltc_control_cabinet', :locals => {:f => f}                        
+      #thermo_scan
+        %h2 13. Thermo Scan
+        = render :partial => 'thermo_scan', :locals => {:f => f}        
     .prefix_3.grid_4
       %p
         = f.submit "Save", :disable_with => 'Saveing...',  :class => "slick-back"

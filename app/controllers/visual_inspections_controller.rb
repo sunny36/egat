@@ -24,6 +24,7 @@ class VisualInspectionsController < ApplicationController
     @visual_inspection.build_regulating_pt
     @visual_inspection.build_oltc_compartment
     @visual_inspection.build_oltc_control_cabinet
+    @visual_inspection.build_thermo_scan
   end
 
   def create

@@ -1,0 +1,14 @@
+= f.fields_for :thermo_scan do |thermo_scan|
+  %fieldset
+    .grid_12
+      %p
+        = thermo_scan.label :delt, "&Delta;(&deg;C) Temp. Rise above Normal Temp.".html_safe, {:class => "inline"}
+        = thermo_scan.text_field :delt
+    .grid_12
+      %p
+        = thermo_scan.label :load, "% Load ขณะตรวจเช็ค", {:class => "inline"}
+        = thermo_scan.text_field :load
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear
