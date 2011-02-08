@@ -1,0 +1,26 @@
+= f.fields_for :transformer_control_cabinet do |transformer_control_cabinet|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :corrosion, :transformer_control_cabinets, transformer_control_cabinet
+        = select_list_for :corrosion, :transformer_control_cabinets, transformer_control_cabinet
+    .grid_12
+      %p
+        = label_for :animal, :transformer_control_cabinets, transformer_control_cabinet
+        = select_list_for :animal, :transformer_control_cabinets, transformer_control_cabinet
+    .grid_12
+      %p
+        = label_for :control_humidity, :transformer_control_cabinets, transformer_control_cabinet
+        = select_list_for :control_humidity, :transformer_control_cabinets, transformer_control_cabinet
+    .grid_12
+      %p
+        = label_for :pragen, :transformer_control_cabinets, transformer_control_cabinet
+        = select_list_for :pragen, :transformer_control_cabinets, transformer_control_cabinet
+    .grid_12
+      %p
+        = label_for :wiring_control, :transformer_control_cabinets, transformer_control_cabinet
+        = select_list_for :wiring_control, :transformer_control_cabinets, transformer_control_cabinet        
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

@@ -19,6 +19,7 @@ class VisualInspectionsController < ApplicationController
     @visual_inspection.build_main_tank
     @visual_inspection.build_hot_line_oil_filter
     @visual_inspection.build_radiator_cooling_system
+    @visual_inspection.build_transformer_control_cabinet
   end
 
   def create

@@ -44,7 +44,7 @@
         %li
           %a{:href => "#radiator_cooling_system"} 7. Radiator&Cooling System
         %li
-          %a{:href => "#tx_control_cabinet"} 8. Tx Control Cabinet
+          %a{:href => "#transformer_control_cabinet"} 8. Tx Control Cabinet
         %li
           %a{:href => "#ngr"} 9. NGR
         %li
@@ -74,6 +74,9 @@
       #radiator_cooling_system
         %h2 7. Radiator&Cooling System
         = render :partial => 'radiator_cooling_system', :locals => {:f => f}                
+      #transformer_control_cabinet
+        %h2 8. Tx. Control Cabinet
+        = render :partial => 'transformer_control_cabinet', :locals => {:f => f}                
         
     .prefix_3.grid_4
       %p
