@@ -1,45 +1,5 @@
 %h1 Visual Inspection
-%dl
-  .grid_8
-    %dt Transformer Name
-    %dd
-      = " : " + @visual_inspection.transformer.transformer_name
-  .grid_8
-    %dt Equipment No. 
-    %dd
-      = " : " + @visual_inspection.transformer.egatsn
-  .grid_8
-    %dt MVA Rating
-    %dd
-      = " : " + @visual_inspection.transformer.maxcapacity.to_s + " MVA"
-  .grid_8
-    %dt HV Rating 
-    %dd
-      = " : " + @visual_inspection.transformer.hv.to_s + " kV"
-  .grid_8
-    %dt First Energized: 
-    %dd
-      = " : " + @visual_inspection.transformer.first_energize.strftime("%d/%m/%Y")
-  .grid_8
-    %dt Manufacturer
-    %dd
-      = " : " + @visual_inspection.transformer.brand.name
-  .grid_8
-    %dt OLTC Manufacturer 
-    %dd
-      = " : " + @visual_inspection.transformer.oltc_manufacturer
-  .grid_8
-    %dt OLTC Type 
-    %dd
-      = " : " + @visual_inspection.transformer.oltc_type
-  .grid_8
-    %dt Vectory Group
-    %dd
-      = " : " + @visual_inspection.transformer.vector_group
-  .grid_8
-    %dt Winding Type 
-    %dd
-      = " : " + transformer_winding_type(@visual_inspection.transformer)
+= render :partial => 'transformer_details', :locals => {:transformer => @visual_inspection.transformer}
 .clear
   &nbsp;
 
