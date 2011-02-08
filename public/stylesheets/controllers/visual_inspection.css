@@ -1,3 +1,7 @@
+input[type="submit"], button.slick-black {
+  width: 730px;
+}
+
 label.inline {
 	width: 300px;
 	display: inline !important;
