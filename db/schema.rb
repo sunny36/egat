@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208042941) do
+ActiveRecord::Schema.define(:version => 20110208051447) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1554,15 +1554,10 @@ ActiveRecord::Schema.define(:version => 20110208042941) do
     t.decimal  "transformer",  :precision => 10, :scale => 0
   end
 
-  create_table "thermo_scan", :force => true do |t|
-    t.integer  "version"
-    t.float    "delt"
-    t.float    "load"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "perform_type", :precision => 10, :scale => 0
-    t.decimal  "transformer",  :precision => 10, :scale => 0
+  create_table "thermo_scans", :force => true do |t|
+    t.float   "delt"
+    t.float   "load"
+    t.integer "visual_inspection_id"
   end
 
   create_table "tran_status", :force => true do |t|
