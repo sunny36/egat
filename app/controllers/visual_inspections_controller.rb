@@ -15,6 +15,7 @@ class VisualInspectionsController < ApplicationController
     @visual_inspection.build_general_condition
     @visual_inspection.build_bushing_condition
     @visual_inspection.build_surge_arrester
+    @visual_inspection.build_conservator_tank
   end
 
   def create

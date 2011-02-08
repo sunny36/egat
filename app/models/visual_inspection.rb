@@ -26,6 +26,7 @@ class VisualInspection < ActiveRecord::Base
   has_one :ngr
   has_one :oltc_compartment
   has_one :oltc_control_cabinet
+  has_one :thermo_scan
   belongs_to :transformer
 
   accepts_nested_attributes_for :conservator_tank
@@ -39,6 +40,7 @@ class VisualInspection < ActiveRecord::Base
   accepts_nested_attributes_for :ngr
   accepts_nested_attributes_for :oltc_compartment
   accepts_nested_attributes_for :oltc_control_cabinet
+  accepts_nested_attributes_for :thermo_scan
   
   #Validations
   validates_presence_of :test_type, :message => "can't be blank"
