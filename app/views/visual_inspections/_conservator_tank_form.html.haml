@@ -1,0 +1,49 @@
+= f.fields_for :conservator_tank do |conservator_tank|
+  %fieldset
+    %legend Main Tank
+    .grid_12
+      %p
+        = label_for :corrosion_maintank, :conservator_tanks, conservator_tank
+        = select_list_for :corrosion_maintank, :conservator_tanks, conservator_tank
+    .grid_12
+      %p
+        = label_for :oilfail_maintank, :conservator_tanks, conservator_tank
+        = select_list_for :oilfail_maintank, :conservator_tanks, conservator_tank
+    .grid_12
+      %p
+        = label_for :oil_level_maintank, :conservator_tanks, conservator_tank
+        = select_list_for :oil_level_maintank, :conservator_tanks, conservator_tank
+    .grid_12
+      %p
+        = label_for :jel_color_maintank, :conservator_tanks, conservator_tank
+        = select_list_for :jel_color_maintank, :conservator_tanks, conservator_tank
+    .grid_12
+      %p
+        = label_for :breather_maintank, :conservator_tanks, conservator_tank
+        = select_list_for :breather_maintank, :conservator_tanks, conservator_tank
+    %fieldset
+      %legend OLTC
+      .grid_12
+        %p
+          = label_for :corrosion_oltc, :conservator_tanks, conservator_tank
+          = select_list_for :corrosion_oltc, :conservator_tanks, conservator_tank
+      .grid_12
+        %p
+          = label_for :oilfail_oltc, :conservator_tanks, conservator_tank
+          = select_list_for :oilfail_oltc, :conservator_tanks, conservator_tank
+      .grid_12
+        %p
+          = label_for :oilfail_oltc, :conservator_tanks, conservator_tank
+          = select_list_for :oilfail_oltc, :conservator_tanks, conservator_tank
+      .grid_12
+        %p
+          = label_for :oil_level_oltc, :conservator_tanks, conservator_tank
+          = select_list_for :oil_level_oltc, :conservator_tanks, conservator_tank
+      .grid_12
+        %p
+          = label_for :jel_color_oltc, :conservator_tanks, conservator_tank
+          = select_list_for :jel_color_oltc, :conservator_tanks, conservator_tank
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

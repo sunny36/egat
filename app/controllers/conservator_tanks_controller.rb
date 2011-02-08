@@ -1,0 +1,2 @@
+class ConservatorTanksController < ApplicationController
+end
