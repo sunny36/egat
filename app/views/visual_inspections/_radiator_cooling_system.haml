@@ -1,0 +1,26 @@
+= f.fields_for :radiator_cooling_system do |radiator_cooling_system|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :corrosion, :radiator_cooling_systems, radiator_cooling_system
+        = select_list_for :corrosion, :radiator_cooling_systems, radiator_cooling_system
+    .grid_12
+      %p
+        = label_for :oil_fail, :radiator_cooling_systems, radiator_cooling_system
+        = select_list_for :oil_fail, :radiator_cooling_systems, radiator_cooling_system
+    .grid_12
+      %p
+        = label_for :noise_level, :radiator_cooling_systems, radiator_cooling_system
+        = select_list_for :noise_level, :radiator_cooling_systems, radiator_cooling_system
+    .grid_12
+      %p
+        = label_for :oil_pump, :radiator_cooling_systems, radiator_cooling_system
+        = select_list_for :oil_pump, :radiator_cooling_systems, radiator_cooling_system
+    .grid_12
+      %p
+        = label_for :animal, :radiator_cooling_systems, radiator_cooling_system
+        = select_list_for :animal, :radiator_cooling_systems, radiator_cooling_system        
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

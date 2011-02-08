@@ -18,6 +18,7 @@ class VisualInspectionsController < ApplicationController
     @visual_inspection.build_conservator_tank
     @visual_inspection.build_main_tank
     @visual_inspection.build_hot_line_oil_filter
+    @visual_inspection.build_radiator_cooling_system
   end
 
   def create
