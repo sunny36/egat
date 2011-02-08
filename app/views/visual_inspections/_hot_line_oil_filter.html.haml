@@ -1,0 +1,14 @@
+= f.fields_for :hot_line_oil_filter do |hot_line_oil_filter|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :corrosion, :hot_line_oil_filters, hot_line_oil_filter
+        = select_list_for :corrosion, :hot_line_oil_filters, hot_line_oil_filter
+    .grid_12
+      %p
+        = label_for :pressure, :hot_line_oil_filters, hot_line_oil_filter
+        = select_list_for :pressure, :hot_line_oil_filters, hot_line_oil_filter
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

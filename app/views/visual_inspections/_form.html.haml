@@ -39,6 +39,8 @@
           %a{:href => "#conservator_tank"} 4. Conservator Tank
         %li
           %a{:href => "#main_tank"} 5. Main Tank
+        %li
+          %a{:href => "#hot_line_oil_filter"} 6. Hot Line Oil Filter        
       #general_condition
         %h2 1. สภาพทั่วไป *
         = render :partial => 'general_condition_form', :locals => {:f => f}
@@ -54,6 +56,9 @@
       #main_tank
         %h2 5. Main Tank
         = render :partial => 'main_tank_form', :locals => {:f => f}        
+      #hot_line_oil_filter
+        %h2 6. Hot Line Oil Filter
+        = render :partial => 'hot_line_oil_filter', :locals => {:f => f}                
     .prefix_3.grid_4
       %p
         = f.submit "Save", :disable_with => 'Saveing...',  :class => "slick-back"

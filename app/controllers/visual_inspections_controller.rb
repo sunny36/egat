@@ -17,6 +17,7 @@ class VisualInspectionsController < ApplicationController
     @visual_inspection.build_surge_arrester
     @visual_inspection.build_conservator_tank
     @visual_inspection.build_main_tank
+    @visual_inspection.build_hot_line_oil_filter
   end
 
   def create
