@@ -1,0 +1,59 @@
+= error_messages_for :visual_inspection,                    |
+  :header_message => "Please Try Again!", :class => 'error' |
+#transformer_search
+  = form_for [@transformer, @visual_inspection] do |f|
+    .prefix_6.grid_4.suffix_6
+      %p
+        = f.label :transformer_id, "หม้อแปลงไฟฟ้า"
+        = transformer_names_drop_down_list(f, :transformer_id)
+    .grid_3
+      %p
+        = f.label :test_type, 'วาระการตรวจสอบ'
+        = f.select(:test_type, ["Commissioning", "Weekly", "1 year"])
+    .grid_3
+      %p
+        = f.label :test_by, 'ผู้ตรวจสอบ'
+        = f.text_field :test_by
+    .grid_3
+      %p
+        = f.label :test_date, 'วันท่ีตรวจสอบ'
+        = f.text_field :test_date
+    .grid_3
+      %p
+        = f.label :oltc_counter, 'OLTC Counter'
+        = f.text_field :oltc_counter
+    .grid_3
+      %p
+        = f.label :work_order, 'เลขที่ใบสั่งงาน'
+        = f.text_field :work_order
+    .clear
+    #tabs
+      %ul
+        %li
+          %a{:href => "#general_condition"} 1. สภาพทั่วไป
+        %li
+          %a{:href => "#bushing_condition"} 2. Bushing Condition
+        %li
+          %a{:href => "#surge_arrester"} 3. Surge Arrester
+        %li
+          %a{:href => "#conservator_tank"} 4. Conservator Tank
+        %li
+          %a{:href => "#main_tank"} 5. Main Tank
+      #general_condition
+        %h2 1. สภาพทั่วไป *
+        = render :partial => 'general_condition_form', :locals => {:f => f}
+      #bushing_condition
+        %h2 2. Bushing Condition
+        = render :partial => 'bushing_condition_form', :locals => {:f => f}
+      #surge_arrester
+        %h2 3. Surge Arrester
+        = render :partial => 'surge_arrester_form', :locals => {:f => f}
+      #conservator_tank
+        %h2 4. Conservator Tank
+        = render :partial => 'conservator_tank_form', :locals => {:f => f}
+      #main_tank
+        %h2 5. Main Tank
+        = render :partial => 'main_tank_form', :locals => {:f => f}        
+    .prefix_3.grid_4
+      %p
+        = f.submit "Save", :disable_with => 'Saveing...',  :class => "slick-back"

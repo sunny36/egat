@@ -1,0 +1,14 @@
+= f.fields_for :main_tank do |main_tank|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :corrosion, :main_tanks, main_tank
+        = select_list_for :corrosion, :main_tanks, main_tank
+    .grid_12
+      %p
+        = label_for :oil_fail, :main_tanks, main_tank
+        = select_list_for :oil_fail, :main_tanks, main_tank
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

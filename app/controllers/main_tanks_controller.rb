@@ -1,0 +1,2 @@
+class MainTanksController < ApplicationController
+end
