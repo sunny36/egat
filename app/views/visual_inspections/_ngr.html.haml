@@ -17,6 +17,5 @@
         = label_for :ground_connector, :ngrs, ngr
         = select_list_for :ground_connector, :ngrs, ngr
     .clear
-    .grid_3
-      %button.minimal.previous Previous
+    = render :partial => 'next_previous_buttons'
     .clear

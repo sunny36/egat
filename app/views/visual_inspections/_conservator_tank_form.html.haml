@@ -44,6 +44,5 @@
           = label_for :jel_color_oltc, :conservator_tanks, conservator_tank
           = select_list_for :jel_color_oltc, :conservator_tanks, conservator_tank
     .clear
-    .grid_3
-      %button.minimal.previous Previous
+    = render :partial => 'next_previous_buttons'
     .clear

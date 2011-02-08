@@ -9,6 +9,5 @@
         = label_for :oil_fail, :oltc_compartments, oltc_compartment
         = select_list_for :oil_fail, :oltc_compartments, oltc_compartment
     .clear
-    .grid_3
-      %button.minimal.previous Previous
+    = render :partial => 'next_previous_buttons'
     .clear

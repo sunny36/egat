@@ -9,6 +9,5 @@
         = thermo_scan.label :load, "% Load ขณะตรวจเช็ค", {:class => "inline"}
         = thermo_scan.text_field :load
     .clear
-    .grid_3
-      %button.minimal.previous Previous
+    = render :partial => 'next_previous_buttons'
     .clear
