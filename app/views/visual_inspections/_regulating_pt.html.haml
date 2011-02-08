@@ -1,0 +1,26 @@
+= f.fields_for :regulating_pt do |regulating_pt|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :pocelain_status, :regulating_pts, regulating_pt
+        = select_list_for :pocelain_status, :regulating_pts, regulating_pt
+    .grid_12
+      %p
+        = label_for :pocelain_clean, :regulating_pts, regulating_pt
+        = select_list_for :pocelain_clean, :regulating_pts, regulating_pt
+    .grid_12
+      %p
+        = label_for :oil_fail, :regulating_pts, regulating_pt
+        = select_list_for :oil_fail, :regulating_pts, regulating_pt
+    .grid_12
+      %p
+        = label_for :oil_level, :regulating_pts, regulating_pt
+        = select_list_for :oil_level, :regulating_pts, regulating_pt
+    .grid_12
+      %p
+        = label_for :oil_color, :regulating_pts, regulating_pt
+        = select_list_for :oil_color, :regulating_pts, regulating_pt        
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

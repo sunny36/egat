@@ -80,7 +80,15 @@
       #ngr
         %h2 9. NGR
         = render :partial => 'ngr', :locals => {:f => f}                
-        
+      #regulating_pt
+        %h2 10. Regulating PT
+        = render :partial => 'regulating_pt', :locals => {:f => f}                
+      #oltc_compartment
+        %h2 11. OLTC Compartment
+        = render :partial => 'oltc_compartment', :locals => {:f => f}                
+      #oltc_control_cabinet
+        %h2 12. OLTC Control Cabinet
+        = render :partial => 'oltc_control_cabinet', :locals => {:f => f}                        
     .prefix_3.grid_4
       %p
         = f.submit "Save", :disable_with => 'Saveing...',  :class => "slick-back"

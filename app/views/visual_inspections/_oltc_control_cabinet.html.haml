@@ -1,0 +1,26 @@
+= f.fields_for :oltc_control_cabinet do |oltc_control_cabinet|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :corrosion, :oltc_control_cabinets, oltc_control_cabinet
+        = select_list_for :corrosion, :oltc_control_cabinets, oltc_control_cabinet
+    .grid_12
+      %p
+        = label_for :animal, :oltc_control_cabinets, oltc_control_cabinet
+        = select_list_for :animal, :oltc_control_cabinets, oltc_control_cabinet
+    .grid_12
+      %p
+        = label_for :control_humidity, :oltc_control_cabinets, oltc_control_cabinet
+        = select_list_for :control_humidity, :oltc_control_cabinets, oltc_control_cabinet
+    .grid_12
+      %p
+        = label_for :pragen, :oltc_control_cabinets, oltc_control_cabinet
+        = select_list_for :pragen, :oltc_control_cabinets, oltc_control_cabinet
+    .grid_12
+      %p
+        = label_for :wiring_control, :oltc_control_cabinets, oltc_control_cabinet
+        = select_list_for :wiring_control, :oltc_control_cabinets, oltc_control_cabinet        
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

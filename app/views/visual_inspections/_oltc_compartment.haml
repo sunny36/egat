@@ -1,0 +1,14 @@
+= f.fields_for :oltc_compartment do |oltc_compartment|
+  %fieldset
+    .grid_12
+      %p
+        = label_for :corrosion, :oltc_compartments, oltc_compartment
+        = select_list_for :corrosion, :oltc_compartments, oltc_compartment
+    .grid_12
+      %p
+        = label_for :oil_fail, :oltc_compartments, oltc_compartment
+        = select_list_for :oil_fail, :oltc_compartments, oltc_compartment
+    .clear
+    .grid_3
+      %button.minimal.previous Previous
+    .clear

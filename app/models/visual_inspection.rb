@@ -24,6 +24,7 @@ class VisualInspection < ActiveRecord::Base
   has_one :radiator_cooling_system
   has_one :transformer_control_cabinet
   has_one :ngr
+  has_one :regulating_pt
   has_one :oltc_compartment
   has_one :oltc_control_cabinet
   has_one :thermo_scan
@@ -38,6 +39,7 @@ class VisualInspection < ActiveRecord::Base
   accepts_nested_attributes_for :radiator_cooling_system
   accepts_nested_attributes_for :transformer_control_cabinet
   accepts_nested_attributes_for :ngr
+  accepts_nested_attributes_for :regulating_pt
   accepts_nested_attributes_for :oltc_compartment
   accepts_nested_attributes_for :oltc_control_cabinet
   accepts_nested_attributes_for :thermo_scan

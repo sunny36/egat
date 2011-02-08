@@ -21,6 +21,9 @@ class VisualInspectionsController < ApplicationController
     @visual_inspection.build_radiator_cooling_system
     @visual_inspection.build_transformer_control_cabinet
     @visual_inspection.build_ngr
+    @visual_inspection.build_regulating_pt
+    @visual_inspection.build_oltc_compartment
+    @visual_inspection.build_oltc_control_cabinet
   end
 
   def create
