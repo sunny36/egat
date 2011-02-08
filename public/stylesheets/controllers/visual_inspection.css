@@ -4,11 +4,11 @@ label.inline {
 	float: left;
 }
 
-.grid_12 select {
+.grid_12 select, input[type="text"] {
 	width: 200px;
 }
 
-select {
+select, input[type="text"] {
 	display: inline !important;
 }
 
