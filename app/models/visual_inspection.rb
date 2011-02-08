@@ -24,6 +24,7 @@ class VisualInspection < ActiveRecord::Base
   has_one :radiator_cooling_system
   has_one :transformer_control_cabinet
   has_one :ngr
+  has_one :oltc_compartment
   belongs_to :transformer
 
   accepts_nested_attributes_for :conservator_tank
@@ -35,6 +36,7 @@ class VisualInspection < ActiveRecord::Base
   accepts_nested_attributes_for :radiator_cooling_system
   accepts_nested_attributes_for :transformer_control_cabinet
   accepts_nested_attributes_for :ngr
+  accepts_nested_attributes_for :oltc_compartment
   
   #Validations
   validates_presence_of :test_type, :message => "can't be blank"
