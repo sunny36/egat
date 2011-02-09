@@ -93,6 +93,7 @@ module VisualInspectionsHelper
   def condition(visual_inspection, klass, field_name)
     id = klass.find_by_visual_inspection_id(visual_inspection.id).
       send(field_name.to_s)
+    return "-" if id.nil?
     visual_inspection_condition = VisualInspectionCondition.find(id)
     unless (visual_inspection_condition.start.nil? && 
             visual_inspection_condition.end.nil?)

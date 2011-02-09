@@ -1,0 +1,22 @@
+%h2 9. NGR
+%dl
+  .grid_8.suffix_8
+    %dt
+      = description_for :ngr_status, :ngrs
+    %dd
+      = " : " + condition(visual_inspection, Ngr, :ngr_status)
+  .grid_8.suffix_8
+    %dt
+      = description_for :base_status, :ngrs
+    %dd
+      = " : " + condition(visual_inspection, Ngr, :base_status)
+  .grid_8.suffix_8
+    %dt
+      = description_for :pocelain_clean, :ngrs
+    %dd
+      = " : " + condition(visual_inspection, Ngr, :pocelain_clean)
+  .grid_8.suffix_8
+    %dt
+      = description_for :ground_connector, :ngrs
+    %dd
+      = " : " + condition(visual_inspection, Ngr, :ground_connector)

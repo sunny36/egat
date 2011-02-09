@@ -1,0 +1,27 @@
+%h2 8. Transformer Control Cabinet
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :corrosion, :transformer_control_cabinets
+    %dd 
+      = " : " + condition(visual_inspection, TransformerControlCabinet, :corrosion)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :animal, :transformer_control_cabinets
+    %dd 
+      = " : " + condition(visual_inspection, TransformerControlCabinet, :animal)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :control_humidity, :transformer_control_cabinets
+    %dd 
+      = " : " + condition(visual_inspection, TransformerControlCabinet, :control_humidity)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :pragen, :transformer_control_cabinets
+    %dd 
+      = " : " + condition(visual_inspection, TransformerControlCabinet, :pragen)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :wiring_control, :transformer_control_cabinets
+    %dd 
+      = " : " + condition(visual_inspection, TransformerControlCabinet, :wiring_control)

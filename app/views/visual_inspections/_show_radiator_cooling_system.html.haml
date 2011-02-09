@@ -1,0 +1,27 @@
+%h2 7. Hot Line Oil Filter
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :corrosion, :radiator_cooling_systems
+    %dd 
+      = " : " + condition(visual_inspection, RadiatorCoolingSystem, :corrosion)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :oil_fail, :radiator_cooling_systems
+    %dd 
+      = " : " + condition(visual_inspection, RadiatorCoolingSystem, :oil_fail)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :noise_level, :radiator_cooling_systems
+    %dd 
+      = " : " + condition(visual_inspection, RadiatorCoolingSystem, :noise_level)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :oil_pump, :radiator_cooling_systems
+    %dd 
+      = " : " + condition(visual_inspection, RadiatorCoolingSystem, :oil_pump)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :animal, :radiator_cooling_systems
+    %dd 
+      = " : " + condition(visual_inspection, RadiatorCoolingSystem, :animal)

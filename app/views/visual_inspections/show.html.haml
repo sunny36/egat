@@ -32,142 +32,54 @@
 %br
 %hr
 #tabs
-  %ul 
+  %ul
     %li
-      %a{:href => "#tabs-1"} 1. สภาพทั่วไป
+      %a{:href => "#general_condition"} 1. สภาพทั่วไป
     %li
-      %a{:href => "#tabs-2"} 2. Bushing Condition
-  #tabs-1
-    %h2 1. สภาพทั่วไป
-    %dl
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:maxload, :general_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, GeneralCondition, :maxload)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:sound, :general_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, GeneralCondition, :sound)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:vibration, :general_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, GeneralCondition, :vibration)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:ground_connector, :general_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, GeneralCondition, :ground_connector)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:foundation, :general_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, GeneralCondition, :foundation)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:animal_protect, :general_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, GeneralCondition, :animal_protect)
-  #tabs-2
-    %h2 2. Bushing Condition
-    %br
-    %h4 2.1 ด้าน HV.
-    %dl
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:porcelain_status_hv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :porcelain_status_hv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:porcelain_clean_hv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :porcelain_clean_hv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_fail_hv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_fail_hv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_level_hv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_level_hv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_color_hv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_color_hv)
-    %br
-    %h4 2.2 ด้าน LV.
-    %dl
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:porcelain_status_lv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :porcelain_status_lv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:porcelain_clean_lv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :porcelain_clean_lv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_fail_lv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_fail_lv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_level_lv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_level_lv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_color_lv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_color_lv)
-    %br
-    %h4 2.3 ด้าน TV.
-    %dl
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:porcelain_status_tv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :porcelain_status_tv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:porcelain_clean_tv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :porcelain_clean_tv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_fail_tv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_fail_tv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_level_tv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_level_tv)
-      .grid_8.suffix_8
-        %dt 
-          = description_for(:oil_color_tv, :bushing_conditions)
-        %dd 
-          = " : " + condition(@visual_inspection, BushingCondition, 
-            :oil_color_tv)
+      %a{:href => "#bushing_condition"} 2. Bushing Condition
+    %li
+      %a{:href => "#surge_arrester"} 3. Surge Arrester
+    %li
+      %a{:href => "#conservator_tank"} 4. Conservator Tank
+    %li
+      %a{:href => "#main_tank"} 5. Main Tank
+    %li
+      %a{:href => "#hot_line_oil_filter"} 6. Hot Line Oil Filter        
+    %li
+      %a{:href => "#radiator_cooling_system"} 7. Radiator&Cooling System
+    %li
+      %a{:href => "#transformer_control_cabinet"} 8. Tx Control Cabinet
+    %li
+      %a{:href => "#ngr"} 9. NGR
+    %li
+      %a{:href => "#regulating_pt"} 10. Regulating PT
+    %li
+      %a{:href => "#oltc_compartment"} 11. OLTC Compartment
+    %li
+      %a{:href => "#oltc_control_cabinet"} 12. OLTC Control Cabinet                  
+    %li
+      %a{:href => "#thermo_scan"} 13. Thermo Scan
+  #general_condition
+    = render :partial => 'show_general_condition', :locals => {:visual_inspection => @visual_inspection}
+  #bushing_condition
+    = render :partial => 'show_bushing_condition', :locals => {:visual_inspection => @visual_inspection}
+  #surge_arrester
+    = render :partial => 'show_surge_arrester', :locals => {:visual_inspection => @visual_inspection}
+  #conservator_tank
+    = render :partial => 'show_conservator_tank', :locals => {:visual_inspection => @visual_inspection}
+  #main_tank
+    = render :partial => 'show_main_tank', :locals => {:visual_inspection => @visual_inspection}
+  #hot_line_oil_filter
+    = render :partial => 'show_hot_line_oil_filter', :locals => {:visual_inspection => @visual_inspection}  
+  #radiator_cooling_system
+    = render :partial => 'show_radiator_cooling_system', :locals => {:visual_inspection => @visual_inspection}
+  #transformer_control_cabinet
+    = render :partial => 'show_transformer_control_cabinet', :locals => {:visual_inspection => @visual_inspection}
+  #ngr
+    = render :partial => 'show_ngr', :locals => {:visual_inspection => @visual_inspection}
+  #regulating_pt
+    = render :partial => 'show_regulating_pt', :locals => {:visual_inspection => @visual_inspection}
+  #oltc_compartment
+    = render :partial => 'show_oltc_compartment', :locals => {:visual_inspection => @visual_inspection}
+  #oltc_control_cabinet
+    = render :partial => 'show_oltc_control_cabinet', :locals => {:visual_inspection => @visual_inspection}

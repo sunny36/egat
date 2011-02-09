@@ -1,0 +1,27 @@
+%h2 12. OLTC Control Cabinet
+%dl
+  .grid_8.suffix_8
+    %dt
+      = description_for :corrosion, :oltc_control_cabinets
+    %dd
+      = " : " + condition(visual_inspection, OltcControlCabinet, :corrosion)
+  .grid_8.suffix_8
+    %dt
+      = description_for :animal, :oltc_control_cabinets
+    %dd
+      = " : " + condition(visual_inspection, OltcControlCabinet, :animal)
+  .grid_8.suffix_8
+    %dt
+      = description_for :control_humidity, :oltc_control_cabinets
+    %dd
+      = " : " + condition(visual_inspection, OltcControlCabinet, :control_humidity)      
+  .grid_8.suffix_8
+    %dt
+      = description_for :pragen, :oltc_control_cabinets
+    %dd
+      = " : " + condition(visual_inspection, OltcControlCabinet, :pragen)
+  .grid_8.suffix_8
+    %dt
+      = description_for :wiring_control, :oltc_control_cabinets
+    %dd
+      = " : " + condition(visual_inspection, OltcControlCabinet, :wiring_control)

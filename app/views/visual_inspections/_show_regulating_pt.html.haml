@@ -1,0 +1,27 @@
+%h2 10. Regulating PT
+%dl
+  .grid_8.suffix_8
+    %dt
+      = description_for :pocelain_status, :regulating_pts
+    %dd
+      = " : " + condition(visual_inspection, RegulatingPt, :pocelain_status)
+  .grid_8.suffix_8
+    %dt
+      = description_for :pocelain_clean, :regulating_pts
+    %dd
+      = " : " + condition(visual_inspection, RegulatingPt, :pocelain_clean)
+  .grid_8.suffix_8
+    %dt
+      = description_for :oil_fail, :regulating_pts
+    %dd
+      = " : " + condition(visual_inspection, RegulatingPt, :oil_fail)
+  .grid_8.suffix_8
+    %dt
+      = description_for :oil_level, :regulating_pts
+    %dd
+      = " : " + condition(visual_inspection, RegulatingPt, :oil_level)
+  .grid_8.suffix_8
+    %dt
+      = description_for :oil_color, :regulating_pts
+    %dd
+      = " : " + condition(visual_inspection, RegulatingPt, :oil_color)      

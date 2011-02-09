@@ -1,0 +1,58 @@
+%h2 4. Conservator Tank
+%br
+%h4 Main Tank
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :corrosion_maintank, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :corrosion_maintank)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :oilfail_maintank, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :oilfail_maintank)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :oil_level_maintank, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :oil_level_maintank)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :jel_color_maintank, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :jel_color_maintank)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :breather_maintank, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :breather_maintank)
+      
+%br
+%h4 OLTC
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :corrosion_oltc, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :corrosion_oltc)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :oilfail_oltc, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :oilfail_oltc)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :oil_level_oltc, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :oil_level_oltc)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :jel_color_oltc, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :jel_color_oltc)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :breather_oltc, :conservator_tanks
+    %dd 
+      = " : " + condition(visual_inspection, ConservatorTank, :breather_oltc)

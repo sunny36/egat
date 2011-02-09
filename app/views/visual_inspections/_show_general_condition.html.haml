@@ -1,0 +1,32 @@
+%h2 1. สภาพทั่วไป
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for(:maxload, :general_conditions)
+    %dd 
+      = " : " + condition(visual_inspection, GeneralCondition, :maxload)
+  .grid_8.suffix_8
+    %dt 
+      = description_for(:sound, :general_conditions)
+    %dd 
+      = " : " + condition(visual_inspection, GeneralCondition, :sound)
+  .grid_8.suffix_8
+    %dt 
+      = description_for(:vibration, :general_conditions)
+    %dd 
+      = " : " + condition(visual_inspection, GeneralCondition, :vibration)
+  .grid_8.suffix_8
+    %dt 
+      = description_for(:ground_connector, :general_conditions)
+    %dd 
+      = " : " + condition(visual_inspection, GeneralCondition, :ground_connector)
+  .grid_8.suffix_8
+    %dt 
+      = description_for(:foundation, :general_conditions)
+    %dd 
+      = " : " + condition(visual_inspection, GeneralCondition, :foundation)
+  .grid_8.suffix_8
+    %dt 
+      = description_for(:animal_protect, :general_conditions)
+    %dd 
+      = " : " + condition(visual_inspection, GeneralCondition, :animal_protect)

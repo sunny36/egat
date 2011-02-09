@@ -1,0 +1,70 @@
+%h2 3. Surge Arrester
+%br
+%h4 3.1 ด้าน HV.
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :porcelain_status_hv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :porcelain_status_hv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :porcelain_clean_hv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :porcelain_clean_hv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :ground_connector_hv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :ground_connector_hv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :surge_counter_hv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :surge_counter_hv)
+%br
+%h4 3.1 ด้าน LV.
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :porcelain_status_lv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :porcelain_status_lv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :porcelain_clean_lv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :porcelain_clean_lv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :ground_connector_lv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :ground_connector_lv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :surge_counter_lv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :surge_counter_lv)
+%br
+%h4 3.3 ด้าน TV.
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :porcelain_status_tv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :porcelain_status_tv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :porcelain_clean_tv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :porcelain_clean_tv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :ground_connector_tv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :ground_connector_tv)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :surge_counter_tv, :surge_arresters
+    %dd 
+      = " : " + condition(visual_inspection, SurgeArrester, :surge_counter_tv)

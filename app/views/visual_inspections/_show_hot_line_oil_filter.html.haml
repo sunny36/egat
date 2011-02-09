@@ -1,0 +1,12 @@
+%h2 6. Hot Line Oil Filter
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :corrosion, :hot_line_oil_filters
+    %dd 
+      = " : " + condition(visual_inspection, HotLineOilFilter, :corrosion)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :pressure, :hot_line_oil_filters
+    %dd 
+      = " : " + condition(visual_inspection, HotLineOilFilter, :pressure)

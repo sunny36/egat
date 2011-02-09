@@ -1,0 +1,12 @@
+%h2 5. Main Tank
+%dl
+  .grid_8.suffix_8
+    %dt 
+      = description_for :corrosion, :main_tanks
+    %dd 
+      = " : " + condition(visual_inspection, MainTank, :corrosion)
+  .grid_8.suffix_8
+    %dt 
+      = description_for :oil_fail, :main_tanks
+    %dd 
+      = " : " + condition(visual_inspection, MainTank, :oil_fail)
