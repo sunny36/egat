@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110209073301) do
+ActiveRecord::Schema.define(:version => 20110209122039) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1333,6 +1333,16 @@ ActiveRecord::Schema.define(:version => 20110209073301) do
   create_table "sun_flower", :force => true do |t|
     t.integer "version"
     t.string  "owner"
+  end
+
+  create_table "surge_arrester_conditions", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "surge_arresters", :force => true do |t|
