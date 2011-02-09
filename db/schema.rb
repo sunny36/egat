@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208051447) do
+ActiveRecord::Schema.define(:version => 20110209073301) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -123,28 +123,22 @@ ActiveRecord::Schema.define(:version => 20110208051447) do
   end
 
   create_table "bushing_conditions", :force => true do |t|
-    t.integer  "version"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "oil_color_hv",         :precision => 10, :scale => 0
-    t.decimal  "oil_color_lv",         :precision => 10, :scale => 0
-    t.decimal  "oil_color_tv",         :precision => 10, :scale => 0
-    t.decimal  "oil_fail_hv",          :precision => 10, :scale => 0
-    t.decimal  "oil_fail_lv",          :precision => 10, :scale => 0
-    t.decimal  "oil_fail_tv",          :precision => 10, :scale => 0
-    t.decimal  "oil_level_hv",         :precision => 10, :scale => 0
-    t.decimal  "oil_level_lv",         :precision => 10, :scale => 0
-    t.decimal  "oil_level_tv",         :precision => 10, :scale => 0
-    t.decimal  "perform_type",         :precision => 10, :scale => 0
-    t.decimal  "porcelain_clean_hv",   :precision => 10, :scale => 0
-    t.decimal  "porcelain_clean_lv",   :precision => 10, :scale => 0
-    t.decimal  "porcelain_clean_tv",   :precision => 10, :scale => 0
-    t.decimal  "porcelain_status_hv",  :precision => 10, :scale => 0
-    t.decimal  "porcelain_status_lv",  :precision => 10, :scale => 0
-    t.decimal  "porcelain_status_tv",  :precision => 10, :scale => 0
-    t.decimal  "transformer_id",       :precision => 10, :scale => 0
-    t.integer  "visual_inspection_id"
+    t.decimal "oil_color_hv",         :precision => 10, :scale => 0
+    t.decimal "oil_color_lv",         :precision => 10, :scale => 0
+    t.decimal "oil_color_tv",         :precision => 10, :scale => 0
+    t.decimal "oil_fail_hv",          :precision => 10, :scale => 0
+    t.decimal "oil_fail_lv",          :precision => 10, :scale => 0
+    t.decimal "oil_fail_tv",          :precision => 10, :scale => 0
+    t.decimal "oil_level_hv",         :precision => 10, :scale => 0
+    t.decimal "oil_level_lv",         :precision => 10, :scale => 0
+    t.decimal "oil_level_tv",         :precision => 10, :scale => 0
+    t.decimal "porcelain_clean_hv",   :precision => 10, :scale => 0
+    t.decimal "porcelain_clean_lv",   :precision => 10, :scale => 0
+    t.decimal "porcelain_clean_tv",   :precision => 10, :scale => 0
+    t.decimal "porcelain_status_hv",  :precision => 10, :scale => 0
+    t.decimal "porcelain_status_lv",  :precision => 10, :scale => 0
+    t.decimal "porcelain_status_tv",  :precision => 10, :scale => 0
+    t.integer "visual_inspection_id"
   end
 
   create_table "chart_present", :force => true do |t|
