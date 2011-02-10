@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210104537) do
+ActiveRecord::Schema.define(:version => 20110210110610) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -143,6 +143,16 @@ ActiveRecord::Schema.define(:version => 20110210104537) do
 
   create_table "chart_present", :force => true do |t|
     t.integer "version"
+  end
+
+  create_table "conservator_tank_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "conservator_tanks", :force => true do |t|

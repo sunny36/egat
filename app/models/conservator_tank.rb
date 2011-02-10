@@ -20,6 +20,26 @@
 class ConservatorTank < ActiveRecord::Base
   belongs_to :visual_inspection
 
+  #----------------------------- Validations ----------------------------------
+  validates_presence_of :breather_maintank, :message => "can't be blank"
+  validates_presence_of :corrosion_maintank, :message => "can't be blank"
+  validates_presence_of :jel_color_maintank, :message => "can't be blank"
+  validates_presence_of :oil_level_maintank, :message => "can't be blank"
+  validates_presence_of :oilfail_maintank, :message => "can't be blank"
+
+  validates_presence_of :breather_oltc, :message => "can't be blank"
+  validates_presence_of :corrosion_oltc, :message => "can't be blank"
+  validates_presence_of :jel_color_oltc, :message => "can't be blank"
+  validates_presence_of :oil_level_oltc, :message => "can't be blank"
+  validates_presence_of :oilfail_oltc, :message => "can't be blank"
+  #----------------------------------------------------------------------------
+
+  def hi_factor
+    ConservatorTankFactor.all.each do |i|
+    i.end = 100 if i.end.nil?
+    return i.hi_factor if percent_conservator_tank_factor.round.between?(i.start, i.end)
+    end
+  end
 
   def percent_conservator_tank_factor
     (numerator/denominator).to_f * 100.0
