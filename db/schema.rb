@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210053907) do
+ActiveRecord::Schema.define(:version => 20110210104537) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1335,7 +1335,7 @@ ActiveRecord::Schema.define(:version => 20110210053907) do
     t.string  "owner"
   end
 
-  create_table "surge_arrester_condition_factors", :force => true do |t|
+  create_table "surge_arrester_factors", :force => true do |t|
     t.integer  "hi_factor"
     t.string   "condition"
     t.integer  "start"
