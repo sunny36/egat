@@ -47,6 +47,20 @@ module OverallConditionsHelper
       return link_to(color.html_safe, link)
     end
   end
+
+  def surge_arrester_factor_color(surge_arrester, visual_inspection, transformer)
+    unless surge_arrester.nil?
+      surge_arrester_factor = 
+        SurgeArresterFactor.where("hi_factor = ?", 
+                                  surge_arrester.hi_factor).first
+      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" + 
+              "#{surge_arrester_factor.color});\">" + "</span>"
+      link = 
+        transformer_visual_inspection_surge_arresters_path(transformer, 
+        visual_inspection)
+      return link_to(color.html_safe, link)
+    end
+  end
   
   def recent_date(visual_inspection)
     unless visual_inspection.nil?

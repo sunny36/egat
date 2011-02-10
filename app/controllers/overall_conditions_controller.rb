@@ -8,6 +8,7 @@ class OverallConditionsController < ApplicationController
                                                 @visual_inspection.id).first
     @bushing_condition = BushingCondition.where("visual_inspection_id = ?",
                                                 @visual_inspection.id).first
+    @surge_arrester = @visual_inspection.surge_arrester
     if request.xhr?
       @no_js = true
       @no_header = true
