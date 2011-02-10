@@ -102,7 +102,7 @@ button.clean-gray:active {
 
 /* cupid green (inspired by okcupid.com)
 *******************************************************************************/
-button.cupid-green {
+input[type="submit"].cupid-green, button.cupid-green {
   background: #7fbf4d;
   background: -moz-linear-gradient(0% 100% 90deg,#63a62f, #7fbf4d);
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7fbf4d), to(#63a62f));
@@ -125,7 +125,7 @@ button.cupid-green {
   width: 150px;
 }
 
-button.cupid-green:hover {
+input[type="submit"].cupid-green:hover, button.cupid-green:hover {
   background: #76b347;
   background: -moz-linear-gradient(0% 100% 90deg,#5e9e2e, #76b347);
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#76b347), to(#5e9e2e));
@@ -279,7 +279,7 @@ button.dribbble:active {
 
 /* slick black
 *******************************************************************************/
-input[type="submit"], button.slick-black {
+input[type="submit"].slick-back, button.slick-black {
   background: #111;
   background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000,
               rgba(0, 0, 0, 0.9) 0%,
@@ -308,7 +308,7 @@ input[type="submit"], button.slick-black {
   width: 150px;
 }
 
-input[type="submit"], button.slick-black:hover {
+input[type="submit"].slick-back, button.slick-black:hover {
   background: #222;
   background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000,
               rgba(20, 20, 20, 0.9) 0%,

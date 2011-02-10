@@ -43,11 +43,13 @@ VisualInspection.setupDatePicker = function(id) {
 };
 
 VisualInspection.showFirstTabContainingErrors = function() {
-  if ($('#general_condition').find('.field_with_errors').length > 0) {
-    $("#tabs").tabs("option", "selected", 0);
-  } else if ($('#bushing_condition').find('.field_with_errors').length > 0) {
-    $("#tabs").tabs("option", "selected", 1);
-  }
+  var tabIds = $("#tabs ul li a");
+  $.each(tabIds, function (index, value) {
+    tabId = $(value).attr("href");
+    if ($(tabId).find(".field_with_errors").length > 0) {
+      $("#tabs").tabs("option", "selected", index);
+    }
+  });
 };
 
 VisualInspection.onNextClicked = function(tabName) {

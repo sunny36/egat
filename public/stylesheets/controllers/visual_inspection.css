@@ -1,4 +1,4 @@
-input[type="submit"], button.slick-black {
+input[type="submit"].cupid-green, button.cupid-green {
   width: 730px;
 }
 
@@ -19,7 +19,6 @@ select, input[type="text"] {
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table;
 }
 
 /* Vertical Tabs ----------------------------------*/
