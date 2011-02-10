@@ -43,6 +43,10 @@
         %p
           = label_for :jel_color_oltc, :conservator_tanks, conservator_tank
           = select_list_for :jel_color_oltc, :conservator_tanks, conservator_tank
+      .grid_12
+        %p
+          = label_for :breather_oltc, :conservator_tanks, conservator_tank
+          = select_list_for :breather_oltc, :conservator_tanks, conservator_tank
     .clear
     = render :partial => 'next_previous_buttons'
     .clear
