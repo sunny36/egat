@@ -73,3 +73,9 @@
           = transformer_control_cabinet_factor_color(@visual_inspection, |
             @transformer)                                            |   
         %td= recent_date(@visual_inspection)
+      %tr
+        %td  15
+        %td NGR
+        %td= hi_factor(@visual_inspection.ngr)
+        %td= ngr_factor_color(@visual_inspection, @transformer)                                            
+        %td= recent_date(@visual_inspection)

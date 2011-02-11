@@ -33,6 +33,7 @@ Egat::Application.routes.draw do
       resources :hot_line_oil_filters
       resources :radiator_cooling_systems
       resources :transformer_control_cabinets
+      resources :ngrs
     end    
     
     resources :oil_dgas do
