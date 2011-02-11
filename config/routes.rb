@@ -28,6 +28,10 @@ Egat::Application.routes.draw do
       resources :bushing_conditions
       resources :load_histories
       resources :surge_arresters
+      resources :conservator_tanks
+      resources :main_tanks
+      resources :hot_line_oil_filters
+      resources :radiator_cooling_systems
     end    
     
     resources :oil_dgas do
