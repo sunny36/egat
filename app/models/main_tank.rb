@@ -12,6 +12,18 @@
 class MainTank < ActiveRecord::Base
   belongs_to :visual_inspection
   
+  #----------------------------- Validations ----------------------------------
+  validates_presence_of :corrosion, :message => "can't be blank"
+  validates_presence_of :oil_fail, :message => "can't be blank"
+  #----------------------------------------------------------------------------
+
+  def hi_factor
+    MainTankFactor.all.each do |i|
+    i.end = 100 if i.end.nil?
+    return i.hi_factor if percent_main_tank_factor.round.between?(i.start, i.end)
+    end
+  end
+  
   def percent_main_tank_factor
     (numerator/denominator).to_f * 100.0
   end
