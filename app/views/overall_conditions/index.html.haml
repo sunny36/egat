@@ -91,3 +91,9 @@
         %td= hi_factor(@visual_inspection.oltc_compartment)
         %td= oltc_compartment_factor_color(@visual_inspection, @transformer)                                            
         %td= recent_date(@visual_inspection)
+      %tr
+        %td  18
+        %td OLTC Control Cabinet
+        %td= hi_factor(@visual_inspection.oltc_control_cabinet)
+        %td= oltc_control_cabinet_factor_color(@visual_inspection, @transformer)                                            
+        %td= recent_date(@visual_inspection)
