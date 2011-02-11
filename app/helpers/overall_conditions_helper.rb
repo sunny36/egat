@@ -89,6 +89,22 @@ module OverallConditionsHelper
     end
   end
 
+  def hot_line_oil_filter_factor_color(visual_inspection, transformer)
+    unless visual_inspection.hot_line_oil_filter.nil?
+      hot_line_oil_filter_factor =
+        HotLineOilFilterFactor.where("hi_factor = ?",
+                                     visual_inspection.
+                                     hot_line_oil_filter.
+                                     hi_factor).first
+      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
+        "#{hot_line_oil_filter_factor.color});\">" + "</span>"
+      link =
+        transformer_visual_inspection_hot_line_oil_filters_path(transformer,
+                                                                visual_inspection)
+        return link_to(color.html_safe, link)
+    end
+  end
+
 
 
   def recent_date(visual_inspection)

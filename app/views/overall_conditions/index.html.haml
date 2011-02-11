@@ -8,7 +8,7 @@
       %th ข้อมูลล่าสุดที่ถูกบันทึก
     %tbody
       %tr
-        %td  1
+        %td  2
         %td Load History
         %td= @general_condition.load_history_hi_factor
         %td
@@ -16,7 +16,7 @@
             @transformer)                                                     |
         %td= recent_date(@visual_inspection)
       %tr
-        %td  1
+        %td  7
         %td General Condition
         %td= hi_factor(@general_condition)
         %td
@@ -24,7 +24,7 @@
             @visual_inspection, @transformer)                  |
         %td= recent_date(@visual_inspection)
       %tr
-        %td  1
+        %td  8
         %td Bushing Condition
         %td= hi_factor(@bushing_condition)
         %td
@@ -32,7 +32,7 @@
             @visual_inspection, @transformer)                  |
         %td= recent_date(@visual_inspection)
       %tr
-        %td  1
+        %td  9
         %td Surge Arrester
         %td= hi_factor(@surge_arrester)
         %td
@@ -40,14 +40,20 @@
             @transformer)                                                    |
         %td= recent_date(@visual_inspection)
       %tr
-        %td  1
+        %td  10
         %td Conservator Tank
         %td= hi_factor(@visual_inspection.conservator_tank)
         %td= conservator_tank_factor_color(@visual_inspection, @transformer)                                                    
         %td= recent_date(@visual_inspection)
       %tr
-        %td  1
+        %td  11
         %td Main Tank
         %td= hi_factor(@visual_inspection.main_tank)
         %td= main_tank_factor_color(@visual_inspection, @transformer)                                                    
+        %td= recent_date(@visual_inspection)
+      %tr
+        %td  12
+        %td Hot Line Oil Filter
+        %td= hi_factor(@visual_inspection.hot_line_oil_filter)
+        %td= hot_line_oil_filter_factor_color(@visual_inspection, @transformer)                                                    
         %td= recent_date(@visual_inspection)
