@@ -34,6 +34,7 @@ Egat::Application.routes.draw do
       resources :radiator_cooling_systems
       resources :transformer_control_cabinets
       resources :ngrs
+      resources :regulating_pts
     end    
     
     resources :oil_dgas do

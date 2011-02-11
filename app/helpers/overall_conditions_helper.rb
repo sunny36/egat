@@ -145,6 +145,20 @@ module OverallConditionsHelper
         "#{ngr_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_ngrs_path(transformer, visual_inspection)
+      return link_to(color.html_safe, link)
+    end
+  end
+
+  def regulating_pt_factor_color(visual_inspection, transformer)
+    unless visual_inspection.regulating_pt.nil?
+      regulating_pt_factor =
+        RegulatingPtFactor.where("hi_factor = ?",
+                                 visual_inspection.ngr.hi_factor).first
+      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
+        "#{regulating_pt_factor.color});\">" + "</span>"
+      link =
+        transformer_visual_inspection_regulating_pts_path(transformer,
+                                                          visual_inspection)
         return link_to(color.html_safe, link)
     end
   end

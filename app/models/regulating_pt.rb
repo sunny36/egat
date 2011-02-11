@@ -14,11 +14,20 @@
 
 class RegulatingPt < ActiveRecord::Base
   belongs_to :visual_inspection
-  
+
+  def hi_factor
+    RegulatingPtFactor.all.each do |i|
+      i.end = 100 if i.end.nil?
+      if percent_regulating_pt_factor.round.between?(i.start, i.end)
+        return i.hi_factor
+      end
+    end
+  end
+
   def percent_regulating_pt_factor
     (numerator/denominator).to_f * 100.0
   end
-  
+
   private
     def numerator
       sum = 0
@@ -26,9 +35,9 @@ class RegulatingPt < ActiveRecord::Base
         sum += (VisualInspectionCondition.find(self.send(f)).score.to_i *
                 VisualInspectionCondition.weight(f, :regulating_pts)).to_f
       end
-      return sum      
+      return sum
     end
-    
+
     def denominator
       sum = 0
       fields.each do |f|
@@ -37,10 +46,10 @@ class RegulatingPt < ActiveRecord::Base
       end
       return sum
     end
-    
+
     def fields
-      ['pocelain_status', 'pocelain_clean', 'oil_fail', 'oil_level', 
-        'oil_color']
+      ['pocelain_status', 'pocelain_clean', 'oil_fail', 'oil_level',
+       'oil_color']
     end
-  
+
 end
