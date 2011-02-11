@@ -20,7 +20,6 @@ class RadiatorCoolingSystem < ActiveRecord::Base
   validates_presence_of :corrosion, :message => "can't be blank"
   validates_presence_of :noise_level, :message => "can't be blank"
   validates_presence_of :oil_fail, :message => "can't be blank"
-  validates_presence_of :oil_pump, :message => "can't be blank"
   #----------------------------------------------------------------------------
 
   def hi_factor
