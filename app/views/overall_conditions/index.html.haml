@@ -85,3 +85,9 @@
         %td= hi_factor(@visual_inspection.regulating_pt)
         %td= regulating_pt_factor_color(@visual_inspection, @transformer)                                            
         %td= recent_date(@visual_inspection)
+      %tr
+        %td  17
+        %td OLTC Compartment
+        %td= hi_factor(@visual_inspection.oltc_compartment)
+        %td= oltc_compartment_factor_color(@visual_inspection, @transformer)                                            
+        %td= recent_date(@visual_inspection)

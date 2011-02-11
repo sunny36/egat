@@ -163,7 +163,20 @@ module OverallConditionsHelper
     end
   end
 
-
+  def oltc_compartment_factor_color(visual_inspection, transformer)
+    unless visual_inspection.oltc_compartment.nil?
+      oltc_compartment_factor =
+        OltcCompartmentFactor.where("hi_factor = ?",
+                                    visual_inspection.
+                                    oltc_compartment.hi_factor).first
+      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
+        "#{oltc_compartment_factor.color});\">" + "</span>"
+      link =
+        transformer_visual_inspection_oltc_compartments_path(transformer,
+                                                             visual_inspection)
+        return link_to(color.html_safe, link)
+    end
+  end
 
   def recent_date(visual_inspection)
     unless visual_inspection.nil?
