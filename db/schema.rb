@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110211183202) do
+ActiveRecord::Schema.define(:version => 20110211185538) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1637,6 +1637,16 @@ ActiveRecord::Schema.define(:version => 20110211183202) do
   end
 
   add_index "transformer", ["transformer_name"], :name => "transformer_name"
+
+  create_table "transformer_control_cabinet_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "transformer_control_cabinets", :force => true do |t|
     t.decimal "animal",               :precision => 10, :scale => 0

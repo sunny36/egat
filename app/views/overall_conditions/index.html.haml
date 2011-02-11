@@ -65,3 +65,11 @@
           = radiator_cooling_system_factor_color(@visual_inspection, |
             @transformer)                                            |   
         %td= recent_date(@visual_inspection)
+      %tr
+        %td  14
+        %td Transformer Control Cabinet
+        %td= hi_factor(@visual_inspection.transformer_control_cabinet)
+        %td
+          = transformer_control_cabinet_factor_color(@visual_inspection, |
+            @transformer)                                            |   
+        %td= recent_date(@visual_inspection)
