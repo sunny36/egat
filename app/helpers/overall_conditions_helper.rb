@@ -105,6 +105,22 @@ module OverallConditionsHelper
     end
   end
 
+  def radiator_cooling_system_factor_color(visual_inspection, transformer)
+    unless visual_inspection.radiator_cooling_system.nil?
+      radiator_cooling_system_factor =
+        RadiatorCoolingSystemFactor.where("hi_factor = ?",
+                                          visual_inspection.
+                                          radiator_cooling_system.
+                                          hi_factor).first
+      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
+        "#{radiator_cooling_system_factor.color});\">" + "</span>"
+      link =
+        transformer_visual_inspection_radiator_cooling_systems_path(transformer,
+                                                                    visual_inspection)
+        return link_to(color.html_safe, link)
+    end
+  end
+
 
 
   def recent_date(visual_inspection)

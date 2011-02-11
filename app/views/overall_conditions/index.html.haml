@@ -57,3 +57,11 @@
         %td= hi_factor(@visual_inspection.hot_line_oil_filter)
         %td= hot_line_oil_filter_factor_color(@visual_inspection, @transformer)                                                    
         %td= recent_date(@visual_inspection)
+      %tr
+        %td  13
+        %td Radiator Cooling System
+        %td= hi_factor(@visual_inspection.radiator_cooling_system)
+        %td
+          = radiator_cooling_system_factor_color(@visual_inspection, |
+            @transformer)                                            |   
+        %td= recent_date(@visual_inspection)
