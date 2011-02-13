@@ -1,0 +1,18 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Main Tank 
+        %th= hi_factor_color(@main_tank.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% Main Tank Factor = 
+          = percent_main_tank_factor(@main_tank)
+      %tr
+        %td= description(:corrosion)
+        %td= condition(@main_tank.corrosion)
+      %tr
+        %td= description(:oil_fail)
+        %td= condition(@main_tank.oil_fail)
+
