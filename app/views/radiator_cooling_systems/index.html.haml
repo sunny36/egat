@@ -1,0 +1,27 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Radiator Cooling System 
+        %th= hi_factor_color(@radiator_cooling_system.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% Radiator Cooling System Factor = 
+          = percent_radiator_cooling_system_factor(@radiator_cooling_system)
+      %tr
+        %td= description(:corrosion)
+        %td= condition(@radiator_cooling_system.corrosion)
+      %tr
+        %td= description(:oil_fail)
+        %td= condition(@radiator_cooling_system.oil_fail)
+      %tr
+        %td= description(:noise_level)
+        %td= condition(@radiator_cooling_system.noise_level)
+      %tr
+        %td= description(:oil_pump)
+        %td= condition(@radiator_cooling_system.oil_pump)
+      %tr
+        %td= description(:animal)
+        %td= condition(@radiator_cooling_system.animal)
+
