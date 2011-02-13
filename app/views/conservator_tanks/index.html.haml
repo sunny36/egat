@@ -1,0 +1,56 @@
+.grid_9.suffix_7
+  %table
+    %thead
+      %tr
+        %th{:colspan =>2}  Conservator Tank
+        %th= hi_factor_color(@conservator_tank.hi_factor)
+    %tbody
+      %tr
+        %td 
+          \%Conservator Tank Factor
+        %td= percent_conservator_tank_factor(@conservator_tank)
+      .clear
+  &nbsp;
+.grid_10.suffix_6
+  %table
+    %thead
+      %tr
+        %th{:colspan =>2} &nbsp;
+        %th{:colspan =>2} Main Tank
+        %th{:colspan =>2} OLTC
+    %tbody
+      %tr
+        %td{:colspan =>2}
+          = description(:corrosion_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.corrosion_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.corrosion_oltc)
+      %tr
+        %td{:colspan =>2}
+          = description(:oilfail_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.oilfail_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.oilfail_oltc)
+      %tr
+        %td{:colspan =>2}
+          = description(:oil_level_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.oil_level_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.oil_level_oltc)
+      %tr
+        %td{:colspan =>2}
+          = description(:jel_color_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.jel_color_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.jel_color_oltc)
+      %tr
+        %td{:colspan =>2}
+          = description(:breather_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.breather_maintank)
+        %td{:colspan =>2}
+          = condition(@conservator_tank.breather_oltc)
