@@ -1,0 +1,27 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Transformer Control Cabinet 
+        %th= hi_factor_color(@transformer_control_cabinet.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% TransformerControl Cabinet Factor = 
+          = percent_transformer_control_cabinet_factor(@transformer_control_cabinet)
+      %tr
+        %td= description(:corrosion)
+        %td= condition(@transformer_control_cabinet.corrosion)
+      %tr
+        %td= description(:animal)
+        %td= condition(@transformer_control_cabinet.animal)
+      %tr
+        %td= description(:control_humidity)
+        %td= condition(@transformer_control_cabinet.control_humidity)
+      %tr
+        %td= description(:pragen)
+        %td= condition(@transformer_control_cabinet.pragen)
+      %tr
+        %td= description(:wiring_control)
+        %td= condition(@transformer_control_cabinet.wiring_control)
+
