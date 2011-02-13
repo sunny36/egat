@@ -1,7 +1,8 @@
 class SurgeArrestersController < ApplicationController
-  def new
-    @transformer = Transformer.find(params[:transformer_id])
-    @surge_arrester = SurgeArrester.new
+  def index
+    @surge_arrester =
+      SurgeArrester.where("visual_inspection_id = ?",
+                          params[:visual_inspection_id]).first
   end
-  
+
 end

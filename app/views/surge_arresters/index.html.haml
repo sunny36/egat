@@ -1,0 +1,66 @@
+.grid_9.suffix_7
+  %table
+    %thead
+      %tr
+        %th{:colspan =>2} Surge Arrester
+        %th= hi_factor_color(@surge_arrester.hi_factor)
+    %tbody
+      %tr
+        %td 
+          \%Factor of HV Arrester
+        %td= percent_surge_arrester_factor(@surge_arrester, :hv)
+      %tr
+        %td 
+          \%Factor of LV Bushing Condition
+        %td= percent_surge_arrester_factor(@surge_arrester, :lv)
+      %tr
+        %td 
+          \%Factor of TV Bushing Condition
+        %td= percent_surge_arrester_factor(@surge_arrester, :tv)
+      .clear
+  &nbsp;
+.grid_10.suffix_6
+  %table
+    %thead
+      %tr
+        %th{:colspan =>2} &nbsp;
+        %th{:colspan =>2} HV
+        %th{:colspan =>2} LV
+        %th{:colspan =>2} TV
+    %tbody
+      %tr
+        %td{:colspan =>2}
+          = description(:porcelain_status_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.porcelain_status_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.porcelain_status_lv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.porcelain_status_tv)
+      %tr
+        %td{:colspan =>2}
+          = description(:porcelain_clean_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.porcelain_clean_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.porcelain_clean_lv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.porcelain_clean_tv)
+      %tr
+        %td{:colspan =>2}
+          = description(:ground_connector_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.ground_connector_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.ground_connector_lv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.ground_connector_tv)
+      %tr
+        %td{:colspan =>2}
+          = description(:surge_counter_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.surge_counter_hv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.surge_counter_lv)
+        %td{:colspan =>2}
+          = condition(@surge_arrester.surge_counter_tv)
