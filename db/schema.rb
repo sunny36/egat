@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110212060319) do
+ActiveRecord::Schema.define(:version => 20110213185559) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -750,6 +750,39 @@ ActiveRecord::Schema.define(:version => 20110212060319) do
     t.decimal "visual_inspection", :precision => 10, :scale => 0
   end
 
+  create_table "insulating_oils", :force => true do |t|
+    t.integer  "version"
+    t.float    "ambient_temp"
+    t.float    "cf"
+    t.float    "current_avg_maintank"
+    t.float    "current_avg_oltc"
+    t.float    "gap_distance_maintank"
+    t.float    "gap_distance_oltc"
+    t.float    "humidity"
+    t.float    "oil_temp"
+    t.string   "remark_maintank"
+    t.string   "remark_oltc"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.float    "test_kv"
+    t.float    "watt_avg_maintank"
+    t.float    "watt_avg_oltc"
+    t.string   "work_order"
+    t.float    "xi1_maintank"
+    t.float    "xi1_oltc"
+    t.float    "xi2_maintank"
+    t.float    "xi2_oltc"
+    t.float    "xi3_maintank"
+    t.float    "xi3_oltc"
+    t.float    "xi4_maintank"
+    t.float    "xi4_oltc"
+    t.float    "xi5_maintank"
+    t.float    "xi5_oltc"
+    t.decimal  "perform_type",          :precision => 10, :scale => 0
+    t.decimal  "transformer",           :precision => 10, :scale => 0
+    t.string   "test_type"
+  end
+
   create_table "load_history", :force => true do |t|
     t.integer  "version"
     t.integer  "n0"
@@ -930,38 +963,6 @@ ActiveRecord::Schema.define(:version => 20110212060319) do
     t.string   "work_order"
     t.decimal  "perform_type", :precision => 10, :scale => 0
     t.decimal  "transformer",  :precision => 10, :scale => 0
-  end
-
-  create_table "oil_insulate", :force => true do |t|
-    t.integer  "version"
-    t.float    "ambient_temp"
-    t.float    "cf"
-    t.float    "current_avg_maintank"
-    t.float    "current_avg_oltc"
-    t.float    "gap_distance_maintank"
-    t.float    "gap_distance_oltc"
-    t.float    "humidity"
-    t.float    "oil_temp"
-    t.string   "remark_maintank"
-    t.string   "remark_oltc"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.float    "test_kv"
-    t.float    "watt_avg_maintank"
-    t.float    "watt_avg_oltc"
-    t.string   "work_order"
-    t.float    "xi1_maintank"
-    t.float    "xi1_oltc"
-    t.float    "xi2_maintank"
-    t.float    "xi2_oltc"
-    t.float    "xi3_maintank"
-    t.float    "xi3_oltc"
-    t.float    "xi4_maintank"
-    t.float    "xi4_oltc"
-    t.float    "xi5_maintank"
-    t.float    "xi5_oltc"
-    t.decimal  "perform_type",          :precision => 10, :scale => 0
-    t.decimal  "transformer",           :precision => 10, :scale => 0
   end
 
   create_table "oltc_compartment_factors", :force => true do |t|
