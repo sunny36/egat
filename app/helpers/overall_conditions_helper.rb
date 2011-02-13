@@ -6,11 +6,11 @@ module OverallConditionsHelper
     end
   end
 
-  def general_condition_factor_color(general_condition, visual_inspection, transformer)
-    unless general_condition.nil?
+  def general_condition_factor_color(visual_inspection, transformer)
+    unless visual_inspection.general_condition.nil?
       general_condition_factor =
         GeneralConditionFactor.where("hi_factor = ?",
-                                     general_condition.hi_factor).first
+                                     visual_inspection.general_condition.hi_factor).first
       color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
         "#{general_condition_factor.color});\">" + "</span>"
       link =
@@ -20,11 +20,11 @@ module OverallConditionsHelper
     end
   end
 
-  def load_history_factor_color(general_condition, visual_inspection, transformer)
-    unless general_condition.nil?
+  def load_history_factor_color(visual_inspection, transformer)
+    unless visual_inspection.general_condition.nil?
       load_history_factor =
         LoadHistoryFactor.where("hi_factor = ?",
-                                general_condition.load_history_hi_factor).first
+                                visual_inspection.general_condition.load_history_hi_factor).first
       color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
         "#{load_history_factor.color});\">" + "</span>"
       link =

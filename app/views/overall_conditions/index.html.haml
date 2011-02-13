@@ -10,10 +10,8 @@
       %tr
         %td  2
         %td Load History
-        %td= @general_condition.load_history_hi_factor
-        %td
-          = load_history_factor_color(@general_condition, @visual_inspection, |
-            @transformer)                                                     |
+        %td= @visual_inspection.general_condition.load_history_hi_factor
+        %td= load_history_factor_color(@visual_inspection, @transformer)
         %td= recent_date(@visual_inspection)
       %tr
         %td  4
@@ -25,9 +23,7 @@
         %td  7
         %td General Condition
         %td= hi_factor(@general_condition)
-        %td
-          = general_condition_factor_color(@general_condition, |
-            @visual_inspection, @transformer)                  |
+        %td= general_condition_factor_color(@visual_inspection, @transformer)
         %td= recent_date(@visual_inspection)
       %tr
         %td  8
