@@ -1,0 +1,23 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Transformer Control Cabinet 
+        %th= hi_factor_color(@ngr.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% TransformerControl Cabinet Factor = 
+          = percent_ngr_factor(@ngr)
+      %tr
+        %td= description(:ngr_status)
+        %td= condition(@ngr.ngr_status)
+      %tr
+        %td= description(:base_status)
+        %td= condition(@ngr.base_status)
+      %tr
+        %td= description(:pocelain_clean)
+        %td= condition(@ngr.pocelain_clean)
+      %tr
+        %td= description(:ground_connector)
+        %td= condition(@ngr.ground_connector)
