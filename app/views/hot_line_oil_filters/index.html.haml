@@ -1,0 +1,18 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Hot Line Oil Filter 
+        %th= hi_factor_color(@hot_line_oil_filter.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% Hot Line Oilf Filter Factor = 
+          = percent_hot_line_oil_filter_factor(@hot_line_oil_filter)
+      %tr
+        %td= description(:corrosion)
+        %td= condition(@hot_line_oil_filter.corrosion)
+      %tr
+        %td= description(:pressure)
+        %td= condition(@hot_line_oil_filter.pressure)
+
