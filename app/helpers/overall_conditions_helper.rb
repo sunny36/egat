@@ -34,11 +34,11 @@ module OverallConditionsHelper
     end
   end
 
-  def bushing_condition_factor_color(bushing_condition, visual_inspection, transformer)
-    unless bushing_condition.nil?
+  def bushing_condition_factor_color(visual_inspection, transformer)
+    unless visual_inspection.bushing_condition.nil?
       bushing_condition_factor =
         BushingConditionFactor.where("hi_factor = ?",
-                                     bushing_condition.hi_factor).first
+                                     visual_inspection.bushing_condition.hi_factor).first
       color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
         "#{bushing_condition_factor.color});\">" + "</span>"
       link =

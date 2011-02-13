@@ -32,10 +32,8 @@
       %tr
         %td  8
         %td Bushing Condition
-        %td= hi_factor(@bushing_condition)
-        %td
-          = bushing_condition_factor_color(@bushing_condition, |
-            @visual_inspection, @transformer)                  |
+        %td= hi_factor(@visual_inspection.bushing_condition)
+        %td= bushing_condition_factor_color(@visual_inspection, @transformer)
         %td= recent_date(@visual_inspection)
       %tr
         %td  9
