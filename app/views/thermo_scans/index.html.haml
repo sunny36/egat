@@ -1,0 +1,15 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Thermo Scan
+        %th= hi_factor_color(@thermo_scan.hi_factor)
+    %tbody
+      %tr
+        %td 
+          = "&Delta;(&deg;C) Temp. Rise above Normal Temp.".html_safe
+        %td= @thermo_scan.delt
+      %tr
+        %td 
+          = "% Load ขณะตรวจเช็ค".html_safe
+        %td= @thermo_scan.load
