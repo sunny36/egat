@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110211193312) do
+ActiveRecord::Schema.define(:version => 20110212060319) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1636,6 +1636,18 @@ ActiveRecord::Schema.define(:version => 20110211193312) do
     t.string   "work_order"
     t.decimal  "perform_type", :precision => 10, :scale => 0
     t.decimal  "transformer",  :precision => 10, :scale => 0
+  end
+
+  create_table "thermo_scan_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "load_start"
+    t.integer  "load_end"
+    t.integer  "delta_start"
+    t.integer  "delta_end"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "thermo_scans", :force => true do |t|
