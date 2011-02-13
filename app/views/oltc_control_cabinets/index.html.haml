@@ -1,0 +1,26 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th OLTC Control Cabinet
+        %th= hi_factor_color(@oltc_control_cabinet.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% OLTC Cabinet Factor = 
+          = percent_oltc_control_cabinet_factor(@oltc_control_cabinet)
+      %tr
+        %td= description(:corrosion)
+        %td= condition(@oltc_control_cabinet.corrosion)
+      %tr
+        %td= description(:animal)
+        %td= condition(@oltc_control_cabinet.animal)
+      %tr
+        %td= description(:control_humidity)
+        %td= condition(@oltc_control_cabinet.control_humidity)
+      %tr
+        %td= description(:pragen)
+        %td= condition(@oltc_control_cabinet.pragen)
+      %tr
+        %td= description(:wiring_control)
+        %td= condition(@oltc_control_cabinet.wiring_control)

@@ -1,0 +1,17 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th OLTC Compartment
+        %th= hi_factor_color(@oltc_compartment.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% OLTC Factor = 
+          = percent_oltc_compartment_factor(@oltc_compartment)
+      %tr
+        %td= description(:corrosion)
+        %td= condition(@oltc_compartment.corrosion)
+      %tr
+        %td= description(:oil_fail)
+        %td= condition(@oltc_compartment.oil_fail)
