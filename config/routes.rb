@@ -37,6 +37,7 @@ Egat::Application.routes.draw do
       resources :regulating_pts
       resources :oltc_compartments
       resources :oltc_control_cabinets
+      resources :thermo_scans
     end    
     
     resources :oil_dgas do

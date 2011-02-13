@@ -16,6 +16,12 @@
             @transformer)                                                     |
         %td= recent_date(@visual_inspection)
       %tr
+        %td  4
+        %td Thermo Scan
+        %td= hi_factor(@visual_inspection.thermo_scan)
+        %td= thermo_scan_factor_color(@visual_inspection, @transformer)                                                     
+        %td= recent_date(@visual_inspection)
+      %tr
         %td  7
         %td General Condition
         %td= hi_factor(@general_condition)
