@@ -1,0 +1,2 @@
+module InsulatingOilsHelper
+end

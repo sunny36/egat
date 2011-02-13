@@ -1,0 +1,22 @@
+label.inline {
+	width: 200px;
+	display: inline !important;
+	float: left;
+}
+
+.grid_8 select, input[type="text"] {
+	width: 150px;
+}
+
+select, input[type="text"] {
+	display: inline !important;
+}
+
+.grid_12 select, input[type="text"] {
+	width: 80px;
+}
+
+sub {
+  font-size: 10px;
+  vertical-align: bottom;
+}

@@ -23,6 +23,7 @@ Egat::Application.routes.draw do
   
   resources :transformers do
     resources :overall_conditions
+    resources :insulating_oils
     resources :visual_inspections do 
       resources :general_conditions
       resources :bushing_conditions
