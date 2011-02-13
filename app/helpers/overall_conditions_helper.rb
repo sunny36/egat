@@ -6,7 +6,15 @@ module OverallConditionsHelper
     end
   end
 
+  def load_history_hi_factor(visual_inspection)
+    return if visual_inspection.nil?
+    unless visual_inspection.general_condition.nil?
+      visual_inspection.general_condition.load_history_hi_factor
+    end
+  end
+
   def general_condition_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.general_condition.nil?
       general_condition_factor =
         GeneralConditionFactor.where("hi_factor = ?",
@@ -21,6 +29,7 @@ module OverallConditionsHelper
   end
 
   def load_history_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.general_condition.nil?
       load_history_factor =
         LoadHistoryFactor.where("hi_factor = ?",
@@ -35,6 +44,7 @@ module OverallConditionsHelper
   end
 
   def bushing_condition_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.bushing_condition.nil?
       bushing_condition_factor =
         BushingConditionFactor.where("hi_factor = ?",
@@ -49,6 +59,7 @@ module OverallConditionsHelper
   end
 
   def surge_arrester_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.surge_arrester.nil?
       surge_arrester_factor =
         SurgeArresterFactor.where("hi_factor = ?",
@@ -63,6 +74,7 @@ module OverallConditionsHelper
   end
 
   def conservator_tank_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.conservator_tank.nil?
       conservator_tank_factor =
         ConservatorTankFactor.where("hi_factor = ?",
@@ -77,6 +89,7 @@ module OverallConditionsHelper
   end
 
   def main_tank_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.main_tank.nil?
       main_tank_factor =
         MainTankFactor.where("hi_factor = ?",
@@ -90,6 +103,7 @@ module OverallConditionsHelper
   end
 
   def hot_line_oil_filter_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.hot_line_oil_filter.nil?
       hot_line_oil_filter_factor =
         HotLineOilFilterFactor.where("hi_factor = ?",
@@ -106,6 +120,7 @@ module OverallConditionsHelper
   end
 
   def radiator_cooling_system_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.radiator_cooling_system.nil?
       radiator_cooling_system_factor =
         RadiatorCoolingSystemFactor.where("hi_factor = ?",
@@ -122,6 +137,7 @@ module OverallConditionsHelper
   end
 
   def transformer_control_cabinet_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.transformer_control_cabinet.nil?
       transformer_control_cabinet_factor =
         TransformerControlCabinetFactor.where("hi_factor = ?",
@@ -138,6 +154,7 @@ module OverallConditionsHelper
   end
 
   def ngr_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.ngr.nil?
       ngr_factor = NgrFactor.where("hi_factor = ?",
                                    visual_inspection.ngr.hi_factor).first
@@ -150,6 +167,7 @@ module OverallConditionsHelper
   end
 
   def regulating_pt_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.regulating_pt.nil?
       regulating_pt_factor =
         RegulatingPtFactor.where("hi_factor = ?",
@@ -164,6 +182,7 @@ module OverallConditionsHelper
   end
 
   def oltc_compartment_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.oltc_compartment.nil?
       oltc_compartment_factor =
         OltcCompartmentFactor.where("hi_factor = ?",
@@ -179,6 +198,7 @@ module OverallConditionsHelper
   end
 
   def oltc_control_cabinet_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.oltc_control_cabinet.nil?
       oltc_control_cabinet_factor =
         OltcControlCabinetFactor.where("hi_factor = ?",
@@ -194,6 +214,7 @@ module OverallConditionsHelper
   end
 
   def thermo_scan_factor_color(visual_inspection, transformer)
+    return if visual_inspection.nil?
     unless visual_inspection.thermo_scan.nil?
       thermo_scan_factor =
         ThermoScanFactor.where("hi_factor = ?",
@@ -208,6 +229,7 @@ module OverallConditionsHelper
   end
 
   def recent_date(visual_inspection)
+    return if visual_inspection.nil?
     unless visual_inspection.nil?
       visual_inspection.test_date.strftime("%d/%m/%Y")
     end

@@ -10,7 +10,7 @@
       %tr
         %td  2
         %td Load History
-        %td= @visual_inspection.general_condition.load_history_hi_factor
+        %td= load_history_hi_factor(@visual_inspection)
         %td= load_history_factor_color(@visual_inspection, @transformer)
         %td= recent_date(@visual_inspection)
       %tr
@@ -22,7 +22,7 @@
       %tr
         %td  7
         %td General Condition
-        %td= hi_factor(@general_condition)
+        %td= hi_factor(@visual_inspection.general_condition)
         %td= general_condition_factor_color(@visual_inspection, @transformer)
         %td= recent_date(@visual_inspection)
       %tr
@@ -34,7 +34,7 @@
       %tr
         %td  9
         %td Surge Arrester
-        %td= hi_factor(@surge_arrester)
+        %td= hi_factor(@visual_inspection.surge_arrester)
         %td= surge_arrester_factor_color(@visual_inspection, @transformer)
         %td= recent_date(@visual_inspection)
       %tr
