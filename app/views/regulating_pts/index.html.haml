@@ -1,0 +1,23 @@
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Regulating Potential Transformer
+        %th= hi_factor_color(@regulating_pt.hi_factor)
+    %tbody
+      %tr
+        %td{:colspan => 2} 
+          \% RPT Factor = 
+          = percent_regulating_pt_factor(@regulating_pt)
+      %tr
+        %td= description(:pocelain_status)
+        %td= condition(@regulating_pt.pocelain_status)
+      %tr
+        %td= description(:pocelain_clean)
+        %td= condition(@regulating_pt.pocelain_clean)
+      %tr
+        %td= description(:oil_fail)
+        %td= condition(@regulating_pt.oil_level)
+      %tr
+        %td= description(:oil_color)
+        %td= condition(@regulating_pt.oil_color)
