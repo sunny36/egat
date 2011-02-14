@@ -1,9 +1,5 @@
 Egat::Application.routes.draw do
   
-  resources :oil_dgas
-  resources :oil_input
-  
-  
   resources :transformer_informations do
     member do 
       get 'importance_and_risk_table'
@@ -19,9 +15,17 @@ Egat::Application.routes.draw do
       get 'search'
     end
   end
+
+  resources :oil_input do
+    collection do
+      get 'search'
+    end
+  end
   
   
   resources :transformers do
+    resources :oil_input
+    resources :oil_dgas  
     resources :overall_conditions
     resources :insulating_oils
     resources :visual_inspections do 
