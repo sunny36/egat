@@ -34,7 +34,7 @@ class OilDga < ActiveRecord::Base
   belongs_to :transformer
   
   before_save :set_co2_score, :set_co_score, :set_h2_score, :set_ch4_score, 
-              :set_c2h2_score, :set_c2h4_score, :set_c2h6_score
+              :set_c2h2_score, :set_c2h4_score, :set_c2h6_score, :set_defaults
   
   def percent_dgaf
     numerator = (self.co2_score * Gas.weight("CO2")) + 
@@ -79,13 +79,20 @@ class OilDga < ActiveRecord::Base
     test_date.strftime("%d/%m/%Y")
   end
   
-  def hif_factor
+  def hi_factor
     HifOfOilDga.all.each do |i|
       i.percent_dgaf_end = 10000000 if i.percent_dgaf_end.nil? 
       if percent_dgaf.between?(i.percent_dgaf_start, i.percent_dgaf_end)
-        return i
+        return i.hi_factor
       end
     end
+  end
+  
+  def set_defaults
+    self.c3h6 = 0 unless self.c3h6
+    self.c3h8 = 0 unless self.c3h8
+    self.o2 = 0 unless self.o2
+    self.n2 = 0 unless self.n2
   end
   
   def set_co2_score

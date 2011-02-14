@@ -8,6 +8,17 @@
       %th ข้อมูลล่าสุดที่ถูกบันทึก
     %tbody
       %tr
+        %td  1
+        %td DGA
+        - unless @oil_dgas.blank?
+          %td= hi_factor(@oil_dgas.first)
+          %td= oil_dga_factor_color
+          %td= oil_dga_test_date
+        - else 
+          %td -
+          %td -
+          %td -        
+      %tr
         %td  2
         %td Load History
         %td= load_history_hi_factor

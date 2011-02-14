@@ -3,9 +3,9 @@ module OverallConditionsHelper
   def hi_factor(object)
     unless object.blank?
       object.hi_factor
-    else 
+    else
       " - "
-    end    
+    end
   end
 
   def load_history_hi_factor
@@ -101,7 +101,7 @@ module OverallConditionsHelper
       @transformer, @hot_line_oil_filter.visual_inspection)
       return link_to(color_span(hot_line_oil_filter_factor.color).html_safe,
                      link)
-    else 
+    else
       " - "
     end
   end
@@ -200,6 +200,17 @@ module OverallConditionsHelper
     else
       " - "
     end
+  end
+
+  def oil_dga_test_date
+    @oil_dgas.first.test_date.strftime("%d/%m/%Y")
+  end
+
+  def oil_dga_factor_color
+    oil_dga_factor = HifOfOilDga.where("hi_factor = ?",
+                                       @oil_dgas.first.hi_factor).first
+    link = graph_transformer_oil_dgas_path(@transformer)
+    return link_to(color_span(oil_dga_factor.color).html_safe, link)
   end
 
   def color_span(value)

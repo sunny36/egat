@@ -13,5 +13,10 @@
       = label 'main_tank_dga', 'Main Tank DGA'
       = oil_dga_drop_down_list(@oil_dgas)
       = new_main_tank_dga_link(@transformer)
-      = edit_main_tank_dga_link(@transformer, @oil_dgas.first)
-      = delete_main_tank_dga_link(@transformer, @oil_dgas.first)
+      - unless @oil_dgas.blank?
+        = edit_main_tank_dga_link(@transformer, @oil_dgas.first)
+        = delete_main_tank_dga_link(@transformer, @oil_dgas.first)
+      - else 
+        = link_to("Edit", "#", :class => "edit")
+        = link_to("Edit", "#", :class => "delete")
+      

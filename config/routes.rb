@@ -25,7 +25,11 @@ Egat::Application.routes.draw do
   
   resources :transformers do
     resources :oil_input
-    resources :oil_dgas  
+    resources :oil_dgas do 
+      collection do
+        get :graph
+      end
+    end
     resources :overall_conditions
     resources :insulating_oils
     resources :visual_inspections do 
@@ -44,12 +48,6 @@ Egat::Application.routes.draw do
       resources :oltc_control_cabinets
       resources :thermo_scans
     end    
-    
-    resources :oil_dgas do
-      collection do
-        get :graph
-      end
-    end
     
   end
   
