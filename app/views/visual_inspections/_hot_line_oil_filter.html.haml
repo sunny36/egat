@@ -2,11 +2,11 @@
   %fieldset
     .grid_12
       %p
-        = label_for :corrosion, :hot_line_oil_filters, hot_line_oil_filter
+        = label_for :corrosion, :hot_line_oil_filters, hot_line_oil_filter, false
         = select_list_for :corrosion, :hot_line_oil_filters, hot_line_oil_filter
     .grid_12
       %p
-        = label_for :pressure, :hot_line_oil_filters, hot_line_oil_filter
+        = label_for :pressure, :hot_line_oil_filters, hot_line_oil_filter, false
         = select_list_for :pressure, :hot_line_oil_filters, hot_line_oil_filter
     .clear
     = render :partial => 'next_previous_buttons'
