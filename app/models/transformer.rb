@@ -35,8 +35,6 @@ class Transformer < ActiveRecord::Base
   belongs_to :brand
   has_many :transformer_information
   has_many :oil_dgas
-  has_many :general_condition
-  has_many :bushing_condition
   has_many :visual_inspection
   has_many :winding_type
   
