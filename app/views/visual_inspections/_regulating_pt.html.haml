@@ -2,23 +2,23 @@
   %fieldset
     .grid_12
       %p
-        = label_for :pocelain_status, :regulating_pts, regulating_pt
+        = label_for :pocelain_status, :regulating_pts, regulating_pt, false
         = select_list_for :pocelain_status, :regulating_pts, regulating_pt
     .grid_12
       %p
-        = label_for :pocelain_clean, :regulating_pts, regulating_pt
+        = label_for :pocelain_clean, :regulating_pts, regulating_pt, false
         = select_list_for :pocelain_clean, :regulating_pts, regulating_pt
     .grid_12
       %p
-        = label_for :oil_fail, :regulating_pts, regulating_pt
+        = label_for :oil_fail, :regulating_pts, regulating_pt, false
         = select_list_for :oil_fail, :regulating_pts, regulating_pt
     .grid_12
       %p
-        = label_for :oil_level, :regulating_pts, regulating_pt
+        = label_for :oil_level, :regulating_pts, regulating_pt, false
         = select_list_for :oil_level, :regulating_pts, regulating_pt
     .grid_12
       %p
-        = label_for :oil_color, :regulating_pts, regulating_pt
+        = label_for :oil_color, :regulating_pts, regulating_pt, false
         = select_list_for :oil_color, :regulating_pts, regulating_pt        
     .clear
     = render :partial => 'next_previous_buttons'
