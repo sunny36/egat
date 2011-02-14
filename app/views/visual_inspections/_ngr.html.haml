@@ -2,19 +2,19 @@
   %fieldset
     .grid_12
       %p
-        = label_for :ngr_status, :ngrs, ngr
+        = label_for :ngr_status, :ngrs, ngr, false
         = select_list_for :ngr_status, :ngrs, ngr
     .grid_12
       %p
-        = label_for :base_status, :ngrs, ngr
+        = label_for :base_status, :ngrs, ngr, false
         = select_list_for :base_status, :ngrs, ngr
     .grid_12
       %p
-        = label_for :pocelain_clean, :ngrs, ngr
+        = label_for :pocelain_clean, :ngrs, ngr, false
         = select_list_for :pocelain_clean, :ngrs, ngr
     .grid_12
       %p
-        = label_for :ground_connector, :ngrs, ngr
+        = label_for :ground_connector, :ngrs, ngr, false
         = select_list_for :ground_connector, :ngrs, ngr
     .clear
     = render :partial => 'next_previous_buttons'
