@@ -12,8 +12,8 @@ class OilDgasController < ApplicationController
     @oil_dgas = OilDga.where(:transformer_id => params[:transformer_id]).order("test_date DESC")    
     respond_to do |format|
       format.html # index.html.erb
-      ActiveRecord::Base.include_root_in_json = false
-      format.js { render :json => @oil_dgas.to_json }
+      # ActiveRecord::Base.include_root_in_json = false
+      # format.js { render :json => @oil_dgas.to_json }
     end
   end
 
@@ -21,22 +21,23 @@ class OilDgasController < ApplicationController
     @oil_dga = OilDga.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
+      ActiveRecord::Base.include_root_in_json = false
+      format.js { render :json => @oil_dga.to_json }
+      
     end
   end
 
-  # GET /oil_dgas/new
-  # GET /oil_dgas/new.xml
   def new
+    @transformer = Transformer.find_by_id(params[:transformer_id])
     @oil_dga = OilDga.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @oil_dga }
     end
   end
 
-  # GET /oil_dgas/1/edit
   def edit
+    @transformer = Transformer.find_by_id(params[:transformer_id])
     @oil_dga = OilDga.find(params[:id])
   end
 
@@ -54,8 +55,6 @@ class OilDgasController < ApplicationController
     end
   end
 
-  # PUT /oil_dgas/1
-  # PUT /oil_dgas/1.xml
   def update
     @oil_dga = OilDga.find(params[:id])
     respond_to do |format|
@@ -68,8 +67,6 @@ class OilDgasController < ApplicationController
     end
   end
 
-  # DELETE /oil_dgas/1
-  # DELETE /oil_dgas/1.xml
   def destroy
     @oil_dga = OilDga.find(params[:id])
     @oil_dga.destroy

@@ -73,6 +73,10 @@ class OilDga < ActiveRecord::Base
   validates_numericality_of :c3h8, :on => :create, :message => "is not a number"
   #End Validations
   
+  def thai_test_date
+    test_date.strftime("%d/%m/%Y")
+  end
+  
   def hif_factor
     HifOfOilDga.all.each do |i|
       i.percent_dgaf_end = 10000000 if i.percent_dgaf_end.nil? 

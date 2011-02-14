@@ -1,40 +1,41 @@
-#transformer_details
+%dl
   .grid_8
-    %p
-      %strong
-        หม้อแปลงไฟฟ้า :
-      %span#transformer_name
-        -
+    %dt Transformer Name
+    %dd
+      = " : " + transformer.transformer_name
   .grid_8
-    %p
-      %strong
-        Equipment No. :
-      %span#transformer_equipment_no
-        -
-  .clear
+    %dt Equipment No. 
+    %dd
+      = " : " + transformer.egatsn
   .grid_8
-    %p
-      %strong
-        MVA Rating:
-      %span#transformer_mva_rating
-        -
+    %dt MVA Rating
+    %dd
+      = " : " + transformer.maxcapacity.to_s + " MVA"
   .grid_8
-    %p
-      %strong
-        HV Rating :
-      %span#transformer_hv_rating
-        -
-  .clear
+    %dt HV Rating 
+    %dd
+      = " : " + transformer.hv.to_s + " kV"
   .grid_8
-    %p
-      %strong
-        First Energized:
-      %span#transformer_first_energized
-        -
+    %dt First Energized: 
+    %dd
+      = " : " + transformer.first_energize.strftime("%d/%m/%Y")
   .grid_8
-    %p
-      %strong
-        Manufacture :
-      %span#transformer_manufacture
-        -
-  .clear
+    %dt Manufacturer
+    %dd
+      = " : " + transformer.brand.name
+  .grid_8
+    %dt OLTC Manufacturer 
+    %dd
+      = " : " + transformer.oltc_manufacturer
+  .grid_8
+    %dt OLTC Type 
+    %dd
+      = " : " + transformer.oltc_type
+  .grid_8
+    %dt Vectory Group
+    %dd
+      = " : " + transformer.vector_group
+  .grid_8
+    %dt Winding Type 
+    %dd
+      = " : " + transformer_winding_type(transformer)

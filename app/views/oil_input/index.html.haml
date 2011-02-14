@@ -7,16 +7,12 @@
     = transformer_names_drop_down_list(form)
   .clear
     &nbsp;
-  = render :partial => 'transformer_details'
+  = render :partial => 'transformer_details', :locals => {:transformer => @transformer}
+  %hr
   #main_tank_dga
-    .grid_4
+    .grid_8
       = label 'main_tank_dga', 'Main Tank DGA'
-      = select_tag 'main_tank_dga'
-    .grid_4
-      %br
-      %br
-      = new_main_tank_dga_link
-      &nbsp;
-      = edit_main_tank_dga_link
-      &nbsp;
-      = delete_main_tank_dga_link
+      = oil_dga_drop_down_list(@oil_dgas)
+      = new_main_tank_dga_link(@transformer)
+      = edit_main_tank_dga_link(@transformer, @oil_dgas.first)
+      = delete_main_tank_dga_link(@transformer, @oil_dgas.first)

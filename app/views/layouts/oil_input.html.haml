@@ -2,17 +2,14 @@
 %html
   %head
     %title Oil Input
-    = javascript_include_tag 'jquery-1.4.2.min', 'ext-jquery-adapter', 
-      'ext-all', 'jquery-ui-1.8.4.custom.min', 
-        'jquery.blockUI', 'jquery.tmpl', 'facybox', 
-          'json2', 'jquery.url', 'jquery.tablesorter.min',
-            'jquery.cluetip', 'controllers/oil_input'
-
+    = javascript_include_tag :defaults
+    = javascript_includes
     = stylesheet_link_tag 'ext-all', 'xtheme-gray' 
     = stylesheet_link_tag '960', 'template', 'nav', 'colour' 
     = stylesheet_link_tag  'facybox', 'faceplant'
-    = stylesheet_link_tag'jquery-ui-1.8.4.custom'
-    = stylesheet_link_tag'jquery.cluetip' 
+    = stylesheet_link_tag 'jquery-ui-1.8.4.custom'
+    = stylesheet_link_tag 'jquery.cluetip' 
+    = stylesheet_link_tag 'controllers/oil_input' 
     = csrf_meta_tag
     %body
       = render :partial => 'layouts/header'
