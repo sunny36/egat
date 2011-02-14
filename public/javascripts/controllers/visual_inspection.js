@@ -44,12 +44,15 @@ VisualInspection.setupDatePicker = function(id) {
 
 VisualInspection.showFirstTabContainingErrors = function() {
   var tabIds = $("#tabs ul li a");
-  $.each(tabIds, function (index, value) {
-    tabId = $(value).attr("href");
+  var tabId;
+  for (var i =0; i < tabIds.length; i++) {
+    tabId = $(tabIds[i]).attr("href");
     if ($(tabId).find(".field_with_errors").length > 0) {
-      $("#tabs").tabs("option", "selected", index);
+      $("#tabs").tabs("option", "selected", i);
+      break;
     }
-  });
+  }
+  return;
 };
 
 VisualInspection.onNextClicked = function(tabName) {
