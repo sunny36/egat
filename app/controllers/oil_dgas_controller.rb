@@ -28,12 +28,8 @@ class OilDgasController < ApplicationController
   end
 
   def new
-    @transformer = Transformer.find_by_id(params[:transformer_id])
+    @transformer = Transformer.find(params[:transformer_id])
     @oil_dga = OilDga.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @oil_dga }
-    end
   end
 
   def edit
@@ -41,14 +37,15 @@ class OilDgasController < ApplicationController
     @oil_dga = OilDga.find(params[:id])
   end
 
-  # POST /oil_dgas
-  # POST /oil_dgas.xml
   def create
+    @transformer = Transformer.find(params[:transformer_id])
     @oil_dga = OilDga.new(params[:oil_dga])
     respond_to do |format|
       if @oil_dga.save
         format.html { 
-          redirect_to(oil_input_index_path, :notice => 'OilDga was successfully created.') }
+          redirect_to(search_oil_input_index_path, 
+                      :notice => 'Data for Main Tank Dga has been added.') 
+        }
       else
         format.html { render :action => "new" }
       end
@@ -68,6 +65,7 @@ class OilDgasController < ApplicationController
   end
 
   def destroy
+    @transformer = Transformer.find(params[:transformer_id])
     @oil_dga = OilDga.find(params[:id])
     @oil_dga.destroy
     respond_to do |format|

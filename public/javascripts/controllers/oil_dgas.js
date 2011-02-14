@@ -1,3 +1,38 @@
+var OilDgas = {};
+
+OilDgas.setupTransformerNameComboxBox = function(id) {
+  if ($('#' + id).length > 0) {
+    var transformerId;
+    var selected;
+    if (jQuery.url.attr("path").split("/")[1] == "transformers" && 
+    Number(jQuery.url.attr("path").split("/")[2]) > 0) {
+      transformerId = Number(jQuery.url.attr("path").split("/")[2]);
+    }
+    selected = $("#" + id + " " + "option:selected");
+    if (selected.val().length > 0) {
+      transformerId = selected.val();
+    }
+    var converted = new Ext.form.ComboBox({
+      typeAhead: true,
+      triggerAction: 'all',
+      transform: id, 
+      width: '200',
+      forceSelection:true,
+      value: transformerId
+    });
+
+    converted.on('select', function() {
+      OilDgas.onTransformerNamChange(converted.getValue());    
+    });
+  }
+};
+
+OilDgas.onTransformerNamChange = function(transformerId) {
+  if ($('body').attr('name') == "new") {
+    window.location.href = "/transformers/" + transformerId + "/oil_dgas/new";
+  }
+};
+
 var plot = [];
 function plotGraph(gas, divId, points, title) {
   plot[gas] = $.jqplot(divId, [points], { 
@@ -20,14 +55,6 @@ function plotGraph(gas, divId, points, title) {
 }
 
 var app = {
-  setupTransformerNameComboxBox: function (id, width) {
-    var widgetsJsUrl = '/javascripts/widgets.js';
-    $.getScript(widgetsJsUrl, function () {
-      /* TODO Get the newId that is returned */
-      WIDGETS.transformerNameComboBox(id, width);
-    });
-  },
-
 	getDataPointsForGraph: function() {
 		$.ajax({
 	    url: $.url.attr("path"),
@@ -90,10 +117,7 @@ $(document).ready(function(){
     buttonImage: "images/icon_calendar.gif"
   });
 
-	if ($('#oil_dga_transformer_id').length > 0) {
-		app.setupTransformerNameComboxBox('oil_dga_transformer_id', 200);
-		app.onTransformerNameDropDownListBlur();
-	}
+	OilDgas.setupTransformerNameComboxBox("oil_dga_transformer_id");
 
   $('#transformer_details').hide();  
 });
