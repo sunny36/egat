@@ -10,88 +10,146 @@
       %tr
         %td  2
         %td Load History
-        %td= load_history_hi_factor(@visual_inspection)
-        %td= load_history_factor_color(@visual_inspection, @transformer)
+        %td= load_history_hi_factor
+        %td= load_history_factor_color
         %td= recent_date(@visual_inspection)
       %tr
         %td  4
         %td Thermo Scan
         %td= hi_factor(@thermo_scan)
-        %td= thermo_scan_factor_color(@thermo_scan, @transformer)                                                     
-        %td= recent_date(@thermo_scan.visual_inspection)
+        %td= thermo_scan_factor_color(@thermo_scan, @transformer)
+        - unless @thermo_scan.blank?                                                 
+          %td= recent_date(@thermo_scan.visual_inspection)
+        - else
+          %td -
       %tr
         %td  7
         %td General Condition
-        %td= hi_factor(@visual_inspection.general_condition)
-        %td= general_condition_factor_color(@visual_inspection, @transformer)
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.general_condition)
+          %td= general_condition_factor_color(@visual_inspection, @transformer)
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
         %td  8
         %td Bushing Condition
-        %td= hi_factor(@visual_inspection.bushing_condition)
-        %td= bushing_condition_factor_color(@visual_inspection, @transformer)
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.bushing_condition)
+          %td= bushing_condition_factor_color(@visual_inspection, @transformer)
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
         %td  9
         %td Surge Arrester
-        %td= hi_factor(@visual_inspection.surge_arrester)
-        %td= surge_arrester_factor_color(@visual_inspection, @transformer)
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.surge_arrester)
+          %td= surge_arrester_factor_color(@visual_inspection, @transformer)
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
         %td  10
         %td Conservator Tank
-        %td= hi_factor(@visual_inspection.conservator_tank)
-        %td= conservator_tank_factor_color(@visual_inspection, @transformer)                                                    
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.conservator_tank)
+          %td= conservator_tank_factor_color(@visual_inspection, @transformer)                                                    
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
         %td  11
         %td Main Tank
-        %td= hi_factor(@visual_inspection.main_tank)
-        %td= main_tank_factor_color(@visual_inspection, @transformer)                                                    
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.main_tank)
+          %td= main_tank_factor_color(@visual_inspection, @transformer)                                                    
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
-        %td  12
+        %td  12        
         %td Hot Line Oil Filter
         %td= hi_factor(@hot_line_oil_filter)
-        %td= hot_line_oil_filter_factor_color(@hot_line_oil_filter, @transformer)                                                    
-        %td= recent_date(@hot_line_oil_filter.visual_inspection)
+        %td= hot_line_oil_filter_factor_color
+        - unless @hot_line_oil_filter.blank?
+          %td= recent_date(@hot_line_oil_filter.visual_inspection)
+        - else 
+          %td -
       %tr
         %td  13
         %td Radiator Cooling System
-        %td= hi_factor(@visual_inspection.radiator_cooling_system)
-        %td
-          = radiator_cooling_system_factor_color(@visual_inspection, |
-            @transformer)                                            |   
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.radiator_cooling_system)
+          %td
+            = radiator_cooling_system_factor_color(@visual_inspection, |
+              @transformer)                                            |   
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
         %td  14
         %td Transformer Control Cabinet
-        %td= hi_factor(@visual_inspection.transformer_control_cabinet)
-        %td
-          = transformer_control_cabinet_factor_color(@visual_inspection, |
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.transformer_control_cabinet)
+          %td
+            = transformer_control_cabinet_factor_color(@visual_inspection, |
             @transformer)                                            |   
-        %td= recent_date(@visual_inspection)
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
         %td  15
         %td NGR
         %td= hi_factor(@ngr)
-        %td= ngr_factor_color(@ngr, @transformer)                                            
-        %td= recent_date(@ngr.visual_inspection)
+        %td= ngr_factor_color(@ngr, @transformer)
+        - unless @ngr.blank?                                            
+          %td= recent_date(@ngr.visual_inspection)
+        - else 
+          %td -
       %tr
         %td  16
         %td Regulating PT
         %td= hi_factor(@regulating_pt)
-        %td= regulating_pt_factor_color(@regulating_pt, @transformer)                                            
-        %td= recent_date(@regulating_pt.visual_inspection)
+        %td= regulating_pt_factor_color                                           
+        - unless @regulating_pt.blank?
+          %td= recent_date(@regulating_pt.visual_inspection)
+        - else 
+          %td -
       %tr
         %td  17
         %td OLTC Compartment
-        %td= hi_factor(@visual_inspection.oltc_compartment)
-        %td= oltc_compartment_factor_color(@visual_inspection, @transformer)                                            
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.oltc_compartment)
+          %td= oltc_compartment_factor_color(@visual_inspection, @transformer)                                            
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -
       %tr
         %td  18
         %td OLTC Control Cabinet
-        %td= hi_factor(@visual_inspection.oltc_control_cabinet)
-        %td= oltc_control_cabinet_factor_color(@visual_inspection, @transformer)                                            
-        %td= recent_date(@visual_inspection)
+        - unless @visual_inspection.blank?
+          %td= hi_factor(@visual_inspection.oltc_control_cabinet)
+          %td= oltc_control_cabinet_factor_color(@visual_inspection, |
+                @transformer)                                            
+          %td= recent_date(@visual_inspection)
+        - else
+          %td -
+          %td -
+          %td -          

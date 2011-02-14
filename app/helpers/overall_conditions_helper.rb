@@ -1,231 +1,210 @@
 module OverallConditionsHelper
 
   def hi_factor(object)
-    unless object.nil?
+    unless object.blank?
       object.hi_factor
-    end
+    else 
+      " - "
+    end    
   end
 
-  def load_history_hi_factor(visual_inspection)
-    return if visual_inspection.nil?
-    unless visual_inspection.general_condition.nil?
-      visual_inspection.general_condition.load_history_hi_factor
+  def load_history_hi_factor
+    unless @visual_inspection.blank?
+      @visual_inspection.general_condition.load_history_hi_factor
+    else
+      " - "
     end
   end
 
   def general_condition_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
     unless visual_inspection.general_condition.nil?
       general_condition_factor =
         GeneralConditionFactor.where("hi_factor = ?",
                                      visual_inspection.general_condition.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{general_condition_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_general_conditions_path(transformer,
                                                               visual_inspection)
-        return link_to(color.html_safe, link)
-    end
+        return link_to(color_span(general_condition_factor.color).html_safe,
+                       link)
+        end
   end
 
-  def load_history_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.general_condition.nil?
+  def load_history_factor_color
+    unless @visual_inspection.blank?
       load_history_factor =
         LoadHistoryFactor.where("hi_factor = ?",
-                                visual_inspection.general_condition.load_history_hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{load_history_factor.color});\">" + "</span>"
+                                @visual_inspection.general_condition.load_history_hi_factor).first
       link =
-        transformer_visual_inspection_load_histories_path(transformer,
-                                                          visual_inspection)
-        return link_to(color.html_safe, link)
+        transformer_visual_inspection_load_histories_path(@transformer,
+                                                          @visual_inspection)
+        return link_to(color_span(load_history_factor.color).html_safe, link)
+    else
+      " - "
     end
   end
 
   def bushing_condition_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
     unless visual_inspection.bushing_condition.nil?
       bushing_condition_factor =
         BushingConditionFactor.where("hi_factor = ?",
                                      visual_inspection.bushing_condition.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{bushing_condition_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_bushing_conditions_path(transformer,
                                                               visual_inspection)
-        return link_to(color.html_safe, link)
-    end
+        return link_to(color_span(bushing_condition_factor.color).html_safe,
+                       link)
+        end
   end
 
   def surge_arrester_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.surge_arrester.nil?
+    unless visual_inspection.surge_arrester.blank?
       surge_arrester_factor =
         SurgeArresterFactor.where("hi_factor = ?",
                                   visual_inspection.surge_arrester.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{surge_arrester_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_surge_arresters_path(transformer,
                                                            visual_inspection)
-        return link_to(color.html_safe, link)
+        return link_to(color_span(surge_arrester_factor.color).html_safe, link)
     end
   end
 
   def conservator_tank_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.conservator_tank.nil?
+    unless visual_inspection.conservator_tank.blank?
       conservator_tank_factor =
         ConservatorTankFactor.where("hi_factor = ?",
                                     visual_inspection.conservator_tank.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{conservator_tank_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_conservator_tanks_path(transformer,
                                                              visual_inspection)
-        return link_to(color.html_safe, link)
-    end
+        return link_to(color_span(conservator_tank_factor.color).html_safe,
+                       link)
+        end
   end
 
   def main_tank_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
     unless visual_inspection.main_tank.nil?
       main_tank_factor =
         MainTankFactor.where("hi_factor = ?",
                              visual_inspection.main_tank.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{main_tank_factor.color});\">" + "</span>"
       link = transformer_visual_inspection_main_tanks_path(transformer,
                                                            visual_inspection)
-      return link_to(color.html_safe, link)
+      return link_to(color_span(main_tank_factor.color).html_safe, link)
     end
   end
 
-  def hot_line_oil_filter_factor_color(hot_line_oil_filter, transformer)
-    return if hot_line_oil_filter.nil?
-    unless hot_line_oil_filter.nil?
+  def hot_line_oil_filter_factor_color
+    unless @hot_line_oil_filter.blank?
       hot_line_oil_filter_factor =
         HotLineOilFilterFactor.where("hi_factor = ?",
-                                     hot_line_oil_filter.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{hot_line_oil_filter_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_hot_line_oil_filters_path(transformer,
-                                                                hot_line_oil_filter.visual_inspection)
-        return link_to(color.html_safe, link)
+                                     @hot_line_oil_filter.hi_factor).first
+      link = transformer_visual_inspection_hot_line_oil_filters_path(
+      @transformer, @hot_line_oil_filter.visual_inspection)
+      return link_to(color_span(hot_line_oil_filter_factor.color).html_safe,
+                     link)
+    else 
+      " - "
     end
   end
 
   def radiator_cooling_system_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
     unless visual_inspection.radiator_cooling_system.nil?
       radiator_cooling_system_factor =
         RadiatorCoolingSystemFactor.where("hi_factor = ?",
                                           visual_inspection.
                                           radiator_cooling_system.
                                           hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{radiator_cooling_system_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_radiator_cooling_systems_path(transformer,
-                                                                    visual_inspection)
-        return link_to(color.html_safe, link)
+      link = transformer_visual_inspection_radiator_cooling_systems_path(
+      transformer, visual_inspection)
+      return link_to(color_span(radiator_cooling_system_factor.color).html_safe,
+                     link)
     end
   end
 
   def transformer_control_cabinet_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.transformer_control_cabinet.nil?
+    unless visual_inspection.transformer_control_cabinet.blank?
       transformer_control_cabinet_factor =
         TransformerControlCabinetFactor.where("hi_factor = ?",
                                               visual_inspection.
                                               transformer_control_cabinet.
                                               hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{transformer_control_cabinet_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_transformer_control_cabinets_path(transformer,
-                                                                        visual_inspection)
-        return link_to(color.html_safe, link)
+      link = transformer_visual_inspection_transformer_control_cabinets_path(
+      transformer, visual_inspection)
+      return link_to(color_span(transformer_control_cabinet_factor.color).html_safe,
+                     link)
     end
   end
 
   def ngr_factor_color(ngr, transformer)
-    unless ngr.nil?
+    unless ngr.blank?
       ngr_factor = NgrFactor.where("hi_factor = ?", ngr.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{ngr_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_ngrs_path(transformer,
-                                                ngr.visual_inspection)
-        return link_to(color.html_safe, link)
+      link = transformer_visual_inspection_ngrs_path(transformer,
+                                                     ngr.visual_inspection)
+      return link_to(color_span(ngr_factor.color).html_safe, link)
+    else
+      " - "
     end
   end
 
-  def regulating_pt_factor_color(regulating_pt, transformer)
-    unless regulating_pt.nil?
+  def regulating_pt_factor_color
+    unless @regulating_pt.blank?
       regulating_pt_factor =
-        RegulatingPtFactor.where("hi_factor = ?", regulating_pt.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{regulating_pt_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_regulating_pts_path(transformer,
-                                                          regulating_pt.visual_inspection)
-        return link_to(color.html_safe, link)
+        RegulatingPtFactor.where("hi_factor = ?", @regulating_pt.hi_factor).first
+      link = transformer_visual_inspection_regulating_pts_path(
+      @transformer, @regulating_pt.visual_inspection)
+      return link_to(color_span(regulating_pt_factor.color).html_safe, link)
+    else
+      " - "
     end
   end
 
   def oltc_compartment_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.oltc_compartment.nil?
+    unless visual_inspection.oltc_compartment.blank?
       oltc_compartment_factor =
         OltcCompartmentFactor.where("hi_factor = ?",
                                     visual_inspection.
                                     oltc_compartment.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{oltc_compartment_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_oltc_compartments_path(transformer,
-                                                             visual_inspection)
-        return link_to(color.html_safe, link)
+      link = transformer_visual_inspection_oltc_compartments_path(
+      transformer, visual_inspection)
+      return link_to(color_span(oltc_compartment_factor.color).html_safe, link)
     end
   end
 
   def oltc_control_cabinet_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.oltc_control_cabinet.nil?
+    unless visual_inspection.oltc_control_cabinet.blank?
       oltc_control_cabinet_factor =
         OltcControlCabinetFactor.where("hi_factor = ?",
                                        visual_inspection.
                                        oltc_control_cabinet.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{oltc_control_cabinet_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_oltc_control_cabinets_path(transformer,
-                                                                 visual_inspection)
-        return link_to(color.html_safe, link)
+      link = transformer_visual_inspection_oltc_control_cabinets_path(
+      transformer, visual_inspection)
+      return link_to(color_span(oltc_control_cabinet_factor.color).html_safe,
+                     link)
     end
   end
 
   def thermo_scan_factor_color(thermo_scan, transformer)
-    unless thermo_scan.nil?
-      thermo_scan_factor =
-        ThermoScanFactor.where("hi_factor = ?", thermo_scan.hi_factor).first
-      color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
-        "#{thermo_scan_factor.color});\">" + "</span>"
-      link =
-        transformer_visual_inspection_thermo_scans_path(transformer,
-                                                        thermo_scan.visual_inspection)
-        return link_to(color.html_safe, link)
+    unless thermo_scan.blank?
+      thermo_scan_factor = ThermoScanFactor.where("hi_factor = ?",
+                                                  thermo_scan.hi_factor).first
+      link = transformer_visual_inspection_thermo_scans_path(
+      transformer, thermo_scan.visual_inspection)
+      return link_to(color_span(thermo_scan_factor.color).html_safe, link)
+    else
+      " - "
     end
   end
 
   def recent_date(visual_inspection)
-    return if visual_inspection.nil?
-    unless visual_inspection.nil?
+    unless visual_inspection.blank?
       visual_inspection.test_date.strftime("%d/%m/%Y")
+    else
+      " - "
     end
+  end
+
+  def color_span(value)
+    "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
+      "#{value});\">" + "</span>"
   end
 
 end
