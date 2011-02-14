@@ -41,3 +41,8 @@ dt, dd {
 input[type="submit"].cupid-green, button.cupid-green {
   width: 330px;
 }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+}
