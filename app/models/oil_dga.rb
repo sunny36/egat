@@ -55,24 +55,24 @@ class OilDga < ActiveRecord::Base
   validates_presence_of :test_type, :message => "can't be blank"
   validates_presence_of :test_date, :message => "can't be blank"
   validates_presence_of :work_order, :message => "can't be blank"
-  validates_presence_of :co,  :message => "can't be blank"
-  validates_presence_of :h2,  :message => "can't be blank"
-  validates_presence_of :ch4,  :message => "can't be blank"
-  validates_presence_of :c2h2,  :message => "can't be blank"
-  validates_presence_of :c2h4,  :message => "can't be blank"
-  validates_presence_of :c2h6,  :message => "can't be blank"
+  #validates_presence_of :co,  :message => "can't be blank"
+  #validates_presence_of :h2,  :message => "can't be blank"
+  #validates_presence_of :ch4,  :message => "can't be blank"
+  #validates_presence_of :c2h2,  :message => "can't be blank"
+  #validates_presence_of :c2h4,  :message => "can't be blank"
+  #validates_presence_of :c2h6,  :message => "can't be blank"
   
-  validates_numericality_of :o2,  :message => "is not a number"
-  validates_numericality_of :n2,  :message => "is not a number"
-  validates_numericality_of :co2,  :message => "is not a number"
-  validates_numericality_of :co,  :message => "is not a number"
-  validates_numericality_of :h2,  :message => "is not a number"
-  validates_numericality_of :ch4,  :message => "is not a number"
-  validates_numericality_of :c2h2,  :message => "is not a number"
-  validates_numericality_of :c2h4,  :message => "is not a number"
-  validates_numericality_of :c2h6,  :message => "is not a number"
-  validates_numericality_of :c3h6,  :message => "is not a number"
-  validates_numericality_of :c3h8,  :message => "is not a number"
+  #validates_numericality_of :o2,  :message => "is not a number"
+  #validates_numericality_of :n2,  :message => "is not a number"
+  #validates_numericality_of :co2,  :message => "is not a number"
+  #validates_numericality_of :co,  :message => "is not a number"
+  #validates_numericality_of :h2,  :message => "is not a number"
+  #validates_numericality_of :ch4,  :message => "is not a number"
+  #validates_numericality_of :c2h2,  :message => "is not a number"
+  #validates_numericality_of :c2h4,  :message => "is not a number"
+  #validates_numericality_of :c2h6,  :message => "is not a number"
+  #validates_numericality_of :c3h6,  :message => "is not a number"
+  #validates_numericality_of :c3h8,  :message => "is not a number"
   #End Validations
   
   def thai_test_date
@@ -89,6 +89,7 @@ class OilDga < ActiveRecord::Base
   end
   
   def set_co2_score
+    self.co2 = 0 unless self.co2
     dga_gas_scores = DgaGasScore.joins(:gas).where("gas.name = ?", "CO2")
     dga_gas_scores.each do |dga_gas_score|
       dga_gas_score.end = 10000000 if dga_gas_score.end.nil?
@@ -99,6 +100,7 @@ class OilDga < ActiveRecord::Base
   end
   
   def set_co_score
+    self.co = 0 unless self.co
     dga_gas_scores = DgaGasScore.joins(:gas).where("gas.name = ?", "CO")
     dga_gas_scores.each do |dga_gas_score|
       dga_gas_score.end = 10000000 if dga_gas_score.end.nil?
@@ -109,6 +111,7 @@ class OilDga < ActiveRecord::Base
   end
 
   def set_h2_score
+    self.h2 = 0 unless self.h2
     dga_gas_scores = DgaGasScore.joins(:gas).where("gas.name = ?", "H2")
     dga_gas_scores.each do |dga_gas_score|
       dga_gas_score.end = 10000000 if dga_gas_score.end.nil?
@@ -119,6 +122,7 @@ class OilDga < ActiveRecord::Base
   end
 
   def set_ch4_score
+    self.ch4 = 0 unless self.ch4
     dga_gas_scores = DgaGasScore.joins(:gas).where("gas.name = ?", "CH4")
     dga_gas_scores.each do |dga_gas_score|
       dga_gas_score.end = 10000000 if dga_gas_score.end.nil?
@@ -129,6 +133,7 @@ class OilDga < ActiveRecord::Base
   end
 
   def set_c2h2_score
+    self.c2h2 = 0 unless self.c2h2
     dga_gas_scores = DgaGasScore.joins(:gas).where("gas.name = ?", "C2H2")
     dga_gas_scores.each do |dga_gas_score|
       dga_gas_score.end = 10000000 if dga_gas_score.end.nil?
@@ -139,6 +144,7 @@ class OilDga < ActiveRecord::Base
   end
 
   def set_c2h4_score
+    self.c2h4 = 0 unless self.c2h4
     dga_gas_scores = DgaGasScore.joins(:gas).where("gas.name = ?", "C2H4")
     dga_gas_scores.each do |dga_gas_score|
       dga_gas_score.end = 10000000 if dga_gas_score.end.nil?
@@ -149,6 +155,7 @@ class OilDga < ActiveRecord::Base
   end
 
   def set_c2h6_score
+    self.c2h6 = 0 unless self.c2h6
     dga_gas_scores = DgaGasScore.joins(:gas).where("gas.name = ?", "C2H6")
     dga_gas_scores.each do |dga_gas_score|
       dga_gas_score.end = 10000000 if dga_gas_score.end.nil?

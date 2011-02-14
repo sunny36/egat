@@ -15,6 +15,21 @@
 class RegulatingPt < ActiveRecord::Base
   belongs_to :visual_inspection
 
+  def self.most_recent(transformer)
+    visual_inspections =
+      VisualInspection.where("transformer_id = ?",
+                             transformer.id).order("test_date DESC")
+    visual_inspections.each do |visual_inspection|
+      regulating_pt = visual_inspection.regulating_pt
+      unless(regulating_pt.oil_color.nil? || regulating_pt.oil_fail.nil? ||
+             regulating_pt.oil_level.nil? || 
+             regulating_pt.pocelain_clean.nil? || 
+             regulating_pt.pocelain_status.nil?)
+        return regulating_pt
+      end
+    end
+  end
+  
   def hi_factor
     RegulatingPtFactor.all.each do |i|
       i.end = 100 if i.end.nil?

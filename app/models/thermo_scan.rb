@@ -22,4 +22,16 @@ class ThermoScan < ActiveRecord::Base
     end
   end
 
+  def self.most_recent(transformer)
+    visual_inspections =
+      VisualInspection.where("transformer_id = ?",
+                             transformer.id).order("test_date DESC")
+    visual_inspections.each do |visual_inspection|
+      unless(visual_inspection.thermo_scan.delt.nil? &&
+             visual_inspection.thermo_scan.load.nil?)
+        return visual_inspection.thermo_scan
+      end
+    end
+  end
+
 end

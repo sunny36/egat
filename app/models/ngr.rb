@@ -14,6 +14,19 @@
 class Ngr < ActiveRecord::Base
   belongs_to :visual_inspection
 
+  def self.most_recent(transformer)
+    visual_inspections =
+      VisualInspection.where("transformer_id = ?",
+                             transformer.id).order("test_date DESC")
+    visual_inspections.each do |visual_inspection|
+      ngr = visual_inspection.ngr
+      unless(ngr.base_status.nil? || ngr.ground_connector.nil? ||
+             ngr.ngr_status.nil? || ngr.pocelain_clean.nil?)
+        return ngr
+      end
+    end
+  end
+
   def hi_factor
     NgrFactor.all.each do |i|
       i.end = 100 if i.end.nil?

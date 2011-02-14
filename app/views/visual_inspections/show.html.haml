@@ -56,7 +56,7 @@
     %li
       %a{:href => "#oltc_compartment"} 11. OLTC Compartment
     %li
-      %a{:href => "#oltc_control_cabinet"} 12. OLTC Control Cabinet                  
+      %a{:href => "#oltc_control_cabinet"} 12. OLTC Control Cabinet                 
     %li
       %a{:href => "#thermo_scan"} 13. Thermo Scan
   #general_condition
@@ -83,3 +83,5 @@
     = render :partial => 'show_oltc_compartment', :locals => {:visual_inspection => @visual_inspection}
   #oltc_control_cabinet
     = render :partial => 'show_oltc_control_cabinet', :locals => {:visual_inspection => @visual_inspection}
+  #thermo_scan
+    = render :partial => 'show_thermo_scan', :locals => {:visual_inspection => @visual_inspection}

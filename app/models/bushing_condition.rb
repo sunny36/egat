@@ -54,6 +54,7 @@ class BushingCondition < ActiveRecord::Base
     end
   end
   
+  
    def percent_bushing_condition_factor(*args)
     if args.length == 1
       side = args.first
@@ -61,10 +62,26 @@ class BushingCondition < ActiveRecord::Base
     end
     hv = (numerator(:hv)/denominator(:hv)) * 100
     lv = (numerator(:lv)/denominator(:lv)) * 100
-    tv = (numerator(:tv)/denominator(:tv)) * 100
-    return [hv, lv, tv].min
+    unless tv_side.nil?
+      tv = (numerator(:tv)/denominator(:tv)) * 100
+      percent_factor = [hv, lv, tv].max
+    else
+      percent_factor = [hv, lv].max
+    end
+    return percent_factor
    end
 
+   # Checks if any of the TV side field are nil.
+   # Returns nil if any of the fields are nil.
+   # Return true if all of the fields are not nil.
+   def tv_side
+     get_fields_for(:tv).each  do |field|
+       if self.send(field).nil?
+         return nil
+       end
+     end
+     return true
+   end
    
    def numerator(side)
     fields = get_fields_for(side)

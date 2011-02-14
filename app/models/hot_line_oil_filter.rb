@@ -12,6 +12,18 @@
 class HotLineOilFilter < ActiveRecord::Base
   belongs_to :visual_inspection
 
+  def self.most_recent(transformer)
+    visual_inspections =
+      VisualInspection.where("transformer_id = ?",
+                             transformer.id).order("test_date DESC")
+    visual_inspections.each do |visual_inspection|
+      unless(visual_inspection.hot_line_oil_filter.corrosion.nil? &&
+             visual_inspection.hot_line_oil_filter.pressure.nil?)
+        return visual_inspection.hot_line_oil_filter
+      end
+    end
+  end
+  
   def hi_factor
     HotLineOilFilterFactor.all.each do |i|
       i.end = 100 if i.end.nil?

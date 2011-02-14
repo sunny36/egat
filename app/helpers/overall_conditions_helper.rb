@@ -24,7 +24,7 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_general_conditions_path(transformer,
                                                               visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -39,7 +39,7 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_load_histories_path(transformer,
                                                           visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -54,7 +54,7 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_bushing_conditions_path(transformer,
                                                               visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -69,7 +69,7 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_surge_arresters_path(transformer,
                                                            visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -84,7 +84,7 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_conservator_tanks_path(transformer,
                                                              visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -102,20 +102,18 @@ module OverallConditionsHelper
     end
   end
 
-  def hot_line_oil_filter_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.hot_line_oil_filter.nil?
+  def hot_line_oil_filter_factor_color(hot_line_oil_filter, transformer)
+    return if hot_line_oil_filter.nil?
+    unless hot_line_oil_filter.nil?
       hot_line_oil_filter_factor =
         HotLineOilFilterFactor.where("hi_factor = ?",
-                                     visual_inspection.
-                                     hot_line_oil_filter.
-                                     hi_factor).first
+                                     hot_line_oil_filter.hi_factor).first
       color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
         "#{hot_line_oil_filter_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_hot_line_oil_filters_path(transformer,
-                                                                visual_inspection)
-      return link_to(color.html_safe, link)
+                                                                hot_line_oil_filter.visual_inspection)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -132,7 +130,7 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_radiator_cooling_systems_path(transformer,
                                                                     visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -149,35 +147,32 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_transformer_control_cabinets_path(transformer,
                                                                         visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
-  def ngr_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.ngr.nil?
-      ngr_factor = NgrFactor.where("hi_factor = ?",
-                                   visual_inspection.ngr.hi_factor).first
+  def ngr_factor_color(ngr, transformer)
+    unless ngr.nil?
+      ngr_factor = NgrFactor.where("hi_factor = ?", ngr.hi_factor).first
       color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
         "#{ngr_factor.color});\">" + "</span>"
       link =
-        transformer_visual_inspection_ngrs_path(transformer, visual_inspection)
-      return link_to(color.html_safe, link)
+        transformer_visual_inspection_ngrs_path(transformer,
+                                                ngr.visual_inspection)
+        return link_to(color.html_safe, link)
     end
   end
 
-  def regulating_pt_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.regulating_pt.nil?
+  def regulating_pt_factor_color(regulating_pt, transformer)
+    unless regulating_pt.nil?
       regulating_pt_factor =
-        RegulatingPtFactor.where("hi_factor = ?",
-                                 visual_inspection.ngr.hi_factor).first
+        RegulatingPtFactor.where("hi_factor = ?", regulating_pt.hi_factor).first
       color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
         "#{regulating_pt_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_regulating_pts_path(transformer,
-                                                          visual_inspection)
-      return link_to(color.html_safe, link)
+                                                          regulating_pt.visual_inspection)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -193,7 +188,7 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_oltc_compartments_path(transformer,
                                                              visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
@@ -209,22 +204,20 @@ module OverallConditionsHelper
       link =
         transformer_visual_inspection_oltc_control_cabinets_path(transformer,
                                                                  visual_inspection)
-      return link_to(color.html_safe, link)
+        return link_to(color.html_safe, link)
     end
   end
 
-  def thermo_scan_factor_color(visual_inspection, transformer)
-    return if visual_inspection.nil?
-    unless visual_inspection.thermo_scan.nil?
+  def thermo_scan_factor_color(thermo_scan, transformer)
+    unless thermo_scan.nil?
       thermo_scan_factor =
-        ThermoScanFactor.where("hi_factor = ?",
-                               visual_inspection.thermo_scan.hi_factor).first
+        ThermoScanFactor.where("hi_factor = ?", thermo_scan.hi_factor).first
       color = "<span style=\"padding:0px 40px 0px 40px; background:rgb(" +
         "#{thermo_scan_factor.color});\">" + "</span>"
       link =
         transformer_visual_inspection_thermo_scans_path(transformer,
-                                                        visual_inspection)
-      return link_to(color.html_safe, link)
+                                                        thermo_scan.visual_inspection)
+        return link_to(color.html_safe, link)
     end
   end
 
