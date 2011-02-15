@@ -30,6 +30,12 @@ form .xi {
 #insulating_oil_remark_maintank, #insulating_oil_remark_oltc {
 	width: 240px;
 }
+
+input[type="text"].dotted {
+	-moz-border-radius-bottomright: 2px;
+	-moz-border-radius-topleft: 2px;
+	border: 1px dotted;
+}
 /*.grid_8 select, input[type="text"] {
 	width: 150px;
 }

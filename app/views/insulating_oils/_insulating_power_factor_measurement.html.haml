@@ -25,14 +25,16 @@
           %td= f.text_field :test_kv_maintank            
           %td= f.text_field :current_avg_maintank
           %td= f.text_field :watt_avg_maintank
-          %td= f.text_field :avg_percent_power_factor_maintank
-          %td= f.text_field :cor_percent_power_factor_maintank
+          %td= f.text_field :avg_percent_power_factor_maintank, |
+          {:class => "dotted"}
+          %td= f.text_field :cor_percent_power_factor_maintank, |
+          {:class => "dotted"}
           %td= f.text_field :remark_maintank
         %tr
           %td 2. OLTC &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
           %td= f.text_field :test_kv_oltc           
           %td= f.text_field :current_avg_oltc
           %td= f.text_field :watt_avg_oltc
-          %td= f.text_field :avg_percent_power_factor_oltc
-          %td= f.text_field :cor_percent_power_factor_oltc
+          %td= f.text_field :avg_percent_power_factor_oltc, {:class => "dotted"}
+          %td= f.text_field :cor_percent_power_factor_oltc, {:class => "dotted"}
           %td= f.text_field :remark_oltc              
