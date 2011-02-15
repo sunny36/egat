@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110213185559) do
+ActiveRecord::Schema.define(:version => 20110215204448) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -764,7 +764,6 @@ ActiveRecord::Schema.define(:version => 20110213185559) do
     t.string   "remark_oltc"
     t.string   "test_by"
     t.datetime "test_date"
-    t.float    "test_kv"
     t.float    "watt_avg_maintank"
     t.float    "watt_avg_oltc"
     t.string   "work_order"
@@ -779,8 +778,10 @@ ActiveRecord::Schema.define(:version => 20110213185559) do
     t.float    "xi5_maintank"
     t.float    "xi5_oltc"
     t.decimal  "perform_type",          :precision => 10, :scale => 0
-    t.decimal  "transformer",           :precision => 10, :scale => 0
     t.string   "test_type"
+    t.integer  "transformer_id"
+    t.integer  "test_kv_maintank"
+    t.integer  "test_kv_oltc"
   end
 
   create_table "load_history", :force => true do |t|
