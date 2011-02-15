@@ -14,7 +14,7 @@ form .xi {
 	width: 60px;
 }
 
-#insulating_oil_test_kv {
+#insulating_oil_test_kv_maintank, #insulating_oil_test_kv_oltc {
 	width: 40px;
 }
 
