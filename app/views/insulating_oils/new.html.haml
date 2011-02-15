@@ -29,54 +29,8 @@
     .clear
       &nbsp;
     %hr
-    .grid_8
-      %table
-        %thead
-          %tr
-            %th &nbsp;
-            %th{:colspan => 2} MAIN TANK
-            %th{:colspan => 2} OLTC
-        %tbody
-          %tr
-            %td &nbsp;
-            %td              
-              <img src="http://latex.codecogs.com/gif.latex?\large x_{i}" title="\large x_{i}" />
-            %td
-              <img src="http://latex.codecogs.com/gif.latex?\large (x_{i} - \bar{x})^2" title="\large (x_{i} - \bar{x})^2" />
-            %td 
-              <img src="http://latex.codecogs.com/gif.latex?\large x_{i}" title="\large x_{i}" />
-              
-            %td
-              <img src="http://latex.codecogs.com/gif.latex?\large (x_{i} - \bar{x})^2" title="\large (x_{i} - \bar{x})^2" />
-            
-          %tr
-            %td 1
-            %td= f.text_field :xi1_maintank
-            %td= f.text_field :xi1_maintank_minus_xbar_whole_squared
-            %td= f.text_field :xi1_oltc
-            %td= f.text_field :xi1_oltc_minus_xbar_whole_squared            
-          %tr
-            %td 2
-            %td= f.text_field :xi2_maintank
-            %td= f.text_field :xi2_maintank_minus_xbar_whole_squared            
-            %td= f.text_field :xi2_oltc
-            %td= f.text_field :xi2_oltc_minus_xbar_whole_squared                        
-          %tr
-            %td 3
-            %td= f.text_field :xi3_maintank
-            %td= f.text_field :xi2_maintank_minus_xbar_whole_squared                        
-            %td= f.text_field :xi3_oltc
-            %td= f.text_field :xi3_oltc_minus_xbar_whole_squared            
-          %tr
-            %td 4
-            %td= f.text_field :xi4_maintank
-            %td= f.text_field :xi4_maintank_minus_xbar_whole_squared                        
-            %td= f.text_field :xi4_oltc
-            %td= f.text_field :xi4_oltc_minus_xbar_whole_squared                        
-          %tr
-            %td 5
-            %td= f.text_field :xi5_maintank
-            %td= f.text_field :xi5_maintank_minus_xbar_whole_squared                        
-            %td= f.text_field :xi5_oltc
-            %td= f.text_field :xi5_oltc_minus_xbar_whole_squared                        
- 
+    = render :partial => 'dielectric_breakdown_voltage_test', |
+      :locals => {:f => f}
+    .clear
+    = render :partial => 'insulating_power_factor_measurement', |
+      :locals => {:f => f}

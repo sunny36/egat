@@ -4,7 +4,33 @@ label.inline {
 	float: left;
 }
 
-.grid_8 select, input[type="text"] {
+#insulating_oil_test_type, #insulating_oil_oil_temp, #insulating_oil_test_date, 
+#insulating_oil_ambient_temp, #insulating_oil_work_order, 
+#insulating_oil_humidity {
+	width: 150px;
+}
+
+form .xi {
+	width: 60px;
+}
+
+#insulating_oil_test_kv {
+	width: 40px;
+}
+
+#insulating_oil_current_avg_maintank, #insulating_oil_current_avg_oltc, 
+#insulating_oil_watt_avg_maintank, #insulating_oil_watt_avg_oltc,
+#insulating_oil_avg_percent_power_factor_maintank, 
+#insulating_oil_avg_percent_power_factor_oltc,
+#insulating_oil_cor_percent_power_factor_maintank, 
+#insulating_oil_cor_percent_power_factor_oltc {
+	width: 50px;
+}
+
+#insulating_oil_remark_maintank, #insulating_oil_remark_oltc {
+	width: 240px;
+}
+/*.grid_8 select, input[type="text"] {
 	width: 150px;
 }
 
@@ -12,11 +38,11 @@ select, input[type="text"] {
 	display: inline !important;
 }
 
-.grid_12 select, input[type="text"] {
-	width: 80px;
+*/
+th {
+	font-size: 14px;
 }
 
-sub {
-  font-size: 10px;
-  vertical-align: bottom;
+th, td {
+	text-align: center;
 }

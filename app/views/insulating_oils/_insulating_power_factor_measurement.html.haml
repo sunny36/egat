@@ -1,0 +1,38 @@
+.grid_16
+  %fieldset
+    %legend INSULATION POWER FACTOR MEASUREMENT
+    %table
+      %thead
+        %tr
+          %th OIL SAMPLE
+          %th TEST (kV)
+          %th CURRENT (mA.)
+          %th WATT
+          %th{:colspan => 2}
+            \% POWER FACTOR 
+          %th REMARK
+        %tr
+          %th &nbsp;
+          %th &nbsp;
+          %th AVG.
+          %th &nbsp;
+          %th AVG
+          %th COR 20&deg; C                
+          %th &nbsp;              
+      %tbody
+        %tr
+          %td 1. MAIN TANK
+          %td= f.text_field :test_kv            
+          %td= f.text_field :current_avg_maintank
+          %td= f.text_field :watt_avg_maintank
+          %td= f.text_field :avg_percent_power_factor_maintank
+          %td= f.text_field :cor_percent_power_factor_maintank
+          %td= f.text_field :remark_maintank
+        %tr
+          %td 2. OLTC &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+          %td= f.text_field :test_kv            
+          %td= f.text_field :current_avg_oltc
+          %td= f.text_field :watt_avg_oltc
+          %td= f.text_field :avg_percent_power_factor_oltc
+          %td= f.text_field :cor_percent_power_factor_oltc
+          %td= f.text_field :remark_oltc              
