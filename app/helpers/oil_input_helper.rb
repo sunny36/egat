@@ -65,6 +65,35 @@ module OilInputHelper
     end
   end
 
+  # Furan
+  def furan_drop_down_list
+    collection_select(:oltc_dga, :id, @furans, :id, :thai_test_date)
+  end
+
+  def new_furan_link
+    link_to('Add', new_transformer_furan_path(@transformer), :class => 'add')
+  end
+
+  def edit_furan_link
+    unless @furans.blank?
+      link_to('Edit',
+              edit_transformer_furan_path(@transformer, @furans.first),
+              :id => "furan_edit", :class => 'edit')
+    else
+      link_to("Edit", "#", :class => "edit")
+    end
+  end
+
+  def delete_furan_link
+    unless @furans.blank?
+      link_to('Delete',
+              transformer_furan_path(@transformer, @furans.first),
+              :confirm => 'Are you sure?', :method => :delete, 
+              :id => "furan_delete", :class => 'delete')
+    else
+      link_to("Edit", "#", :class => "delete")
+    end
+  end
 
 
 end

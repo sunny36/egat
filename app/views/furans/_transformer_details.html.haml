@@ -1,0 +1,42 @@
+.grid_16
+  %dl
+    .grid_7
+      %dt Transformer Name
+      %dd
+        = " : " + transformer.transformer_name
+    .grid_7
+      %dt Equipment No. 
+      %dd
+        = " : " + transformer.egatsn
+    .grid_7
+      %dt MVA Rating
+      %dd
+        = " : " + transformer.maxcapacity.to_s + " MVA"
+    .grid_7
+      %dt HV Rating 
+      %dd
+        = " : " + transformer.hv.to_s + " kV"
+    .grid_7
+      %dt First Energized: 
+      %dd
+        = " : " + transformer.first_energize.strftime("%d/%m/%Y")
+    .grid_7
+      %dt Manufacturer
+      %dd
+        = " : " + transformer.brand.name
+    .grid_7
+      %dt OLTC Manufacturer 
+      %dd
+        = " : " + transformer.oltc_manufacturer
+    .grid_7
+      %dt OLTC Type 
+      %dd
+        = " : " + transformer.oltc_type
+    .grid_7
+      %dt Vectory Group
+      %dd
+        = " : " + transformer.vector_group
+    .grid_7
+      %dt Winding Type 
+      %dd
+        = " : " + transformer_winding_type(transformer)

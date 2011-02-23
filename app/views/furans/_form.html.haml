@@ -1,0 +1,56 @@
+= error_messages_for :furan,                              |
+  :header_message => "Please Try Again!", :class => 'error' |
+= form_for [@transformer, @furan]  do |f|
+  .grid_5
+    %p
+      = f.label :test_type
+      = f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"])
+  .grid_5
+    %p
+      = f.label :test_date
+      = f.text_field :test_date
+  .grid_5
+    %p
+      = f.label :work_order
+      = f.text_field :work_order
+  .clear
+  %br/
+  .grid_3
+    = label :transformer_information, :transformer_id, "หม้อแปลงไฟฟ้า"
+  .grid_4
+    = transformer_name_select(f)
+  .clear
+  %hr
+    = render :partial => 'transformer_details', :locals => {:transformer => @transformer}
+  .clear
+  %hr
+  .grid_4.prefix_4.suffix_8.chemicals
+    %p
+      = f.label :fal, '2-FAL'.html_safe, {:class => 'inline'}
+      = f.text_field :fal, :value => 0
+      %span.span-ppm [ppb]
+  .grid_4.prefix_4.suffix_8.chemicals
+    %p
+      = f.label :acf, '2-ACF'.html_safe, {:class => "inline"}
+      = f.text_field :acf, :value => 0
+      %span.span-ppm [ppb]
+  .grid_4.prefix_4.suffix_8.chemicals
+    %p
+      = f.label :fol, '2-FOL'.html_safe, {:class => "inline"}
+      = f.text_field :fol, :value => 0
+      %span.span-ppm [ppb]
+  .grid_4.prefix_4.suffix_8.chemicals
+    %p
+      = f.label :hmf, '2-HMF', {:class => "inline"}
+      = f.text_field :hmf, :value => 0
+      %span.span-ppm [ppb]
+  .grid_4.prefix_4.suffix_8.chemicals
+    %p
+      = f.label :mef, '2-MEF', {:class => "inline"}
+      = f.text_field :mef, :value => 0
+      %span.span-ppm [ppb]
+  .clear
+  .grid_5.prefix_3.suffix_8
+    %p
+      = f.submit 'Save', {:class => "cupid-green"}
+  .clear
