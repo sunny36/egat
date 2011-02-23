@@ -16,6 +16,25 @@ module OverallConditionsHelper
     end
   end
   
+  def oltc_dga_color
+    unless OltcDgaFactor.hi_factor(@transformer.id).blank?
+      link = transformer_oltc_dgas_path(@transformer)
+      return link_to(color_span(OltcDgaFactor.color(@transformer.id)).html_safe, 
+                     link)
+    else
+      " - "
+    end
+  end
+  
+  def oltc_dga_test_date
+    unless OltcDgaFactor.test_date(@transformer.id).blank?
+      OltcDgaFactor.test_date(@transformer.id)
+    else
+      " - "
+    end 
+  end
+  
+  
   def power_factor_hi_factor
     unless PowerFactor.hi_factor(@transformer.id).blank?
       PowerFactor.hi_factor(@transformer.id)
