@@ -36,6 +36,7 @@ class Transformer < ActiveRecord::Base
   has_many :transformer_information
   has_many :oil_dgas
   has_many :oltc_dgas
+  has_many :furans
   has_many :visual_inspection
   has_many :winding_type
   
