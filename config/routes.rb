@@ -37,6 +37,7 @@ Egat::Application.routes.draw do
     end
     resources :oltc_dgas
     resources :furans
+    resources :oil_contaminations
     resources :overall_conditions
     resources :insulating_oils
     resources :visual_inspections do 

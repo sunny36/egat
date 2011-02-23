@@ -6,6 +6,9 @@ class OilInputController < ApplicationController
                                params[:transformer_id]).order("test_date DESC")
     @furans = Furan.where('transformer_id = ?',
                           params[:transformer_id]).order('test_date DESC')
+    @oil_contaminations = 
+      OilContamination.where('transformer_id = ?',
+                                                 params[:transformer_id]).order('test_date DESC')
   end
 
   def show

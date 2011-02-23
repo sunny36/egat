@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110223043904
+# Schema version: 20110223125749
 #
 # Table name: oltc_dgas
 #
@@ -13,10 +13,10 @@
 #  test_date      :datetime
 #  work_order     :string(255)
 #  oltc_type      :integer(10)
-#  perform_type   :integer(10)
 #  transformer_id :integer(10)
 #  c3h6           :float
 #  status         :string(255)
+#  test_type      :string(255)
 #
 
 class OltcDga < ActiveRecord::Base

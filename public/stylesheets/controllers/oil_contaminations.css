@@ -1,0 +1,48 @@
+label.inline {
+	width: 205px;
+	display: inline !important;
+	float: left;
+}
+
+select, .chemicals input[type="text"] {
+	width: 100px;
+}
+
+select, .chemicals input[type="text"] {
+	display: inline !important;
+}
+
+
+.span-ppm {
+  font-size: 15px;
+}
+
+sub {
+  font-size: 12px;
+  vertical-align: bottom;
+}
+
+dt {
+  float: left;
+  width: 250px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+dd {
+  float: left;
+  font-size: 12px;
+}
+
+dt, dd {
+  display: inline;
+}
+
+input[type="submit"].cupid-green, button.cupid-green {
+  width: 330px;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+}

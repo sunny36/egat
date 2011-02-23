@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223110201) do
+ActiveRecord::Schema.define(:version => 20110223125749) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -904,7 +904,7 @@ ActiveRecord::Schema.define(:version => 20110223110201) do
     t.decimal  "transformer",  :precision => 10, :scale => 0
   end
 
-  create_table "oil_contamination", :force => true do |t|
+  create_table "oil_contaminations", :force => true do |t|
     t.integer  "version"
     t.float    "color"
     t.float    "ift"
@@ -915,8 +915,8 @@ ActiveRecord::Schema.define(:version => 20110223110201) do
     t.datetime "test_date"
     t.integer  "water_content"
     t.string   "work_order"
-    t.decimal  "perform_type",  :precision => 10, :scale => 0
-    t.decimal  "transformer",   :precision => 10, :scale => 0
+    t.integer  "transformer_id"
+    t.integer  "test_type"
   end
 
   create_table "oil_dga", :force => true do |t|
