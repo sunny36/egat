@@ -1,0 +1,22 @@
+.grid_16
+  %dl
+    .grid_7
+      %dt{:style => "width: 120px"} Transformer Name
+      %dd
+        = " : " + @transformer.transformer_name
+    .grid_7
+      %dt{:style => "width: 120px"} Equipment No. 
+      %dd
+        = " : " + @transformer.egatsn
+.clear
+%br 
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th Furan
+        %th= hi_factor_color
+.clear
+%h4 กราฟแสดงความสัมพันธ์ระหว่าง 2-FAL [ppb] กับวันทดสอบ
+#placeholder{:style => "width:600;height:400px"}
+%button{:id => "reset"} Reset

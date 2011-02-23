@@ -1,4 +1,18 @@
 class FuransController < ApplicationController
+
+  def index
+    @transformer = Transformer.find(params[:transformer_id])
+    @furans = Furan.where("transformer_id =?",
+                          params[:transformer_id]).order("test_date DESC")
+    respond_to do |format|
+      format.html
+      ActiveRecord::Base.include_root_in_json = false
+      format.js {
+        render :json => @furans.to_json(:methods => [:test_date_for_floth])
+      }
+    end
+  end
+
   def new
     @transformer = Transformer.find(params[:transformer_id])
     @furan = Furan.new

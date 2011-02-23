@@ -20,6 +20,9 @@
 class Furan < ActiveRecord::Base
   belongs_to :transformer
 
+  def test_date_for_floth
+    self.test_date.to_i * 1000
+  end  
 
   def thai_test_date
     test_date.strftime("%d/%m/%Y")

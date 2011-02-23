@@ -3,17 +3,12 @@ PowerFactor = {};
 PowerFactor.points = null;
 
 PowerFactor.getData = function (x1, x2) {
-  console.log(PowerFactor.points[0]);
-  console.log(x1);
-  console.log(x2);
   var points = [];
   for (var i = 0; i < PowerFactor.points.length; ++i) {
-    console.log(PowerFactor.points[i].test_date_for_floth);
     if (PowerFactor.points[i][0] >= x1 && PowerFactor.points[i][0] <= x2) {
       points.push([PowerFactor.points[i][0], PowerFactor.points[i][1]]);
     }
   }
-  console.log(points);
   return [{data: points}];
 };
 
