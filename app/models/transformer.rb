@@ -38,6 +38,7 @@ class Transformer < ActiveRecord::Base
   has_many :oltc_dgas
   has_many :furans
   has_many :oil_contamination
+  has_many :oltc_oil_contamination
   has_many :visual_inspection
   has_many :winding_type
   
