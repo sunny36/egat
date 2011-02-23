@@ -67,7 +67,7 @@ module OilInputHelper
 
   # Furan
   def furan_drop_down_list
-    collection_select(:oltc_dga, :id, @furans, :id, :thai_test_date)
+    collection_select(:furan, :id, @furans, :id, :thai_test_date)
   end
 
   def new_furan_link
