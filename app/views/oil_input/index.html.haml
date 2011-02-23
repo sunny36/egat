@@ -10,7 +10,7 @@
   %hr
   #main_tank_dga
     .grid_8
-      = label 'main_tank_dga', 'Main Tank DGA'
+      = label :oil_input, 'main_tank_dga', 'Main Tank DGA'
       = oil_dga_drop_down_list(@oil_dgas)
       = new_main_tank_dga_link(@transformer)
       - unless @oil_dgas.blank?
@@ -21,7 +21,7 @@
         = link_to("Edit", "#", :class => "delete")
   #oltc_dga
     .grid_8
-      = label 'oltc_dga', "DGA of OLTC".html_safe
+      = label :oil_input, 'oltc_dga', "DGA of OLTC"
       = oltc_dga_drop_down_list
       = new_oltc_dga_link
       = edit_oltc_dga_link
@@ -30,16 +30,22 @@
   %br
   #furan
     .grid_8
-      = label 'furan', 'Furan'
+      = label :oil_input, 'furan', 'Furan'
       = furan_drop_down_list
       = new_furan_link
       = edit_furan_link
       = delete_furan_link
   #oil_contamination
     .grid_8
-      = label 'oil_contamination', 'Oil Contamination'
+      = label :oil_input, 'oil_contamination', 'Oil Contamination'
       = oil_contamination_drop_down_list
       = new_oil_contamination_link
       = edit_oil_contamination_link
       = delete_oil_contamination_link
+  .clear
+  %br
+  #oltc_oil_contamination
+    .grid_8
+      = label :oil_input, 'oltc_oil_contamination', 'OLTC Oil Contamination'
+    
       

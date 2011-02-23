@@ -111,7 +111,7 @@ module OilInputHelper
       link_to('Edit',
               edit_transformer_oil_contamination_path(@transformer, 
                                                       @oil_contaminations.first),
-              :id => "oil_contamination_edit", :class => 'edit')
+                                                      :id => "oil_contamination_edit", :class => 'edit')
     else
       link_to("Edit", "#", :class => "edit")
     end
@@ -122,12 +122,43 @@ module OilInputHelper
       link_to('Delete',
               transformer_oil_contamination_path(@transformer, 
                                                  @oil_contaminations.first),
-              :confirm => 'Are you sure?', :method => :delete, 
-              :id => "oil_contamination_delete", :class => 'delete')
+                                                 :confirm => 'Are you sure?', :method => :delete, 
+                                                 :id => "oil_contamination_delete", :class => 'delete')
     else
       link_to("Delete", "#", :class => "delete")
     end
   end
 
+  # OLTC Oil Contamination
+  def oltc_oil_contamination_drop_down_list
+    collection_select(:oltc_oil_contamination, :id, @oltc_oil_contaminations, 
+                      :id, :thai_test_date)
+  end
+
+  def new_oltc_oil_contamination_link
+    link_to('Add', new_transformer_oltc_oil_contamination_path(@transformer), 
+            :class => 'add')
+  end
+
+  def edit_oltc_oil_contamination_link
+    unless @oltc_oil_contaminations.blank?
+      link_to('Edit', edit_transformer_oltc_oil_contamination_path(
+        @transformer, @oltc_oil_contaminations.first),
+        :id => "oltc_oil_contamination_edit", :class => 'edit')
+    else
+      link_to("Edit", "#", :class => "edit")
+    end
+  end
+
+  def delete_oltc_oil_contamination_link
+    unless @oltc_oil_contaminations.blank?
+      path = transformer_oltc_oil_contamination_path(
+        @transformer, @oltc_oil_contaminations.first)
+      link_to('Delete', path, :confirm => 'Are you sure?', :method => :delete, 
+              :id => "oltc_oil_contamination_delete", :class => 'delete')
+    else
+      link_to("Delete", "#", :class => "delete")
+    end
+  end
 
 end
