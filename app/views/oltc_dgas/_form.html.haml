@@ -27,36 +27,54 @@
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :h2, 'H<sub>2</sub>'.html_safe, {:class => "inline"}
-      = f.text_field :h2, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :h2, :value => 0
+      - else
+        = f.text_field :h2
       %span.span-ppm [ppm]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :ch4, 'CH<sub>4</sub>'.html_safe, {:class => "inline"}
-      = f.text_field :ch4, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :ch4, :value => 0
+      - else
+        = f.text_field :ch4
       %span.span-ppm [ppm]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :c2h2, 'C<sub>2</sub>H<sub>2</sub>'.html_safe, 
         {:class => "inline"}
-      = f.text_field :c2h2, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :c2h2, :value => 0
+      - else
+        = f.text_field :c2h2
       %span.span-ppm [ppm]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :c2h4, 'C<sub>2</sub>H<sub>4</sub>'.html_safe, 
         {:class => "inline"}
-      = f.text_field :c2h4, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :c2h4, :value => 0
+      - else
+        = f.text_field :c2h4
       %span.span-ppm [ppm]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :c2h6, 'C<sub>2</sub>H<sub>6</sub>'.html_safe, 
         {:class => "inline"}
-      = f.text_field :c2h6, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :c2h6, :value => 0
+      - else
+        = f.text_field :c2h6
       %span.span-ppm [ppm]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :c3h6, 'C<sub>3</sub>H<sub>6</sub>'.html_safe, 
         {:class => "inline"}
-      = f.text_field :c3h6, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :c3h6, :value => 0
+      - else
+        = f.text_field :c3h6
       %span.span-ppm [ppm]
   .grid_4.prefix_4.suffix_8.chemicals
     %p

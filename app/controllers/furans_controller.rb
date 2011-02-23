@@ -11,7 +11,7 @@ class FuransController < ApplicationController
       if @furan.save
         format.html {
           redirect_to(transformer_oil_input_index_path(@transformer),
-                      :notice => 'Data for Main Tank Dga has been added.')
+                      :notice => 'Data for Furan has been added.')
         }
       else
         format.html { render :action => "new" }
