@@ -20,6 +20,8 @@
 
 class OilContamination < ActiveRecord::Base
   belongs_to :transformer
+  
+  validates_presence_of :test_date
 
   def thai_test_date
     test_date.strftime("%d/%m/%Y")

@@ -63,6 +63,16 @@ OilInput.updateFuranEditAndDeleteLink = function(furanId) {
 	$("#furan_delete").attr("href", deleteUrl);
 };
 
+OilInput.updateOilContaminationEditAndDeleteLink = function(oilContaminationId) {
+	var transformerId = jQuery.url.attr("path").split("/")[2];
+	var editUrl = "/transformers/" + transformerId + "/oil_contaminations/" + 
+							  oilContaminationId + "/edit";
+	$("#oil_contamination_edit").attr("href", editUrl);
+	var deleteUrl = "/transformers/" + transformerId + "/oil_contaminations/" + 
+									oilContaminationId;
+	$("#oil_contamination_delete").attr("href", deleteUrl);
+};
+
 
 $(document).ready(function(){
 	OilInput.setupTransformerNameComboxBox('transformer_transformer_id');
@@ -82,6 +92,11 @@ $(document).ready(function(){
 		var furanId = $(this).val()
 		OilInput.updateFuranEditAndDeleteLink(furanId);
 	});
-	
+
+	$("#oil_contamination_id").change(function () {
+		var oilContaminationId = $(this).val()
+		OilInput.updateOilContaminationEditAndDeleteLink(oilContaminationId);
+	});
+  
   
 });
