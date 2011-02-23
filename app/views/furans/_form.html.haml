@@ -27,27 +27,42 @@
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :fal, '2-FAL'.html_safe, {:class => 'inline'}
-      = f.text_field :fal, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :fal, :value => 0
+      - else
+        = f.text_field :fal
       %span.span-ppm [ppb]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :acf, '2-ACF'.html_safe, {:class => "inline"}
-      = f.text_field :acf, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :acf, :value => 0
+      - else
+        = f.text_field :acf
       %span.span-ppm [ppb]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :fol, '2-FOL'.html_safe, {:class => "inline"}
-      = f.text_field :fol, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :fol, :value => 0
+      - else
+        = f.text_field :fol
       %span.span-ppm [ppb]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :hmf, '2-HMF', {:class => "inline"}
-      = f.text_field :hmf, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :hmf, :value => 0
+      - else
+        = f.text_field :hmf
       %span.span-ppm [ppb]
   .grid_4.prefix_4.suffix_8.chemicals
     %p
       = f.label :mef, '2-MEF', {:class => "inline"}
-      = f.text_field :mef, :value => 0
+      - if controller.action_name == "new"
+        = f.text_field :mef, :value => 0
+      - else
+        = f.text_field :mef
       %span.span-ppm [ppb]
   .clear
   .grid_5.prefix_3.suffix_8
