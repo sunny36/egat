@@ -1,0 +1,46 @@
+= error_messages_for :oltc_oil_contamination,                              |
+  :header_message => "Please Try Again!", :class => 'error' |
+= form_for [@transformer, @oltc_oil_contamination]  do |f|
+  .grid_5
+    %p
+      = f.label :test_type
+      = f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"])
+  .grid_5
+    %p
+      = f.label :test_date
+      = f.text_field :test_date
+  .grid_5
+    %p
+      = f.label :work_order
+      = f.text_field :work_order
+  .clear
+  %br/
+  .grid_3
+    = label :transformer_information, :transformer_id, "หม้อแปลงไฟฟ้า"
+  .grid_4
+    = transformer_name_select(f)
+  .clear
+  %hr
+    = render :partial => 'transformer_details', :locals => {:transformer => @transformer}
+  .clear
+  %hr
+  .grid_8.prefix_4.suffix_4.chemicals
+    %p
+      = f.label :color, 'Color'.html_safe, {:class => 'inline'}
+      - if controller.action_name == "new"
+        = f.text_field :color, :value => 0
+      - else
+        = f.text_field :color
+  .grid_8.prefix_4.suffix_4.chemicals
+    %p
+      = f.label :water_content, 'Water Content', {:class => "inline"}
+      - if controller.action_name == "new"
+        = f.text_field :water_content, :value => 0
+      - else
+        = f.text_field :water_content
+      %span.span-ppm [ppm]
+  .clear
+  .grid_8.prefix_3.suffix_4
+    %p
+      = f.submit 'Save', {:class => "cupid-green"}
+  .clear
