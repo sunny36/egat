@@ -6,12 +6,12 @@ class OltcOilContaminationsController < ApplicationController
 
   def create
     @transformer = Transformer.find(params[:transformer_id])
-    @oil_contamination = OilContamination.new(params[:furan])
+    @oltc_oil_contamination = OltcOilContamination.new(params[:oltc_oil_contamination])
     respond_to do |format|
-      if @oil_contamination.save
+      if @oltc_oil_contamination.save
         format.html {
           redirect_to(transformer_oil_input_index_path(@transformer),
-                      :notice => 'Data for Oil Contamination has been added.')
+                      :notice => 'Data for OLTC Oil Contamination has been added.')
         }
       else
         format.html { render :action => "new" }
@@ -21,14 +21,14 @@ class OltcOilContaminationsController < ApplicationController
 
   def edit
     @transformer = Transformer.find_by_id(params[:transformer_id])
-    @oil_contamination = OilContamination.find(params[:id])
+    @oltc_oil_contamination = OltcOilContamination.find(params[:id])
   end
 
   def update
     @transformer = Transformer.find(params[:transformer_id])
-    @oil_contamination = OilContamination.find(params[:id])
+    @oltc_oil_contamination = OltcOilContamination.find(params[:id])
     respond_to do |format|
-      if @furan.update_attributes(params[:furan])
+      if @oltc_oil_contamination.update_attributes(params[:furan])
         format.html {
           redirect_to(transformer_oil_input_index_path(@transformer),
                       :notice => 'Furan was successfully updated.') }
@@ -40,8 +40,8 @@ class OltcOilContaminationsController < ApplicationController
 
   def destroy
     @transformer = Transformer.find(params[:transformer_id])
-    @furan = Furan.find(params[:id])
-    @furan.destroy
+    @oltc_oil_contamination = OltcOilContamination.find(params[:id])
+    @oltc_oil_contamination.destroy
     respond_to do |format|
       format.html {
         redirect_to(transformer_oil_input_index_path(@transformer))

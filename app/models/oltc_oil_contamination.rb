@@ -17,4 +17,9 @@
 
 class OltcOilContamination < ActiveRecord::Base
   belongs_to :transformer
+  validates_presence_of :test_date, :on => :create, :message => "can't be blank"
+  def thai_test_date
+    test_date.strftime("%d/%m/%Y")
+  end
+  
 end

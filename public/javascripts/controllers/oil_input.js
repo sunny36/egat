@@ -73,6 +73,16 @@ OilInput.updateOilContaminationEditAndDeleteLink = function(oilContaminationId) 
 	$("#oil_contamination_delete").attr("href", deleteUrl);
 };
 
+OilInput.updateOltcOilContaminationEditAndDeleteLink = function(oltcOilContaminationId) {
+	var transformerId = jQuery.url.attr("path").split("/")[2];
+	var editUrl = "/transformers/" + transformerId + "/oltc_oil_contaminations/" + 
+							  oltcOilContaminationId + "/edit";
+	$("#oltc_oil_contamination_edit").attr("href", editUrl);
+	var deleteUrl = "/transformers/" + transformerId + 
+									"/oltc_oil_contaminations/" + oltcOilContaminationId;
+	$("#oltc_oil_contamination_delete").attr("href", deleteUrl);
+};
+
 
 $(document).ready(function(){
 	OilInput.setupTransformerNameComboxBox('transformer_transformer_id');
@@ -97,6 +107,10 @@ $(document).ready(function(){
 		var oilContaminationId = $(this).val()
 		OilInput.updateOilContaminationEditAndDeleteLink(oilContaminationId);
 	});
-  
+
+	$("#oltc_oil_contamination_id").change(function () {
+		var oltcOilContaminationId = $(this).val()
+		OilInput.updateOltcOilContaminationEditAndDeleteLink(oltcOilContaminationId);
+	});
   
 });
