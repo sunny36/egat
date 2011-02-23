@@ -7,6 +7,34 @@ module OverallConditionsHelper
       " - "
     end
   end
+
+  def furan_hi_factor
+    unless FuranFactor.hi_factor(@transformer.id).blank?
+      FuranFactor.hi_factor(@transformer.id)
+    else
+      " - "
+    end
+  end
+  
+  def furan_factor_color
+    unless FuranFactor.hi_factor(@transformer.id).blank?
+      link = transformer_furans_path(@transformer)
+      return link_to(color_span(FuranFactor.color(@transformer.id)).html_safe, 
+                     link)
+    else
+      " - "
+    end
+  end
+  
+  def furan_factor_test_date
+    unless FuranFactor.test_date(@transformer.id).blank?
+      FuranFactor.test_date(@transformer.id)
+    else
+      " - "
+    end 
+  end
+  
+  
   
   def oltc_dga_hi_factor
     unless OltcDgaFactor.hi_factor(@transformer.id).blank?
