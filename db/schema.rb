@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223153034) do
+ActiveRecord::Schema.define(:version => 20110223184159) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -669,6 +669,16 @@ ActiveRecord::Schema.define(:version => 20110223153034) do
     t.integer "version"
   end
 
+  create_table "furan_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.float    "start"
+    t.float    "end"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "furans", :force => true do |t|
     t.float    "acf"
     t.float    "fal"
@@ -1063,6 +1073,18 @@ ActiveRecord::Schema.define(:version => 20110223153034) do
     t.decimal  "oltc_type",      :precision => 10, :scale => 0
     t.integer  "transformer_id"
     t.integer  "test_type"
+  end
+
+  create_table "oltc_oil_qualities", :force => true do |t|
+    t.string   "field"
+    t.integer  "u_start"
+    t.integer  "u_end"
+    t.float    "start"
+    t.float    "end"
+    t.integer  "score"
+    t.integer  "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "oltc_type", :force => true do |t|
