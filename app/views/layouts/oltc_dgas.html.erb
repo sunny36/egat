@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -8,11 +8,17 @@
     <% unless @no_js %>
       <%= 
         javascript_include_tag 'jquery-1.4.2.min', 'ext-jquery-adapter', 
-                              'ext-all', 'jquery-ui-1.8.4.custom.min', 
-                              'jquery.blockUI', 'jquery.tmpl', 'facybox', 
-                              'json2', 'jquery.url', 'jquery.tablesorter.min',
-                              'jquery.cluetip', 'controllers/oltc_dgas'
-      %>
+          'ext-all', 'jquery-ui-1.8.4.custom.min', 
+          'jquery.blockUI', 'jquery.tmpl', 'facybox', 
+          'json2', 'jquery.url', 'jquery.tablesorter.min',
+          'jquery.cluetip'
+        %>
+      <%= 
+        javascript_include_tag 'jquery.jqplot.min', 
+          'jqplot_plugins/jqplot.cursor',
+          'jqplot_plugins/jqplot.dateAxisRenderer', 'controllers/oltc_dgas'
+        %>
+
       <%= yield :javascript %>
     <% end %>
     <%= stylesheet_link_tag 'ext-all', 'xtheme-gray' %>
@@ -21,6 +27,7 @@
     <%= stylesheet_link_tag'jquery-ui-1.8.4.custom' %>
     <%= stylesheet_link_tag'jquery.cluetip' %>   
     <%= stylesheet_link_tag 'buttons' %>     
+    <%= stylesheet_link_tag 'jquery.jqplot.min.css' %>
     <%= stylesheet_link_tag 'controllers/oltc_dgas' %>
     <%= yield :css %>
   </head>
@@ -34,6 +41,6 @@
     <% unless @no_footer %>
       <%= render :partial => 'layouts/footer' %>
     <% end %>
-    
+
   </body>
 </html>

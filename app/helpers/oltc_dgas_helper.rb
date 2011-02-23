@@ -8,4 +8,8 @@ module OltcDgasHelper
 
   end
   
+  def hi_factor_color
+    "<span style=\"padding:0px 40px 0px 40px; background:rgb(#{OltcDgaFactor.color(@transformer.id)});\"></span>".html_safe
+  end
+  
 end

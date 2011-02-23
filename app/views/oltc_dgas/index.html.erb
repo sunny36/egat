@@ -1,0 +1,60 @@
+<style type="text/css">
+  .jqplot-cursor-legend {
+    width: 160px;
+    font-family: "Courier New";
+    font-size: 0.85em;
+  }
+
+  td.jqplot-cursor-legend-swatch {
+    width: 1.3em;
+  }
+
+  div.jqplot-cursor-legend-swatch {
+    /*      width: 15px;*/
+  }
+  dt {
+    width: 120px;
+  }  
+    
+</style>
+<div class="grid_16">
+  <dl>
+    <div class="grid_7">
+      <dt>Transformer Name</dt>
+      <dd><%= " : " + @transformer.transformer_name %></dd>
+    </div>
+    <div class="grid_7">
+      <dt>Equipment No.</dt>
+      <dd><%= " : " + @transformer.egatsn %></dd>      
+    </div>    
+  </dl>
+</div>
+<div class="clear"></div>
+<br/>
+<div class="grid_8 suffix_7 prefix_1">
+  <table>
+    <thead>
+      <tr>
+        <th>DGA of OLTC</th>
+        <th><%= hi_factor_color %></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+<div class="clear"></div>
+<div class="jqPlot" id="h2_chart" style="height:300px; width:600px;"></div> 
+<button id="h2" class="reset_zoom">Reset</button>	
+
+<div class="jqPlot" id="ch4_chart" style="height:300px; width:600px;"></div> 
+<button id="ch4" class="reset_zoom">Reset</button>	
+
+<div class="jqPlot" id="c2h2_chart" style="height:300px; width:600px;"></div> 
+<button id="c2h2" class="reset_zoom">Reset</button>	
+
+<div class="jqPlot" id="c2h4_chart" style="height:300px; width:600px;"></div> 
+<button id="c2h4" class="reset_zoom">Reset</button>
+
+<div class="jqPlot" id="c2h6_chart" style="height:300px; width:600px;"></div> 
+<button id="c2h6" class="reset_zoom">Reset</button>	
+
+

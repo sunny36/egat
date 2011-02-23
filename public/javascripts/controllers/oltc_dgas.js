@@ -5,7 +5,7 @@ OltcDga.setupTransformerNameComboxBox = function(id) {
     var transformerId;
     var selected;
     if (jQuery.url.attr("path").split("/")[1] == "transformers" && 
-    Number(jQuery.url.attr("path").split("/")[2]) > 0) {
+        Number(jQuery.url.attr("path").split("/")[2]) > 0) {
       transformerId = Number(jQuery.url.attr("path").split("/")[2]);
     }
     selected = $("#" + id + " " + "option:selected");
@@ -34,7 +34,7 @@ OltcDga.onTransformerNamChange = function(transformerId) {
 };
 
 var plot = [];
-function plotGraph(gas, divId, points, title) {
+function plotGraph(gas, divId, points, title, yaxisLabel) {
   plot[gas] = $.jqplot(divId, [points], { 
     title: title, 
     series: [{ 
@@ -43,11 +43,13 @@ function plotGraph(gas, divId, points, title) {
     axes: { 
       xaxis: { 
         renderer:$.jqplot.DateAxisRenderer, 
-        tickOptions:{formatString:'%#d/%#m/%Y'}
+        tickOptions:{formatString:'%#d/%#m/%Y'},
+				label: 'วันทดสอบ'
       }, 
       yaxis: { 
         renderer: $.jqplot.LogAxisRenderer, 
-        tickOptions:{formatString:'%.2f'} 
+        tickOptions:{formatString:'%.2f'},
+ 				label: yaxisLabel
       } 
     }, 
     cursor:{show:true, zoom:true} 
@@ -55,69 +57,64 @@ function plotGraph(gas, divId, points, title) {
 }
 
 var app = {
-	getDataPointsForGraph: function() {
-		$.ajax({
-	    url: $.url.attr("path"),
-	    dataType: 'json',
-	    success: function(data) {
-	      var h2_points = [];
-	      var ch4_points = [];
-	      var c2h2_points = [];
-	      var c2h4_points = [];
-	      var c2h6_points = [];
-	      for (var i = 0; i < data.length; i++) {
-	        h2_points.push([data[i].test_date, data[i].h2]);
-	        ch4_points.push([data[i].test_date, data[i].ch4]);
-	        c2h2_points.push([data[i].test_date, data[i].c2h2]);
-	        c2h4_points.push([data[i].test_date, data[i].c2h4]);
-	        c2h6_points.push([data[i].test_date, data[i].c2h6]);
-	      }
-	      plotGraph('h2', 'h2_chart', h2_points, 'H2');
-	      plotGraph('ch4', 'ch4_chart', ch4_points, 'CH4');
-	      plotGraph('c2h2', 'c2h2_chart', c2h2_points, 'C2H2');
-	      plotGraph('c2h4', 'c2h4_chart', c2h2_points, 'C2H4');
-	      plotGraph('c2h6', 'c2h6_chart', c2h2_points, 'C2H6');
-	    }
-	  });	  
-	},
-	
-	onTransformerNameDropDownListBlur: function() {
-		$('#ext-gen5').live('blur', function () {
-	    if($(this).attr('value').length > 0) {
-	      var transformerName = $(this).attr('value'); 
-	      $.getJSON('/transformers/show/' + transformerName, function(data) {
-	        var transformer = data;
-	        $('span#transformer_name').text(transformer.transformer_name);
-	        $('span#transformer_equipment_no').text(transformer.egatsn);
-	        $('span#transformer_first_energized').text(transformer.first_energize);
-	        $('span#transformer_manufacture').text(transformer.brand.name);
-	      });
-	    }
-	    $('#transformer_details').slideDown();
-	  });	  		
-	}
+  getDataPointsForGraph: function() {
+    $.ajax({
+      url: $.url.attr("path"),
+      dataType: 'json',
+      success: function(data) {
+        var h2_points = [];
+        var ch4_points = [];
+        var c2h2_points = [];
+        var c2h4_points = [];
+        var c2h6_points = [];
+        for (var i = 0; i < data.length; i++) {
+          h2_points.push([data[i].test_date, data[i].h2]);
+          ch4_points.push([data[i].test_date, data[i].ch4]);
+          c2h2_points.push([data[i].test_date, data[i].c2h2]);
+          c2h4_points.push([data[i].test_date, data[i].c2h4]);
+          c2h6_points.push([data[i].test_date, data[i].c2h6]);
+        }
+        plotGraph('h2', 'h2_chart', h2_points, 
+									'กราฟแสดงความสัมพันธ์ระหว่าง H<sub>2</sub> กับวันทดสอบ',
+									'H<sub>2<sub> [ppm]');
+        plotGraph('ch4', 'ch4_chart', ch4_points, 
+								  'กราฟแสดงความสัมพันธ์ระหว่าง CH<sub>4</sub> กับวันทดสอบ',
+									'CH<sub>4<sub> [ppm]');
+        plotGraph('c2h2', 'c2h2_chart', c2h2_points, 
+									'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>2</sub>H<sub>2</sub> กับวันทดสอบ',
+									'C<sub>2</sub>H<sub>2</sub> [ppm]');
+        plotGraph('c2h4', 'c2h4_chart', c2h2_points,
+									'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>2</sub>H<sub>4</sub> กับวันทดสอบ',
+									'C<sub>2</sub>H<sub>4</sub> [ppm]');
+        plotGraph('c2h6', 'c2h6_chart', c2h2_points,
+									'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>2</sub>H<sub>6</sub> กับวันทดสอบ',
+									'C<sub>2</sub>H<sub>6</sub> [ppm]');
+      }
+    });	  
+  },
+
 };
 
 
 $(document).ready(function(){
 
-	// if(($('#h2_chart').length > 0) && ($('#ch4_chart').length > 0) &&
-	// 	 ($('#c2h2_chart').length > 0) &&
-	// 		($('#c2h4_chart').length > 0) &&
-	// 	 ($('#c2h6_chart').length > 0)) {
-	// 	app.getDataPointsForGraph();
-	// }
-	// 
-	//   $('button.reset_zoom').click(function () {
-	//     plot[$(this).attr('id')].resetZoom();
-	//   });
-	// 
-	  $('#oltc_dga_test_date').datepicker({
-	    dateFormat: 'dd/mm/yy',
-	    buttonImage: "images/icon_calendar.gif"
-	  });
+  if(($('#h2_chart').length > 0) && ($('#ch4_chart').length > 0) &&
+     ($('#c2h2_chart').length > 0) &&
+     ($('#c2h4_chart').length > 0) &&
+     ($('#c2h6_chart').length > 0)) {
+    app.getDataPointsForGraph();
+  }
 
-	OltcDga.setupTransformerNameComboxBox("oltc_dga_transformer_id");
+  $('button.reset_zoom').click(function () {
+    plot[$(this).attr('id')].resetZoom();
+  });
+
+  $('#oltc_dga_test_date').datepicker({
+    dateFormat: 'dd/mm/yy',
+    buttonImage: "images/icon_calendar.gif"
+  });
+
+  OltcDga.setupTransformerNameComboxBox("oltc_dga_transformer_id");
 
 });
 
