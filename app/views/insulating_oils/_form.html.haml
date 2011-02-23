@@ -1,0 +1,49 @@
+= error_messages_for :insulating_oil,                              |
+  :header_message => "Please Try Again!", :class => 'error' |
+#new_insulating_oil
+  = form_for [@transformer, @insulating_oil] do |f|
+    .prefix_6.grid_4.suffix_6
+      %p
+        = f.label :transformer_id, "หม้อแปลงไฟฟ้า"
+        = transformer_names_drop_down_list(f, :transformer_id)
+
+    .grid_8
+      .grid_8
+        %p
+          = f.label :test_type, 'วาระการตรวจสอบ', {:class => "inline"}
+          = f.select(:test_type, ["Commissioning", "6 months", "Others"])
+      .grid_8
+        %p
+          = f.label :test_date, 'วันท่ีตรวจสอบ', {:class => "inline"}
+          = f.text_field :test_date
+      .grid_8
+        %p
+          = f.label :work_order, 'เลขที่ใบสั่งงาน', {:class => "inline"}
+          = f.text_field :work_order
+    .grid_8
+      .grid_8
+        %p
+          = f.label :oil_temp, 'Oil Temperature', {:class => "inline"}
+          = f.text_field :oil_temp
+          = " &deg;C".html_safe
+      .grid_8
+        %p
+          = f.label :ambient_temp, 'Ambient Temperature', {:class => "inline"}
+          = f.text_field :ambient_temp
+          = " &deg;C".html_safe
+      .grid_8
+        %p
+          = f.label :humidity, 'Humidity', {:class => "inline"}
+          = f.text_field :humidity
+          = "%".html_safe
+    .clear
+      &nbsp;
+    %hr
+    = render :partial => 'dielectric_breakdown_voltage_test', |
+      :locals => {:f => f}
+    .clear
+    = render :partial => 'insulating_power_factor_measurement', |
+      :locals => {:f => f}
+    .prefix_2.grid_8
+      %p
+        = f.submit "Save", :disable_with => 'Saveing...',  :class => "cupid-green"

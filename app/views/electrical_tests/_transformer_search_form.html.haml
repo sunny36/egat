@@ -1,0 +1,5 @@
+= form_for :transformer do |form|
+  .grid_6.prefix_5.suffix_7
+    %p
+      = label :transformer, :transformer_id, "หม้อแปลงไฟฟ้า" 
+      = transformer_names_drop_down_list(form, :id)

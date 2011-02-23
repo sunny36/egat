@@ -15,9 +15,11 @@ class ThermoScan < ActiveRecord::Base
   def hi_factor
     ThermoScanFactor.all.each do |i|
       i.delta_end = 1000000 if i.delta_end.nil?
-      if self.delt.round.between?(i.delta_start, i.delta_end) &&
-          self.load.round.between?(i.load_start, i.load_end)
-        return i.hi_factor
+      unless self.delt.blank? && self.load.blank?
+        if self.delt.round.between?(i.delta_start, i.delta_end) &&
+            self.load.round.between?(i.load_start, i.load_end)
+          return i.hi_factor
+        end
       end
     end
   end

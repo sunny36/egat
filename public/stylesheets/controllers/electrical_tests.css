@@ -1,0 +1,22 @@
+.grid_8 select {
+    width: 200px;
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+a.edit, a.delete, a.add {
+	padding-left:25px;
+	background-repeat:no-repeat;
+	background-position:left center;
+}
+a.add {
+	background-image:url(/images/icons/add.png)
+}
+a.edit {
+	background-image:url(/images/icons/page_edit.png)
+}
+a.delete {
+	background-image:url(/images/icons/delete.png)
+}

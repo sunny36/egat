@@ -7,6 +7,32 @@ module OverallConditionsHelper
       " - "
     end
   end
+  
+  def power_factor_hi_factor
+    unless PowerFactor.hi_factor(@transformer.id).blank?
+      PowerFactor.hi_factor(@transformer.id)
+    else
+      " - "
+    end
+  end
+
+  def power_factor_color
+    unless PowerFactor.hi_factor(@transformer.id).blank?
+      link = transformer_power_factors_path(@transformer)
+      return link_to(color_span(PowerFactor.color(@transformer.id)).html_safe, 
+                     link)
+    else
+      " - "
+    end
+  end
+
+  def power_factor_test_date
+    unless PowerFactor.test_date(@transformer.id).blank?
+      PowerFactor.test_date(@transformer.id)
+    else
+      " - "
+    end 
+  end
 
   def load_history_hi_factor
     unless @visual_inspection.blank?

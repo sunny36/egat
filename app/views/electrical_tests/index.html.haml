@@ -1,0 +1,22 @@
+%h1 ผลทดสอบทางไฟฟ้า
+= form_for :electrical_test do |form|
+  .grid_3.prefix_4
+    = label :transformer_information, :transformer_id, "หม้อแปลงไฟฟ้า" 
+  .grid_4
+    = transformer_names_drop_down_list(form)
+  .clear
+    &nbsp;
+  = render :partial => 'transformer_details', :locals => {:transformer => @transformer}
+  %hr
+  #main_tank_dga
+    .grid_8
+      = label 'insulating_oil', 'Insulating Oil'
+      = insulating_oil_drop_down_list
+      = new_insulating_oil_link(@transformer)
+      - unless @insulating_oils.blank?
+        = edit_insulating_oil_link(@transformer, @insulating_oils.first)
+        = delete_insulating_oil_link(@transformer, @insulating_oils.first)
+      - else 
+        = link_to("Edit", "#", :class => "edit")
+        = link_to("Edit", "#", :class => "delete")
+

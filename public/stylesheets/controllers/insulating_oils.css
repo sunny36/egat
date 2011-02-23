@@ -19,12 +19,18 @@ form .xi {
 }
 
 #insulating_oil_current_avg_maintank, #insulating_oil_current_avg_oltc, 
-#insulating_oil_watt_avg_maintank, #insulating_oil_watt_avg_oltc,
-#insulating_oil_avg_percent_power_factor_maintank, 
-#insulating_oil_avg_percent_power_factor_oltc,
-#insulating_oil_cor_percent_power_factor_maintank, 
-#insulating_oil_cor_percent_power_factor_oltc {
+#insulating_oil_watt_avg_maintank, #insulating_oil_watt_avg_oltc {
 	width: 50px;
+}
+
+#insulating_oil_avg_percent_power_factor_maintank, 
+#insulating_oil_avg_percent_power_factor_oltc {
+	width: 90px;
+}
+
+#insulating_oil_cor_percent_power_factor_maintank,
+#insulating_oil_cor_percent_power_factor_oltc {
+	width: 90px;
 }
 
 #insulating_oil_remark_maintank, #insulating_oil_remark_oltc {
@@ -36,19 +42,39 @@ input[type="text"].dotted {
 	-moz-border-radius-topleft: 2px;
 	border: 1px dotted;
 }
-/*.grid_8 select, input[type="text"] {
-	width: 150px;
+
+label[for="insulating_oil_cf"] {
+	display: inline;
 }
 
-select, input[type="text"] {
-	display: inline !important;
+#insulating_oil_cf {
+	width: 50px;
 }
 
-*/
+label[for="insulating_oil_gap_distance_maintank"],
+label[for="insulating_oil_gap_distance_oltc"] {
+  display: inline;
+  font-size: 14px;
+}
+
+#insulating_oil_gap_distance_maintank, #insulating_oil_gap_distance_oltc {
+  width: 50px;
+  display: inline;
+}
+
 th {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 th, td {
 	text-align: center;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+}
+
+input[type="submit"].cupid-green, button.cupid-green {
+  width: 730px;
 }

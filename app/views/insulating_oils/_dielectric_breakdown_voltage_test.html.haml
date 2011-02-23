@@ -1,13 +1,23 @@
-.grid_8
+.grid_12
   %fieldset
     %legend DIELECTRIC BREAKDOWN VOLTAGE TEST
     %table
       %thead
         %tr
-          %th &nbsp;
+          %th BREAKDOWN
           %th{:colspan => 2} MAIN TANK
           %th{:colspan => 2} OLTC
       %tbody
+        %tr
+          %td &nbsp;
+          %td{:colspan => 2}
+            = f.label :gap_distance_maintank, 'GAP DISTANCE: '
+            = f.text_field :gap_distance_maintank
+            (mm.)
+          %td{:colspan => 2}
+            = f.label :gap_distance_oltc, 'GAP DISTANCE: '
+            = f.text_field :gap_distance_oltc
+            (mm.)
         %tr
           %td &nbsp;
           %td              
@@ -39,7 +49,7 @@
         %tr
           %td 3
           %td= f.text_field :xi3_maintank, {:class => "xi"}
-          %td= f.text_field :xi2_maintank_minus_xbar_whole_squared, |
+          %td= f.text_field :xi3_maintank_minus_xbar_whole_squared, |
           {:class => "xi dotted"}
           %td= f.text_field :xi3_oltc, {:class => "xi"}
           %td= f.text_field :xi3_oltc_minus_xbar_whole_squared, |

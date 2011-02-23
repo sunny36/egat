@@ -4,6 +4,12 @@
     %table
       %thead
         %tr
+          %td{:colspan => 6} &nbsp;
+          %td
+            = f.label :cf, "CF: "
+            = f.text_field :cf            
+      %thead
+        %tr
           %th OIL SAMPLE
           %th TEST (kV)
           %th CURRENT (mA.)

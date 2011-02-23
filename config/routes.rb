@@ -21,7 +21,12 @@ Egat::Application.routes.draw do
       get 'search'
     end
   end
-  
+
+  resources :electrical_tests do
+    collection do
+      get 'search'
+    end
+  end  
   
   resources :transformers do
     resources :oil_input
@@ -48,7 +53,8 @@ Egat::Application.routes.draw do
       resources :oltc_control_cabinets
       resources :thermo_scans
     end    
-    
+    resources :electrical_tests
+    resources :power_factors
   end
   
 

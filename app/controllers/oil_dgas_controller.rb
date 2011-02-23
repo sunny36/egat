@@ -53,6 +53,7 @@ class OilDgasController < ApplicationController
   end
 
   def update
+    @transformer = Transformer.find(params[:transformer_id])
     @oil_dga = OilDga.find(params[:id])
     respond_to do |format|
       if @oil_dga.update_attributes(params[:oil_dga])
@@ -68,7 +69,7 @@ class OilDgasController < ApplicationController
   def destroy
     @transformer = Transformer.find(params[:transformer_id])
     @oil_dga = OilDga.find(params[:id])
-    #@oil_dga.destroy
+    @oil_dga.destroy
     respond_to do |format|
       format.html {
         redirect_to(transformer_oil_input_index_path(@transformer))

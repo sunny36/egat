@@ -2,7 +2,7 @@ class OverallConditionsController < ApplicationController
   def index
     @transformer = Transformer.find(params[:transformer_id])
     @oil_dgas = OilDga.where("transformer_id = ?",
-                            params[:transformer_id]).order("test_date DESC")
+                             params[:transformer_id]).order("test_date DESC")
     @visual_inspection =
       VisualInspection.where("transformer_id = ?",
                              params[:transformer_id]).
@@ -11,6 +11,9 @@ class OverallConditionsController < ApplicationController
     @hot_line_oil_filter = HotLineOilFilter.most_recent(@transformer)
     @ngr = Ngr.most_recent(@transformer)
     @regulating_pt = RegulatingPt.most_recent(@transformer)
+    @insulating_oils =
+      InsulatingOil.where("transformer_id = ?",
+                          params[:transformer_id]).order("test_date DESC")
     if request.xhr?
       @no_js = true
       @no_header = true

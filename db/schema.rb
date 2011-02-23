@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215204448) do
+ActiveRecord::Schema.define(:version => 20110223043904) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1023,8 +1023,7 @@ ActiveRecord::Schema.define(:version => 20110215204448) do
     t.integer "visual_inspection_id"
   end
 
-  create_table "oltc_dga", :force => true do |t|
-    t.integer  "version"
+  create_table "oltc_dgas", :force => true do |t|
     t.float    "c2h2"
     t.float    "c2h4"
     t.float    "c2h6"
@@ -1033,9 +1032,11 @@ ActiveRecord::Schema.define(:version => 20110215204448) do
     t.string   "test_by"
     t.datetime "test_date"
     t.string   "work_order"
-    t.decimal  "oltc_type",    :precision => 10, :scale => 0
-    t.decimal  "perform_type", :precision => 10, :scale => 0
-    t.decimal  "transformer",  :precision => 10, :scale => 0
+    t.decimal  "oltc_type",      :precision => 10, :scale => 0
+    t.decimal  "perform_type",   :precision => 10, :scale => 0
+    t.decimal  "transformer_id", :precision => 10, :scale => 0
+    t.float    "c3h6"
+    t.string   "status"
   end
 
   create_table "oltc_model", :force => true do |t|
@@ -1284,6 +1285,16 @@ ActiveRecord::Schema.define(:version => 20110215204448) do
 
   create_table "posts", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "power_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.float    "start"
+    t.float    "end"
+    t.string   "color"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

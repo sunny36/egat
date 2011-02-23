@@ -19,17 +19,23 @@
           %td -
           %td -        
       %tr
-        %td  2
+        %td  2
         %td Load History
         %td= load_history_hi_factor
         %td= load_history_factor_color
         %td= recent_date(@visual_inspection)
       %tr
+        %td  3
+        %td Power Factor
+        %td= power_factor_hi_factor
+        %td= power_factor_color
+        %td= power_factor_test_date
+      %tr
         %td  4
         %td Thermo Scan
         %td= hi_factor(@thermo_scan)
         %td= thermo_scan_factor_color(@thermo_scan, @transformer)
-        - unless @thermo_scan.blank?                                                 
+        - unless @thermo_scan.blank?                                                
           %td= recent_date(@thermo_scan.visual_inspection)
         - else
           %td -
