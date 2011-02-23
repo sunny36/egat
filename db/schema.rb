@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223091823) do
+ActiveRecord::Schema.define(:version => 20110223110201) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -669,6 +669,20 @@ ActiveRecord::Schema.define(:version => 20110223091823) do
     t.integer "version"
   end
 
+  create_table "furans", :force => true do |t|
+    t.float    "acf"
+    t.float    "fal"
+    t.float    "fol"
+    t.float    "hmf"
+    t.float    "mef"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "perform_type",   :precision => 10, :scale => 0
+    t.integer  "transformer_id"
+    t.string   "test_type"
+  end
+
   create_table "gas", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -950,20 +964,6 @@ ActiveRecord::Schema.define(:version => 20110223091823) do
     t.integer  "c3h8"
     t.integer  "o2"
     t.integer  "n2"
-  end
-
-  create_table "oil_furan", :force => true do |t|
-    t.float    "acf"
-    t.integer  "version"
-    t.float    "fal"
-    t.float    "fol"
-    t.float    "hmf"
-    t.float    "mef"
-    t.string   "test_by"
-    t.datetime "test_date"
-    t.string   "work_order"
-    t.decimal  "perform_type", :precision => 10, :scale => 0
-    t.decimal  "transformer",  :precision => 10, :scale => 0
   end
 
   create_table "oltc_compartment_factors", :force => true do |t|
