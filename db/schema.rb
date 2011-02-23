@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223043904) do
+ActiveRecord::Schema.define(:version => 20110223091823) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1023,6 +1023,15 @@ ActiveRecord::Schema.define(:version => 20110223043904) do
     t.integer "visual_inspection_id"
   end
 
+  create_table "oltc_dga_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.string   "status"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "oltc_dgas", :force => true do |t|
     t.float    "c2h2"
     t.float    "c2h4"
@@ -1033,10 +1042,10 @@ ActiveRecord::Schema.define(:version => 20110223043904) do
     t.datetime "test_date"
     t.string   "work_order"
     t.decimal  "oltc_type",      :precision => 10, :scale => 0
-    t.decimal  "perform_type",   :precision => 10, :scale => 0
     t.decimal  "transformer_id", :precision => 10, :scale => 0
     t.float    "c3h6"
     t.string   "status"
+    t.string   "test_type"
   end
 
   create_table "oltc_model", :force => true do |t|

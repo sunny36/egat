@@ -36,13 +36,22 @@ OilInput.onTransformerNamChange = function(transformerId) {
   }
 };
 
-OilInput.updateEditAndDeleteLink = function(oilDgaId) {
+OilInput.updateMainTankDgaEditAndDeleteLink = function(oilDgaId) {
 	var transformerId = jQuery.url.attr("path").split("/")[2];
 	var editUrl = "/transformers/" + transformerId + "/oil_dgas/" + oilDgaId + 
 						"/edit";
-	$("a.edit").attr("href", editUrl);
+	$("#main_tank_dga_edit").attr("href", editUrl);
 	var deleteUrl = "/transformers/" + transformerId + "/oil_dgas/" + oilDgaId;
-	$("a.delete").attr("href", deleteUrl);
+	$("#main_tank_dga_delete").attr("href", deleteUrl);
+};
+
+OilInput.updateOltcDgaEditAndDeleteLink = function(oltcDgaId) {
+	var transformerId = jQuery.url.attr("path").split("/")[2];
+	var editUrl = "/transformers/" + transformerId + "/oltc_dgas/" + oilDgaId + 
+						"/edit";
+	$("#oltc_dga_edit").attr("href", editUrl);
+	var deleteUrl = "/transformers/" + transformerId + "/oltc_dgas/" + oilDgaId;
+	$("#oltc_dga_delete").attr("href", deleteUrl);
 };
 
 
@@ -52,7 +61,12 @@ $(document).ready(function(){
 	
 	$("#main_tank_dga_id").change(function () {
 		var oilDgaId = $(this).val()
-		OilInput.updateEditAndDeleteLink(oilDgaId);
+		OilInput.updateMainTankDgaEditAndDeleteLink(oilDgaId);
+	});
+
+	$("#oltc_dga_id").change(function () {
+		var oltcDgaId = $(this).val()
+		OilInput.updateOltcDgaEditAndDeleteLink(oltcDgaId);
 	});
   
 	//   app.setupTransformerNameComboxBox('oil_dga_transformer_id', 200);

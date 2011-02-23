@@ -35,6 +35,7 @@ Egat::Application.routes.draw do
         get :graph
       end
     end
+    resources :oltc_dgas
     resources :overall_conditions
     resources :insulating_oils
     resources :visual_inspections do 
@@ -54,7 +55,7 @@ Egat::Application.routes.draw do
       resources :thermo_scans
     end    
     resources :electrical_tests
-    resources :power_factors
+    resources :power_factors    
   end
   
 

@@ -8,6 +8,14 @@ module OverallConditionsHelper
     end
   end
   
+  def oltc_dga_hi_factor
+    unless OltcDgaFactor.hi_factor(@transformer.id).blank?
+      OltcDgaFactor.hi_factor(@transformer.id)
+    else
+      " - "
+    end
+  end
+  
   def power_factor_hi_factor
     unless PowerFactor.hi_factor(@transformer.id).blank?
       PowerFactor.hi_factor(@transformer.id)

@@ -19,4 +19,11 @@
       - else 
         = link_to("Edit", "#", :class => "edit")
         = link_to("Edit", "#", :class => "delete")
+  #oltc_dga
+    .grid_8
+      = label 'oltc_dga', "DGA of OLTC".html_safe
+      = oltc_dga_drop_down_list
+      = new_oltc_dga_link
+      = edit_oltc_dga_link
+      = delete_oltc_dga_link
       
