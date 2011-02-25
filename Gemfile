@@ -22,6 +22,9 @@ group :test, :development do
   gem 'autotest-rails-pure'
   gem 'autotest-fsevent'
   gem 'autotest-growl'
+  gem 'watchr'
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'mocha'
 end
 
 # Use unicorn as the web server
