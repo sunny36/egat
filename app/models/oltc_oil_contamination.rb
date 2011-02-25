@@ -16,8 +16,14 @@
 #
 
 class OltcOilContamination < ActiveRecord::Base
+  scope :most_recent, lambda { |transformer_id|
+    where('transformer_id = ?', transformer_id).order('test_date DESC').limit(1)
+  }
+  
   belongs_to :transformer
+  
   validates_presence_of :test_date, :on => :create, :message => "can't be blank"
+  
   def thai_test_date
     test_date.strftime("%d/%m/%Y")
   end

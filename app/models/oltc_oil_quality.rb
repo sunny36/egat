@@ -1,6 +1,7 @@
 class OltcOilQuality < ActiveRecord::Base
 
   def hi_factor(insulating_oil, oltc_oil_contamination)
+    return nil if insulating_oil.blank? || oltc_oil_contamination.blank?
     OltcOilQualityFactor.all.each do |oltc_oil_quality_factor|
       oltc_oil_quality_factor.start = 0 if oltc_oil_quality_factor.start.nil?
       oltc_oil_quality_factor.end = 1000000 if oltc_oil_quality_factor.end.nil?
@@ -9,6 +10,16 @@ class OltcOilQuality < ActiveRecord::Base
         return oltc_oil_quality_factor.hi_factor
       end
     end
+  end
+  
+  def color(insulating_oil, oltc_oil_contamination)
+    return nil if insulating_oil.blank? || oltc_oil_contamination.blank?
+    OltcOilQualityFactor.where('hi_factor = ?', hi_factor(insulating_oil, oltc_oil_contamination)).first.color
+  end
+  
+  def test_date(insulating_oil, oltc_oil_contamination)
+    return nil if insulating_oil.blank? || oltc_oil_contamination.blank?
+    "#{insulating_oil.thai_test_date}, #{oltc_oil_contamination.thai_test_date}(BD)"
   end
   
   def percent_oltc_oil_quality_factor(insulating_oil, oltc_oil_contamination)
@@ -30,7 +41,7 @@ class OltcOilQuality < ActiveRecord::Base
     oltc_oil_qualities = OltcOilQuality.where('name = ?', 'color')
     oltc_oil_qualities.each do |oltc_oil_quality|
       oltc_oil_quality.start = 0 if oltc_oil_quality.start.nil?
-      oltc_oil_quality.end = 1000000 if oltc_oil_quality.start.nil?
+      oltc_oil_quality.end = 1000000 if oltc_oil_quality.end.nil?
       if oltc_oil_contamination.color.between?(oltc_oil_quality.start, oltc_oil_quality.end)
         return oltc_oil_quality.score
       end

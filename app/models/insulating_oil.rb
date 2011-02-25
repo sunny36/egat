@@ -38,7 +38,12 @@
 #
 
 class InsulatingOil < ActiveRecord::Base
+  scope :most_recent, lambda { |transformer_id|
+    where('transformer_id = ?', transformer_id).order('test_date DESC').limit(1)
+  }
+  
   belongs_to :transformer
+    
   attr_accessor :xi1_maintank_minus_xbar_whole_squared,
     :xi1_oltc_minus_xbar_whole_squared, :xi2_maintank_minus_xbar_whole_squared,
     :xi2_oltc_minus_xbar_whole_squared, :xi3_maintank_minus_xbar_whole_squared,
@@ -127,40 +132,40 @@ class InsulatingOil < ActiveRecord::Base
     return nil if self.xi_average_oltc.nil?
     (self.xi2_oltc - self.xi_average_maintank) ** 2
   end
-  
+
   def xi3_oltc_minus_xbar_whole_squared
     return nil if self.xi_average_oltc.nil?
     (self.xi3_oltc - self.xi_average_maintank) ** 2
   end
-  
+
   def xi4_oltc_minus_xbar_whole_squared
     return nil if self.xi_average_oltc.nil?
     (self.xi4_oltc - self.xi_average_maintank) ** 2
   end
-  
+
   def xi5_oltc_minus_xbar_whole_squared
     return nil if self.xi_average_oltc.nil?
     (self.xi5_oltc - self.xi_average_maintank) ** 2
   end
-  
+
   def sum_xi_minus_xbar_whole_squared_maintank
     return nil if self.xi_average_maintank.nil?
-    self.xi1_maintank_minus_xbar_whole_squared + 
-    self.xi2_maintank_minus_xbar_whole_squared +
-    self.xi3_maintank_minus_xbar_whole_squared +
-    self.xi4_maintank_minus_xbar_whole_squared +
-    self.xi5_maintank_minus_xbar_whole_squared
+    self.xi1_maintank_minus_xbar_whole_squared +
+      self.xi2_maintank_minus_xbar_whole_squared +
+      self.xi3_maintank_minus_xbar_whole_squared +
+      self.xi4_maintank_minus_xbar_whole_squared +
+      self.xi5_maintank_minus_xbar_whole_squared
   end
 
   def sum_xi_minus_xbar_whole_squared_oltc
     return nil if self.xi_average_oltc.nil?
-    self.xi1_oltc_minus_xbar_whole_squared + 
-    self.xi2_oltc_minus_xbar_whole_squared +
-    self.xi3_oltc_minus_xbar_whole_squared +
-    self.xi4_oltc_minus_xbar_whole_squared +
-    self.xi5_oltc_minus_xbar_whole_squared
+    self.xi1_oltc_minus_xbar_whole_squared +
+      self.xi2_oltc_minus_xbar_whole_squared +
+      self.xi3_oltc_minus_xbar_whole_squared +
+      self.xi4_oltc_minus_xbar_whole_squared +
+      self.xi5_oltc_minus_xbar_whole_squared
   end
-  
+
   def s_maintank
     return nil if self.xi_average_maintank.nil?
     Math.sqrt(self.sum_xi_minus_xbar_whole_squared_maintank / 4.to_f)
@@ -180,7 +185,7 @@ class InsulatingOil < ActiveRecord::Base
     return nil if self.xi_average_oltc.nil?
     (self.s_oltc / self.xi_average_oltc).round(2)
   end
-  
+
   def avg_percent_power_factor_maintank
     if self.watt_avg_maintank.nil? || self.current_avg_maintank.nil? ||
         self.test_kv_maintank.nil?
