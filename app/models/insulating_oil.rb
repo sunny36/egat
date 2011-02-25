@@ -38,6 +38,7 @@
 #
 
 class InsulatingOil < ActiveRecord::Base
+  belongs_to :transformer
   attr_accessor :xi1_maintank_minus_xbar_whole_squared,
     :xi1_oltc_minus_xbar_whole_squared, :xi2_maintank_minus_xbar_whole_squared,
     :xi2_oltc_minus_xbar_whole_squared, :xi3_maintank_minus_xbar_whole_squared,

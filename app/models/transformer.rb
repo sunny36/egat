@@ -40,6 +40,7 @@ class Transformer < ActiveRecord::Base
   has_many :oil_contamination
   has_many :oltc_oil_contamination
   has_many :visual_inspection
+  has_many :insulating_oil
   has_many :winding_type
   
   def self.find_all_by_transformer_name_initials(names)
