@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223184159) do
+ActiveRecord::Schema.define(:version => 20110225182030) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -1076,7 +1076,7 @@ ActiveRecord::Schema.define(:version => 20110223184159) do
   end
 
   create_table "oltc_oil_qualities", :force => true do |t|
-    t.string   "field"
+    t.string   "name"
     t.integer  "u_start"
     t.integer  "u_end"
     t.float    "start"
