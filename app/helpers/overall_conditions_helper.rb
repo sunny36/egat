@@ -15,7 +15,7 @@ module OverallConditionsHelper
       when :hi_factor
         return oltc_oil_quality.hi_factor(@insulating_oil, @oltc_oil_contamination)
       when :color
-        return link_to(color_span(oltc_oil_quality.color(@insulating_oil, @oltc_oil_contamination)).html_safe,
+        return link_to(color_span(oltc_oil_quality.hi_factor_color(@insulating_oil, @oltc_oil_contamination)).html_safe,
                        transformer_oltc_oil_qualities_path(@transformer))
       when :test_date
         return oltc_oil_quality.test_date(@insulating_oil, @oltc_oil_contamination)
