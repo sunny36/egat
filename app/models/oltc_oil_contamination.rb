@@ -24,6 +24,10 @@ class OltcOilContamination < ActiveRecord::Base
   
   validates_presence_of :test_date, :on => :create, :message => "can't be blank"
   
+  def test_date_for_floth
+    self.test_date.to_i * 1000
+  end
+  
   def thai_test_date
     test_date.strftime("%d/%m/%Y")
   end

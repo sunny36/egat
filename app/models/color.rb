@@ -1,3 +1,3 @@
 class Color < ActiveRecord::Base
-  belongs_to :oltc_oil_quality
+  has_many :oltc_oil_quality
 end

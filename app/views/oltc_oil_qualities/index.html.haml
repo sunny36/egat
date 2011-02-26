@@ -1,0 +1,30 @@
+.grid_16
+  %dl
+    .grid_7
+      %dt{:style => "width: 120px"} Transformer Name
+      %dd
+        = " : " + @transformer.transformer_name
+    .grid_7
+      %dt{:style => "width: 120px"} Equipment No. 
+      %dd
+        = " : " + @transformer.egatsn
+.clear
+%br 
+.grid_8.suffix_8
+  %table
+    %thead
+      %tr
+        %th -
+        %th -
+.clear
+%h4 กราฟแสดงความสัมพันธ์ระหว่าง Dielectric Breakdown กับวันทดสอบ
+#dielectric_breakdown_graph{:style => "width:900px;height:400px"}
+%button{:id => "reset_dielectric_breakdown"} Reset
+%br
+%h4 กราฟแสดงความสัมพันธ์ระหว่าง Water Content กับวันทดสอบ
+#water_content_graph{:style => "width:900px;height:400px"}
+%button{:id => "reset_water_content"} Reset
+%br
+%h4 กราฟแสดงความสัมพันธ์ระหว่าง Color กับวันทดสอบ
+#color_graph{:style => "width:900px;height:400px"}
+%button{:id => "reset_color"} Reset

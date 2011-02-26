@@ -5,7 +5,7 @@ OltcOilContamination.setupTransformerNameComboxBox = function(id) {
     var transformerId;
     var selected;
     if (jQuery.url.attr("path").split("/")[1] == "transformers" && 
-      Number(jQuery.url.attr("path").split("/")[2]) > 0) {
+        Number(jQuery.url.attr("path").split("/")[2]) > 0) {
       transformerId = Number(jQuery.url.attr("path").split("/")[2]);
     }
     selected = $("#" + id + " " + "option:selected");
@@ -13,16 +13,16 @@ OltcOilContamination.setupTransformerNameComboxBox = function(id) {
       transformerId = selected.val();
     }
     var converted = new Ext.form.ComboBox({
-        typeAhead: true,
-        triggerAction: 'all',
-        transform: id, 
-        width: '200',
-        forceSelection:true,
-        value: transformerId
+      typeAhead: true,
+      triggerAction: 'all',
+      transform: id, 
+      width: '200',
+      forceSelection:true,
+      value: transformerId
     });
 
     converted.on('select', function() {
-        OltcOilContamination.onTransformerNamChange(converted.getValue());    
+      OltcOilContamination.onTransformerNamChange(converted.getValue());    
     });
   }
 };
@@ -30,18 +30,18 @@ OltcOilContamination.setupTransformerNameComboxBox = function(id) {
 OltcOilContamination.onTransformerNamChange = function(transformerId) {
   if ($('body').attr('name') == "new") {
     window.location.href = "/transformers/" + transformerId + 
-                           "/oltc_oil_contaminations/new";
+      "/oltc_oil_contaminations/new";
   }
 };
 
 
 $(document).ready(function(){
-    $('#oltc_oil_contamination_test_date').datepicker({
-        dateFormat: 'dd/mm/yy',
-        buttonImage: "images/icon_calendar.gif"
-    });
+  $('#oltc_oil_contamination_test_date').datepicker({
+    dateFormat: 'dd/mm/yy',
+    buttonImage: "images/icon_calendar.gif"
+  });
 
-    OltcOilContamination
+  OltcOilContamination
     .setupTransformerNameComboxBox("oltc_oil_contamination_transformer_id");
 });
 
