@@ -1,5 +1,6 @@
 class OltcOilQuality < ActiveRecord::Base
-
+  has_one :color
+  
   def hi_factor(insulating_oil, oltc_oil_contamination)
     return nil if insulating_oil.blank? || oltc_oil_contamination.blank?
     OltcOilQualityFactor.all.each do |oltc_oil_quality_factor|
