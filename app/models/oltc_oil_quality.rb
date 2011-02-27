@@ -61,7 +61,7 @@ class OltcOilQuality < ActiveRecord::Base
     oltc_oil_qualities.each do |oltc_oil_quality|
       oltc_oil_quality.start = 0 if oltc_oil_quality.start.nil?
       oltc_oil_quality.end = 1000000 if oltc_oil_quality.end.nil?
-      if oltc_oil_contamination.color.between?(oltc_oil_quality.start, oltc_oil_quality.end)
+      if oltc_oil_contamination.color.round(1).between?(oltc_oil_quality.start, oltc_oil_quality.end)
         return oltc_oil_quality.score
       end
     end
