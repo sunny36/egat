@@ -24,10 +24,10 @@ group :test, :development do
   gem 'autotest-growl'
   gem 'watchr'
   gem 'spork', '~> 0.9.0.rc'
-  gem 'mocha'
-  gem 'seed-fu'
+  gem 'mocha'  
 end
 
+gem 'seed-fu'
 # Use unicorn as the web server
 # gem 'unicorn'
 
