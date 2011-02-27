@@ -124,7 +124,7 @@ OilQuality.seed(
   #-----------------------------------------------------------------------------------------------------
 
   # Water Content
-  {:name => 'color', :start => nil, :end => 0.1, :score => 1, :weight => 2, :color_id => green.id},
+  {:name => 'color', :start => nil, :end => 1.0, :score => 1, :weight => 2, :color_id => green.id},
   {:name => 'color', :start => 1.1, :end => 2.5, :score => 2, :weight => 2, :color_id => blue.id},
   {:name => 'color', :start => 2.6, :end => 4.0, :score => 3, :weight => 2, :color_id => yellow.id},
   {:name => 'color', :start => 4.1, :end => nil, :score => 4, :weight => 2, :color_id => red.id}
