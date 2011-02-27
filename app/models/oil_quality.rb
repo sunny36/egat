@@ -1,5 +1,23 @@
 class OilQuality < ActiveRecord::Base
   belongs_to :color
+  
+  def self.find_all_by_name_and_transformer(name, transformer)
+    if name == 'color'
+      return OilQuality.where(:name => name)
+    end
+    u = transformer.hv
+    oil_qualities = OilQuality.where(:name => name)
+    ids = Array.new
+    oil_qualities.each do |oil_quality|
+      oil_quality.u_start = 0 if oil_quality.u_start.nil?
+      oil_quality.u_end = 1000000 if oil_quality.u_end.nil?
+      if u.between?(oil_quality.u_start, oil_quality.u_end)
+        ids << oil_quality.id
+      end
+    end
+    oil_qualities.where(:id => ids) 
+  end
+  
 
   def hi_factor(insulating_oil, oil_contamination)
     return nil if insulating_oil.blank? || oil_contamination.blank?
