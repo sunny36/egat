@@ -11,6 +11,7 @@ class OverallConditionsController < ApplicationController
     # @insulating_oils = InsulatingOil.where("transformer_id = ?", params[:transformer_id]).order("test_date DESC")
     @insulating_oil = InsulatingOil.most_recent(params[:transformer_id]).first
     @oltc_oil_contamination = OltcOilContamination.most_recent(params[:transformer_id]).first
+    @oil_contamination = OilContamination.most_recent(params[:transformer_id]).first
     if request.xhr?
       @no_js = true
       @no_header = true

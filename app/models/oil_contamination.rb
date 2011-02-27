@@ -19,10 +19,18 @@
 #
 
 class OilContamination < ActiveRecord::Base
+  scope :most_recent, lambda { |transformer_id|
+    where('transformer_id = ?', transformer_id).order('test_date DESC').limit(1)
+  }
+  
   belongs_to :transformer
   
   validates_presence_of :test_date
 
+  def test_date_for_floth
+    self.test_date.to_i * 1000
+  end
+  
   def thai_test_date
     test_date.strftime("%d/%m/%Y")
   end

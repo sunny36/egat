@@ -1,4 +1,5 @@
 class OilQuality < ActiveRecord::Base
+  belongs_to :color
 
   def hi_factor(insulating_oil, oil_contamination)
     return nil if insulating_oil.blank? || oil_contamination.blank?
@@ -13,6 +14,16 @@ class OilQuality < ActiveRecord::Base
     end
   end
 
+  def hi_factor_color(insulating_oil, oil_contamination)
+    return nil if insulating_oil.blank? || oil_contamination.blank?
+    OilQualityFactor.where('hi_factor = ?', hi_factor(insulating_oil, oil_contamination)).first.color.value
+  end
+
+  def test_date(insulating_oil, oil_contamination)
+    return nil if insulating_oil.blank? || oil_contamination.blank?
+    "#{insulating_oil.thai_test_date}, #{oil_contamination.thai_test_date}(BD)"
+  end
+  
   def percent_oil_quality_factor(insulating_oil, oil_contamination)
     return nil if insulating_oil.blank? || oil_contamination.blank?
     (numerator(insulating_oil, oil_contamination).to_f / denominator.to_f) * 100
