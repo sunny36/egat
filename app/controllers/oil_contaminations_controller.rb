@@ -1,4 +1,15 @@
 class OilContaminationsController < ApplicationController
+  
+  def index
+    @transformer = Transformer.find(params[:transformer_id])
+    @oil_contamination = OilContamination.where(:transformer_id => params[:transformer_id])
+    respond_to do |format|
+      format.html
+      ActiveRecord::Base.include_root_in_json = false
+      format.js { render :json => @oil_contamination.to_json(:methods => [:test_date_for_floth]) }
+    end
+  end
+
   def new
     @transformer = Transformer.find(params[:transformer_id])
     @oil_contamination = OilContamination.new

@@ -10,8 +10,8 @@ class OltcOilQuality < ActiveRecord::Base
     oltc_oil_qualities = OltcOilQuality.where(:name => name)
     ids = Array.new
     oltc_oil_qualities.each do |oltc_oil_quality|
-      oltc_oil_quality.start = 0 if oltc_oil_quality.start.nil?
-      oltc_oil_quality.end = 1000000 if oltc_oil_quality.end.nil?
+      oltc_oil_quality.u_start = 0 if oltc_oil_quality.u_start.nil?
+      oltc_oil_quality.u_end = 1000000 if oltc_oil_quality.u_end.nil?
       if u.between?(oltc_oil_quality.u_start, oltc_oil_quality.u_end)
         ids << oltc_oil_quality.id
       end

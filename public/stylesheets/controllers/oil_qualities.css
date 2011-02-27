@@ -1,0 +1,15 @@
+dt {
+  float: left;
+  width: 170px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+dd {
+  float: left;
+  font-size: 16px;
+}
+
+dt, dd {
+  display: inline;
+}

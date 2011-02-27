@@ -8,7 +8,8 @@ class InsulatingOilsController < ApplicationController
       ActiveRecord::Base.include_root_in_json = false
       format.js {
         render :json => @insulating_oils.to_json(
-        :only => [:id, :test_date, :transformer_id], :methods => [:xi_average_oltc, :test_date_for_floth])
+        :only => [:id, :test_date, :transformer_id], 
+        :methods => [:xi_average_oltc, :xi_average_maintank, :test_date_for_floth])
       }
     end
   end
