@@ -125,6 +125,8 @@ GEM
     ruby-ole (1.2.11.1)
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
+    seed-fu (2.0.1)
+      activerecord (~> 3.0.0)
     spork (0.9.0.rc3)
     spreadsheet (0.6.5.1)
       ruby-ole (>= 1.0)
@@ -155,6 +157,7 @@ DEPENDENCIES
   rails-dev-boost!
   rspec-rails (~> 2.0.1)
   ruby-debug19
+  seed-fu
   spork (~> 0.9.0.rc)
   spreadsheet
   test-unit

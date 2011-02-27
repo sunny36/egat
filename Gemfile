@@ -25,6 +25,7 @@ group :test, :development do
   gem 'watchr'
   gem 'spork', '~> 0.9.0.rc'
   gem 'mocha'
+  gem 'seed-fu'
 end
 
 # Use unicorn as the web server
