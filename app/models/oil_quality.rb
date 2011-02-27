@@ -66,7 +66,7 @@ class OilQuality < ActiveRecord::Base
     oil_qualities = OilQuality.where('name = ?', 'color')
     oil_qualities.each do |oil_quality|
       oil_quality.start = 0 if oil_quality.start.nil?
-      oil_quality.end = 1000000 if oil_quality.start.nil?
+      oil_quality.end = 1000000 if oil_quality.end.nil?
       if oil_contamination.color.round(1).between?(oil_quality.start, oil_quality.end)
         return oil_quality.score
       end
@@ -81,7 +81,7 @@ class OilQuality < ActiveRecord::Base
       oil_quality.u_start = 0 if oil_quality.u_start.nil?
       oil_quality.u_end = 1000000 if oil_quality.u_end.nil?
       oil_quality.start = 0 if oil_quality.start.nil?
-      oil_quality.end = 1000000 if oil_quality.start.nil?
+      oil_quality.end = 1000000 if oil_quality.end.nil?
       if u.between?(oil_quality.u_start, oil_quality.u_end) && water_content.between?(oil_quality.start, oil_quality.end)
         return oil_quality.score
       end
@@ -89,14 +89,15 @@ class OilQuality < ActiveRecord::Base
   end
 
   def nn_score(oil_contamination)
+    debugger
     u = oil_contamination.transformer.hv
     nn = oil_contamination.nn
-    oil_qualities = OilQuality.where('name = ?', 'nn')
+    oil_qualities = OilQuality.where(:name => 'nn')
     oil_qualities.each do |oil_quality|
       oil_quality.u_start = 0 if oil_quality.u_start.nil?
       oil_quality.u_end = 1000000 if oil_quality.u_end.nil?
       oil_quality.start = 0 if oil_quality.start.nil?
-      oil_quality.end = 1000000 if oil_quality.start.nil?
+      oil_quality.end = 1000000 if oil_quality.end.nil?
       if u.between?(oil_quality.u_start, oil_quality.u_end) && nn.round(2).between?(oil_quality.start, oil_quality.end)
         return oil_quality.score
       end
@@ -111,7 +112,7 @@ class OilQuality < ActiveRecord::Base
       oil_quality.u_start = 0 if oil_quality.u_start.nil?
       oil_quality.u_end = 1000000 if oil_quality.u_end.nil?
       oil_quality.start = 0 if oil_quality.start.nil?
-      oil_quality.end = 1000000 if oil_quality.start.nil?
+      oil_quality.end = 1000000 if oil_quality.end.nil?
       if u.between?(oil_quality.u_start, oil_quality.u_end) && ift.between?(oil_quality.start, oil_quality.end)
         return oil_quality.score
       end
