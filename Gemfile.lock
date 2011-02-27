@@ -61,6 +61,9 @@ GEM
       rails (>= 3.0.0.beta4)
     haml (3.0.25)
     highline (1.6.1)
+    hoptoad_notifier (2.4.6)
+      activesupport
+      builder
     i18n (0.5.0)
     jquery-rails (0.2.6)
       rails (~> 3.0)
@@ -150,6 +153,7 @@ DEPENDENCIES
   capistrano
   factory_girl_rails
   haml
+  hoptoad_notifier
   jquery-rails (>= 0.2.6)
   mocha
   mysql2

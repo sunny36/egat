@@ -28,6 +28,7 @@ group :test, :development do
 end
 
 gem 'seed-fu'
+gem 'hoptoad_notifier'
 # Use unicorn as the web server
 # gem 'unicorn'
 
