@@ -122,14 +122,14 @@ class OilQuality < ActiveRecord::Base
   def dielectric_breakdown_score(insulating_oil)
     xbar = insulating_oil.xi_average_maintank
     u = insulating_oil.transformer.hv
-    oil_qualities = OltcOilQuality.where('name = ?', 'xbar')
+    oil_qualities = OilQuality.where('name = ?', 'xbar')
     oil_qualities.each do |oil_quality|
       oil_quality.u_start = 0 if oil_quality.u_start.nil?
       oil_quality.u_end = 1000000 if oil_quality.u_end.nil?
       oil_quality.start = 0 if oil_quality.start.nil?
       oil_quality.end = 1000000 if oil_quality.end.nil?
       if (u.between?(oil_quality.u_start, oil_quality.u_end) && xbar.between?(oil_quality.start, oil_quality.end))
-        return oil_quality.score
+        return oil_quality.id
       end
     end
   end
