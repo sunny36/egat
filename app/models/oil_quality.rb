@@ -39,7 +39,7 @@ class OilQuality < ActiveRecord::Base
 
   def test_date(insulating_oil, oil_contamination)
     return nil if insulating_oil.blank? || oil_contamination.blank?
-    "#{insulating_oil.thai_test_date}, #{oil_contamination.thai_test_date}(BD)"
+    "#{oil_contamination.thai_test_date}, #{insulating_oil.thai_test_date}(BD)"
   end
   
   def percent_oil_quality_factor(insulating_oil, oil_contamination)

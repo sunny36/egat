@@ -35,7 +35,7 @@ module OverallConditionsHelper
         return link_to(color_span(oil_quality.hi_factor_color(@insulating_oil, @oil_contamination)).html_safe,
                        transformer_oil_qualities_path(@transformer))
       when :test_date
-        return oil_quality.test_date(@insulating_oil, @oltc_oil_contamination)
+        return oil_quality.test_date(@insulating_oil, @oil_contamination)
       end
     else
       " - "
