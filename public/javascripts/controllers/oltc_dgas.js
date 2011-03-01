@@ -67,12 +67,14 @@ var app = {
         var c2h2_points = [];
         var c2h4_points = [];
         var c2h6_points = [];
+				var c3h6_points = [];
         for (var i = 0; i < data.length; i++) {
           h2_points.push([data[i].test_date, data[i].h2]);
           ch4_points.push([data[i].test_date, data[i].ch4]);
           c2h2_points.push([data[i].test_date, data[i].c2h2]);
           c2h4_points.push([data[i].test_date, data[i].c2h4]);
           c2h6_points.push([data[i].test_date, data[i].c2h6]);
+					c3h6_points.push([data[i].test_date, data[i].c3h6]);
         }
         plotGraph('h2', 'h2_chart', h2_points, 
 									'กราฟแสดงความสัมพันธ์ระหว่าง H<sub>2</sub> กับวันทดสอบ',
@@ -83,25 +85,27 @@ var app = {
         plotGraph('c2h2', 'c2h2_chart', c2h2_points, 
 									'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>2</sub>H<sub>2</sub> กับวันทดสอบ',
 									'C<sub>2</sub>H<sub>2</sub> [ppm]');
-        plotGraph('c2h4', 'c2h4_chart', c2h2_points,
+        plotGraph('c2h4', 'c2h4_chart', c2h4_points,
 									'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>2</sub>H<sub>4</sub> กับวันทดสอบ',
 									'C<sub>2</sub>H<sub>4</sub> [ppm]');
-        plotGraph('c2h6', 'c2h6_chart', c2h2_points,
+        plotGraph('c2h6', 'c2h6_chart', c2h6_points,
 									'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>2</sub>H<sub>6</sub> กับวันทดสอบ',
 									'C<sub>2</sub>H<sub>6</sub> [ppm]');
+       	plotGraph('c3h6', 'c3h6_chart', c2h6_points,
+								'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>3</sub>H<sub>6</sub> กับวันทดสอบ',
+								'C<sub>3</sub>H<sub>6</sub> [ppm]');
+					
       }
     });	  
-  },
+  }
 
 };
 
 
 $(document).ready(function(){
 
-  if(($('#h2_chart').length > 0) && ($('#ch4_chart').length > 0) &&
-     ($('#c2h2_chart').length > 0) &&
-     ($('#c2h4_chart').length > 0) &&
-     ($('#c2h6_chart').length > 0)) {
+  if(($('#h2_chart').length > 0) && ($('#ch4_chart').length > 0) && ($('#c2h2_chart').length > 0) && 
+		 ($('#c2h4_chart').length > 0) && ($('#c2h6_chart').length > 0) && ($('#c3h6_chart').length > 0)) {
     app.getDataPointsForGraph();
   }
 
