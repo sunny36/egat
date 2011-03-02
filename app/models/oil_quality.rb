@@ -129,7 +129,7 @@ class OilQuality < ActiveRecord::Base
       oil_quality.start = 0 if oil_quality.start.nil?
       oil_quality.end = 1000000 if oil_quality.end.nil?
       if (u.between?(oil_quality.u_start, oil_quality.u_end) && xbar.between?(oil_quality.start, oil_quality.end))
-        return oil_quality.id
+        return oil_quality.score
       end
     end
   end
