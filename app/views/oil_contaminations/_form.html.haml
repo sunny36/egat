@@ -3,15 +3,15 @@
 = form_for [@transformer, @oil_contamination]  do |f|
   .grid_5
     %p
-      = f.label :test_type
+      = f.label :test_type, 'วาระการทดสอบ'
       = f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"])
   .grid_5
     %p
-      = f.label :test_date
+      = f.label :test_date, 'วันที่ทดสอบ'
       = f.text_field :test_date
   .grid_5
     %p
-      = f.label :work_order
+      = f.label :work_order, 'เลขที่ใบสั่งงาน'
       = f.text_field :work_order
   .clear
   %br/

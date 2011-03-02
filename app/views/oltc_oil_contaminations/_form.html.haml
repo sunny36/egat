@@ -1,19 +1,7 @@
 = error_messages_for :oltc_oil_contamination,                              |
   :header_message => "Please Try Again!", :class => 'error' |
 = form_for [@transformer, @oltc_oil_contamination]  do |f|
-  .grid_5
-    %p
-      = f.label :test_type
-      = f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"])
-  .grid_5
-    %p
-      = f.label :test_date
-      = f.text_field :test_date
-  .grid_5
-    %p
-      = f.label :work_order
-      = f.text_field :work_order
-  .clear
+  = render :partial => 'oil_dgas/test_type_test_date_work_order', :locals => {:f => f}
   %br/
   .grid_3
     = label :transformer_information, :transformer_id, "หม้อแปลงไฟฟ้า"

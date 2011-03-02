@@ -1,0 +1,13 @@
+.grid_5
+  %p
+    = f.label :test_type, 'เลขที่ใบสั่งงาน'
+    = f.select(:test_type, ["Commissioning", "6 months", "1 year", "Others"])
+.grid_5
+  %p
+    = f.label :test_date, 'วันที่ทดสอบ'
+    = f.text_field :test_date
+.grid_5
+  %p
+    = f.label :work_order, 'เลขที่ใบสั่งงาน'
+    = f.text_field :work_order
+.clear
