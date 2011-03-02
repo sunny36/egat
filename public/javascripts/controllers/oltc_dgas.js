@@ -91,7 +91,7 @@ var app = {
         plotGraph('c2h6', 'c2h6_chart', c2h6_points,
 									'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>2</sub>H<sub>6</sub> กับวันทดสอบ',
 									'C<sub>2</sub>H<sub>6</sub> [ppm]');
-       	plotGraph('c3h6', 'c3h6_chart', c2h6_points,
+       	plotGraph('c3h6', 'c3h6_chart', c3h6_points,
 								'กราฟแสดงความสัมพันธ์ระหว่าง C<sub>3</sub>H<sub>6</sub> กับวันทดสอบ',
 								'C<sub>3</sub>H<sub>6</sub> [ppm]');
 					
