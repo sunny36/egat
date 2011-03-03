@@ -64,6 +64,7 @@ GEM
     hoptoad_notifier (2.4.6)
       activesupport
       builder
+    hpricot (0.8.4)
     i18n (0.5.0)
     jquery-rails (0.2.6)
       rails (~> 3.0)
@@ -128,8 +129,11 @@ GEM
     ruby-ole (1.2.11.1)
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
+    ruby_parser (2.0.6)
+      sexp_processor (~> 3.0)
     seed-fu (2.0.1)
       activerecord (~> 3.0.0)
+    sexp_processor (3.0.5)
     spork (0.9.0.rc3)
     spreadsheet (0.6.5.1)
       ruby-ole (>= 1.0)
@@ -154,6 +158,7 @@ DEPENDENCIES
   factory_girl_rails
   haml
   hoptoad_notifier
+  hpricot
   jquery-rails (>= 0.2.6)
   mocha
   mysql2
@@ -161,6 +166,7 @@ DEPENDENCIES
   rails-dev-boost!
   rspec-rails (~> 2.0.1)
   ruby-debug19
+  ruby_parser
   seed-fu
   spork (~> 0.9.0.rc)
   spreadsheet

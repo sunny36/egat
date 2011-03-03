@@ -13,6 +13,10 @@ group :development do
 end
 
 group :test, :development do
+  # For html2haml ----------
+  gem 'hpricot'
+  gem 'ruby_parser'
+  # ------------------------
   gem "rspec-rails", "~> 2.0.1"
   gem 'test-unit'
   gem 'factory_girl_rails'
