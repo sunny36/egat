@@ -32,44 +32,29 @@ class TransformerInformation < ActiveRecord::Base
   
   belongs_to :bus_voltage_hv
   belongs_to :bus_voltage_lv
-  belongs_to :probability_of_force_outage
-  belongs_to :social_aspect, :class_name => "SocialAspect", 
-    :foreign_key => "social_aspect_id"
-  belongs_to :system_location, :class_name => "SystemLocation", 
-    :foreign_key => "system_location_id"
-  belongs_to :application_use, :class_name => "ApplicationUse", 
-    :foreign_key => "application_use_id"
-  belongs_to :system_stability, :class_name => "SystemStability", 
-    :foreign_key => "system_stability_id"
-  belongs_to :pollution, :class_name => "Pollution", 
-    :foreign_key => "pollution_id"
-  belongs_to :n1_criteria, :class_name => "N1Criteria", 
-    :foreign_key => "n1_criteria_id"
-  belongs_to :public_image, :class_name => "PublicImage", 
-    :foreign_key => "public_image_id"
-  belongs_to :system_fault_level, :class_name => "SystemFaultLevel", 
-    :foreign_key => "system_fault_level_id"
-  belongs_to :transformer, :class_name => "Transformer", 
-    :foreign_key => "transformer_id"
+  #belongs_to :probability_of_force_outage
+  belongs_to :social_aspect, :class_name => "SocialAspect",  :foreign_key => "social_aspect_id"
+  belongs_to :system_location, :class_name => "SystemLocation",  :foreign_key => "system_location_id"
+  belongs_to :application_use, :class_name => "ApplicationUse",  :foreign_key => "application_use_id"
+  belongs_to :system_stability, :class_name => "SystemStability",  :foreign_key => "system_stability_id"
+  belongs_to :pollution, :class_name => "Pollution",  :foreign_key => "pollution_id"
+  belongs_to :n1_criteria, :class_name => "N1Criteria", :foreign_key => "n1_criteria_id"
+  belongs_to :public_image, :class_name => "PublicImage", :foreign_key => "public_image_id"
+  belongs_to :system_fault_level, :class_name => "SystemFaultLevel",  :foreign_key => "system_fault_level_id"
+  belongs_to :transformer, :class_name => "Transformer",  :foreign_key => "transformer_id"
   has_one :load_pattern_per_year
   has_and_belongs_to_many :damage_of_properties
   belongs_to :bus_voltage
-  attr_accessor :system_fault_level_hv_mva, :system_fault_level_lv_mva, 
-    :transformer_name
+  attr_accessor :system_fault_level_hv_mva, :system_fault_level_lv_mva, :transformer_name
 
   accepts_nested_attributes_for :load_pattern_per_year
   
-  validate :transformer_name_must_be_valid,
-           :at_least_one_damage_of_property_must_be_checked
-  validates_presence_of :recorded_date, :bus_voltage_hv_id, 
-                        :system_fault_level_hv, :bus_voltage_lv_id, 
-                        :system_fault_level_lv, :probability_of_force_outage_id,
-                        :social_aspect_id, :system_location_id, 
-                        :public_image_id, :n1_criteria_id, :application_use_id,
-                        :system_stability_id, :pollution_id, 
-                        :overall_condition
+  validate :transformer_name_must_be_valid, :at_least_one_damage_of_property_must_be_checked
+  validates_presence_of :recorded_date, :bus_voltage_hv_id, :system_fault_level_hv, :bus_voltage_lv_id, 
+                        :system_fault_level_lv, :probability_of_force_outage_value, :social_aspect_id, 
+                        :system_location_id, :public_image_id, :n1_criteria_id, :application_use_id,
+                        :system_stability_id, :pollution_id, :overall_condition
   validates_numericality_of :system_fault_level_hv, :system_fault_level_lv
-  before_validation :assign_probability_of_force_outage
   before_create :update_recent
   
   def self.find_all_by_transformers(transformers)
@@ -97,9 +82,7 @@ class TransformerInformation < ActiveRecord::Base
   def self.get_points(transformer_informations)
     points = []
     transformer_informations.each { |e| 
-      points << [e.transformer.transformer_name,
-                 e.importance_index,
-                 e.percent_hi]
+      points << [e.transformer.transformer_name, e.importance_index, e.percent_hi]
     }
     return points     
   end
@@ -171,15 +154,19 @@ class TransformerInformation < ActiveRecord::Base
       (system_stability.score * 4) + 
       (application_use.score * 3)  + 
       (system_fault_level_score * 4) + 
-      (probability_of_force_outage.score * 4) + 
+      (probability_of_force_outage(:score) * 4) + 
       (damage_of_property_score * 3) + 
       (social_aspect.score * 3) + 
       (public_image.score * 1) + 
       (pollution.score * 1) + 
       (transformer.brand.score * 2)).to_f / 
-     ((5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) +
-      (5 * 3) + (5 * 3) + (5 * 1) + (4 * 1) + (5 * 2)).to_f * 100.to_f )
+     (denominator).to_f * 100.to_f )
     ii.round(2)    
+  end
+  
+  def denominator
+    (5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) + (5 * 3) + (5 * 3) + (5 * 1) + (5 * 1) + 
+    (5 * 2)
   end
   
   def percent_hi
@@ -203,29 +190,29 @@ class TransformerInformation < ActiveRecord::Base
       return rp if self.overall_condition.round.between?(rp.start, rp.end)
     end
   end
+
+  def probability_of_force_outage(type)
+    unless probability_of_force_outage_value.nil?
+      probability_of_force_outages = ProbabilityOfForceOutage.all
+      probability_of_force_outages.each do |p|
+        #TODO Remove hard coded values
+        p.end = 100 if p.end.nil?
+        if self.probability_of_force_outage_value.between?(p.start, p.end)
+          return p.score if type == :score
+          return p.score_message if type == :score_message
+        end
+      end
+    end
+  end
   
   protected
 
   def update_recent
     self.recent = true
     id = self.transformer_id
-    transformer_information =
-      TransformerInformation.find_by_transformer_id_and_recent(id, true)
+    transformer_information = TransformerInformation.find_by_transformer_id_and_recent(id, true)
     transformer_information.recent = false
     transformer_information.save
-  end
-  
-  
-  def assign_probability_of_force_outage
-    unless probability_of_force_outage_value.nil?
-      probability_of_force_outages = ProbabilityOfForceOutage.all
-      probability_of_force_outages.each do |p|
-        #TODO Remove hard coded values
-        p.end = 100 if p.end.nil?
-        self.probability_of_force_outage = p if 
-          self.probability_of_force_outage_value.between?(p.start, p.end)
-      end
-    end
   end
   
   def system_fault_level_hv_mva
@@ -245,15 +232,13 @@ class TransformerInformation < ActiveRecord::Base
   
   def at_least_one_damage_of_property_must_be_checked
     if damage_of_property_ids.nil? || damage_of_property_ids.empty?
-      errors.add(:damage_of_properties,
-                 'must have at least one checkbox ticked')
+      errors.add(:damage_of_properties, 'must have at least one checkbox ticked')
     end
   end
 
   
   def system_fault_level_hv_score
-    @system_fault_levels = 
-      BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
+    @system_fault_levels = BusVoltage.system_fault_level(self.bus_voltage_hv.value.to_i)
     @system_fault_levels.each do |i|
       #TODO Remove hard coded number
       i.end = 100000000 if i.end.nil?
@@ -264,8 +249,7 @@ class TransformerInformation < ActiveRecord::Base
   end
 
   def system_fault_level_lv_score
-    @system_fault_levels = 
-      BusVoltage.system_fault_level(self.bus_voltage_lv.value.to_i)
+    @system_fault_levels = BusVoltage.system_fault_level(self.bus_voltage_lv.value.to_i)
     @system_fault_levels.each do |i|
       #TODO Remove hard coded number
       i.end = 100000000 if i.end.nil?
