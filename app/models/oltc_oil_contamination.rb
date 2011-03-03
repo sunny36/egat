@@ -17,7 +17,7 @@
 
 class OltcOilContamination < ActiveRecord::Base
   scope :most_recent, lambda { |transformer_id|
-    where('transformer_id = ?', transformer_id).order('test_date DESC').limit(1)
+    where('transformer_id = ?', transformer_id).order('test_date DESC')
   }
   
   belongs_to :transformer
