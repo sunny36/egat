@@ -4,10 +4,10 @@ describe OilQuality do
   before(:each) do
     @oil_quality  = OilQuality.new
     InsulatingOil.any_instance.stubs(:xi_average_maintank => 26.0, :transformer_id => 1)
-    InsulatingOil.any_instance.expects(:transformer).returns(Transformer.find(1))
+    InsulatingOil.any_instance.stubs(:transformer).returns(Transformer.find(1))
     @insulating_oil = InsulatingOil.new
     OilContamination.any_instance.stubs(:ift => 25.0, :nn => 0.1, :water_content => 38, :color => 1.8, :transformer_id => 1)
-    OilContamination.any_instance.expects(:transformer).returns(Transformer.find(1))
+    OilContamination.any_instance.stubs(:transformer).returns(Transformer.find(1))
     @oil_contamination = OilContamination.new        
   end
 
@@ -22,15 +22,15 @@ describe OilQuality do
   it "should return the correct score for ift" do
     @oil_quality.ift_score(@oil_contamination).should eql(3)
   end
-
+  
   it "should return the correct score for nn" do
     @oil_quality.nn_score(@oil_contamination).should eql(2)
   end
-
+  
   it "should return the correct score for water_content" do
     @oil_quality.water_content_score(@oil_contamination).should eql(4)
   end
-
+  
   it "should return the correct score for color" do
     @oil_quality.color_score(@oil_contamination).should eql(2)
   end
@@ -40,7 +40,7 @@ describe OilQuality do
   end
   
   it "should return the correct HIF" do
-    #@oil_quality.hi_factor(@insulating_oil, @oil_contamination).should eql(1)
+    @oil_quality.hi_factor(@insulating_oil, @oil_contamination).should eql(0)
   end
   
 end
