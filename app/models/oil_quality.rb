@@ -89,7 +89,6 @@ class OilQuality < ActiveRecord::Base
   end
 
   def nn_score(oil_contamination)
-    debugger
     u = oil_contamination.transformer.hv
     nn = oil_contamination.nn
     oil_qualities = OilQuality.where(:name => 'nn')
