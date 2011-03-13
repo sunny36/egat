@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110227094818) do
+ActiveRecord::Schema.define(:version => 20110313105028) do
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
@@ -150,6 +150,25 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "conservator_tank", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "breather_maintank",  :precision => 10, :scale => 0
+    t.decimal  "breather_oltc",      :precision => 10, :scale => 0
+    t.decimal  "corrosion_maintank", :precision => 10, :scale => 0
+    t.decimal  "corrosion_oltc",     :precision => 10, :scale => 0
+    t.decimal  "jel_color_maintank", :precision => 10, :scale => 0
+    t.decimal  "jel_color_oltc",     :precision => 10, :scale => 0
+    t.decimal  "oil_level_maintank", :precision => 10, :scale => 0
+    t.decimal  "oil_level_oltc",     :precision => 10, :scale => 0
+    t.decimal  "oilfail_maintank",   :precision => 10, :scale => 0
+    t.decimal  "oilfail_oltc",       :precision => 10, :scale => 0
+    t.decimal  "perform_type",       :precision => 10, :scale => 0
+    t.decimal  "transformer",        :precision => 10, :scale => 0
   end
 
   create_table "conservator_tank_factors", :force => true do |t|
@@ -706,6 +725,21 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.datetime "updated_at"
   end
 
+  create_table "general_condition", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "animal_protect",   :precision => 10, :scale => 0
+    t.decimal  "foundation",       :precision => 10, :scale => 0
+    t.decimal  "ground_connector", :precision => 10, :scale => 0
+    t.decimal  "percentload",      :precision => 10, :scale => 0
+    t.decimal  "perform_type",     :precision => 10, :scale => 0
+    t.decimal  "sound",            :precision => 10, :scale => 0
+    t.decimal  "transformer",      :precision => 10, :scale => 0
+    t.decimal  "vibration",        :precision => 10, :scale => 0
+  end
+
   create_table "general_condition_factors", :force => true do |t|
     t.integer  "hi_factor"
     t.string   "condition"
@@ -739,6 +773,17 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "color"
+  end
+
+  create_table "hot_line_oil_filter", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "corrosion",    :precision => 10, :scale => 0
+    t.decimal  "perform_type", :precision => 10, :scale => 0
+    t.decimal  "pressure",     :precision => 10, :scale => 0
+    t.decimal  "transformer",  :precision => 10, :scale => 0
   end
 
   create_table "hot_line_oil_filter_factors", :force => true do |t|
@@ -815,6 +860,27 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.integer  "test_kv_oltc"
   end
 
+  create_table "lightning_arrester", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "ground_connector_hv", :precision => 10, :scale => 0
+    t.decimal  "ground_connector_lv", :precision => 10, :scale => 0
+    t.decimal  "ground_connector_tv", :precision => 10, :scale => 0
+    t.decimal  "leakage_current_hv",  :precision => 10, :scale => 0
+    t.decimal  "leakage_current_lv",  :precision => 10, :scale => 0
+    t.decimal  "leakage_current_tv",  :precision => 10, :scale => 0
+    t.decimal  "perform_type",        :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_hv",   :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_lv",   :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_tv",   :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_hv",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_lv",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_tv",  :precision => 10, :scale => 0
+    t.decimal  "transformer",         :precision => 10, :scale => 0
+  end
+
   create_table "load_history", :force => true do |t|
     t.integer  "version"
     t.integer  "n0"
@@ -876,6 +942,17 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.integer "visual_inspection_id"
   end
 
+  create_table "maintank", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "corrosion",    :precision => 10, :scale => 0
+    t.decimal  "oil_fail",     :precision => 10, :scale => 0
+    t.decimal  "perform_type", :precision => 10, :scale => 0
+    t.decimal  "transformer",  :precision => 10, :scale => 0
+  end
+
   create_table "manufacturer", :force => true do |t|
     t.string  "address"
     t.integer "version"
@@ -889,6 +966,19 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.string   "score_message"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "ngr", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "base_status",      :precision => 10, :scale => 0
+    t.decimal  "ground_connector", :precision => 10, :scale => 0
+    t.decimal  "ngr_status",       :precision => 10, :scale => 0
+    t.decimal  "perform_type",     :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean",   :precision => 10, :scale => 0
+    t.decimal  "transformer",      :precision => 10, :scale => 0
   end
 
   create_table "ngr_factors", :force => true do |t|
@@ -1006,6 +1096,17 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.datetime "updated_at"
   end
 
+  create_table "oltc_compartment", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "corrosion",    :precision => 10, :scale => 0
+    t.decimal  "oil_fail",     :precision => 10, :scale => 0
+    t.decimal  "perform_type", :precision => 10, :scale => 0
+    t.decimal  "transformer",  :precision => 10, :scale => 0
+  end
+
   create_table "oltc_compartment_factors", :force => true do |t|
     t.integer  "hi_factor"
     t.string   "condition"
@@ -1042,6 +1143,20 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.decimal  "oltc_type",    :precision => 10, :scale => 0
     t.decimal  "perform_type", :precision => 10, :scale => 0
     t.decimal  "transformer",  :precision => 10, :scale => 0
+  end
+
+  create_table "oltc_control_cab", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "animal",           :precision => 10, :scale => 0
+    t.decimal  "control_humidity", :precision => 10, :scale => 0
+    t.decimal  "corrosion",        :precision => 10, :scale => 0
+    t.decimal  "perform_type",     :precision => 10, :scale => 0
+    t.decimal  "pragen",           :precision => 10, :scale => 0
+    t.decimal  "transformer",      :precision => 10, :scale => 0
+    t.decimal  "wiring_control",   :precision => 10, :scale => 0
   end
 
   create_table "oltc_control_cabinet_factors", :force => true do |t|
@@ -1131,6 +1246,14 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
   create_table "oltc_type", :force => true do |t|
     t.integer "version"
     t.string  "description"
+  end
+
+  create_table "overall_condition_weights", :force => true do |t|
+    t.string   "name"
+    t.string   "text"
+    t.string   "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "perform_draft_result", :force => true do |t|
@@ -1388,6 +1511,20 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.datetime "updated_at"
   end
 
+  create_table "radiator_cooling", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "animal",       :precision => 10, :scale => 0
+    t.decimal  "corrosion",    :precision => 10, :scale => 0
+    t.decimal  "noise_level",  :precision => 10, :scale => 0
+    t.decimal  "oil_fail",     :precision => 10, :scale => 0
+    t.decimal  "oil_pump",     :precision => 10, :scale => 0
+    t.decimal  "perform_type", :precision => 10, :scale => 0
+    t.decimal  "transformer",  :precision => 10, :scale => 0
+  end
+
   create_table "radiator_cooling_system_factors", :force => true do |t|
     t.integer  "hi_factor"
     t.string   "condition"
@@ -1424,6 +1561,20 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.decimal "pocelain_clean",       :precision => 10, :scale => 0
     t.decimal "pocelain_status",      :precision => 10, :scale => 0
     t.integer "visual_inspection_id"
+  end
+
+  create_table "regulatingpt", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "oil_color",       :precision => 10, :scale => 0
+    t.decimal  "oil_fail",        :precision => 10, :scale => 0
+    t.decimal  "oil_level",       :precision => 10, :scale => 0
+    t.decimal  "perform_type",    :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_status", :precision => 10, :scale => 0
+    t.decimal  "transformer",     :precision => 10, :scale => 0
   end
 
   create_table "report", :force => true do |t|
@@ -1723,6 +1874,17 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.decimal  "transformer",  :precision => 10, :scale => 0
   end
 
+  create_table "thermo_scan", :force => true do |t|
+    t.integer  "version"
+    t.float    "delt"
+    t.float    "load"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "perform_type", :precision => 10, :scale => 0
+    t.decimal  "transformer",  :precision => 10, :scale => 0
+  end
+
   create_table "thermo_scan_factors", :force => true do |t|
     t.integer  "hi_factor"
     t.string   "condition"
@@ -1744,6 +1906,20 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
   create_table "tran_status", :force => true do |t|
     t.integer "version"
     t.string  "description"
+  end
+
+  create_table "trans_control_cab", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "animal",           :precision => 10, :scale => 0
+    t.decimal  "control_humidity", :precision => 10, :scale => 0
+    t.decimal  "corrosion",        :precision => 10, :scale => 0
+    t.decimal  "perform_type",     :precision => 10, :scale => 0
+    t.decimal  "pragen",           :precision => 10, :scale => 0
+    t.decimal  "transformer",      :precision => 10, :scale => 0
+    t.decimal  "wiring_control",   :precision => 10, :scale => 0
   end
 
   create_table "transformer", :force => true do |t|
@@ -1829,6 +2005,30 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
     t.boolean  "recent"
   end
 
+  create_table "visual_bushing", :force => true do |t|
+    t.integer  "version"
+    t.string   "test_by"
+    t.datetime "test_date"
+    t.string   "work_order"
+    t.decimal  "oil_color_hv",       :precision => 10, :scale => 0
+    t.decimal  "oil_color_lv",       :precision => 10, :scale => 0
+    t.decimal  "oil_color_tv",       :precision => 10, :scale => 0
+    t.decimal  "oil_fail_hv",        :precision => 10, :scale => 0
+    t.decimal  "oil_fail_lv",        :precision => 10, :scale => 0
+    t.decimal  "oil_fail_tv",        :precision => 10, :scale => 0
+    t.decimal  "oil_level_hv",       :precision => 10, :scale => 0
+    t.decimal  "oil_level_lv",       :precision => 10, :scale => 0
+    t.decimal  "oil_level_tv",       :precision => 10, :scale => 0
+    t.decimal  "perform_type",       :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_hv",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_lv",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_clean_tv",  :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_hv", :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_lv", :precision => 10, :scale => 0
+    t.decimal  "pocelain_status_tv", :precision => 10, :scale => 0
+    t.decimal  "transformer",        :precision => 10, :scale => 0
+  end
+
   create_table "visual_inspection_conditions", :force => true do |t|
     t.string   "description"
     t.integer  "start"
@@ -1864,6 +2064,11 @@ ActiveRecord::Schema.define(:version => 20110227094818) do
 
   create_table "web_tool", :force => true do |t|
     t.integer "version"
+  end
+
+  create_table "winding_type", :force => true do |t|
+    t.integer "version"
+    t.string  "description"
   end
 
   create_table "winding_types", :force => true do |t|
