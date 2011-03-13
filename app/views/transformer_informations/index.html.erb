@@ -79,8 +79,11 @@
               </a>
             </td>
             <td>
-							<% link_to transformer_overall_conditions_path(transformer_information.transformer), {:rel => 'facebox'} do %>
-                <%= transformer_information.percent_hi %>
+							<% 
+							  link_to transformer_overall_conditions_path(transformer_information.transformer), 
+							          {:rel => 'facebox'} do 
+							%>
+                <%= number_with_precision(transformer_information.percent_hi, :precision => 2) %>
               <% end %>              							
 						</td>
             <td>

@@ -26,7 +26,7 @@ module OverallConditionsHelper
   end
 
   def oil_quality(type)
-    unless @insulating_oil.blank? && oil_contamination.blank?
+    unless @insulating_oil.blank? && @oil_contamination.blank?
       oil_quality = OilQuality.new
       case type
       when :hi_factor

@@ -16,8 +16,7 @@
 class PowerFactor < ActiveRecord::Base 
 
   def self.hi_factor(transformer_id)
-    insulating_oils = InsulatingOil.where("transformer_id = ?", 
-                                          transformer_id).order("test_date DESC")
+    insulating_oils = InsulatingOil.where("transformer_id = ?", transformer_id).order("test_date DESC")
     return nil if insulating_oils.blank?
     self.all.each do |i|
       i.end = 10000000 if i.end.nil?
