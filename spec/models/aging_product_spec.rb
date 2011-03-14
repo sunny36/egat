@@ -21,4 +21,7 @@ describe AgingProduct do
     @aging_product.percent_aging_product_factor(@oil_contamination).should be_close(50.0, 0.01)
   end
 
+  it "should return the correct HIF" do
+    @aging_product.hi_factor(@oil_contamination).should eql(2)
+  end
 end

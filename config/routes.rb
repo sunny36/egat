@@ -29,6 +29,7 @@ Egat::Application.routes.draw do
   end  
   
   resources :transformers do
+    resources :aging_products
     resources :oil_input
     resources :oil_dgas do 
       collection do

@@ -42,6 +42,23 @@ module OverallConditionsHelper
     end
   end
 
+  def aging_product(type)
+    unless @oil_contamination.blank?
+      aging_product = AgingProduct.new
+      case type
+      when :hi_factor
+        return aging_product.hi_factor(@oil_contamination)
+      when :color
+        return link_to(color_span(aging_product.hi_factor_color(@oil_contamination)).html_safe,
+                                  transformer_aging_products_path(@transformer))
+      when :test_date
+        return aging_product.test_date(@oil_contamination)
+      end
+    else
+      " - "
+    end
+  end
+
   def furan_hi_factor
     unless FuranFactor.hi_factor(@transformer.id).blank?
       FuranFactor.hi_factor(@transformer.id)
