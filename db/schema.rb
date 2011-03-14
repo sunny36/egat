@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110313105028) do
+ActiveRecord::Schema.define(:version => 20110314192316) do
+
+  create_table "aging_products", :force => true do |t|
+    t.integer  "u_start"
+    t.integer  "u_end"
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "score"
+    t.integer  "score_message"
+    t.integer  "weight"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
