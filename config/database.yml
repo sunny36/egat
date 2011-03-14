@@ -2,7 +2,7 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: mysql2
-  database: egat_development
+  database: egat_production
   username: root
   password: root 
   host: localhost 
