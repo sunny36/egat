@@ -1,5 +1,20 @@
 class AgingProduct < ActiveRecord::Base
-
+  belongs_to :color
+  
+  def self.find_all_by_name_and_transformer(name, transformer)
+    u = transformer.hv
+    aging_products = AgingProduct.where(:name => name)
+    ids = Array.new
+    aging_products.each do |aging_product|
+      aging_product.u_start = 0 if aging_product.u_start.nil?
+      aging_product.u_end = 1000000 if aging_product.u_end.nil?
+      if u.between?(aging_product.u_start, aging_product.u_end)
+        ids << aging_product.id
+      end
+    end
+    aging_products.where(:id => ids) 
+  end
+  
   def hi_factor(oil_contamination)
     return nil if oil_contamination.blank?
     AgingProductFactor.all.each do |aging_product_factor|

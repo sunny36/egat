@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314202142) do
+ActiveRecord::Schema.define(:version => 20110315091659) do
 
   create_table "aging_product_factors", :force => true do |t|
     t.integer  "hi_factor"
@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(:version => 20110314202142) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "color_id"
   end
+
+  add_index "aging_products", ["color_id"], :name => "index_aging_products_on_color_id"
 
   create_table "application_uses", :force => true do |t|
     t.string   "value"
