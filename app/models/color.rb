@@ -5,5 +5,6 @@ class Color < ActiveRecord::Base
   has_many :aging_product_factor
   has_many :aging_product
   has_many :oil_contamination_factor
+  has_many :insulating_oil_factor
   
 end
