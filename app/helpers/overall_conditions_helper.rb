@@ -8,6 +8,19 @@ module OverallConditionsHelper
     end
   end
 
+  def insulating_oil(type)
+    unless @insulating_oil.blank? && @oltc_oil_contamination.blank?
+      case type
+      when :color
+        return color_span(InsulatingOilFactor.color(@insulating_oil, @oil_contamination)).html_safe
+      when :percent_hi
+        return number_with_precision(InsulatingOilFactor.percent_hi(@insulating_oil, @oil_contamination), :precision => 2)
+      end
+    else
+      " - "
+    end    
+  end
+  
   def oltc_oil_quality(type)
     unless @insulating_oil.blank? && @oltc_oil_contamination.blank?
       oltc_oil_quality = OltcOilQuality.new
