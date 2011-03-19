@@ -19,7 +19,7 @@ class OverallCondition < ActiveRecord::Base
   end
 
   def oil_quality_hi_factor
-    @oil_quality.hi_factor(@insulating_oil, @oil_contamination)
+    @oil_quality.hi_factor(@insulating_oil, @oil_contamination, :oil_quality)
   end
 
   def furan_hi_factor
