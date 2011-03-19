@@ -48,7 +48,7 @@ class OilQuality < ActiveRecord::Base
 
   def hi_factor_color(insulating_oil, oil_contamination, type)
     return nil if insulating_oil.blank? || oil_contamination.blank?
-    OilQualityFactor.where('hi_factor = ?', hi_factor(insulating_oil, oil_contamination)).first.color.value
+    OilQualityFactor.where('hi_factor = ?', hi_factor(insulating_oil, oil_contamination, :oil_quality)).first.color.value
   end
 
   def test_date(insulating_oil, oil_contamination)
