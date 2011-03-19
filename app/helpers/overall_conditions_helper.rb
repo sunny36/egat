@@ -25,6 +25,24 @@ module OverallConditionsHelper
     end
   end
 
+  def oil_contamination(type)
+    unless @insulating_oil.blank? && @oil_contamination.blank?
+      oil_quality = OilQuality.new
+      case type
+      when :hi_factor
+        return oil_quality.hi_factor(@insulating_oil, @oil_contamination, :contamination)
+      when :color
+        return link_to(color_span(oil_quality.hi_factor_color(@insulating_oil,
+                                                              @oil_contamination, :contamination)).html_safe,
+                       transformer_oil_contaminations_path(@transformer))
+      when :test_date
+        return oil_quality.test_date(@insulating_oil, @oil_contamination)
+      end
+    else
+      " - "
+    end
+  end
+
   def oil_quality(type)
     unless @insulating_oil.blank? && @oil_contamination.blank?
       oil_quality = OilQuality.new

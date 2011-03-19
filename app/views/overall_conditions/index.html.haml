@@ -197,19 +197,4 @@
         %td= oltc_oil_quality :color
         %td= oltc_oil_quality :test_date
         
-.grid_16
-  %h2 Oil Output
-  %table
-    %thead
-      %tr
-        %th Insulating Oil
-        %th Health Index Factor
-        %th Condition
-        %th ข้อมูลล่าสุดที่ถูกบันทึก
-    %tbody
-      %tr
-        %td Aging Product
-        %td= aging_product :hi_factor
-        %td= aging_product :color
-        %td= aging_product :test_date
-      
+= render :partial => 'oil_output'

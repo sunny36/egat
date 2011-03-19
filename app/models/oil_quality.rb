@@ -37,8 +37,8 @@ class OilQuality < ActiveRecord::Base
         oil_contamination_factor.start = 0 if oil_contamination_factor.start.nil?
         oil_contamination_factor.end = 1000000 if oil_contamination_factor.end.nil?
         condition = percent_contamination_factor(insulating_oil,
-                                                 oil_contamination).round.between?(oil_contamination_factor.start, 
-                                                 oil_contamination_factor.end)
+        oil_contamination).round.between?(oil_contamination_factor.start,
+                                          oil_contamination_factor.end)
         if condition
           return oil_contamination_factor.hi_factor
         end
@@ -48,7 +48,14 @@ class OilQuality < ActiveRecord::Base
 
   def hi_factor_color(insulating_oil, oil_contamination, type)
     return nil if insulating_oil.blank? || oil_contamination.blank?
-    OilQualityFactor.where('hi_factor = ?', hi_factor(insulating_oil, oil_contamination, :oil_quality)).first.color.value
+    if type == :oil_quality
+      return OilQualityFactor.where('hi_factor = ?',
+                                    hi_factor(insulating_oil, oil_contamination, type)).first.color.value
+    end
+    if type == :contamination
+      return OilContaminationFactor.where('hi_factor = ?',
+                                          hi_factor(insulating_oil, oil_contamination, type)).first.color.value
+    end
   end
 
   def test_date(insulating_oil, oil_contamination)
