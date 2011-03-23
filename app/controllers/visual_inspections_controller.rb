@@ -1,8 +1,7 @@
 class VisualInspectionsController < ApplicationController
   def index
     @transformer = Transformer.find(params[:transformer_id])
-    @visual_inspections =
-      VisualInspection.where("transformer_id = ?", params[:transformer_id])
+    @visual_inspections = VisualInspection.where(:transformer_id => params[:transformer_id])
   end
 
   def search
@@ -32,8 +31,7 @@ class VisualInspectionsController < ApplicationController
     respond_to do |format|
       if @visual_inspection.save
         format.html {
-          redirect_to(search_visual_inspections_path,
-                      :notice => "Data for Visual Inspection has been added")
+          redirect_to(search_visual_inspections_path, :notice => "Data for Visual Inspection has been added")
         }
       else
         format.html { render :action => "new" }
@@ -42,11 +40,11 @@ class VisualInspectionsController < ApplicationController
   end
 
   def edit
-    @visual_inspection = VisualInspection.find(params[:id])
+    @visual_inspection = get_visual_inspection
   end
 
   def update
-    @visual_inspection = VisualInspection.find(params[:id])
+    @visual_inspection = get_visual_inspection
     respond_to do |format|
       if @visual_inspection.update_attributes(params[:visual_inspection])
         transformer = Transformer.find(@visual_inspection.transformer_id)
@@ -70,11 +68,14 @@ class VisualInspectionsController < ApplicationController
   end
 
   def show
-    @visual_inspection = VisualInspection.where("id = ? AND transformer_id = ?",
-                                                params[:id], 
-                                                params[:transformer_id]).first
-    respond_to do |format| 
+    @visual_inspection = VisualInspection.find_by_id_and_transformer_id(params[:id], params[:transformer_id])
+    respond_to do |format|
       format.html
     end
   end
+  
+  private
+    def get_visual_inspection
+      VisualInspection.find(params[:id])
+    end
 end

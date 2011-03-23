@@ -15,6 +15,9 @@
 #
 
 class VisualInspection < ActiveRecord::Base
+  
+  default_scope order("test_date DESC")
+  
   has_one :general_condition
   has_one :bushing_condition
   has_one :surge_arrester
