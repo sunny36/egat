@@ -36,7 +36,11 @@ Egat::Application.routes.draw do
         get :graph
       end
     end
-    resources :oil_qualities
+    resources :oil_qualities do
+      collection do
+        get :oil_contaminations
+      end
+    end
     resources :oltc_oil_qualities
     resources :oltc_dgas
     resources :furans

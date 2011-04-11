@@ -4,8 +4,14 @@ OilQuality.getData = function (x1, x2, graphId) {
   var points = [];
 	var dataPoints;
 	if (graphId == '#dielectric_breakdown_graph') {
-		dataPoints = OilQuality.dielectricBreakdownPoints;
+		dataPoints = OilQuality.xi_average_maintankPoints;
 	}
+	if (graphId == '#pf_20c_graph') {
+		dataPoints = OilQuality.avg_percent_power_factor_maintankPoints;
+	}	
+	if (graphId == '#pf_100c_graph') {
+		dataPoints = OilQuality.cor_percent_power_factor_maintankPoints;
+	}	
 	if (graphId == '#ift_graph') {
 		dataPoints = OilQuality.iftPoints;
 	}	
@@ -13,7 +19,7 @@ OilQuality.getData = function (x1, x2, graphId) {
 		dataPoints = OilQuality.nnPoints;
 	}		
 	if (graphId == '#water_content_graph') {
-		dataPoints = OilQuality.waterContentPoints;
+		dataPoints = OilQuality.water_contentPoints;
 	}
 	if (graphId == '#color_graph') {
 		dataPoints = OilQuality.colorPoints;
@@ -26,13 +32,13 @@ OilQuality.getData = function (x1, x2, graphId) {
   return [{data: points}];
 };
 
-OilQuality.plotDielectricBreakdown = function(insulatingOils, markings, graphId) {
+OilQuality.plotInsulatingOil = function(insulatingOils, name, markings, graphId, yAxisLabel) {
   var points = [];
   for (var i = 0; i < insulatingOils.length; ++i) {
-    points.push([insulatingOils[i].test_date_for_floth, insulatingOils[i].xi_average_maintank]);
+    points.push([insulatingOils[i].test_date_for_floth, insulatingOils[i][name]]);
   }
-  OilQuality.dielectricBreakdownPoints = points;
-  OilQuality.plotGraph(points, markings, graphId, 'Dielectric Breakdown [kV]');
+  OilQuality[name + "Points"] = points;
+  OilQuality.plotGraph(points, markings, graphId, yAxisLabel);
 };
 
 OilQuality.plotOilContamination = function(oilContaminations, name, markings, graphId, yAxisLabel) {
@@ -79,8 +85,8 @@ OilQuality.plotGraph = function (points, markings, graphId, yAxisLabel) {
   });
 };
 
-OilQuality.loadAndPlotDielectricBreakdown = function() {
-  $.getJSON($.url.attr('path') + '?name=xbar', function(data) {
+OilQuality.loadAndPlotInsulatingOil = function(oilQualityName, name, graphId, yAxisLabel) {
+  $.getJSON($.url.attr('path') + '?name=' + oilQualityName, function(data) {
     var oilQualities = data;
     var i;
     var markings = [];
@@ -88,7 +94,7 @@ OilQuality.loadAndPlotDielectricBreakdown = function() {
       if (oilQualities[i].end === null) {
         oilQualities[i].end = Number.MAX_VALUE;
       }
-			if (oilQualities[i].start == null) {
+			if (oilQualities[i].start === null) {
 				oilQualities[i].start = -Number.MAX_VALUE;
 			}
       markings.push({yaxis: {from: Number(oilQualities[i].start), to: Number(oilQualities[i].end)}, 
@@ -96,7 +102,7 @@ OilQuality.loadAndPlotDielectricBreakdown = function() {
     }
     $.getJSON("/" + $.url.segment(0) + "/" + $.url.segment(1) + "/" + "insulating_oils", function (data) {
       var insulatingOils = data;
-      OilQuality.plotDielectricBreakdown(insulatingOils, markings, '#dielectric_breakdown_graph');
+      OilQuality.plotInsulatingOil(insulatingOils, name, markings, graphId, yAxisLabel);
     });
   });	
 };
@@ -125,16 +131,14 @@ OilQuality.loadAndPlotOilContamination = function(name, graphId, yAxisLabel) {
 
 
 $(document).ready(function(){
-	OilQuality.loadAndPlotDielectricBreakdown();
+	OilQuality.loadAndPlotInsulatingOil('xbar', 'xi_average_maintank', '#dielectric_breakdown_graph', 'Dielectric Breakdown [kV]');
 	$("#reset_dielectric_breakdown").click(function () {
-		OilQuality.loadAndPlotDielectricBreakdown();
+		OilQuality.loadAndPlotInsulatingOil('xbar', 'xi_average_maintank', '#dielectric_breakdown_graph', 'Dielectric Breakdown [kV]');
   });  	    
 
-	OilQuality.loadAndPlotOilContamination('ift', '#ift_graph', 
-																				 'IFT [dynes/cm] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+	OilQuality.loadAndPlotOilContamination('ift', '#ift_graph', 'IFT [dynes/cm]');
 	$("#reset_ift").click(function () {
-		OilQuality.loadAndPlotOilContamination('ift', '#ift_graph', 
-																					 'IFT [dynes/cm] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');		
+		OilQuality.loadAndPlotOilContamination('ift', '#ift_graph', 'IFT [dynes/cm]');		
 	});  	    
 
   OilQuality.loadAndPlotOilContamination('nn', '#nn_graph', 'Acidity (NN) [mg KOH/gm]');
@@ -142,17 +146,27 @@ $(document).ready(function(){
 		OilQuality.loadAndPlotOilContamination('nn', '#nn_graph', 'Acidity (NN) [mg KOH/gm]');
 	});  	    
 
-	OilQuality.loadAndPlotOilContamination('water_content', '#water_content_graph', 
-																				 'Water Content [ppm]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+	OilQuality.loadAndPlotOilContamination('water_content', '#water_content_graph', 'Water Content [ppm]');
 	$("#reset_water_content").click(function () {
-		OilQuality.loadAndPlotOilContamination('water_content', '#water_content_graph', 
-																					 'Water Content [ppm]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');		
+		OilQuality.loadAndPlotOilContamination('water_content', '#water_content_graph', 'Water Content [ppm]');		
 	});  	    
 	
-	OilQuality.loadAndPlotOilContamination('color', '#color_graph', 
-																				 'Color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');	
+	OilQuality.loadAndPlotOilContamination('color', '#color_graph', 'Color');	
 	$("#reset_color").click(function () {
-		OilQuality.loadAndPlotOilContamination('color', '#color_graph', 
-																					 'Color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');		
-	});  	    	
+		OilQuality.loadAndPlotOilContamination('color', '#color_graph', 'Color');		
+	});
+	
+  if ($('#pf_20c_graph').length > 0) {
+    OilQuality.loadAndPlotInsulatingOil('pf_20c', 'avg_percent_power_factor_maintank', '#pf_20c_graph', '%Power Factor @20C');
+    $("#reset_pf_20c").click(function () {
+        OilQuality.loadAndPlotInsulatingOil('pf_20c', 'avg_percent_power_factor_maintank', '#pf_20c_graph', '%Power Factor @20C');
+    });
+  }
+
+	if ($('#pf_100c_graph').length > 0) {
+    OilQuality.loadAndPlotInsulatingOil('pf_100c', 'cor_percent_power_factor_maintank', '#pf_100c_graph', '%Power Factor @100C');			
+    $("#reset_pf_100c").click(function () {
+        OilQuality.loadAndPlotInsulatingOil('pf_100c', 'cor_percent_power_factor_maintank', '#pf_100c_graph', '%Power Factor @100C');			
+    });
+  }
 });

@@ -45,9 +45,8 @@ module OverallConditionsHelper
       when :hi_factor
         return oil_quality.hi_factor(@insulating_oil, @oil_contamination, :contamination)
       when :color
-        return link_to(color_span(oil_quality.hi_factor_color(@insulating_oil,
-                                                              @oil_contamination, :contamination)).html_safe,
-                       transformer_oil_contaminations_path(@transformer))
+        return link_to(color_span(oil_quality.hi_factor_color(@insulating_oil, @oil_contamination, :contamination)).html_safe,
+                       :controller => "oil_qualities", :action => "oil_contaminations", :transformer_id => @transformer.id)
       when :test_date
         return oil_quality.test_date(@insulating_oil, @oil_contamination)
       end

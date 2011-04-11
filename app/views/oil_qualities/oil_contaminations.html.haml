@@ -14,12 +14,12 @@
   %table
     %thead
       %tr
-        %th Oil Quality
+        %th Oil Contamination
         %th= hi_factor_color
     %tbody 
       %tr
-        %td %Oil Quality Factor =
-        %td= percent_oil_quality_factor
+        %td %Oil Contamination Factor =
+        %td= percent_contamination_factor
 .clear
 %h4 กราฟแสดงความสัมพันธ์ระหว่าง Dielectric Breakdown กับวันทดสอบ
 #dielectric_breakdown_graph{:style => "width:900px;height:400px"}
@@ -48,4 +48,3 @@
 %h4 กราฟแสดงความสัมพันธ์ระหว่าง %Power Factor @ 100C กับวันทดสอบ
 #pf_100c_graph{:style => "width:900px;height:400px"}
 %button{:id => "reset_pf_100c"} Reset
-
