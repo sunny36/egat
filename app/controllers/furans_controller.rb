@@ -2,14 +2,11 @@ class FuransController < ApplicationController
 
   def index
     @transformer = Transformer.find(params[:transformer_id])
-    @furans = Furan.where("transformer_id =?",
-                          params[:transformer_id]).order("test_date DESC")
+    @furans = Furan.where("transformer_id =?", params[:transformer_id]).order("test_date DESC")
     respond_to do |format|
       format.html
       ActiveRecord::Base.include_root_in_json = false
-      format.js {
-        render :json => @furans.to_json(:methods => [:test_date_for_floth])
-      }
+      format.js {render :json => @furans.to_json(:methods => [:test_date_for_floth])}
     end
   end
 
@@ -24,8 +21,7 @@ class FuransController < ApplicationController
     respond_to do |format|
       if @furan.save
         format.html {
-          redirect_to(transformer_oil_input_index_path(@transformer),
-                      :notice => 'Data for Furan has been added.')
+          redirect_to(transformer_oil_input_index_path(@transformer), :notice => 'Data for Furan has been added.')
         }
       else
         format.html { render :action => "new" }
@@ -44,8 +40,8 @@ class FuransController < ApplicationController
     respond_to do |format|
       if @furan.update_attributes(params[:furan])
         format.html {
-          redirect_to(transformer_oil_input_index_path(@transformer),
-                      :notice => 'Furan was successfully updated.') }
+          redirect_to(transformer_oil_input_index_path(@transformer), :notice => 'Furan was successfully updated.')
+        }
       else
         format.html { render :action => "edit" }
       end
@@ -57,9 +53,7 @@ class FuransController < ApplicationController
     @furan = Furan.find(params[:id])
     @furan.destroy
     respond_to do |format|
-      format.html {
-        redirect_to(transformer_oil_input_index_path(@transformer))
-      }
+      format.html { redirect_to(transformer_oil_input_index_path(@transformer)) }
     end
   end
 

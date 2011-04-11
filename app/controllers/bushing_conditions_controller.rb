@@ -1,9 +1,7 @@
 class BushingConditionsController < ApplicationController
 
   def index
-    @bushing_condition =
-      BushingCondition.where("visual_inspection_id = ?",
-                             params[:visual_inspection_id]).first
+    @bushing_condition = BushingCondition.where("visual_inspection_id = ?", params[:visual_inspection_id]).first
   end
 
   def new

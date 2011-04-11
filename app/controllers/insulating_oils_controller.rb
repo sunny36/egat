@@ -1,5 +1,5 @@
 class InsulatingOilsController < ApplicationController
-  
+
   def index
     @transformer = Transformer.find(params[:transformer_id])
     @insulating_oils = InsulatingOil.where("transformer_id =?", params[:transformer_id]).order("test_date DESC")
@@ -8,12 +8,13 @@ class InsulatingOilsController < ApplicationController
       ActiveRecord::Base.include_root_in_json = false
       format.js {
         render :json => @insulating_oils.to_json(
-        :only => [:id, :test_date, :transformer_id], 
-        :methods => [:xi_average_oltc, :xi_average_maintank, :test_date_for_floth])
+          :only => [:id, :test_date, :transformer_id],
+          :methods => [:xi_average_oltc, :xi_average_maintank, :avg_percent_power_factor_maintank,
+                       :cor_percent_power_factor_maintank, :test_date_for_floth])
       }
     end
   end
-  
+
   def new
     @transformer = Transformer.find(params[:transformer_id])
     @insulating_oil = InsulatingOil.new
@@ -25,8 +26,7 @@ class InsulatingOilsController < ApplicationController
     respond_to do |format|
       if @insulating_oil.save
         format.html {
-          redirect_to(search_electrical_tests_path,
-                      :notice => "Data for Insulating Oil has been saved")
+          redirect_to(search_electrical_tests_path, :notice => "Data for Insulating Oil has been saved")
         }
       else
         format.html {render :action => 'new'}
