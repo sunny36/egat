@@ -6,9 +6,9 @@
     = transformer_names_drop_down_list(form)
   .clear
     &nbsp;
-  = render :partial => 'transformer_details', :locals => {:transformer => @transformer}
+  = transformer_details_partial
   %hr
-  #main_tank_dga
+  #insulating_oil
     .grid_8
       = label 'insulating_oil', 'Insulating Oil'
       = insulating_oil_drop_down_list
@@ -19,4 +19,11 @@
       - else 
         = link_to("Edit", "#", :class => "edit")
         = link_to("Edit", "#", :class => "delete")
+  .clear
+  %br
+  #bushing_test
+    .grid_8
+      = label 'bushing_test', 'Bushing Test'
+      = bushing_test_drop_down_list
+      
 

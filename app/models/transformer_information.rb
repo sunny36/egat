@@ -216,8 +216,10 @@ class TransformerInformation < ActiveRecord::Base
         self.recent = true
         id = self.transformer_id
         transformer_information = TransformerInformation.find_by_transformer_id_and_recent(id, true)
-        transformer_information.recent = false
-        transformer_information.save
+        unless transformer_information.nil?
+          transformer_information.recent = false
+          transformer_information.save
+        end
       end
 
       def system_fault_level_hv_mva
