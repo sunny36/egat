@@ -21,7 +21,7 @@ group :test, :development do
   gem 'test-unit'
   gem 'factory_girl_rails'
   gem 'spreadsheet'
-  gem 'annotate-models'
+  gem 'annotate'
   gem 'autotest'
   gem 'autotest-rails-pure'
   gem 'autotest-fsevent'
