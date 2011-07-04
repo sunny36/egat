@@ -31,7 +31,7 @@ class OverallCondition < ActiveRecord::Base
   end
 
   def oltc_oil_quality_hi_factor
-    @oltc_oil_quality.hi_factor(@insulating_oil, @oltc_oil_contamination)
+    @oltc_oil_quality.hi_factor(@insulating_oil, @oltc_oil_contamination, :oltc_oil_quality)
   end
 
   def percent_hi_others
