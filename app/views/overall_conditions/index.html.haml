@@ -187,9 +187,9 @@
       %tr
         %td 19
         %td  DGA of OLTC
-        %td= oltc_dga_hi_factor
-        %td= oltc_dga_color
-        %td= oltc_dga_test_date
+        %td= oltc_dga :hi_factor
+        %td= oltc_dga :color
+        %td= oltc_dga :test_date
       %tr
         %td 20
         %td OLTC Oil Quality
@@ -198,3 +198,4 @@
         %td= oltc_oil_quality :test_date
         
 = render :partial => 'oil_output'
+= render :partial => 'oltc_output'

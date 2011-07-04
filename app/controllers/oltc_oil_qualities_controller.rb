@@ -9,6 +9,30 @@ class OltcOilQualitiesController < ApplicationController
       ActiveRecord::Base.include_root_in_json = false
       format.js { render :json => @oltc_oil_qualities.to_json(:include => [:color]) }
     end
-
   end
+  
+  def oltc_oil_contaminations
+    @transformer = Transformer.find(params[:transformer_id])
+    @oltc_oil_qualities = OltcOilQuality.find_all_by_name_and_transformer(params[:name], @transformer)
+    @insulating_oil = InsulatingOil.most_recent(params[:transformer_id]).first
+    @oltc_oil_contamination = OltcOilContamination.most_recent(params[:transformer_id]).first    
+    respond_to do |format|
+      format.html
+      ActiveRecord::Base.include_root_in_json = false
+      format.js { render :json => @oltc_oil_qualities.to_json(:include => [:color]) }
+    end
+  end
+  
+  def oltc_dielectric_properties
+    @transformer = Transformer.find(params[:transformer_id])
+    @oltc_oil_qualities = OltcOilQuality.find_all_by_name_and_transformer(params[:name], @transformer)
+    @insulating_oil = InsulatingOil.most_recent(params[:transformer_id]).first
+    @oltc_oil_contamination = OltcOilContamination.most_recent(params[:transformer_id]).first    
+    respond_to do |format|
+      format.html
+      ActiveRecord::Base.include_root_in_json = false
+      format.js { render :json => @oltc_oil_qualities.to_json(:include => [:color]) }
+    end
+  end
+  
 end

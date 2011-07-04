@@ -42,7 +42,12 @@ Egat::Application.routes.draw do
         get :oil_contaminations
       end
     end
-    resources :oltc_oil_qualities
+    resources :oltc_oil_qualities do
+      collection do
+        get :oltc_oil_contaminations
+        get :oltc_dielectric_properties
+      end
+    end
     resources :oltc_dgas
     resources :furans
     resources :oil_contaminations

@@ -10,7 +10,7 @@ class InsulatingOilsController < ApplicationController
         render :json => @insulating_oils.to_json(
           :only => [:id, :test_date, :transformer_id],
           :methods => [:xi_average_oltc, :xi_average_maintank, :avg_percent_power_factor_maintank,
-                       :cor_percent_power_factor_maintank, :test_date_for_floth])
+                       :cor_percent_power_factor_maintank, :cor_percent_power_factor_oltc, :test_date_for_floth])
       }
     end
   end

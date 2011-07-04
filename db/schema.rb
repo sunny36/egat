@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411150341) do
+ActiveRecord::Schema.define(:version => 20110704192336) do
 
   create_table "aging_product_factors", :force => true do |t|
     t.integer  "hi_factor"
@@ -1400,9 +1400,29 @@ ActiveRecord::Schema.define(:version => 20110411150341) do
     t.string   "test_type"
   end
 
+  create_table "oltc_dielectric_property_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "color_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "oltc_model", :force => true do |t|
     t.integer "version"
     t.string  "description"
+  end
+
+  create_table "oltc_oil_contamination_factors", :force => true do |t|
+    t.integer  "hi_factor"
+    t.string   "condition"
+    t.integer  "start"
+    t.integer  "end"
+    t.string   "color_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "oltc_oil_contaminations", :force => true do |t|

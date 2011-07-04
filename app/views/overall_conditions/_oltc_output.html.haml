@@ -1,0 +1,31 @@
+.grid_16
+  %h2 OLTC Output
+  .grid_11
+    %table
+      %thead
+        %tr
+          %th OLTC
+          %th Health Index Factor
+          %th Condition
+          %th ข้อมูลล่าสุดที่ถูกบันทึก
+      %tbody
+        %tr
+          %td OLTC Contact
+          %td -
+          %td -
+          %td -
+        %tr
+          %td OLTC Oil DGA
+          %td= oltc_dga :hi_factor
+          %td= oltc_dga :color
+          %td= oltc_dga :test_date
+        %tr
+          %td OLTC Oil Contamination
+          %td= oltc_oil_contamination :hi_factor
+          %td= oltc_oil_contamination :color
+          %td= oltc_oil_contamination :test_date
+        %tr
+          %td Dielectric Property
+          %td= oltc_dielectric_property :hi_factor
+          %td= oltc_dielectric_property :color
+          %td= oltc_dielectric_property :test_date
