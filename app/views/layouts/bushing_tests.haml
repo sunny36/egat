@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Bushing Tests 
+    = javascript_include_tags
+    = stylesheet_link_tag 'ext-all', 'xtheme-gray' 
+    = stylesheet_link_tag '960', 'template', 'nav', 'colour', 'facybox', 'faceplant'
+    = stylesheet_link_tag 'jquery-ui-1.8.4.custom', 'jquery.cluetip', 'buttons', 'controllers/bushing_tests'
+    = csrf_meta_tag
+    %body{:name => controller.action_name}
+      = render :partial => 'layouts/header'
+    #content.container_16.clearfix      
+      - if notice
+        %p.success
+          = notice
+      = yield
+

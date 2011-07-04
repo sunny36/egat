@@ -1,0 +1,29 @@
+label.inline {
+	width: 200px;
+	display: inline !important;
+	float: left;
+}
+
+#bushing_test_test_type, #bushing_test_test_date, #bushing_test_work_order{
+	width: 280px;
+}
+
+.serial-number {
+  width: 100px !important;
+}
+
+.test-kv {
+  width: 18px !important;
+}
+
+.current, .watt, .power-factor, .capacitance, .power-factor {
+  width: 55px !important;
+}
+
+.remark {
+  width: 105px !important;
+}
+
+input[type="submit"].cupid-green, button.cupid-green {
+  width: 960px;
+}
