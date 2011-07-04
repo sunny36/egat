@@ -165,12 +165,13 @@ class TransformerInformation < ActiveRecord::Base
     end
 
     def denominator
-      (5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) + (5 * 3) + (5 * 3) + (5 * 1) + (5 * 1) +
-        (5 * 2)
+      (5 * 4) + (6 * 4) + (5 * 5) + (5 * 4) + (4 * 3) + (5 * 4) + (5 * 4) + 
+      (5 * 3) + (5 * 3) + (5 * 1) + (5 * 1) + (5 * 2)
     end
 
     def percent_hi
-      percent_overall_health_index = OverallCondition.new(self.transformer_id).percent_overall_health_index
+      percent_overall_health_index = 
+        OverallCondition.new(self.transformer_id).percent_overall_health_index
       if percent_overall_health_index.nil?
         return 100 - overall_condition
       else

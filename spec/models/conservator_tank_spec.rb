@@ -46,3 +46,22 @@ describe ConservatorTank do
   end
 
 end
+
+# == Schema Information
+#
+# Table name: conservator_tanks
+#
+#  id                   :integer(4)      not null, primary key
+#  breather_maintank    :integer(10)
+#  breather_oltc        :integer(10)
+#  corrosion_maintank   :integer(10)
+#  corrosion_oltc       :integer(10)
+#  jel_color_maintank   :integer(10)
+#  jel_color_oltc       :integer(10)
+#  oil_level_maintank   :integer(10)
+#  oil_level_oltc       :integer(10)
+#  oilfail_maintank     :integer(10)
+#  oilfail_oltc         :integer(10)
+#  visual_inspection_id :integer(4)
+#
+

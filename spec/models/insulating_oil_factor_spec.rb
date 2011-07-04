@@ -17,3 +17,18 @@ describe InsulatingOilFactor do
     InsulatingOilFactor.percent_hi(@insulating_oil, @oil_contamination).should be_close(0, 0.01)
   end
 end
+
+# == Schema Information
+#
+# Table name: insulating_oil_factors
+#
+#  id         :integer(4)      not null, primary key
+#  hi_factor  :integer(4)
+#  condition  :string(255)
+#  start      :integer(4)
+#  end        :integer(4)
+#  color_id   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

@@ -38,3 +38,17 @@ describe RadiatorCoolingSystem do
   
   
 end
+
+# == Schema Information
+#
+# Table name: radiator_cooling_systems
+#
+#  id                   :integer(4)      not null, primary key
+#  animal               :integer(10)
+#  corrosion            :integer(10)
+#  noise_level          :integer(10)
+#  oil_fail             :integer(10)
+#  oil_pump             :integer(10)
+#  visual_inspection_id :integer(4)
+#
+

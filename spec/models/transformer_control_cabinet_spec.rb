@@ -39,3 +39,17 @@ describe TransformerControlCabinet do
   end
 
 end
+
+# == Schema Information
+#
+# Table name: transformer_control_cabinets
+#
+#  id                   :integer(4)      not null, primary key
+#  animal               :integer(10)
+#  control_humidity     :integer(10)
+#  corrosion            :integer(10)
+#  pragen               :integer(10)
+#  wiring_control       :integer(10)
+#  visual_inspection_id :integer(4)
+#
+

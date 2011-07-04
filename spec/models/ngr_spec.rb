@@ -36,3 +36,16 @@ describe Ngr do
   
   
 end
+
+# == Schema Information
+#
+# Table name: ngrs
+#
+#  id                   :integer(4)      not null, primary key
+#  base_status          :integer(10)
+#  ground_connector     :integer(10)
+#  ngr_status           :integer(10)
+#  pocelain_clean       :integer(10)
+#  visual_inspection_id :integer(4)
+#
+

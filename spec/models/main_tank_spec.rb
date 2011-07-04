@@ -33,3 +33,14 @@ describe MainTank do
   end
   
 end
+
+# == Schema Information
+#
+# Table name: main_tanks
+#
+#  id                   :integer(4)      not null, primary key
+#  corrosion            :integer(10)
+#  oil_fail             :integer(10)
+#  visual_inspection_id :integer(4)
+#
+

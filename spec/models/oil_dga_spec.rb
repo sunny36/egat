@@ -337,3 +337,35 @@ describe OilDga do
   end
   
 end
+
+# == Schema Information
+#
+# Table name: oil_dgas
+#
+#  id             :integer(4)      not null, primary key
+#  test_type      :string(255)
+#  test_date      :date
+#  work_order     :string(255)
+#  co2            :integer(4)
+#  co2_score      :integer(4)
+#  co             :integer(4)
+#  co_score       :integer(4)
+#  h2             :integer(4)
+#  h2_score       :integer(4)
+#  ch4            :integer(4)
+#  ch4_score      :integer(4)
+#  c2h2           :integer(4)
+#  c2h2_score     :integer(4)
+#  c2h4           :integer(4)
+#  c2h4_score     :integer(4)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  c2h6           :integer(4)
+#  c2h6_score     :integer(4)
+#  transformer_id :integer(4)
+#  c3h6           :integer(4)
+#  c3h8           :integer(4)
+#  o2             :integer(4)
+#  n2             :integer(4)
+#
+

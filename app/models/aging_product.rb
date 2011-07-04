@@ -65,3 +65,22 @@ class AgingProduct < ActiveRecord::Base
     max_score * weight
   end
 end
+
+# == Schema Information
+#
+# Table name: aging_products
+#
+#  id            :integer(4)      not null, primary key
+#  u_start       :integer(4)
+#  u_end         :integer(4)
+#  start         :integer(4)
+#  end           :integer(4)
+#  score         :integer(4)
+#  score_message :integer(4)
+#  weight        :integer(4)
+#  name          :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  color_id      :integer(4)
+#
+

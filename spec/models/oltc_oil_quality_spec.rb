@@ -39,3 +39,21 @@ describe OltcOilQuality do
     @oltc_oil_quality.hi_factor(@insulating_oil, @oltc_oil_contamination).should eql(1)
   end
 end
+
+# == Schema Information
+#
+# Table name: oltc_oil_qualities
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  u_start    :integer(4)
+#  u_end      :integer(4)
+#  start      :float
+#  end        :float
+#  score      :integer(4)
+#  weight     :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#  color_id   :integer(4)
+#
+

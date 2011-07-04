@@ -37,3 +37,17 @@ describe RegulatingPt do
   end
   
 end
+
+# == Schema Information
+#
+# Table name: regulating_pts
+#
+#  id                   :integer(4)      not null, primary key
+#  oil_color            :integer(10)
+#  oil_fail             :integer(10)
+#  oil_level            :integer(10)
+#  pocelain_clean       :integer(10)
+#  pocelain_status      :integer(10)
+#  visual_inspection_id :integer(4)
+#
+

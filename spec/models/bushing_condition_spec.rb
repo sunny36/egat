@@ -61,3 +61,27 @@ describe BushingCondition do
 
   
 end
+
+# == Schema Information
+#
+# Table name: bushing_conditions
+#
+#  id                   :integer(4)      not null, primary key
+#  oil_color_hv         :integer(10)
+#  oil_color_lv         :integer(10)
+#  oil_color_tv         :integer(10)
+#  oil_fail_hv          :integer(10)
+#  oil_fail_lv          :integer(10)
+#  oil_fail_tv          :integer(10)
+#  oil_level_hv         :integer(10)
+#  oil_level_lv         :integer(10)
+#  oil_level_tv         :integer(10)
+#  porcelain_clean_hv   :integer(10)
+#  porcelain_clean_lv   :integer(10)
+#  porcelain_clean_tv   :integer(10)
+#  porcelain_status_hv  :integer(10)
+#  porcelain_status_lv  :integer(10)
+#  porcelain_status_tv  :integer(10)
+#  visual_inspection_id :integer(4)
+#
+

@@ -21,3 +21,14 @@ describe ThermoScan do
 
    
 end
+
+# == Schema Information
+#
+# Table name: thermo_scans
+#
+#  id                   :integer(4)      not null, primary key
+#  delt                 :float
+#  load                 :float
+#  visual_inspection_id :integer(4)
+#
+
