@@ -11,7 +11,7 @@ gem 'jquery-rails', '>= 0.2.6'
 group :development do 
   gem 'rails-dev-boost', :git => 'https://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
 end
-
+gem 'jammit'
 group :test, :development do
   # For html2haml ----------
   gem 'hpricot'
