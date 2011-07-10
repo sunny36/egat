@@ -14,6 +14,12 @@ javascripts:
     - public/javascripts/jquery.url.js
     - public/javascripts/jquery.tablesorter.min.js
     - public/javascripts/jquery.cluetip.js
+  transformer_informations_index:
+    - public/javascripts/jquery.flot.min.js
+    - public/javascripts/jquery.flot.selection.min.js    
+    - public/javascripts/jquery.flot.axislabels.js
+    - public/javascripts/jquery.multirowcheckboxmenu.js    
+    - public/javascripts/controllers/transformer_informations.js    
     
 stylesheets:
   transformer_informations:

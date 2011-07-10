@@ -1,12 +1,5 @@
 <% content_for :javascript do %>
-  <%= javascript_include_tag 'jquery.flot.min.js',
-                             'jquery.flot.selection.min.js',
-                             'jquery.flot.axislabels.js',
-                             'jquery.multirowcheckboxmenu',
-                             'controllers/transformer_informations.js'
-  %>
-                           
-  
+  <%= include_javascripts :transformer_informations_index %>
 <% end %>
 
 <%= form_for :station do |f| -%>
