@@ -3,7 +3,7 @@ module BushingTestsHelper
   def javascript_include_tags
     javascript_include_tag(:defaults, :cache => true)
     javascript_include_tag("jquery-ui-1.8.4.custom.min", 'ext-jquery-adapter', 'ext-all', "jquery.url", 
-                           "controllers/insulating_oils")
+                           "controllers/bushing_tests")
   end
   
   def transformer_names_drop_down_list(form, id)

@@ -2,7 +2,11 @@
 %html
   %head
     %title Bushing Tests 
-    = javascript_include_tags
+    = javascript_include_tag :defaults, :cache => true
+    = javascript_include_tag  "jquery-ui-1.8.4.custom.min"
+    = javascript_include_tag 'ext-jquery-adapter', 'ext-all'
+    = javascript_include_tag  "jquery.url"
+    = javascript_include_tag  "controllers/bushing_tests"
     = stylesheet_link_tag 'ext-all', 'xtheme-gray' 
     = stylesheet_link_tag '960', 'template', 'nav', 'colour', 'facybox', 'faceplant'
     = stylesheet_link_tag 'jquery-ui-1.8.4.custom', 'jquery.cluetip', 'buttons', 'controllers/bushing_tests'

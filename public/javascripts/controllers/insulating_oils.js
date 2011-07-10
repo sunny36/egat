@@ -17,17 +17,12 @@ InsulatingOil.disableReadOnlyFields = function () {
         "_minus_xbar_whole_squared").attr("disabled", true);
     }
   }
-  $("#insulating_oil_xi_sum_maintank, #insulating_oil_xi_sum_oltc")
-  .attr("disabled", true);
-  $("#insulating_oil_xi_average_maintank, #insulating_oil_xi_average_oltc")
-  .attr("disabled", true);
+  $("#insulating_oil_xi_sum_maintank, #insulating_oil_xi_sum_oltc").attr("disabled", true);
+  $("#insulating_oil_xi_average_maintank, #insulating_oil_xi_average_oltc").attr("disabled", true);
   $('#insulating_oil_sum_xi_minus_xbar_whole_squared_maintank, ' + 
-    '#insulating_oil_sum_xi_minus_xbar_whole_squared_oltc')
-  .attr("disabled", true);
-  $('#insulating_oil_s_maintank, #insulating_oil_s_oltc')
-  .attr("disabled", true);
-  $('#insulating_oil_cv_maintank, #insulating_oil_cv_oltc')
-  .attr('disabled', true);
+    '#insulating_oil_sum_xi_minus_xbar_whole_squared_oltc').attr("disabled", true);
+  $('#insulating_oil_s_maintank, #insulating_oil_s_oltc').attr("disabled", true);
+  $('#insulating_oil_cv_maintank, #insulating_oil_cv_oltc').attr('disabled', true);
   $('#insulating_oil_avg_percent_power_factor_maintank, ' + 
     '#insulating_oil_cor_percent_power_factor_maintank, ' +
     '#insulating_oil_avg_percent_power_factor_oltc, ' + 
@@ -37,8 +32,7 @@ InsulatingOil.disableReadOnlyFields = function () {
 InsulatingOil.setAveragePowerFactor = function (type) {
   var powerFactor = InsulatingOil.getAveragePowerFactor(type);
   if (powerFactor !== null) {
-    $("#insulating_oil_avg_percent_power_factor_" + type)
-    .val(powerFactor.toFixed(4));
+    $("#insulating_oil_avg_percent_power_factor_" + type).val(powerFactor.toFixed(4));
     InsulatingOil.setCorPowerFactor(type);	  
   }
 };
@@ -76,17 +70,13 @@ InsulatingOil.calculateDielectricBreakDownVoltageTest = function (type) {
     }
   }
   if (!anyNaN) {
-    $("#insulating_oil_xi_sum_" + type).
-    val(InsulatingOil.sum(xi[0], xi[1], xi[2], xi[3], xi[4]));
-    $("#insulating_oil_xi_average_" + type).
-    val(InsulatingOil.average(xi[0], xi[1], xi[2], xi[3], xi[4]));
+    $("#insulating_oil_xi_sum_" + type).val(InsulatingOil.sum(xi[0], xi[1], xi[2], xi[3], xi[4]));
+    $("#insulating_oil_xi_average_" + type).val(InsulatingOil.average(xi[0], xi[1], xi[2], xi[3], xi[4]));
     InsulatingOil.displayXiMinuxXbarSquared(type);
     $("#insulating_oil_sum_xi_minus_xbar_whole_squared_" + type)
     .val(InsulatingOil.getSumXiMinusXbarSquared(type).toFixed(2));
-    $("#insulating_oil_s_" + type)
-    .val(InsulatingOil.getS(type).toFixed(2));
-    $("#insulating_oil_cv_" + type)
-    .val(InsulatingOil.getCV(type).toFixed(2));
+    $("#insulating_oil_s_" + type).val(InsulatingOil.getS(type).toFixed(2));
+    $("#insulating_oil_cv_" + type).val(InsulatingOil.getCV(type).toFixed(2));
   }
 };
 
@@ -98,8 +88,7 @@ InsulatingOil.getS = function (type) {
 InsulatingOil.getSumXiMinusXbarSquared = function (type) {
   var xi_minus_xbar_squared = InsulatingOil.getXiMinuxXbarSquared(type);
   return InsulatingOil.sum(xi_minus_xbar_squared[0], xi_minus_xbar_squared[1], 
-    xi_minus_xbar_squared[2], xi_minus_xbar_squared[3], 
-    xi_minus_xbar_squared[4]);
+                           xi_minus_xbar_squared[2], xi_minus_xbar_squared[3], xi_minus_xbar_squared[4]);
 
 };
 
@@ -135,8 +124,7 @@ InsulatingOil.displayXiMinuxXbarSquared = function (type) {
   var xi_minus_xbar_squared = InsulatingOil.getXiMinuxXbarSquared(type);
   var fields = ["xi1", "xi2", "xi3", "xi4", "xi5"];
   for (i = 0; i < fields.length; ++i) {
-    fields[i] = "#insulating_oil_" + fields[i] + "_" + type + 
-              "_minus_xbar_whole_squared";
+    fields[i] = "#insulating_oil_" + fields[i] + "_" + type + "_minus_xbar_whole_squared";
     $(fields[i]).val(xi_minus_xbar_squared[i].toFixed(2));
   }
 };
@@ -177,10 +165,7 @@ InsulatingOil.custom_confirm_ok = function(prompt, action) {
 };   
 
 InsulatingOil.setupDatePicker = function(id) {
-  $(id).datepicker({
-    dateFormat: 'dd/mm/yy',
-    buttonImage: "images/icon_calendar.gif"
-  });	  
+  $(id).datepicker({dateFormat: 'dd/mm/yy', buttonImage: "images/icon_calendar.gif"});	  
 };
 
 InsulatingOil.setupTransformerNameComboxBox = function(id) {
@@ -212,11 +197,9 @@ InsulatingOil.setupTransformerNameComboxBox = function(id) {
 
 InsulatingOil.onTransformerNamChange = function(transformerId) {
   if ($('body').attr('name') == "new") {
-    window.location.href = "/transformers/" + transformerId + 
-                           "/insulating_oils/new";
+    window.location.href = "/transformers/" + transformerId + "/insulating_oils/new";
   } else {
-    window.location.href = "/transformers/" + transformerId + 
-                           "/insulating_oils";
+    window.location.href = "/transformers/" + transformerId +  "/insulating_oils";
   }
 };
 
@@ -302,7 +285,6 @@ $(function() {
 	    InsulatingOil.setupDatePicker('#insulating_oil_test_date');
     }
 
-    InsulatingOil
-    .setupTransformerNameComboxBox('insulating_oil_transformer_id');
+    InsulatingOil.setupTransformerNameComboxBox('insulating_oil_transformer_id');
 	  
 });

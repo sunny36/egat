@@ -18,7 +18,17 @@ class BushingTest < ActiveRecord::Base
                 :y2_c1_percent_power_factor_avg, :y2_c1_percent_power_factor_cor, 
                 :y2_c2_percent_power_factor_avg, :y2_c2_percent_power_factor_cor,
                 :y3_c1_percent_power_factor_avg, :y3_c1_percent_power_factor_cor, 
-                :y3_c2_percent_power_factor_avg, :y3_c2_percent_power_factor_cor,
+                :y3_c2_percent_power_factor_avg, :y3_c2_percent_power_factor_cor
+
+
+    def test_date_for_floth
+      self.test_date.to_i * 1000
+    end
+
+    def thai_test_date
+      test_date.strftime("%d/%m/%Y")
+    end
+    
 end
 
 # == Schema Information
