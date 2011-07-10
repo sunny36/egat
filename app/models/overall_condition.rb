@@ -82,7 +82,7 @@ class OverallCondition < ActiveRecord::Base
       denominator += (ThermoScanFactor.order("hi_factor DESC").first.hi_factor * others_k[:thermo_scan])
     end
     unless oil_quality_hi_factor(insulating_oil(transformer), oil_contamination(transformer)).blank?
-      numerator += (oil_quality_hi_factor(insulating_oil, oil_contamination) * others_k[:oil_quality])
+      numerator += (oil_quality_hi_factor(insulating_oil(transformer), oil_contamination(transformer)) * others_k[:oil_quality])
       denominator += (OilQualityFactor.order("hi_factor DESC").first.hi_factor * others_k[:oil_quality])
     end
     unless furan_hi_factor(transformer).blank?
