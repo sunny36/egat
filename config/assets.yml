@@ -4,13 +4,10 @@ package_assets: always
 javascripts:
   transformer_informations:
     - public/javascripts/jquery-1.4.2.min.js
-    - public/javascripts/ext-jquery-adapter.js
-    - public/javascripts/ext-all.js
     - public/javascripts/jquery-ui-1.8.4.custom.min.js
     - public/javascripts/jquery.blockUI.js
     - public/javascripts/jquery.tmpl.js
     - public/javascripts/facebox.js
-    - public/javascripts/json2.js
     - public/javascripts/jquery.url.js
     - public/javascripts/jquery.tablesorter.min.js
     - public/javascripts/jquery.cluetip.js
@@ -23,8 +20,6 @@ javascripts:
     
 stylesheets:
   transformer_informations:
-    - public/stylesheets/ext-all.css
-    - public/stylesheets/xtheme-gray.css
     - public/stylesheets/960.css
     - public/stylesheets/template.css
     - public/stylesheets/nav.css

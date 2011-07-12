@@ -1,7 +1,3 @@
-<% content_for :javascript do %>
-  <%= include_javascripts :transformer_informations_index %>
-<% end %>
-
 <%= form_for :station do |f| -%>
 <div class="grid_3">
   <%= f.label(:station, "เขต")%>
@@ -105,3 +101,5 @@
 </div>
 </div>
 </div>
+
+<%= include_javascripts :transformer_informations_index %>

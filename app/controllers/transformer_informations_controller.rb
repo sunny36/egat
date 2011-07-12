@@ -25,7 +25,7 @@ class TransformerInformationsController < ApplicationController
         transformers = Transformer.find_all_by_transformer_name_initials(names)
         @transformer_informations = TransformerInformation.find_all_by_transformers(transformers)
       else
-        @transformer_informations = TransformerInformation.all
+        @transformer_informations = TransformerInformation.includes(:transformer => [:brand]).all
       end 
       
     end

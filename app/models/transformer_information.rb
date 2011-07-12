@@ -58,12 +58,11 @@ class TransformerInformation < ActiveRecord::Base
   before_create :update_recent
 
   def self.find_all_by_transformers(transformers)
-    self.most_recent.
-      where("transformer_id in (?)", transformers.collect { |t| t.id }).all
+    self.most_recent.where("transformer_id in (?)", transformers.collect { |t| t.id }).all
   end
 
   def self.get_data_points
-    self.get_points(self.most_recent.order("id").all)
+    self.get_points(self.most_recent.order("id").includes(:transformer).all)
   end
 
   def self.get_data_points_by_transformers(transformers)
@@ -164,6 +163,7 @@ class TransformerInformation < ActiveRecord::Base
            (denominator).to_f * 100.to_f )
       ii = ii.round(2)
       Rails.cache.write("importance_index.#{self.transformer_id}", ii)
+      return ii
     end
 
     def denominator
@@ -172,12 +172,16 @@ class TransformerInformation < ActiveRecord::Base
     end
 
     def percent_hi
+      transformer = self.transformer
+      unless Rails.cache.fetch("overall_condition.#{transformer.id}").nil?
+        return Rails.cache.fetch("overall_condition.#{transformer.id}")
+      end
       percent_overall_health_index = (OverallCondition.percent_overall_health_index(Transformer.find(transformer_id)))
       if percent_overall_health_index.nil?
-       return 100 - overall_condition
-      else
-       percent_overall_health_index
+       percent_overall_health_index = 100 - overall_condition
       end
+      Rails.cache.write("overall_condition.#{transformer.id}", percent_overall_health_index)
+      return percent_overall_health_index
     end
 
     def importance

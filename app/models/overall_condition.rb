@@ -161,15 +161,11 @@ class OverallCondition < ActiveRecord::Base
   end
 
   def self.percent_overall_health_index(transformer)
-    unless Rails.cache.fetch("overall_condition.#{transformer.id}").nil?
-      return Rails.cache.fetch("overall_condition.#{transformer.id}")
-    end
     return nil if percent_hi_others(transformer) == nil && percent_hi_oltc(transformer) == nil
     overall_condition = (percent_hi_others(transformer) * 
                          OverallConditionWeight.where(:name => "others").first.weight.to_f / 100) +
                          (percent_hi_oltc(transformer) * 
                           OverallConditionWeight.where(:name => "oltc").first.weight.to_f / 100)
-    Rails.cache.write("overall_condition.#{transformer.id}", overall_condition)
     return overall_condition
   end
 end

@@ -1,3 +1,29 @@
 .grid_16 input {
   width: 20px;
 }
+th.headerSortUp { 
+    background-image: url(../img/asc.gif); 
+    background-color: #3399FF; 
+    background-repeat: no-repeat;
+  	background-position: center right;
+  	cursor: pointer;
+  	
+}
+th.headerSortDown { 
+    background-image: url(../img/desc.gif); 
+    background-color: #3399FF; 
+    background-repeat: no-repeat;
+  	background-position: center right;
+  	cursor: pointer;      	        
+}
+#yaxisLabel {
+  /* rotate -90 deg, not sure if a negative number is supported so I used 270 */
+  -moz-transform: rotate(270deg);
+  -moz-transform-origin: 50% 50%;
+  -webkit-transform: rotate(270deg);
+  -webkit-transform-origin: 50% 50%;
+  /* IE support too convoluted for the time I've got on my hands... */
+}
+#switchGraph{
+  padding-top: 200px;
+}
