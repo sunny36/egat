@@ -363,7 +363,7 @@ module OverallConditionsHelper
   end
 
   def color_span(value)
-    "<span style=\"padding:0px 40px 0px 40px; background:rgb(" + "#{value});\">" + "</span>"
+    "<span style=\"padding:0px 40px 0px 40px; background:rgb(" + "#{value});\">&nbsp;</span>"
   end
 
 end
