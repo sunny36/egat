@@ -59,7 +59,7 @@ class OverallCondition < ActiveRecord::Base
   end
 
   def self.percent_hi_others(transformer)
-    others_k = {:dga => 10, :load_history => 10, :power_factor => 10, :thermo_scan => 10, :oil_quality => 8, 
+    others_k = {:dga => 10, :load_history => 10, :power_factor => 10, :thermo_scan => 10, :oil_quality => 8,
                 :furan => 6, :general_condition => 1, :bushing_condition => 5, :surge_arrester => 3,
                 :conservator_tank => 1, :main_tank => 1, :hot_line_oil_filter => 1, :radiator_cooling_system => 2,
                 :transformer_control_cabinet => 1, :ngr => 1, :regulating_pt => 1}
@@ -82,7 +82,8 @@ class OverallCondition < ActiveRecord::Base
       denominator += (ThermoScanFactor.order("hi_factor DESC").first.hi_factor * others_k[:thermo_scan])
     end
     unless oil_quality_hi_factor(insulating_oil(transformer), oil_contamination(transformer)).blank?
-      numerator += (oil_quality_hi_factor(insulating_oil(transformer), oil_contamination(transformer)) * others_k[:oil_quality])
+      numerator += (oil_quality_hi_factor(insulating_oil(transformer), oil_contamination(transformer)) *
+                    others_k[:oil_quality])
       denominator += (OilQualityFactor.order("hi_factor DESC").first.hi_factor * others_k[:oil_quality])
     end
     unless furan_hi_factor(transformer).blank?
@@ -115,7 +116,7 @@ class OverallCondition < ActiveRecord::Base
     end
     unless visual_inspection.blank?
       numerator += (visual_inspection.radiator_cooling_system.hi_factor * others_k[:radiator_cooling_system])
-      denominator += (RadiatorCoolingSystemFactor.order("hi_factor DESC").first.hi_factor * 
+      denominator += (RadiatorCoolingSystemFactor.order("hi_factor DESC").first.hi_factor *
                       others_k[:radiator_cooling_system])
     end
     unless visual_inspection.blank?
@@ -145,7 +146,7 @@ class OverallCondition < ActiveRecord::Base
     end
     unless visual_inspection.blank?
       numerator += (visual_inspection.oltc_control_cabinet.hi_factor * others_oltc[:oltc_control_cabinet])
-      denominator += (OltcControlCabinetFactor.order("hi_factor DESC").first.hi_factor * 
+      denominator += (OltcControlCabinetFactor.order("hi_factor DESC").first.hi_factor *
                       others_oltc[:oltc_control_cabinet])
     end
     unless oltc_dga_hi_factor(transformer).blank?
@@ -153,7 +154,8 @@ class OverallCondition < ActiveRecord::Base
       denominator += (OltcDgaFactor.order("hi_factor DESC").first.hi_factor * others_oltc[:dga_of_oltc])
     end
     unless oltc_oil_quality_hi_factor(insulating_oil(transformer), oltc_oil_contamination(transformer)).blank?
-      numerator += (oltc_oil_quality_hi_factor(insulating_oil(transformer), oltc_oil_contamination(transformer)) * others_oltc[:oltc_oil_quality])
+      numerator += (oltc_oil_quality_hi_factor(insulating_oil(transformer), oltc_oil_contamination(transformer)) *
+                    others_oltc[:oltc_oil_quality])
       denominator += (OltcOilQualityFactor.order("hi_factor DESC").first.hi_factor * others_oltc[:oltc_oil_quality])
     end
     return nil if numerator == 0 && denominator == 0
@@ -161,11 +163,19 @@ class OverallCondition < ActiveRecord::Base
   end
 
   def self.percent_overall_health_index(transformer)
-    return nil if percent_hi_others(transformer) == nil && percent_hi_oltc(transformer) == nil
-    overall_condition = (percent_hi_others(transformer) * 
-                         OverallConditionWeight.where(:name => "others").first.weight.to_f / 100) +
-                         (percent_hi_oltc(transformer) * 
-                          OverallConditionWeight.where(:name => "oltc").first.weight.to_f / 100)
+    others = percent_hi_others(transformer)
+    oltc = percent_hi_oltc(transformer)
+    return nil if others == nil && oltc == nil
+    unless others.nil?
+      others_times_weight = others * OverallConditionWeight.where(:name => "others").first.weight.to_f / 100.0
+    else
+      others_times_weight = 0.0
+    end
+    unless oltc.nil?
+      oltc_times_weight = oltc * OverallConditionWeight.where(:name => "oltc").first.weight.to_f / 100.0
+    else oltc_times_weight = 0.0
+    end
+    overall_condition = others_times_weight + oltc_times_weight
     return overall_condition
   end
 end
