@@ -2,9 +2,7 @@ module OilInputHelper
   include TransformersHelper
 
   def javascript_includes
-    javascript_include_tag('jquery-ui-1.8.4.custom.min',
-                           'ext-jquery-adapter', 'ext-all',
-                           'jquery.url',
+    javascript_include_tag('jquery-ui-1.8.4.custom.min', 'ext-jquery-adapter', 'ext-all', 'jquery.url',
                            'controllers/oil_input')
   end
 
@@ -31,7 +29,7 @@ module OilInputHelper
 
   def delete_main_tank_dga_link(transformer, oil_dga)
     link_to('Delete', transformer_oil_dga_path(transformer, oil_dga),
-            :confirm => 'Are you sure?', :method => :delete, 
+            :confirm => 'Are you sure?', :method => :delete,
             :id => "main_tank_dga_delete", :class => 'delete')
   end
 
@@ -41,27 +39,24 @@ module OilInputHelper
   end
 
   def new_oltc_dga_link
-    link_to('Add', new_transformer_oltc_dga_path(@transformer), :class => 'add')
+    link_to('Add', new_transformer_oltc_dga_path(@transformer), class: 'add')
   end
 
   def edit_oltc_dga_link
     unless @oltc_dgas.blank?
-      link_to('Edit',
-              edit_transformer_oltc_dga_path(@transformer, @oltc_dgas.first),
-              :id => "oltc_dga_edit", :class => 'edit')
+      link_to('Edit', edit_transformer_oltc_dga_path(@transformer, @oltc_dgas.first), id: "oltc_dga_edit",
+              class: 'edit')
     else
-      link_to("Edit", "#", :class => "edit")
+      link_to("Edit", "#", class: "edit")
     end
   end
 
   def delete_oltc_dga_link
     unless @oltc_dgas.blank?
-      link_to('Delete',
-              transformer_oltc_dga_path(@transformer, @oil_dgas.first),
-              :confirm => 'Are you sure?', :method => :delete, 
-              :id => "oltc_dga_delete", :class => 'delete')
+      link_to('Delete', transformer_oltc_dga_path(@transformer, @oltc_dgas.first), confirm: 'Are you sure?',
+              method: :delete, id: "oltc_dga_delete", class: 'delete')
     else
-      link_to("Delete", "#", :class => "delete")
+      link_to("Delete", "#", class: "delete")
     end
   end
 
@@ -88,7 +83,7 @@ module OilInputHelper
     unless @furans.blank?
       link_to('Delete',
               transformer_furan_path(@transformer, @furans.first),
-              :confirm => 'Are you sure?', :method => :delete, 
+              :confirm => 'Are you sure?', :method => :delete,
               :id => "furan_delete", :class => 'delete')
     else
       link_to("Delete", "#", :class => "delete")
@@ -97,19 +92,19 @@ module OilInputHelper
 
   # Oil Contamination
   def oil_contamination_drop_down_list
-    collection_select(:oil_contamination, :id, @oil_contaminations, 
+    collection_select(:oil_contamination, :id, @oil_contaminations,
                       :id, :thai_test_date)
   end
 
   def new_oil_contamination_link
-    link_to('Add', new_transformer_oil_contamination_path(@transformer), 
+    link_to('Add', new_transformer_oil_contamination_path(@transformer),
             :class => 'add')
   end
 
   def edit_oil_contamination_link
     unless @oil_contaminations.blank?
       link_to('Edit',
-              edit_transformer_oil_contamination_path(@transformer, 
+              edit_transformer_oil_contamination_path(@transformer,
                                                       @oil_contaminations.first),
                                                       :id => "oil_contamination_edit", :class => 'edit')
     else
@@ -120,9 +115,9 @@ module OilInputHelper
   def delete_oil_contamination_link
     unless @oil_contaminations.blank?
       link_to('Delete',
-              transformer_oil_contamination_path(@transformer, 
+              transformer_oil_contamination_path(@transformer,
                                                  @oil_contaminations.first),
-                                                 :confirm => 'Are you sure?', :method => :delete, 
+                                                 :confirm => 'Are you sure?', :method => :delete,
                                                  :id => "oil_contamination_delete", :class => 'delete')
     else
       link_to("Delete", "#", :class => "delete")
@@ -131,12 +126,12 @@ module OilInputHelper
 
   # OLTC Oil Contamination
   def oltc_oil_contamination_drop_down_list
-    collection_select(:oltc_oil_contamination, :id, @oltc_oil_contaminations, 
+    collection_select(:oltc_oil_contamination, :id, @oltc_oil_contaminations,
                       :id, :thai_test_date)
   end
 
   def new_oltc_oil_contamination_link
-    link_to('Add', new_transformer_oltc_oil_contamination_path(@transformer), 
+    link_to('Add', new_transformer_oltc_oil_contamination_path(@transformer),
             :class => 'add')
   end
 
@@ -154,7 +149,7 @@ module OilInputHelper
     unless @oltc_oil_contaminations.blank?
       path = transformer_oltc_oil_contamination_path(
         @transformer, @oltc_oil_contaminations.first)
-      link_to('Delete', path, :confirm => 'Are you sure?', :method => :delete, 
+      link_to('Delete', path, :confirm => 'Are you sure?', :method => :delete,
               :id => "oltc_oil_contamination_delete", :class => 'delete')
     else
       link_to("Delete", "#", :class => "delete")
