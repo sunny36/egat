@@ -37,7 +37,7 @@ module OverallConditionsHelper
       " - "
     end
   end
-  
+
   def oltc_oil_contamination(type)
     unless @insulating_oil.blank? && @oltc_oil_contamination.blank?
       oltc_oil_quality = OltcOilQuality.new
@@ -54,7 +54,7 @@ module OverallConditionsHelper
       " - "
     end
   end
-  
+
   def oltc_dielectric_property(type)
     unless @insulating_oil.blank? && @oltc_oil_contamination.blank?
       oltc_oil_quality = OltcOilQuality.new
@@ -63,7 +63,7 @@ module OverallConditionsHelper
         return oltc_oil_quality.hi_factor(@insulating_oil, @oltc_oil_contamination, :oltc_dielectric_property)
       when :color
         return link_to(color_span(oltc_oil_quality.hi_factor_color(@insulating_oil, @oltc_oil_contamination, :oltc_dielectric_property)).html_safe,
-                       :controller => 'oltc_oil_qualities', :action => 'oltc_dielectric_properties', 
+                       :controller => 'oltc_oil_qualities', :action => 'oltc_dielectric_properties',
                        :transformer_id => @transformer.id)
       when :test_date
         return oltc_oil_quality.test_date(@insulating_oil, @oltc_oil_contamination)

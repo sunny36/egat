@@ -10,10 +10,10 @@ class TransformerInformationsController < ApplicationController
       elsif params[:transformer_id]
         transformer_id = params[:transformer_id]
         @data_points = TransformerInformation.get_data_points_by_transformer_id(transformer_id)
-        @data_points = @data_points.to_json        
+        @data_points = @data_points.to_json
       else
         @data_points = TransformerInformation.get_data_points
-      end      
+      end
     else
       if params[:transformer_ids]
         transformer_ids = params[:transformer_ids].split(',').map { |x| x.to_i }
@@ -26,15 +26,15 @@ class TransformerInformationsController < ApplicationController
         @transformer_informations = TransformerInformation.find_all_by_transformers(transformers)
       else
         @transformer_informations = TransformerInformation.includes(:transformer => [:brand]).all
-      end 
-      
+      end
+
     end
     respond_to do |format|
-      format.html 
+      format.html
       format.js { render :json => @data_points}
     end
   end
-  
+
   def show
     if request.xhr?
       @no_js = true
@@ -43,15 +43,15 @@ class TransformerInformationsController < ApplicationController
     end
     @transformer_information = TransformerInformation.find(params[:id])
     respond_to do |format|
-      format.html 
-    end    
+      format.html
+    end
   end
-  
+
   def new
     @transformer_information = TransformerInformation.new
     @transformer_information.build_load_pattern_per_year
   end
-  
+
   def create
     @transformer_information =
       TransformerInformation.new(params[:transformer_information])
@@ -62,11 +62,11 @@ class TransformerInformationsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @transformer_information = TransformerInformation.find(params[:id])
   end
-  
+
   def update
     @transformer_information = TransformerInformation.find(params[:id])
     if @transformer_information.update_attributes(params[:transformer_information])
@@ -76,7 +76,7 @@ class TransformerInformationsController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @transformer_information = TransformerInformation.find(params[:id])
     @transformer_information.destroy
@@ -89,17 +89,17 @@ class TransformerInformationsController < ApplicationController
       @transformer_information = TransformerInformation.find_by_transformer_id(params[:id])
     end
     respond_to do |format|
-      format.html 
-      format.js 
+      format.html
+      format.js
     end
   end
-  
-  def search 
+
+  def search
     if params[:transformer_id]
       @transformer_informations = TransformerInformation.find_all_by_transformer_id(params[:transformer_id])
     end
   end
-  
+
   def importance_and_risk_table
     if request.xhr?
       @no_js = true
@@ -108,8 +108,7 @@ class TransformerInformationsController < ApplicationController
     end
     @transformer_information = TransformerInformation.find(params[:id])
     respond_to do |format|
-      format.html 
-    end        
+      format.html
+    end
   end
-  
 end

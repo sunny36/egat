@@ -1,11 +1,11 @@
 Egat::Application.routes.draw do
-  
+
   resources :transformer_informations do
-    member do 
+    member do
       get 'importance_and_risk_table'
-      
+
     end
-    collection do      
+    collection do
       get 'search'
     end
   end
@@ -26,13 +26,13 @@ Egat::Application.routes.draw do
     collection do
       get 'search'
     end
-  end  
-  
+  end
+
   resources :transformers do
     resources :bushing_tests
     resources :aging_products
     resources :oil_input
-    resources :oil_dgas do 
+    resources :oil_dgas do
       collection do
         get :graph
       end
@@ -54,7 +54,7 @@ Egat::Application.routes.draw do
     resources :oltc_oil_contaminations
     resources :overall_conditions
     resources :insulating_oils
-    resources :visual_inspections do 
+    resources :visual_inspections do
       resources :general_conditions
       resources :bushing_conditions
       resources :load_histories
@@ -69,14 +69,14 @@ Egat::Application.routes.draw do
       resources :oltc_compartments
       resources :oltc_control_cabinets
       resources :thermo_scans
-    end    
+    end
     resources :electrical_tests
-    resources :power_factors    
+    resources :power_factors
   end
-  
 
 
-  
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -126,7 +126,7 @@ Egat::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "home#index"
+  root :to => "transformer_informations#index"
 
   # See how all your routes lay out with "rake routes"
 

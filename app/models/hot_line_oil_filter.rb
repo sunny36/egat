@@ -17,6 +17,8 @@ class HotLineOilFilter < ActiveRecord::Base
     visual_inspections.each do |visual_inspection|
       unless visual_inspection.hot_line_oil_filter.corrosion.nil? && visual_inspection.hot_line_oil_filter.pressure.nil?
         return visual_inspection.hot_line_oil_filter
+      else
+        return nil
       end
     end
   end

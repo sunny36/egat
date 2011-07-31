@@ -20,6 +20,8 @@ class Ngr < ActiveRecord::Base
       ngr = visual_inspection.ngr
       unless(ngr.base_status.nil? || ngr.ground_connector.nil? || ngr.ngr_status.nil? || ngr.pocelain_clean.nil?)
         return ngr
+      else
+        return nil
       end
     end
   end

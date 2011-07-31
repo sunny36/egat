@@ -6,6 +6,7 @@ class OverallConditionsController < ApplicationController
                                                 params[:transformer_id]).order("test_date DESC").first
     @thermo_scan = ThermoScan.most_recent(@transformer)
     @hot_line_oil_filter = HotLineOilFilter.most_recent(@transformer)
+    debugger
     @ngr = Ngr.most_recent(@transformer)
     @regulating_pt = RegulatingPt.most_recent(@transformer)
     @insulating_oil = InsulatingOil.most_recent(params[:transformer_id]).first
