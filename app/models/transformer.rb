@@ -42,7 +42,9 @@ class Transformer < ActiveRecord::Base
   has_many :visual_inspection
   has_many :insulating_oil
   has_many :winding_type
-  
+
+  delegate :name, :to => :brand, :prefix => true
+
   def self.find_all_by_transformer_name_initials(names)
     conditions = "transformer_name like ?"
     names[1..names.length].each { |name|
@@ -55,10 +57,10 @@ class Transformer < ActiveRecord::Base
 
   def self.find_by_id_or_transformer_name(id)
     if id.to_i > 0
-      transformer = Transformer.find_by_id(id) 
+      transformer = Transformer.find_by_id(id)
     else
       transformer = Transformer.find_by_id_or_transformer_name(id)
     end
   end
-  
+
 end

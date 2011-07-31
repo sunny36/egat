@@ -15,19 +15,17 @@ class Ngr < ActiveRecord::Base
   belongs_to :visual_inspection
 
   def self.most_recent(transformer)
-    visual_inspections =
-      VisualInspection.where("transformer_id = ?",
-                             transformer.id).order("test_date DESC")
+    visual_inspections = VisualInspection.where("transformer_id = ?", transformer.id).order("test_date DESC")
     visual_inspections.each do |visual_inspection|
       ngr = visual_inspection.ngr
-      unless(ngr.base_status.nil? || ngr.ground_connector.nil? ||
-             ngr.ngr_status.nil? || ngr.pocelain_clean.nil?)
+      unless(ngr.base_status.nil? || ngr.ground_connector.nil? || ngr.ngr_status.nil? || ngr.pocelain_clean.nil?)
         return ngr
       end
     end
   end
 
   def hi_factor
+    return nil if all_attributes_are_nil?
     NgrFactor.all.each do |i|
       i.end = 100 if i.end.nil?
       if percent_ngr_factor.round.between?(i.start, i.end)
@@ -37,6 +35,7 @@ class Ngr < ActiveRecord::Base
   end
 
   def percent_ngr_factor
+    return nil if all_attributes_are_nil?
     (numerator/denominator).to_f * 100.0
   end
 
@@ -57,6 +56,14 @@ class Ngr < ActiveRecord::Base
                 VisualInspectionCondition.weight(f, :ngrs)).to_f
       end
       return sum
+    end
+
+    def all_attributes_are_nil?
+      if self.base_status.nil? || self.ground_connector.nil? || self.ngr_status.nil? || self.pocelain_clean.nil?
+        return true
+      else
+        return false
+      end
     end
 
     def fields

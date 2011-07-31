@@ -20,8 +20,9 @@ class HotLineOilFilter < ActiveRecord::Base
       end
     end
   end
-  
+
   def hi_factor
+    return nil if self.corrosion.nil? || self.pressure.nil?
     HotLineOilFilterFactor.all.each do |i|
       i.end = 100 if i.end.nil?
       return i.hi_factor if percent_hot_line_oil_filter_factor.round.between?(i.start, i.end)
@@ -29,6 +30,7 @@ class HotLineOilFilter < ActiveRecord::Base
   end
 
   def percent_hot_line_oil_filter_factor
+    return nil if self.corrosion.nil? || self.pressure.nil?
     (numerator/denominator).to_f * 100.0
   end
 

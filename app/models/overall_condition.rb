@@ -110,7 +110,7 @@ class OverallCondition < ActiveRecord::Base
       numerator += (visual_inspection.main_tank.hi_factor * others_k[:main_tank])
       denominator += (MainTankFactor.order("hi_factor DESC").first.hi_factor * others_k[:main_tank])
     end
-    unless visual_inspection.blank?
+    unless visual_inspection.blank? || visual_inspection.hot_line_oil_filter.hi_factor.blank?
       numerator += (visual_inspection.hot_line_oil_filter.hi_factor * others_k[:hot_line_oil_filter])
       denominator += (HotLineOilFilterFactor.order("hi_factor DESC").first.hi_factor * others_k[:hot_line_oil_filter])
     end
@@ -124,11 +124,11 @@ class OverallCondition < ActiveRecord::Base
       denominator += (TransformerControlCabinetFactor.order("hi_factor DESC").first.hi_factor *
                       others_k[:transformer_control_cabinet])
     end
-    unless visual_inspection.blank?
+    unless visual_inspection.blank? || visual_inspection.ngr.hi_factor.blank?
       numerator += (visual_inspection.ngr.hi_factor * others_k[:ngr])
       denominator += (NgrFactor.order("hi_factor DESC").first.hi_factor * others_k[:ngr])
     end
-    unless visual_inspection.blank?
+    unless visual_inspection.blank? || visual_inspection.regulating_pt.hi_factor.blank?
       numerator += (visual_inspection.regulating_pt.hi_factor * others_k[:regulating_pt])
       denominator += (RegulatingPtFactor.order("hi_factor DESC").first.hi_factor * others_k[:regulating_pt])
     end

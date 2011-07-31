@@ -85,17 +85,17 @@ class OilQuality < ActiveRecord::Base
 
   def numerator(insulating_oil, oil_contamination)
     dielectric_breakdown_score_times_weight = dielectric_breakdown_score(insulating_oil) *
-    OilQuality.where('name = ?', 'xbar').first.weight.to_i
-    ift_score_times_weight = ift_score(oil_contamination) *
-    OilQuality.where('name = ?', 'ift').first.weight.to_i
-    nn_score_times_weight = nn_score(oil_contamination) *
-    OilQuality.where('name = ?', 'nn').first.weight.to_i
+                                              OilQuality.where('name = ?', 'xbar').first.weight.to_i
+    ift_score_times_weight = ift_score(oil_contamination) * OilQuality.where('name = ?', 'ift').first.weight.to_i
+    nn_score_times_weight = nn_score(oil_contamination) * OilQuality.where('name = ?', 'nn').first.weight.to_i
     water_content_score_times_weight = water_content_score(oil_contamination) *
-    OilQuality.where('name = ?', 'water_content').first.weight.to_i
-    color_score_times_weight = color_score(oil_contamination) *
-    OilQuality.where('name = ?', 'color').first.weight.to_i
-    (dielectric_breakdown_score_times_weight + ift_score_times_weight + nn_score_times_weight +
-     water_content_score_times_weight + color_score_times_weight).to_f
+                                       OilQuality.where('name = ?', 'water_content').first.weight.to_i
+    color_score_times_weight = color_score(oil_contamination) * OilQuality.where('name = ?', 'color').first.weight.to_i
+    (dielectric_breakdown_score_times_weight +
+     ift_score_times_weight +
+     nn_score_times_weight +
+     water_content_score_times_weight +
+     color_score_times_weight).to_f
   end
 
 
@@ -166,7 +166,7 @@ class OilQuality < ActiveRecord::Base
       oil_quality.u_end = 1000000 if oil_quality.u_end.nil?
       oil_quality.start = 0 if oil_quality.start.nil?
       oil_quality.end = 1000000 if oil_quality.end.nil?
-      if u.between?(oil_quality.u_start, oil_quality.u_end) && ift.between?(oil_quality.start, oil_quality.end)
+      if u.between?(oil_quality.u_start, oil_quality.u_end) && ift.round.between?(oil_quality.start, oil_quality.end)
         return oil_quality.score
       end
     end

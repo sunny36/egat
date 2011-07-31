@@ -2,40 +2,40 @@
   .grid_8
     %dt Transformer Name
     %dd
-      = " : " + transformer.transformer_name
+      = " : " + (transformer.transformer_name.nil? ? '-' : transformer.transformer_name)
   .grid_8
-    %dt Equipment No. 
+    %dt Equipment No.
     %dd
-      = " : " + transformer.egatsn
+      = " : " + (transformer.egatsn.nil? ? '-' : transformer.egatsn)
   .grid_8
     %dt MVA Rating
     %dd
-      = " : " + transformer.maxcapacity.to_s + " MVA"
+      = " : " + (transformer.maxcapacity.nil? ? '-' : transformer.maxcapacity.to_s + " MVA")
   .grid_8
-    %dt HV Rating 
+    %dt HV Rating
     %dd
-      = " : " + transformer.hv.to_s + " kV"
+      = " : " + (transformer.hv.nil? ? '-' : transformer.hv.to_s + " kV")
   .grid_8
-    %dt First Energized: 
+    %dt First Energized:
     %dd
-      = " : " + transformer.first_energize.strftime("%d/%m/%Y")
+      = " : " + (transformer.first_energize.nil? ? '-' : transformer.first_energize.strftime("%d/%m/%Y"))
   .grid_8
     %dt Manufacturer
     %dd
-      = " : " + transformer.brand.name
+      = " : " + (transformer.brand_name.nil? ? '-' : transformer.brand_name)
   .grid_8
-    %dt OLTC Manufacturer 
+    %dt OLTC Manufacturer
     %dd
-      = " : " + transformer.oltc_manufacturer
+      = " : " + (transformer.oltc_manufacturer.nil? ? '-' : transformer.oltc_manufacturer)
   .grid_8
-    %dt OLTC Type 
+    %dt OLTC Type
     %dd
-      = " : " + transformer.oltc_type
+      = " : " + (transformer.oltc_type.nil? ? '-' : transformer.oltc_type)
   .grid_8
     %dt Vectory Group
     %dd
-      = " : " + transformer.vector_group
+      = " : " + (transformer.vector_group.nil? ? '-' : transformer.vector_group)
   .grid_8
-    %dt Winding Type 
+    %dt Winding Type
     %dd
       = " : " + transformer_winding_type(transformer)
