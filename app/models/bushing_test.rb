@@ -1,5 +1,5 @@
 class BushingTest < ActiveRecord::Base
-  attr_accessor :h1_c1_percent_power_factor_avg, :h1_c1_percent_power_factor_cor, 
+  attr_accessor :h1_c1_percent_power_factor_avg, :h1_c1_percent_power_factor_cor,
                 :h1_c2_percent_power_factor_avg, :h1_c2_percent_power_factor_cor,
                 :h2_c1_percent_power_factor_avg, :h2_c1_percent_power_factor_cor,
                 :h2_c2_percent_power_factor_avg, :h2_c2_percent_power_factor_cor,
@@ -15,9 +15,9 @@ class BushingTest < ActiveRecord::Base
                 :x0_c2_percent_power_factor_avg, :x0_c2_percent_power_factor_cor,
                 :y1_c1_percent_power_factor_avg, :y1_c1_percent_power_factor_cor,
                 :y1_c2_percent_power_factor_avg, :y1_c2_percent_power_factor_cor,
-                :y2_c1_percent_power_factor_avg, :y2_c1_percent_power_factor_cor, 
+                :y2_c1_percent_power_factor_avg, :y2_c1_percent_power_factor_cor,
                 :y2_c2_percent_power_factor_avg, :y2_c2_percent_power_factor_cor,
-                :y3_c1_percent_power_factor_avg, :y3_c1_percent_power_factor_cor, 
+                :y3_c1_percent_power_factor_avg, :y3_c1_percent_power_factor_cor,
                 :y3_c2_percent_power_factor_avg, :y3_c2_percent_power_factor_cor
 
 
@@ -28,7 +28,7 @@ class BushingTest < ActiveRecord::Base
     def thai_test_date
       test_date.strftime("%d/%m/%Y")
     end
-    
+
 end
 
 # == Schema Information

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903121802) do
+ActiveRecord::Schema.define(:version => 20110903142717) do
 
   create_table "aging_product_factors", :force => true do |t|
     t.integer  "hi_factor"
@@ -165,6 +165,18 @@ ActiveRecord::Schema.define(:version => 20110903121802) do
     t.decimal "porcelain_status_lv",  :precision => 10, :scale => 0
     t.decimal "porcelain_status_tv",  :precision => 10, :scale => 0
     t.integer "visual_inspection_id"
+  end
+
+  create_table "bushing_test_conditions", :force => true do |t|
+    t.integer  "score"
+    t.string   "score_message"
+    t.string   "testing"
+    t.decimal  "start",         :precision => 10, :scale => 0
+    t.decimal  "end",           :precision => 10, :scale => 0
+    t.integer  "weight"
+    t.string   "color_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "bushing_tests", :force => true do |t|

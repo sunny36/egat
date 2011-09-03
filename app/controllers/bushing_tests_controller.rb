@@ -1,4 +1,10 @@
 class BushingTestsController < ApplicationController
+  
+  def index
+    @transformer = Transformer.find(params[:transformer_id])
+    @bushing_test = BushingTest.where(:transformer_id => params[:transformer_id]).order("test_date DESC").first
+  end
+
   def new
     @transformer = Transformer.find(params[:transformer_id])
     @bushing_test = BushingTest.new 
