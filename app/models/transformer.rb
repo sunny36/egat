@@ -42,6 +42,7 @@ class Transformer < ActiveRecord::Base
   has_many :visual_inspection
   has_many :insulating_oil
   has_many :winding_type
+  has_many :bushing_tests
 
   delegate :name, :to => :brand, :prefix => true
 

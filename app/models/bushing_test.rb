@@ -1,4 +1,6 @@
 class BushingTest < ActiveRecord::Base
+  belongs_to :transformer
+
   attr_accessor :h1_c1_percent_power_factor_avg, :h1_c1_percent_power_factor_cor,
                 :h1_c2_percent_power_factor_avg, :h1_c2_percent_power_factor_cor,
                 :h2_c1_percent_power_factor_avg, :h2_c1_percent_power_factor_cor,
@@ -27,6 +29,79 @@ class BushingTest < ActiveRecord::Base
 
     def thai_test_date
       test_date.strftime("%d/%m/%Y")
+    end
+
+    def percent_power_factor_average(phase, cap)
+      watt = self.send((phase + "_" + cap + "_" + "watt").to_sym)
+      current = self.send((phase + "_" + cap + "_" + "current").to_sym)
+      test_kv = self.send((phase + "_" + cap + "_" + "test_kv").to_sym)
+      (watt * 100.0) / (current * test_kv)
+    end
+
+    def percent_power_factor_cor_20c(phase)
+      self.percent_power_factor_average(phase, "c1") * self.cf
+    end
+
+    def percent_power_factor_cor_20c_score(phase)
+      bushing_test_conditions = BushingTestCondition.where(:testing => "pf_20c")
+      bushing_test_conditions.each do |i|
+        i.start = 0 if i.start.nil?
+        i.end = 1000000 if i.end.nil?
+        if percent_power_factor_cor_20c(phase).round(2).between?(i.start, i.end)
+          return i.score
+        end
+      end
+      return bushing_test_conditions.first.score
+    end
+    
+    def percent_power_factor_score(phase)
+      bushing_test_conditions = BushingTestCondition.where(:testing => "pf")
+      bushing_test_conditions.each do |i|
+        i.start = 0 if i.start.nil?
+        i.end = 1000000 if i.end.nil?
+        if percent_power_factor_average(phase, "c1").round(2).between?(i.start, i.end)
+          return i.score
+        end
+      end
+      return bushing_test_conditions.first.score
+    end
+    
+    def capacitance_score(phase, cap)
+      capacitance = self.send(("#{phase}_#{cap}_capacitance").to_sym)
+      capacitance_comm = self.class.where(:transformer_id => self.transformer_id).where(:test_type => "Commissoning").order("test_date DESC").first
+      unless capacitance_comm.nil?
+        capacitance_comm = capacitance_comm.send(("#{phase}_#{cap}_capacitance").to_sym)
+      else
+        capacitance_comm = capacitance
+      end
+      max = [capacitance, capacitance_comm].max
+      min = [capacitance, capacitance_comm].min
+      percent_capacitance = ((max.to_f - min.to_f) / min.to_f) * 100
+      bushing_test_conditions = BushingTestCondition.where(:testing => cap)
+      bushing_test_conditions.each do |i|
+        i.start = 0 if i.start.nil?
+        i.end = 1000000 if i.end.nil?
+        if capacitance.between?(i.start, i.end)
+          return i.score
+        end
+      end
+      #return bushing_test_conditions.first.score
+    end
+    
+    def percent_bushing_factor(phase)
+      percent_power_factor_cor_20c_weight = BushingTestCondition.where(:testing => "pf_20c").first.weight
+      percent_power_factor_weight = BushingTestCondition.where(:testing => "pf").first.weight
+      c1_weight = BushingTestCondition.where(:testing => "c1").first.weight
+      c2_weight = BushingTestCondition.where(:testing => "c1").first.weight
+      numerator = (percent_power_factor_cor_20c_score(phase).to_f * percent_power_factor_cor_20c_weight.to_f) + 
+                  (percent_power_factor_score(phase).to_f         * percent_power_factor_weight.to_f) + 
+                  (capacitance_score(phase, "c1").to_f            * c1_weight.to_f) + 
+                  (capacitance_score(phase, "c2").to_f            * c2_weight.to_f)
+      denominator = (BushingTestCondition.where(:testing => "pf_20c").order("score DESC").first.score * percent_power_factor_cor_20c_weight) +
+                    (BushingTestCondition.where(:testing => "pf").order("score DESC").first.score * percent_power_factor_cor_20c_weight) +
+                    (BushingTestCondition.where(:testing => "c1").order("score DESC").first.score * percent_power_factor_cor_20c_weight) +
+                    (BushingTestCondition.where(:testing => "c2").order("score DESC").first.score * percent_power_factor_cor_20c_weight)
+      (numerator.to_f / denominator.to_f) * 100.0
     end
 
 end

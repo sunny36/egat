@@ -171,8 +171,8 @@ ActiveRecord::Schema.define(:version => 20110903142717) do
     t.integer  "score"
     t.string   "score_message"
     t.string   "testing"
-    t.decimal  "start",         :precision => 10, :scale => 0
-    t.decimal  "end",           :precision => 10, :scale => 0
+    t.float    "start"
+    t.float    "end"
     t.integer  "weight"
     t.string   "color_id"
     t.datetime "created_at"

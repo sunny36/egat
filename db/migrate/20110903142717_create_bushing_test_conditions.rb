@@ -4,8 +4,8 @@ class CreateBushingTestConditions < ActiveRecord::Migration
       t.integer :score
       t.string :score_message
       t.string :testing
-      t.decimal :start
-      t.decimal :end
+      t.float :start
+      t.float :end
       t.integer :weight
       t.string :color_id
       t.timestamps
