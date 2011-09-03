@@ -103,6 +103,16 @@ class BushingTest < ActiveRecord::Base
                     (BushingTestCondition.where(:testing => "c2").order("score DESC").first.score * percent_power_factor_cor_20c_weight)
       (numerator.to_f / denominator.to_f) * 100.0
     end
+    
+    def health_index_factor(phase)
+      BushingTestFactor.all.each do |i|
+        i.start = 0 if i.start.nil?
+        i.end = 1000000 if i.end.nil?
+        if percent_bushing_factor(phase).round.between?(i.start, i.end)
+          return i.hi_factor
+        end
+      end
+    end
 
 end
 

@@ -30,18 +30,30 @@
       <tr>
         <td>H1</td>
         <td><%= number_with_precision(@bushing_test.percent_bushing_factor("h1"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("h1") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("h1")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
       </tr>
       <tr>
         <td>H2</td>
         <td><%= number_with_precision(@bushing_test.percent_bushing_factor("h2"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("h2") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("h2")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
       </tr>
       <tr>
         <td>H3</td>
         <td><%= number_with_precision(@bushing_test.percent_bushing_factor("h3"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("h3") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("h3")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
       </tr>
       <tr>
         <td>H4</td>
         <td><%= number_with_precision(@bushing_test.percent_bushing_factor("h0"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("h0") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("h0")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
       </tr>
     </tbody>
   </table>
