@@ -37,10 +37,32 @@ BushingTest.setupDatePicker = function(id) {
   $(id).datepicker({dateFormat: 'dd/mm/yy', buttonImage: "images/icon_calendar.gif"});	  
 };
 
+BushingTest.computePowerFactor = function() {
+  $('.test-kv, .current, .watt').blur(function() {
+    var prefix = $(this).attr("id");
+    prefix = prefix.split("_");
+    prefix = prefix[0] + "_" + prefix[1] + "_" + prefix[2] + "_" + prefix[3];
+    var watt = parseInt($("#" + prefix + "_" + "watt").val(), 10);
+    var current = parseInt($("#" + prefix + "_" + "current").val(), 10);
+    var testKv = parseInt($("#" + prefix + "_" + "test_kv").val(), 10);
+    var cf = parseInt($("#bushing_test_cf").val(), 10);
+    if (!isNaN(watt) && !isNaN(current) && !isNaN(testKv)) {
+      var percentPowerFactorAverage = (watt * 100) / (current * testKv);
+      $("#" + prefix + "_" + "percent_power_factor_avg").val(percentPowerFactorAverage);
+      if(!isNaN(cf)) {
+        var percentPowerFactorCor20C = percentPowerFactorAverage * cf;
+        $("#" + prefix + "_" + "percent_power_factor_cor").val(percentPowerFactorCor20C);
+      }
+    }
+  });
+};
+
 $(function() {
   if ($('#bushing_test_test_date').length > 0) {
     BushingTest.setupDatePicker('#bushing_test_test_date');
   }
 	
   BushingTest.setupTransformerNameComboxBox('bushing_test_transformer_id');
+
+  BushingTest.computePowerFactor();
 });

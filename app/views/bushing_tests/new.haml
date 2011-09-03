@@ -25,6 +25,12 @@
       %table
         %thead
           %tr
+            %th{:colspan => 7} &nbsp;
+            %th
+              = f.label :cf, "CF"
+            %th
+              = f.text_field :cf, :class => "cf"
+          %tr
             %th PHASE
             %th
               BUSHING

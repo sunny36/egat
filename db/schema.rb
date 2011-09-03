@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704192336) do
+ActiveRecord::Schema.define(:version => 20110903121802) do
 
   create_table "aging_product_factors", :force => true do |t|
     t.integer  "hi_factor"
@@ -306,6 +306,7 @@ ActiveRecord::Schema.define(:version => 20110704192336) do
     t.string   "y3_c2_remark"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "cf",                  :precision => 10, :scale => 0
   end
 
   add_index "bushing_tests", ["transformer_id"], :name => "index_bushing_tests_on_transformer_id"

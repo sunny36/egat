@@ -27,3 +27,7 @@ label.inline {
 input[type="submit"].cupid-green, button.cupid-green {
   width: 960px;
 }
+
+.cf {
+  width: 100px !important;
+}
