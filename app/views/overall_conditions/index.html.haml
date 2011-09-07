@@ -16,10 +16,10 @@
           %td= hi_factor(@oil_dgas.first)
           %td= oil_dga_factor_color
           %td= oil_dga_test_date
-        - else 
+        - else
           %td -
           %td -
-          %td -        
+          %td -
       %tr
         %td  2
         %td Load History
@@ -37,7 +37,7 @@
         %td Thermo Scan
         %td= hi_factor(@thermo_scan)
         %td= thermo_scan_factor_color(@thermo_scan, @transformer)
-        - unless @thermo_scan.blank?                                                
+        - unless @thermo_scan.blank?
           %td= recent_date(@thermo_scan.visual_inspection)
         - else
           %td -
@@ -91,7 +91,7 @@
         %td Conservator Tank
         - unless @visual_inspection.blank?
           %td= hi_factor(@visual_inspection.conservator_tank)
-          %td= conservator_tank_factor_color(@visual_inspection, @transformer)                                                    
+          %td= conservator_tank_factor_color(@visual_inspection, @transformer)
           %td= recent_date(@visual_inspection)
         - else
           %td -
@@ -102,20 +102,20 @@
         %td Main Tank
         - unless @visual_inspection.blank?
           %td= hi_factor(@visual_inspection.main_tank)
-          %td= main_tank_factor_color(@visual_inspection, @transformer)                                                    
+          %td= main_tank_factor_color(@visual_inspection, @transformer)
           %td= recent_date(@visual_inspection)
         - else
           %td -
           %td -
           %td -
       %tr
-        %td  12        
+        %td  12
         %td Hot Line Oil Filter
         %td= hi_factor(@hot_line_oil_filter)
         %td= hot_line_oil_filter_factor_color
         - unless @hot_line_oil_filter.blank?
           %td= recent_date(@hot_line_oil_filter.visual_inspection)
-        - else 
+        - else
           %td -
       %tr
         %td  13
@@ -124,7 +124,7 @@
           %td= hi_factor(@visual_inspection.radiator_cooling_system)
           %td
             = radiator_cooling_system_factor_color(@visual_inspection, |
-              @transformer)                                            |   
+              @transformer)                                            |
           %td= recent_date(@visual_inspection)
         - else
           %td -
@@ -137,7 +137,7 @@
           %td= hi_factor(@visual_inspection.transformer_control_cabinet)
           %td
             = transformer_control_cabinet_factor_color(@visual_inspection, |
-            @transformer)                                            |   
+            @transformer)                                            |
           %td= recent_date(@visual_inspection)
         - else
           %td -
@@ -148,25 +148,25 @@
         %td NGR
         %td= hi_factor(@ngr)
         %td= ngr_factor_color(@ngr, @transformer)
-        - unless @ngr.blank?                                            
+        - unless @ngr.blank?
           %td= recent_date(@ngr.visual_inspection)
-        - else 
+        - else
           %td -
       %tr
         %td  16
         %td Regulating PT
         %td= hi_factor(@regulating_pt)
-        %td= regulating_pt_factor_color                                           
+        %td= regulating_pt_factor_color
         - unless @regulating_pt.blank?
           %td= recent_date(@regulating_pt.visual_inspection)
-        - else 
+        - else
           %td -
       %tr
         %td  17
         %td OLTC Compartment
         - unless @visual_inspection.blank?
           %td= hi_factor(@visual_inspection.oltc_compartment)
-          %td= oltc_compartment_factor_color(@visual_inspection, @transformer)                                            
+          %td= oltc_compartment_factor_color(@visual_inspection, @transformer)
           %td= recent_date(@visual_inspection)
         - else
           %td -
@@ -178,12 +178,12 @@
         - unless @visual_inspection.blank?
           %td= hi_factor(@visual_inspection.oltc_control_cabinet)
           %td= oltc_control_cabinet_factor_color(@visual_inspection, |
-                @transformer)                                            
+                @transformer)
           %td= recent_date(@visual_inspection)
         - else
           %td -
           %td -
-          %td - 
+          %td -
       %tr
         %td 19
         %td  DGA of OLTC
@@ -196,7 +196,7 @@
         %td= oltc_oil_quality :hi_factor
         %td= oltc_oil_quality :color
         %td= oltc_oil_quality :test_date
-        
+
 = render :partial => 'oil_output'
 = render :partial => 'oltc_output'
 = render :partial => 'bushing_test'

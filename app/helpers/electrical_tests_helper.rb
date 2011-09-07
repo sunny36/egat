@@ -52,7 +52,32 @@ module ElectricalTestsHelper
   def delete_bushing_test_link
     unless @bushing_tests.blank?
       link_to('Delete', transformer_bushing_test_path(@transformer, @bushing_tests.first), confirm: 'Are you sure?', 
-              method: :delete, class: 'edit')
+              method: :delete, class: 'delete')
+    else
+      link_to('Delete', "#", :class => "delete")
+    end
+  end
+
+  def arrester_drop_down_list
+    collection_select(:arrester, :id, @arresters, :id, :thai_test_date)
+  end
+
+  def new_arrester_link
+    link_to('Add', new_transformer_arrester_path(@transformer), class: 'add')
+  end
+  
+  def edit_arrester_link
+    unless @arresters.blank?
+      link_to('Edit', edit_transformer_arrester_path(@transformer, @arresters.first), class: 'edit')
+    else
+      link_to("Edit", "#", :class => "edit")
+    end
+  end
+  
+  def delete_arrester_link
+    unless @arresters.blank?
+      link_to('Delete', transformer_arrester_path(@transformer, @arresters.first), confirm: 'Are you sure?', 
+              method: :delete, class: 'delete')
     else
       link_to('Delete', "#", :class => "delete")
     end

@@ -28,5 +28,15 @@
       = new_bushing_test_link
       - unless @bushing_tests.blank?
         = edit_bushing_test_link
-        = delete_insulating_oil_link(@transformer, @bushing_tests.first)
+        = delete_bushing_test_link
+  .clear
+  %br
+  #arrester
+    .grid_8
+      = label 'arrester', 'Arrester'
+      = arrester_drop_down_list
+      = new_arrester_link
+      - unless @arresters.blank?
+        = edit_arrester_link
+        = delete_arrester_link
 

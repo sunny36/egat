@@ -36,4 +36,26 @@ class ArrestersController < ApplicationController
       }
     end
   end
+  
+  def edit
+    @transformer = Transformer.find(params[:transformer_id])
+    @arrester = Arrester.find(params[:id])
+  end
+  
+  def update
+    @transformer = Transformer.find(params[:transformer_id])
+    @arrester = Arrester.find(params[:id])
+    respond_to do |format|
+      if @arrester.update_attributes(params[:arrester])
+        format.html {
+          redirect_to(transformer_electrical_tests_path(@transformer), 
+                      :notice => 'Arrester was successfully updated.')
+        }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+  end
+  
+  
 end
