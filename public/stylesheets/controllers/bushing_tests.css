@@ -31,3 +31,7 @@ input[type="submit"].cupid-green, button.cupid-green {
 .cf {
   width: 100px !important;
 }
+
+table {
+  width: auto;
+}

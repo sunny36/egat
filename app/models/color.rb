@@ -9,6 +9,7 @@ class Color < ActiveRecord::Base
   has_many :oltc_oil_contamination_factors
   has_many :oltc_dielectric_property_factors
   has_many :bushing_test_factors
+  has_many :bushing_test_conditions
 end
 
 # == Schema Information

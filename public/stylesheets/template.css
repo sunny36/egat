@@ -105,12 +105,12 @@ a {
 /* Table styling */
 
 table {
-	width:100%;
+  width:100%;
 }
 
 th, td {
-	padding:7px 15px;
-	text-align:left;
+  padding:7px 15px;
+  text-align:left;
 }
 
 /* Header */

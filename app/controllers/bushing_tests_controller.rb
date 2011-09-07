@@ -2,7 +2,21 @@ class BushingTestsController < ApplicationController
   
   def index
     @transformer = Transformer.find(params[:transformer_id])
-    @bushing_test = BushingTest.where(:transformer_id => params[:transformer_id]).order("test_date DESC").first
+    @bushing_tests = BushingTest.where(:transformer_id => params[:transformer_id]).order("test_date DESC") 
+    @bushing_test = @bushing_tests.first
+    respond_to do |format|
+      format.html
+      ActiveRecord::Base.include_root_in_json = false
+      format.js { render :json => @bushing_tests.to_json(:methods => [:test_date_for_floth, 
+                                                                      :h1_c1_percent_power_factor_cor,
+                                                                      :h2_c1_percent_power_factor_cor,
+                                                                      :h3_c1_percent_power_factor_cor,
+                                                                      :h0_c1_percent_power_factor_cor,
+                                                                      :h1_c2_percent_power_factor_avg,
+                                                                      :h2_c2_percent_power_factor_avg,
+                                                                      :h3_c2_percent_power_factor_avg,
+                                                                      :h0_c2_percent_power_factor_avg]) }
+    end
   end
 
   def new

@@ -28,8 +28,10 @@ Egat::Application.routes.draw do
     end
   end
 
+  
   resources :transformers do
     resources :bushing_tests
+    resources :bushing_test_conditions
     resources :aging_products
     resources :oil_input
     resources :oil_dgas do
