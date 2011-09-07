@@ -11,6 +11,8 @@ class BushingTest < ActiveRecord::Base
                 :h0_c2_percent_power_factor_avg, :h0_c2_percent_power_factor_cor,
                 :x1_c1_percent_power_factor_avg, :x1_c1_percent_power_factor_cor,
                 :x1_c2_percent_power_factor_avg, :x1_c2_percent_power_factor_cor,
+                :x2_c1_percent_power_factor_avg, :x2_c1_percent_power_factor_cor,
+                :x2_c2_percent_power_factor_avg, :x2_c2_percent_power_factor_cor,
                 :x3_c1_percent_power_factor_avg, :x3_c1_percent_power_factor_cor,
                 :x3_c2_percent_power_factor_avg, :x3_c2_percent_power_factor_cor,
                 :x0_c1_percent_power_factor_avg, :x0_c1_percent_power_factor_cor,

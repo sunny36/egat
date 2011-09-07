@@ -1,0 +1,26 @@
+.grid_16
+  %h2 Bushing Test
+  .grid_11
+    %table
+      %thead
+        %tr
+          %th Arrester
+          %th Health Index Factor
+          %th Condition
+          %th ข้อมูลล่าสุดที่ถูกบันทึก
+      %tbody
+        %tr
+          %td HV Bushing
+          %td= bushing_test(:hi_factor, "h")
+          %td= bushing_test(:color, "h")
+          %td= @bushing_test.thai_test_date
+        %tr
+          %td LV Bushing
+          %td= bushing_test(:hi_factor, "x")
+          %td= bushing_test(:color, "x")
+          %td= @bushing_test.thai_test_date
+        %tr
+          %td TV Bushing
+          %td= bushing_test(:hi_factor, "y")
+          %td= bushing_test(:color, "y")
+          %td= @bushing_test.thai_test_date

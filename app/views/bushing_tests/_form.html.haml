@@ -1,0 +1,458 @@
+= error_messages_for :insulating_oil, :header_message => "Please Try Again!", :class => 'error'
+#new_insulating_oil
+  = form_for [@transformer, @bushing_test] do |f|
+    .prefix_6.grid_4.suffix_6
+      %p
+        = f.label :transformer_id, "หม้อแปลงไฟฟ้า"
+        = transformer_names_drop_down_list(f, :transformer_id)
+    .grid_16
+      .grid_5
+        %p
+          = f.label :test_type, 'วาระการตรวจสอบ', {:class => "inline"}
+          = f.select(:test_type, ["Commissioning", "6 months", "Others"])
+      .grid_5
+        %p
+          = f.label :test_date, 'วันท่ีตรวจสอบ', {:class => "inline"}
+          = f.text_field :test_date
+      .grid_5
+        %p
+          = f.label :work_order, 'เลขที่ใบสั่งงาน', {:class => "inline"}
+          = f.text_field :work_order
+    .clear
+      &nbsp;
+    %hr
+    .grid_16
+      %table
+        %thead
+          %tr
+            %th{:colspan => 7} &nbsp;
+            %th
+              = f.label :cf, "CF"
+            %th
+              = f.text_field :cf, :class => "cf"
+          %tr
+            %th PHASE
+            %th
+              BUSHING
+              %br SERIAL NO.
+            %th TEST kV
+            %th
+              CURRENT
+              %br (mA)
+            %th WATT
+            %th{:colspan => 2} %POWER FACTOR
+            %th
+              CAPACITANCE
+              %br (pF)
+            %th REMARK
+          %tr
+            %th &nbsp;
+            %th &nbsp;
+            %th &nbsp;
+            %th AVG.
+            %th AVG
+            %th AVG
+            %th COR 20C
+            %th AVG.
+            %th &nbsp;
+        %tbody
+          %tr
+            %td H1:C1
+            %td
+              = f.text_field :h1_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h1_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :h1_c1_current, :class => 'current'
+            %td
+              = f.text_field :h1_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :h1_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :h1_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :h1_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h1_c1_remark, :class => 'remark'
+          %tr
+            %td H1:C2
+            %td
+              = f.text_field :h1_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h1_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :h1_c2_current, :class => 'current'
+            %td
+              = f.text_field :h1_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :h1_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              &nbsp;
+            %td
+              = f.text_field :h1_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h1_c2_remark, :class => 'remark'
+          %tr
+            %td H2:C1
+            %td
+              = f.text_field :h2_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h2_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :h2_c1_current, :class => 'current'
+            %td
+              = f.text_field :h2_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :h2_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :h2_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :h2_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h2_c1_remark, :class => 'remark'
+          %tr
+            %td H2:C2
+            %td
+              = f.text_field :h2_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h2_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :h2_c2_current, :class => 'current'
+            %td
+              = f.text_field :h2_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :h2_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              &nbsp;
+            %td
+              = f.text_field :h2_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h2_c2_remark, :class => 'remark'
+          %tr
+            %td H3:C1
+            %td
+              = f.text_field :h3_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h3_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :h3_c1_current, :class => 'current'
+            %td
+              = f.text_field :h3_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :h3_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :h3_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :h3_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h3_c1_remark, :class => 'remark'
+          %tr
+            %td H3:C2
+            %td
+              = f.text_field :h3_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h3_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :h3_c2_current, :class => 'current'
+            %td
+              = f.text_field :h3_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :h3_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              &nbsp;
+            %td
+              = f.text_field :h3_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h3_c2_remark, :class => 'remark'
+          %tr
+            %td H0:C1
+            %td
+              = f.text_field :h0_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h0_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :h0_c1_current, :class => 'current'
+            %td
+              = f.text_field :h0_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :h0_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :h0_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :h0_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h0_c1_remark, :class => 'remark'
+          %tr
+            %td H0:C2
+            %td
+              = f.text_field :h0_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :h0_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :h0_c2_current, :class => 'current'
+            %td
+              = f.text_field :h0_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :h0_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :h0_c2_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :h0_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :h0_c2_remark, :class => 'remark'
+          %tr
+            %td X1:C1
+            %td
+              = f.text_field :x1_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :x1_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :x1_c1_current, :class => 'current'
+            %td
+              = f.text_field :x1_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :x1_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :x1_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :x1_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :x1_c1_remark, :class => 'remark'
+          %tr
+            %td X1:C2
+            %td
+              = f.text_field :x1_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :x1_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :x1_c2_current, :class => 'current'
+            %td
+              = f.text_field :x1_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :x1_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :x1_c2_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :x1_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :x1_c2_remark, :class => 'remark'
+            %tr
+              %td X1:C1
+              %td
+                = f.text_field :x2_c1_serial_number, :class => 'serial-number'
+              %td
+                = f.text_field :x2_c1_test_kv, :value => 10, :class => 'test-kv'
+              %td
+                = f.text_field :x2_c1_current, :class => 'current'
+              %td
+                = f.text_field :x2_c1_watt, :class => 'watt'
+              %td
+                = f.text_field :x2_c1_percent_power_factor_avg, :class => 'power-factor'
+              %td
+                = f.text_field :x2_c1_percent_power_factor_cor, :class => 'power-factor'
+              %td
+                = f.text_field :x2_c1_capacitance, :class => 'capacitance'
+              %td
+                = f.text_field :x2_c1_remark, :class => 'remark'
+            %tr
+              %td X1:C2
+              %td
+                = f.text_field :x2_c2_serial_number, :class => 'serial-number'
+              %td
+                = f.text_field :x2_c2_test_kv, :value => 2, :class => 'test-kv'
+              %td
+                = f.text_field :x2_c2_current, :class => 'current'
+              %td
+                = f.text_field :x2_c2_watt, :class => 'watt'
+              %td
+                = f.text_field :x2_c2_percent_power_factor_avg, :class => 'power-factor'
+              %td
+                = f.text_field :x2_c2_percent_power_factor_cor, :class => 'power-factor'
+              %td
+                = f.text_field :x2_c2_capacitance, :class => 'capacitance'
+              %td
+                = f.text_field :x2_c2_remark, :class => 'remark'
+          %tr
+            %td X3:C1
+            %td
+              = f.text_field :x3_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :x3_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :x3_c1_current, :class => 'current'
+            %td
+              = f.text_field :x3_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :x3_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :x3_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :x3_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :x3_c1_remark, :class => 'remark'
+          %tr
+            %td X3:C2
+            %td
+              = f.text_field :x3_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :x3_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :x3_c2_current, :class => 'current'
+            %td
+              = f.text_field :x3_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :x3_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :x3_c2_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :x3_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :x3_c2_remark, :class => 'remark'
+          %tr
+            %td X0:C1
+            %td
+              = f.text_field :x0_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :x0_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :x0_c1_current, :class => 'current'
+            %td
+              = f.text_field :x0_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :x0_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :x0_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :x0_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :x0_c1_remark, :class => 'remark'
+          %tr
+            %td X0:C2
+            %td
+              = f.text_field :x0_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :x0_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :x0_c2_current, :class => 'current'
+            %td
+              = f.text_field :x0_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :x0_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :x0_c2_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :x0_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :x0_c2_remark, :class => 'remark'
+          %tr
+            %td Y1:C1
+            %td
+              = f.text_field :y1_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :y1_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :y1_c1_current, :class => 'current'
+            %td
+              = f.text_field :y1_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :y1_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :y1_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :y1_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :y1_c1_remark, :class => 'remark'
+          %tr
+            %td Y1:C2
+            %td
+              = f.text_field :y1_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :y1_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :y1_c2_current, :class => 'current'
+            %td
+              = f.text_field :y1_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :y1_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :y1_c2_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :y1_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :y1_c2_remark, :class => 'remark'
+          %tr
+            %td Y2:C1
+            %td
+              = f.text_field :y2_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :y2_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :y2_c1_current, :class => 'current'
+            %td
+              = f.text_field :y2_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :y2_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :y2_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :y2_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :y2_c1_remark, :class => 'remark'
+          %tr
+            %td Y2:C2
+            %td
+              = f.text_field :y2_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :y2_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :y2_c2_current, :class => 'current'
+            %td
+              = f.text_field :y2_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :y2_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :y2_c2_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :y2_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :y2_c2_remark, :class => 'remark'
+          %tr
+            %td Y3:C1
+            %td
+              = f.text_field :y3_c1_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :y3_c1_test_kv, :value => 10, :class => 'test-kv'
+            %td
+              = f.text_field :y3_c1_current, :class => 'current'
+            %td
+              = f.text_field :y3_c1_watt, :class => 'watt'
+            %td
+              = f.text_field :y3_c1_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :y3_c1_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :y3_c1_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :y3_c1_remark, :class => 'remark'
+          %tr
+            %td Y3:C2
+            %td
+              = f.text_field :y3_c2_serial_number, :class => 'serial-number'
+            %td
+              = f.text_field :y3_c2_test_kv, :value => 2, :class => 'test-kv'
+            %td
+              = f.text_field :y3_c2_current, :class => 'current'
+            %td
+              = f.text_field :y3_c2_watt, :class => 'watt'
+            %td
+              = f.text_field :y3_c2_percent_power_factor_avg, :class => 'power-factor'
+            %td
+              = f.text_field :y3_c2_percent_power_factor_cor, :class => 'power-factor'
+            %td
+              = f.text_field :y3_c2_capacitance, :class => 'capacitance'
+            %td
+              = f.text_field :y3_c2_remark, :class => 'remark'
+    .grid_16
+      %p
+        = f.submit "Save", :disable_with => 'Saveing...',  :class => "cupid-green"
+        

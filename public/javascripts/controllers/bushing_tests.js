@@ -118,11 +118,37 @@ BushingTest.plotPowerFactorAvg = function(bushingTests, markings, graphId) {
     points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i].h3_c2_percent_power_factor_avg]);
     points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i].h0_c2_percent_power_factor_avg]);
   }
-  BushingTest.powerFactorAvgPoints.h1 = points.h1;
-  BushingTest.powerFactorAvgPoints.h2 = points.h2;
-  BushingTest.powerFactorAvgPoints.h3 = points.h3;
-  BushingTest.powerFactorAvgPoints.h0 = points.h0;
   BushingTest.plotGraph(points, markings, graphId, 'Power Factor');
+};
+
+BushingTest.plotCapacitance1 = function(bushingTests, markings, graphId) {
+  var points = { };
+  points.h1 = [];
+  points.h2 = [];
+  points.h3 = [];
+  points.h0 = [];
+  for (var i = 0; i < bushingTests.length; ++i) {
+    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
+    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
+    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
+    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
+  }
+  BushingTest.plotGraph(points, markings, graphId, '%Capacitance (C1)');
+};
+
+BushingTest.plotCapacitance2 = function(bushingTests, markings, graphId) {
+  var points = { };
+  points.h1 = [];
+  points.h2 = [];
+  points.h3 = [];
+  points.h0 = [];
+  for (var i = 0; i < bushingTests.length; ++i) {
+    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
+    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
+    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
+    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
+  }
+  BushingTest.plotGraph(points, markings, graphId, '%Capacitance (C2)');
 };
 
 BushingTest.plotGraph = function (points, markings, graphId, yAxisLabel) {
@@ -185,6 +211,8 @@ BushingTest.loadAndPlot = function(testing, graphId) {
        var bushingTests = data;
        if (testing == 'pf_20c') { BushingTest.plotPowerFactorCor20C(bushingTests, markings, graphId); }
        if (testing == 'pf') { BushingTest.plotPowerFactorAvg(bushingTests, markings, graphId); }
+       if (testing == 'c1') { BushingTest.plotCapacitance1(bushingTests, markings, graphId); }
+       if (testing == 'c2') { BushingTest.plotCapacitance2(bushingTests, markings, graphId); }
     });
   });
 };
@@ -199,25 +227,40 @@ $(function() {
 
   BushingTest.computePowerFactor();
 
-  if ($("#power_factor_cor_20c_graph").length > 0) {
-    BushingTest.loadAndPlot('pf_20c', "#power_factor_cor_20c_graph");
-    $("#reset_power_factor_cor_20c").click(function () {
-      BushingTest.loadAndPlot('pf_20c', "#power_factor_cor_20c_graph");
+  if ($("#hv_power_factor_cor_20c_graph").length > 0) {
+    BushingTest.loadAndPlot('pf_20c', "#hv_power_factor_cor_20c_graph");
+    $("#reset_hv_power_factor_cor_20c").click(function () {
+      BushingTest.loadAndPlot('pf_20c', "#hv_power_factor_cor_20c_graph");
     });
   }
 
-  if ($("#power_factor_avg_graph").length > 0) {
-    BushingTest.loadAndPlot('pf', "#power_factor_avg_graph");
-    $("#reset_power_factor_cor_20c").click(function () {
-      BushingTest.loadAndPlot('pf', "#power_factor_avg_graph");
+  if ($("#hv_power_factor_avg_graph").length > 0) {
+    BushingTest.loadAndPlot('pf', "#hv_power_factor_avg_graph");
+    $("#reset_hv_power_factor_avg").click(function () {
+      BushingTest.loadAndPlot('pf', "#hv_power_factor_avg_graph");
+    });
+  }
+
+  if ($("#hv_c1_graph").length > 0) {
+    BushingTest.loadAndPlot('c1', "#hv_c1_graph");
+    $("#reset_hv_c1").click(function () {
+      BushingTest.loadAndPlot('c1', "#hv_c1_graph");
+    });
+  }
+
+  if ($("#hv_c1_graph").length > 0) {
+    BushingTest.loadAndPlot('c1', "#hv_c1_graph");
+    $("#reset_hv_c1").click(function () {
+      BushingTest.loadAndPlot('c1', "#hv_c1_graph");
+    });
+  }
+
+  if ($("#hv_c2_graph").length > 0) {
+    BushingTest.loadAndPlot('c1', "#hv_c2_graph");
+    $("#reset_hv_c2").click(function () {
+      BushingTest.loadAndPlot('c1', "#hv_c2_graph");
     });
   }
   
-  // if ($("#power_factor_avg_graph").length > 0) {
-  //   BushingTest.loadAndPlotPowerFactorAvg();
-  //   $("#reset_power_factor_avg").click(function () {
-  //     BushingTest.loadAndPlotPowerFactorAvg();
-  //   });
-  // }
   
 });

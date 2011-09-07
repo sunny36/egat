@@ -7,7 +7,18 @@ module OverallConditionsHelper
       " - "
     end
   end
-  
+
+  def bushing_test(type, phase)
+    min = [@bushing_test.health_index_factor(phase + "1"), @bushing_test.health_index_factor(phase + "2"), 
+           @bushing_test.health_index_factor(phase + "3")].min
+    case type
+    when :hi_factor
+      return min
+    when :color
+      link_to(color_span(BushingTestFactor.where(:hi_factor => min).first.color.value).html_safe, 
+              transformer_bushing_tests_path)
+    end
+  end  
   def arrester(type, phase)
     min = [@arrester.health_index_factor(phase + "1"), @arrester.health_index_factor(phase + "2"), 
            @arrester.health_index_factor(phase + "3")].min

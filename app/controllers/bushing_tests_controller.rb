@@ -36,4 +36,26 @@ class BushingTestsController < ApplicationController
       end
     end
   end
+  
+  def edit
+    @transformer = Transformer.find(params[:transformer_id])
+    @bushing_test = BushingTest.find(params[:id])
+  end
+  
+  def update
+    @transformer = Transformer.find(params[:transformer_id])
+    @bushing_test = BushingTest.find(params[:id])
+    respond_to do |format|
+      if @bushing_test.update_attributes(params[:bushing_test])
+        format.html {
+          redirect_to(transformer_electrical_tests_path(@transformer), 
+                      :notice => 'Bushing Test was successfully updated.')
+        }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+  end
+  
+  
 end

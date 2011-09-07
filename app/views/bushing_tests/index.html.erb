@@ -64,21 +64,108 @@
 <br/>
 
 <h4>กราฟแสดงความสัมพันธ์ระหว่าง %PowerFactor(C1) กับวันทดสอบ</h4>
-<div id="power_factor_cor_20c_graph" style="width:900px;height:400px"></div>
-<button id="reset_power_factor_cor_20c">Reset</button>
+<div id="hv_power_factor_cor_20c_graph" style="width:900px;height:400px"></div>
+<button id="reset_hv_power_factor_cor_20c">Reset</button>
 
 <br/>
 
 <h4>กราฟแสดงความสัมพันธ์ระหว่าง %PowerFactor(C2) กับวันทดสอบ</h4>
-<div id="power_factor_avg_graph" style="width:900px;height:400px"></div>
-<button id="reset_power_factor_avg">Reset</button>
+<div id="hv_power_factor_avg_graph" style="width:900px;height:400px"></div>
+<button id="reset_hv_power_factor_avg">Reset</button>
 
 <br/>
 
 <h4>กราฟแสดงความสัมพันธ์ระหว่าง %Capacitance(C1) กับวันทดสอบ</h4>
-<div id="power_factor_avg_graph" style="width:900px;height:400px"></div>
-<button id="reset_power_factor_avg">Reset</button>
+<div id="hv_c1_graph" style="width:900px;height:400px"></div>
+<button id="reset_c1">Reset</button>
 
+<br/>
 <h4>กราฟแสดงความสัมพันธ์ระหว่าง %Capacitance(C2) กับวันทดสอบ</h4>
-<div id="power_factor_avg_graph" style="width:900px;height:400px"></div>
-<button id="reset_power_factor_avg">Reset</button>
+<div id="hv_c2_graph" style="width:900px;height:400px"></div>
+<button id="reset_c2">Reset</button>
+
+<hr/>
+<br/>
+
+<div class="grid_16">
+  <table>
+    <thead>
+      <tr>
+        <th>Bushing</th>
+        <th>%Bushing Factor</th>
+        <th>Health Index Factor</th>
+        <th>Condition</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>X1</td>
+        <td><%= number_with_precision(@bushing_test.percent_bushing_factor("x1"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("x1") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("y1")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>X3</td>
+        <td><%= number_with_precision(@bushing_test.percent_bushing_factor("x2"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("x2") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("x2")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>X3</td>
+        <td><%= number_with_precision(@bushing_test.percent_bushing_factor("x3"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("x3") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("x3")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>X0</td>
+        <td><%= number_with_precision(@bushing_test.percent_bushing_factor("x0"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("x0") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("x0")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+<div class="grid_16">
+  <table>
+    <thead>
+      <tr>
+        <th>Bushing</th>
+        <th>%Bushing Factor</th>
+        <th>Health Index Factor</th>
+        <th>Condition</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Y1</td>
+        <td><%= number_with_precision(@bushing_test.percent_bushing_factor("y1"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("y1") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("y1")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>Y2</td>
+        <td><%= number_with_precision(@bushing_test.percent_bushing_factor("y2"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("y2") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("y2")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>Y3</td>
+        <td><%= number_with_precision(@bushing_test.percent_bushing_factor("y3"), precision: 2) %></td>
+        <td><%= @bushing_test.health_index_factor("y3") %></td>
+        <td><%= condition_color(@bushing_test.health_index_factor("y3")) %></td>
+        <td><%= @bushing_test.thai_test_date %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
