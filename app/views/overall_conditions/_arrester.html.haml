@@ -1,0 +1,26 @@
+.grid_16
+  %h2 Arrester
+  .grid_11
+    %table
+      %thead
+        %tr
+          %th Arrester
+          %th Health Index Factor
+          %th Condition
+          %th ข้อมูลล่าสุดที่ถูกบันทึก
+      %tbody
+        %tr
+          %td HV Arrester
+          %td= arrester(:hi_factor, "h")
+          %td= arrester(:color, "h")
+          %td= @arrester.thai_test_date
+        %tr
+          %td LV Arrester
+          %td= arrester(:hi_factor, "x")
+          %td= arrester(:color, "x")
+          %td= @arrester.thai_test_date
+        %tr
+          %td TV Arrester
+          %td= arrester(:hi_factor, "y")
+          %td= arrester(:color, "y")
+          %td= @arrester.thai_test_date

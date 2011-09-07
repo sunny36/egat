@@ -7,6 +7,17 @@ module OverallConditionsHelper
       " - "
     end
   end
+  
+  def arrester(type, phase)
+    min = [@arrester.health_index_factor(phase + "1"), @arrester.health_index_factor(phase + "2"), 
+           @arrester.health_index_factor(phase + "3")].min
+    case type
+    when :hi_factor
+      return min
+    when :color
+      link_to(color_span(ArresterFactor.where(:hi_factor => min).first.color.value).html_safe, transformer_arresters_path)
+    end
+  end
 
   def insulating_oil(type)
     unless @insulating_oil.blank? && @oltc_oil_contamination.blank?

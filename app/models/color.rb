@@ -11,6 +11,7 @@ class Color < ActiveRecord::Base
   has_many :bushing_test_factors
   has_many :bushing_test_conditions
   has_many :arrester_conditions
+  has_many :arrester_factors
 end
 
 # == Schema Information
