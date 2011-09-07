@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907131242) do
+ActiveRecord::Schema.define(:version => 20110907162600) do
 
   create_table "aging_product_factors", :force => true do |t|
     t.integer  "hi_factor"
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(:version => 20110907131242) do
     t.string   "yeartv"
     t.decimal  "perform_type",  :precision => 10, :scale => 0
     t.decimal  "transformer",   :precision => 10, :scale => 0
+  end
+
+  create_table "arrester_conditions", :force => true do |t|
+    t.integer  "score"
+    t.string   "score_message"
+    t.string   "testing"
+    t.float    "start"
+    t.float    "end"
+    t.integer  "weight"
+    t.string   "color_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "arresters", :force => true do |t|
