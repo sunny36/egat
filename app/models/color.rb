@@ -10,6 +10,7 @@ class Color < ActiveRecord::Base
   has_many :oltc_dielectric_property_factors
   has_many :bushing_test_factors
   has_many :bushing_test_conditions
+  has_many :arrester_conditions
 end
 
 # == Schema Information
