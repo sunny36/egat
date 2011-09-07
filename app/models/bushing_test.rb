@@ -156,6 +156,7 @@ class BushingTest < ActiveRecord::Base
 
 end
 
+
 # == Schema Information
 #
 # Table name: bushing_tests
@@ -299,5 +300,6 @@ end
 #  y3_c2_remark        :string(255)
 #  created_at          :datetime
 #  updated_at          :datetime
+#  cf                  :integer(10)
 #
 
