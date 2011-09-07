@@ -1,7 +1,124 @@
 class Arrester < ActiveRecord::Base
   belongs_to :transformer
   
-  def watt_loss(phase)
+  def test_date_for_floth
+    self.test_date.to_time.to_i * 1000
+  end
+
+  def thai_test_date
+    test_date.strftime("%d/%m/%Y")
+  end
+  
+  def h1_percent_leakage_current
+    percent_leakage_current("h1")
+  end
+  
+  def h1_percent_watt_loss
+    percent_watt_loss("h1")
+  end
+  
+  def h1_percent_insulation_resistance
+    percent_insulation_resistance("h1")
+  end
+
+  def h2_percent_leakage_current
+    percent_leakage_current("h2")
+  end
+  
+  def h2_percent_watt_loss
+    percent_watt_loss("h2")
+  end
+  
+  def h2_percent_insulation_resistance
+    percent_insulation_resistance("h2")
+  end
+
+  def h3_percent_leakage_current
+    percent_leakage_current("h3")
+  end
+
+  def h3_percent_watt_loss
+    percent_watt_loss("h3")
+  end
+  
+  def h3_percent_insulation_resistance
+    percent_insulation_resistance("h3")
+  end
+  
+  def x1_percent_leakage_current
+    percent_leakage_current("x1")
+  end
+  
+  def x1_percent_watt_loss
+    percent_watt_loss("x1")
+  end
+  
+  def x1_percent_insulation_resistance
+    percent_insulation_resistance("x1")
+  end
+
+  def x2_percent_leakage_current
+    percent_leakage_current("x2")
+  end
+  
+  def x2_percent_watt_loss
+    percent_watt_loss("x2")
+  end
+  
+  def x2_percent_insulation_resistance
+    percent_insulation_resistance("x2")
+  end
+
+  def x3_percent_leakage_current
+    percent_leakage_current("x3")
+  end
+
+  def x3_percent_watt_loss
+    percent_watt_loss("x3")
+  end
+  
+  def x3_percent_insulation_resistance
+    percent_insulation_resistance("x3")
+  end
+
+  def y1_percent_leakage_current
+    percent_leakage_current("y1")
+  end
+  
+  def y1_percent_watt_loss
+    percent_watt_loss("y1")
+  end
+  
+  def y1_percent_insulation_resistance
+    percent_insulation_resistance("y1")
+  end
+
+  def y2_percent_leakage_current
+    percent_leakage_current("y2")
+  end
+  
+  def y2_percent_watt_loss
+    percent_watt_loss("y2")
+  end
+  
+  def y2_percent_insulation_resistance
+    percent_insulation_resistance("y2")
+  end
+
+  def y3_percent_leakage_current
+    percent_leakage_current("y3")
+  end
+
+  def y3_percent_watt_loss
+    percent_watt_loss("y3")
+  end
+  
+  def y3_percent_insulation_resistance
+    percent_insulation_resistance("y3")
+  end
+
+
+  def percent_watt_loss(phase)
     commissioning = self.class.where(:transformer_id => self.transformer_id).where(:test_type => "Commissoning").order("test_date DESC").first
     unless commissioning.nil?
       commissioning = commissioning.send(("#{phase}_watt").to_sym)
@@ -12,7 +129,7 @@ class Arrester < ActiveRecord::Base
     return (100.0 * (watt - commissioning)) / commissioning
   end
 
-  def insulation_resistance(phase)
+  def percent_insulation_resistance(phase)
     commissioning = self.class.where(:transformer_id => self.transformer_id).where(:test_type => "Commissoning").order("test_date DESC").first
     unless commissioning.nil?
       commissioning = commissioning.send(("#{phase}_insulation_resistance").to_sym)
@@ -23,7 +140,7 @@ class Arrester < ActiveRecord::Base
     return (100.0 * insulation_resistance) / commissioning
   end
 
-  def leakage_current(phase)
+  def percent_leakage_current(phase)
     commissioning = self.class.where(:transformer_id => self.transformer_id).where(:test_type => "Commissoning").order("test_date DESC").first
     unless commissioning.nil?
       commissioning = commissioning.send(("#{phase}_leakage_current").to_sym)
@@ -34,6 +151,50 @@ class Arrester < ActiveRecord::Base
     return (100.0 * leakage_current) / commissioning
   end
 
+  def percent_arrester_factor(phase)
+    leakage_current_score = score("leakage_current", percent_leakage_current(phase))
+    watt_loss_score = score("watt_loss", percent_watt_loss(phase))
+    insulation_resistance = score("insulation_resistance", percent_insulation_resistance(phase))
+    numerator = (leakage_current_score * weight("leakage_current")) +
+                (watt_loss_score * weight("watt_loss"))
+                (insulation_resistance * weight("insulation_resistance"))
+    denominator = (score_max("leakage_current") * weight("leakage_current")) + 
+                  (score_max("watt_loss") * weight("watt_loss"))
+                  (score_max("insulation_resistance") * weight("insulation_resistance"))
+    return ((numerator.to_f / denominator.to_f) * 100.0)
+  end
+  
+  def health_index_factor(phase)
+    ArresterFactor.all.each do |i|
+      i.start = 0 if i.start.nil?
+      i.end = 1000000 if i.end.nil?
+      if percent_arrester_factor(phase).round.between?(i.start, i.end)
+        return i.hi_factor
+      end
+    end
+  end
+  
+  
+  def score(testing, value)
+    arrester_conditions = ArresterCondition.where(testing: testing)
+    arrester_conditions.each do |x|
+      x.start = 0 if x.start.nil?
+      x.end = 10000000 if x.end.nil?
+      if value.round.between?(x.start, x.end)
+        return x.score
+      end
+    end
+    arrester_conditions.first.score
+  end
+  
+  def weight(testing)
+    puts testing
+    ArresterCondition.where(:testing => testing).first.weight
+  end
+  
+  def score_max(testing)
+    ArresterCondition.where(testing: testing).order("score DESC").first.score
+  end
 end
 
 # == Schema Information

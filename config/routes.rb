@@ -31,6 +31,7 @@ Egat::Application.routes.draw do
   
   resources :transformers do
     resources :arresters
+    resources :arrester_conditions
     resources :bushing_tests
     resources :bushing_test_conditions
     resources :aging_products

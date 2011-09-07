@@ -1,0 +1,251 @@
+<div class="grid_16">
+  <dl>
+    <div class="grid_7">
+      <dt>Transformer Name</dt>
+      <dd><%= " : " + @transformer.transformer_name %></dd>
+    </div>
+    <div class="grid_7">
+      <dt>Equipment No.</dt>
+      <dd><%= " : " + @transformer.egatsn %></dd>
+    </div>
+  </dl>
+</div>
+
+<div class="clear"></div>
+
+<br/>
+
+<div class="grid_16">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3">HV Arrester</th>
+        <th colspan="2">
+          <%=
+            min = [@arrester.health_index_factor("h1"), @arrester.health_index_factor("h2"),
+                   @arrester.health_index_factor("h3")].min
+            condition_color(min)
+          %>
+        </th>
+        <tr>
+          <th colspan="3">%HV Arrester Factor = </th>
+          <th colspan="2">
+            <%=
+              max = [@arrester.percent_arrester_factor("h1"), @arrester.percent_arrester_factor("h2"),
+                     @arrester.percent_arrester_factor("h3")].max
+              max
+            %>
+          </th>
+      </tr>
+      <tr>
+        <th>Arrester</th>
+        <th>%Arrester Factor</th>
+        <th>Health Index Factor</th>
+        <th>Condition</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>H1</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("h1"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("h1") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("h1")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>H2</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("h2"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("h2") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("h2")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>H3</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("h3"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("h3") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("h3")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="clear"></div>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %LeakageCurrent กับวันทดสอบ</h4>
+<div id="hv_leakage_current_graph" style="width:900px;height:400px"></div>
+<button id="hv_leakage_current_reset">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Watt Loss กับวันทดสอบ</h4>
+<div id="hv_watt_loss_graph" style="width:900px;height:400px"></div>
+<button id="hv_watt_loss_reset">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Insulation Resistance กับวันทดสอบ</h4>
+<div id="hv_insulation_resistance_graph" style="width:900px;height:400px"></div>
+<button id="hv_insulation_resistance_reset">Reset</button>
+
+<div class="clear"></div>
+
+<hr/>
+<br/>
+
+<div class="grid_16">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3">LV Arrester</th>
+        <th colspan="2">
+          <%=
+            min = [@arrester.health_index_factor("x1"), @arrester.health_index_factor("x2"),
+                   @arrester.health_index_factor("x3")].min
+            condition_color(min)
+          %>
+        </th>
+        <tr>
+          <th colspan="3">%LV Arrester Factor = </th>
+          <th colspan="2">
+            <%=
+              max = [@arrester.percent_arrester_factor("x1"), @arrester.percent_arrester_factor("x2"),
+                     @arrester.percent_arrester_factor("x3")].max
+              max
+            %>
+          </th>
+      </tr>
+      <tr>
+        <th>Arrester</th>
+        <th>%Arrester Factor</th>
+        <th>Health Index Factor</th>
+        <th>Condition</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>H1</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("x1"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("x1") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("x1")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>H2</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("x2"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("x2") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("x2")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>H3</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("x3"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("x3") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("x3")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="clear"></div>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %LeakageCurrent กับวันทดสอบ</h4>
+<div id="xv_leakage_current_graph" style="width:900px;height:400px"></div>
+<button id="xv_leakage_current_reset">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Watt Loss กับวันทดสอบ</h4>
+<div id="xv_watt_loss_graph" style="width:900px;height:400px"></div>
+<button id="xv_watt_loss_reset">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Insulation Resistance กับวันทดสอบ</h4>
+<div id="xv_insulation_resistance_graph" style="width:900px;height:400px"></div>
+<button id="xv_insulation_resistance_reset">Reset</button>
+
+<div class="clear"></div>
+
+<hr/>
+<br/>
+
+<div class="grid_16">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3">TV Arrester</th>
+        <th colspan="2">
+          <%=
+            min = [@arrester.health_index_factor("y1"), @arrester.health_index_factor("y2"),
+                   @arrester.health_index_factor("y3")].min
+            condition_color(min)
+          %>
+        </th>
+        <tr>
+          <th colspan="3">%TV Arrester Factor = </th>
+          <th colspan="2">
+            <%=
+              max = [@arrester.percent_arrester_factor("y1"), @arrester.percent_arrester_factor("y2"),
+                     @arrester.percent_arrester_factor("y3")].max
+              max
+            %>
+          </th>
+      </tr>
+      <tr>
+        <th>Arrester</th>
+        <th>%Arrester Factor</th>
+        <th>Health Index Factor</th>
+        <th>Condition</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>H1</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("y1"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("y1") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("y1")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>H2</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("y2"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("y2") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("y2")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+      <tr>
+        <td>H3</td>
+        <td><%= number_with_precision(@arrester.percent_arrester_factor("y3"), precision: 2) %></td>
+        <td><%= @arrester.health_index_factor("x3") %></td>
+        <td><%= condition_color(@arrester.health_index_factor("x3")) %></td>
+        <td><%= @arrester.thai_test_date %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="clear"></div>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %LeakageCurrent กับวันทดสอบ</h4>
+<div id="yv_leakage_current_graph" style="width:900px;height:400px"></div>
+<button id="yv_leakage_current_reset">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Watt Loss กับวันทดสอบ</h4>
+<div id="yv_watt_loss_graph" style="width:900px;height:400px"></div>
+<button id="yv_watt_loss_reset">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Insulation Resistance กับวันทดสอบ</h4>
+<div id="yv_insulation_resistance_graph" style="width:900px;height:400px"></div>
+<button id="yv_insulation_resistance_reset">Reset</button>
+
+<div class="clear"></div>
+
