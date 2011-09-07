@@ -1,0 +1,37 @@
+label.inline {
+	width: 200px;
+	display: inline !important;
+	float: left;
+}
+
+#arrester_test_type, #arrester_test_date, #arrester_work_order{
+	width: 280px;
+}
+
+.serial-number {
+  width: 100px !important;
+}
+
+.test-kv {
+  width: 18px !important;
+}
+
+.current, .watt, .insulation-resistance, .leakage-current {
+  width: 55px !important;
+}
+
+.remark {
+  width: 105px !important;
+}
+
+input[type="submit"].cupid-green, button.cupid-green {
+  width: 960px;
+}
+
+.cf {
+  width: 100px !important;
+}
+
+table {
+  width: auto;
+}

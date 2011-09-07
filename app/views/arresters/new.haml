@@ -1,0 +1,181 @@
+= error_messages_for :arrester, :header_message => "Please Try Again!", :class => 'error'
+#new_insulating_oil
+  = form_for [@transformer, @arrester] do |f|
+    .prefix_6.grid_4.suffix_6
+      %p
+        = f.label :transformer_id, "หม้อแปลงไฟฟ้า"
+        = transformer_names_drop_down_list(f, :transformer_id)
+    .grid_16
+      .grid_5
+        %p
+          = f.label :test_type, 'วาระการตรวจสอบ', {:class => "inline"}
+          = f.select(:test_type, ["Commissioning", "6 months", "Others"])
+      .grid_5
+        %p
+          = f.label :test_date, 'วันท่ีตรวจสอบ', {:class => "inline"}
+          = f.text_field :test_date
+      .grid_5
+        %p
+          = f.label :work_order, 'เลขที่ใบสั่งงาน', {:class => "inline"}
+          = f.text_field :work_order
+    .clear
+      &nbsp;
+    %hr
+    .grid_16
+      %table
+        %thead
+          %tr
+            %th
+              Arrester S/N
+            %th
+              Phase
+            %th
+              Test kV
+            %th
+              Current(mA)
+            %th
+              Watt
+            %th
+              Insulation Resistance
+            %th
+              Leakage Current(mA)
+        %tbody
+          %tr
+            %td
+              = f.text_field :h1_serial_number, :class => 'serial-number'
+            %td
+              %strong H1
+            %td
+              = f.text_field :h1_test_kv, :class => 'test-kv'
+            %td
+              = f.text_field :h1_current, :class => 'current'
+            %td
+              = f.text_field :h1_watt, :class => 'watt'
+            %td
+              = f.text_field :h1_insulation_resistance, :class => 'insulation-resistance'
+            %td
+              = f.text_field :h1_leakage_current, :class => 'leakage-current'
+          %tr
+            %td
+              = f.text_field :h2_serial_number, :class => 'serial-number'
+            %td
+              %strong H2
+            %td
+              = f.text_field :h2_test_kv, :class => 'test-kv'
+            %td
+              = f.text_field :h2_current, :class => 'current'
+            %td
+              = f.text_field :h2_watt, :class => 'watt'
+            %td
+              = f.text_field :h2_insulation_resistance, :class => 'insulation-resistance'
+            %td
+              = f.text_field :h2_leakage_current, :class => 'leakage-current'
+          %tr
+            %td
+              = f.text_field :h3_serial_number, :class => 'serial-number'
+            %td
+              %strong H3
+            %td
+              = f.text_field :h3_test_kv, :class => 'test-kv'
+            %td
+              = f.text_field :h3_current, :class => 'current'
+            %td
+              = f.text_field :h3_watt, :class => 'watt'
+            %td
+              = f.text_field :h3_insulation_resistance, :class => 'insulation-resistance'
+            %td
+              = f.text_field :h3_leakage_current, :class => 'leakage-current'         
+            %tr
+              %td
+                = f.text_field :x1_serial_number, :class => 'serial-number'
+              %td
+                %strong X1
+              %td
+                = f.text_field :x1_test_kv, :class => 'test-kv'
+              %td
+                = f.text_field :x1_current, :class => 'current'
+              %td
+                = f.text_field :x1_watt, :class => 'watt'
+              %td
+                = f.text_field :x1_insulation_resistance, :class => 'insulation-resistance'
+              %td
+                = f.text_field :x1_leakage_current, :class => 'leakage-current'
+            %tr
+              %td
+                = f.text_field :x2_serial_number, :class => 'serial-number'
+              %td
+                %strong X2
+              %td
+                = f.text_field :x2_test_kv, :class => 'test-kv'
+              %td
+                = f.text_field :x2_current, :class => 'current'
+              %td
+                = f.text_field :x2_watt, :class => 'watt'
+              %td
+                = f.text_field :x2_insulation_resistance, :class => 'insulation-resistance'
+              %td
+                = f.text_field :x2_leakage_current, :class => 'leakage-current'
+            %tr
+              %td
+                = f.text_field :x3_serial_number, :class => 'serial-number'
+              %td
+                %strong X3
+              %td
+                = f.text_field :x3_test_kv, :class => 'test-kv'
+              %td
+                = f.text_field :x3_current, :class => 'current'
+              %td
+                = f.text_field :x3_watt, :class => 'watt'
+              %td
+                = f.text_field :x3_insulation_resistance, :class => 'insulation-resistance'
+              %td
+                = f.text_field :x3_leakage_current, :class => 'leakage-current'         
+            %tr
+              %td
+                = f.text_field :y1_serial_number, :class => 'serial-number'
+              %td
+                %strong Y1
+              %td
+                = f.text_field :y1_test_kv, :class => 'test-kv'
+              %td
+                = f.text_field :y1_current, :class => 'current'
+              %td
+                = f.text_field :y1_watt, :class => 'watt'
+              %td
+                = f.text_field :y1_insulation_resistance, :class => 'insulation-resistance'
+              %td
+                = f.text_field :y1_leakage_current, :class => 'leakage-current'
+            %tr
+              %td
+                = f.text_field :y2_serial_number, :class => 'serial-number'
+              %td
+                %strong Y2
+              %td
+                = f.text_field :y2_test_kv, :class => 'test-kv'
+              %td
+                = f.text_field :y2_current, :class => 'current'
+              %td
+                = f.text_field :y2_watt, :class => 'watt'
+              %td
+                = f.text_field :y2_insulation_resistance, :class => 'insulation-resistance'
+              %td
+                = f.text_field :y2_leakage_current, :class => 'leakage-current'
+            %tr
+              %td
+                = f.text_field :y3_serial_number, :class => 'serial-number'
+              %td
+                %strong Y3
+              %td
+                = f.text_field :y3_test_kv, :class => 'test-kv'
+              %td
+                = f.text_field :y3_current, :class => 'current'
+              %td
+                = f.text_field :y3_watt, :class => 'watt'
+              %td
+                = f.text_field :y3_insulation_resistance, :class => 'insulation-resistance'
+              %td
+                = f.text_field :y3_leakage_current, :class => 'leakage-current'
+      .grid_16
+        %p
+          = f.submit "Save", :disable_with => 'Saveing...',  :class => "cupid-green"
+    

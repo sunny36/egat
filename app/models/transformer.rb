@@ -43,7 +43,7 @@ class Transformer < ActiveRecord::Base
   has_many :insulating_oil
   has_many :winding_type
   has_many :bushing_tests
-
+  has_many :arresters
   delegate :name, :to => :brand, :prefix => true
 
   def self.find_all_by_transformer_name_initials(names)
