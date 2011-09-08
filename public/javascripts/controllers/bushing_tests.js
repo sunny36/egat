@@ -87,66 +87,62 @@ BushingTest.computePowerFactor = function() {
   });
 };
 
-BushingTest.plotPowerFactorCor20C = function(bushingTests, markings, graphId) {
+BushingTest.plotPowerFactorCor20C = function(bushingTests, phase, markings, graphId) {
   var points = { };
   points.h1 = [];
   points.h2 = [];
   points.h3 = [];
   points.h0 = [];
   for (var i = 0; i < bushingTests.length; ++i) {
-    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_percent_power_factor_cor]);
-    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i].h2_c1_percent_power_factor_cor]);
-    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i].h3_c1_percent_power_factor_cor]);
-    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i].h0_c1_percent_power_factor_cor]);
-  }
-  BushingTest.powerFactorCor20CPoints.h1 = points.h1;
-  BushingTest.powerFactorCor20CPoints.h2 = points.h2;
-  BushingTest.powerFactorCor20CPoints.h3 = points.h3;
-  BushingTest.powerFactorCor20CPoints.h0 = points.h0;
-  BushingTest.plotGraph(points, markings, graphId, 'Power Factor');
-};
-
-BushingTest.plotPowerFactorAvg = function(bushingTests, markings, graphId) {
-  var points = { };
-  points.h1 = [];
-  points.h2 = [];
-  points.h3 = [];
-  points.h0 = [];
-  for (var i = 0; i < bushingTests.length; ++i) {
-    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_percent_power_factor_avg]);
-    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i].h2_c2_percent_power_factor_avg]);
-    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i].h3_c2_percent_power_factor_avg]);
-    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i].h0_c2_percent_power_factor_avg]);
+    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "1_c1_percent_power_factor_cor"]]);
+    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "2_c1_percent_power_factor_cor"]]);
+    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "3_c1_percent_power_factor_cor"]]);
+    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "0_c1_percent_power_factor_cor"]]);
   }
   BushingTest.plotGraph(points, markings, graphId, 'Power Factor');
 };
 
-BushingTest.plotCapacitance1 = function(bushingTests, markings, graphId) {
+BushingTest.plotPowerFactorAvg = function(bushingTests, phase, markings, graphId) {
   var points = { };
   points.h1 = [];
   points.h2 = [];
   points.h3 = [];
   points.h0 = [];
   for (var i = 0; i < bushingTests.length; ++i) {
-    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
-    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
-    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
-    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c1_capacitance]);
+    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "1_c2_percent_power_factor_avg"]]);
+    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "2_c2_percent_power_factor_avg"]]);
+    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "3_c2_percent_power_factor_avg"]]);
+    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "0_c2_percent_power_factor_avg"]]);
+  }
+  BushingTest.plotGraph(points, markings, graphId, 'Power Factor');
+};
+
+BushingTest.plotCapacitance1 = function(bushingTests, phase, markings, graphId) {
+  var points = { };
+  points.h1 = [];
+  points.h2 = [];
+  points.h3 = [];
+  points.h0 = [];
+  for (var i = 0; i < bushingTests.length; ++i) {
+    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "1_c1_capacitance"]]);
+    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "2_c1_capacitance"]]);
+    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "3_c1_capacitance"]]);
+    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "0_c1_capacitance"]]);
   }
   BushingTest.plotGraph(points, markings, graphId, '%Capacitance (C1)');
 };
 
-BushingTest.plotCapacitance2 = function(bushingTests, markings, graphId) {
+BushingTest.plotCapacitance2 = function(bushingTests, phase, markings, graphId) {
   var points = { };
   points.h1 = [];
   points.h2 = [];
   points.h3 = [];
   points.h0 = [];
   for (var i = 0; i < bushingTests.length; ++i) {
-    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
-    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
-    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
-    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i].h1_c2_capacitance]);
+    points.h1.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "1_c2_capacitance"]]);
+    points.h2.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "2_c2_capacitance"]]);
+    points.h3.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "3_c2_capacitance"]]);
+    points.h0.push([bushingTests[i].test_date_for_floth, bushingTests[i][phase + "0_c2_capacitance"]]);
   }
   BushingTest.plotGraph(points, markings, graphId, '%Capacitance (C2)');
 };
@@ -193,7 +189,7 @@ BushingTest.plotGraph = function (points, markings, graphId, yAxisLabel) {
   });
 };
 
-BushingTest.loadAndPlot = function(testing, graphId) {
+BushingTest.loadAndPlot = function(testing, phase, graphId) {
   var url = $.url.attr('path').split("bushing_tests");
   url = url[0] + "bushing_test_conditions?testing=" + testing;
   $.getJSON(url, function(data) {
@@ -209,10 +205,10 @@ BushingTest.loadAndPlot = function(testing, graphId) {
     }
     $.getJSON($.url.attr('path'), function (data) {
        var bushingTests = data;
-       if (testing == 'pf_20c') { BushingTest.plotPowerFactorCor20C(bushingTests, markings, graphId); }
-       if (testing == 'pf') { BushingTest.plotPowerFactorAvg(bushingTests, markings, graphId); }
-       if (testing == 'c1') { BushingTest.plotCapacitance1(bushingTests, markings, graphId); }
-       if (testing == 'c2') { BushingTest.plotCapacitance2(bushingTests, markings, graphId); }
+       if (testing == 'pf_20c') { BushingTest.plotPowerFactorCor20C(bushingTests, phase, markings, graphId); }
+       if (testing == 'pf') { BushingTest.plotPowerFactorAvg(bushingTests, phase, markings, graphId); }
+       if (testing == 'c1') { BushingTest.plotCapacitance1(bushingTests, phase, markings, graphId); }
+       if (testing == 'c2') { BushingTest.plotCapacitance2(bushingTests, phase, markings, graphId); }
     });
   });
 };
@@ -228,37 +224,58 @@ $(function() {
   BushingTest.computePowerFactor();
 
   if ($("#hv_power_factor_cor_20c_graph").length > 0) {
-    BushingTest.loadAndPlot('pf_20c', "#hv_power_factor_cor_20c_graph");
+    BushingTest.loadAndPlot('pf_20c', 'h', "#hv_power_factor_cor_20c_graph");
     $("#reset_hv_power_factor_cor_20c").click(function () {
-      BushingTest.loadAndPlot('pf_20c', "#hv_power_factor_cor_20c_graph");
+      BushingTest.loadAndPlot('pf_20c', 'h', "#hv_power_factor_cor_20c_graph");
     });
   }
 
   if ($("#hv_power_factor_avg_graph").length > 0) {
-    BushingTest.loadAndPlot('pf', "#hv_power_factor_avg_graph");
+    BushingTest.loadAndPlot('pf', 'h', "#hv_power_factor_avg_graph");
     $("#reset_hv_power_factor_avg").click(function () {
-      BushingTest.loadAndPlot('pf', "#hv_power_factor_avg_graph");
+      BushingTest.loadAndPlot('pf', 'h', "#hv_power_factor_avg_graph");
     });
   }
 
   if ($("#hv_c1_graph").length > 0) {
-    BushingTest.loadAndPlot('c1', "#hv_c1_graph");
+    BushingTest.loadAndPlot('c1', 'h',  "#hv_c1_graph");
     $("#reset_hv_c1").click(function () {
-      BushingTest.loadAndPlot('c1', "#hv_c1_graph");
+      BushingTest.loadAndPlot('c1','h',  "#hv_c1_graph");
     });
   }
 
-  if ($("#hv_c1_graph").length > 0) {
-    BushingTest.loadAndPlot('c1', "#hv_c1_graph");
-    $("#reset_hv_c1").click(function () {
-      BushingTest.loadAndPlot('c1', "#hv_c1_graph");
-    });
-  }
-
-  if ($("#hv_c2_graph").length > 0) {
-    BushingTest.loadAndPlot('c1', "#hv_c2_graph");
+   if ($("#hv_c2_graph").length > 0) {
+    BushingTest.loadAndPlot('c1','h', "#hv_c2_graph");
     $("#reset_hv_c2").click(function () {
-      BushingTest.loadAndPlot('c1', "#hv_c2_graph");
+      BushingTest.loadAndPlot('c1','h', "#hv_c2_graph");
+    });
+  }
+
+  if ($("#xv_power_factor_cor_20c_graph").length > 0) {
+    BushingTest.loadAndPlot('pf_20c', 'x', "#xv_power_factor_cor_20c_graph");
+    $("#reset_xv_power_factor_cor_20c").click(function () {
+      BushingTest.loadAndPlot('pf_20c', 'x', "#xv_power_factor_cor_20c_graph");
+    });
+  }
+
+  if ($("#xv_power_factor_avg_graph").length > 0) {
+    BushingTest.loadAndPlot('pf', 'x', "#xv_power_factor_avg_graph");
+    $("#reset_xv_power_factor_avg").click(function () {
+      BushingTest.loadAndPlot('pf', 'x', "#xv_power_factor_avg_graph");
+    });
+  }
+
+  if ($("#xv_c1_graph").length > 0) {
+    BushingTest.loadAndPlot('c1', 'x',  "#xv_c1_graph");
+    $("#reset_xv_c1").click(function () {
+      BushingTest.loadAndPlot('c1','x',  "#xv_c1_graph");
+    });
+  }
+
+  if ($("#xv_c2_graph").length > 0) {
+    BushingTest.loadAndPlot('c1','x', "#xv_c2_graph");
+    $("#reset_xv_c2").click(function () {
+      BushingTest.loadAndPlot('c1','x', "#xv_c2_graph");
     });
   }
   

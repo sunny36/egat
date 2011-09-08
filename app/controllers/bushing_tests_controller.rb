@@ -7,15 +7,15 @@ class BushingTestsController < ApplicationController
     respond_to do |format|
       format.html
       ActiveRecord::Base.include_root_in_json = false
-      format.js { render :json => @bushing_tests.to_json(:methods => [:test_date_for_floth, 
-                                                                      :h1_c1_percent_power_factor_cor,
-                                                                      :h2_c1_percent_power_factor_cor,
-                                                                      :h3_c1_percent_power_factor_cor,
-                                                                      :h0_c1_percent_power_factor_cor,
-                                                                      :h1_c2_percent_power_factor_avg,
-                                                                      :h2_c2_percent_power_factor_avg,
-                                                                      :h3_c2_percent_power_factor_avg,
-                                                                      :h0_c2_percent_power_factor_avg]) }
+      methods = [:test_date_for_floth, 
+                 :h1_c1_percent_power_factor_cor, :h2_c1_percent_power_factor_cor, :h3_c1_percent_power_factor_cor,
+                 :h0_c1_percent_power_factor_cor, :h1_c2_percent_power_factor_avg, :h2_c2_percent_power_factor_avg,
+                 :h3_c2_percent_power_factor_avg, :h0_c2_percent_power_factor_avg,
+                 :x1_c1_percent_power_factor_cor, :x2_c1_percent_power_factor_cor, :x3_c1_percent_power_factor_cor,
+                 :x0_c1_percent_power_factor_cor, :x1_c2_percent_power_factor_avg, :x2_c2_percent_power_factor_avg,
+                 :x3_c2_percent_power_factor_avg, :x0_c2_percent_power_factor_avg
+      ]
+      format.js { render :json => @bushing_tests.to_json(:methods => methods) }
     end
   end
 

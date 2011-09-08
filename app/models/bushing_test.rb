@@ -64,7 +64,47 @@ class BushingTest < ActiveRecord::Base
       return nil if self.new_record?
       percent_power_factor_average("h0", "c2")
     end
+ 
+    def x1_c1_percent_power_factor_cor
+      return nil if self.new_record?
+      percent_power_factor_cor_20c("h1")
+    end
+
+    def x2_c1_percent_power_factor_cor
+      return nil if self.new_record?
+      percent_power_factor_cor_20c("h2")
+    end
+
+    def x3_c1_percent_power_factor_cor
+      return nil if self.new_record?
+      percent_power_factor_cor_20c("h3")
+    end
     
+    def x0_c1_percent_power_factor_cor
+      return nil if self.new_record?
+      percent_power_factor_cor_20c("h0")
+    end
+    
+    def x1_c2_percent_power_factor_avg
+      return nil if self.new_record?
+      percent_power_factor_average("h1", "c2")
+    end
+
+    def x2_c2_percent_power_factor_avg
+      return nil if self.new_record?
+      percent_power_factor_average("h2", "c2")
+    end
+    
+    def x3_c2_percent_power_factor_avg
+      return nil if self.new_record?
+      percent_power_factor_average("h3", "c2")
+    end
+    
+    def x0_c2_percent_power_factor_avg
+      return nil if self.new_record?
+      percent_power_factor_average("h0", "c2")
+    end
+   
     def test_date_for_floth
       self.test_date.to_time.to_i * 1000
     end

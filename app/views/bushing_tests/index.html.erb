@@ -19,6 +19,25 @@
   <table>
     <thead>
       <tr>
+        <th colspan="3">HV Bushing</th>
+        <th colspan="2">
+          <%=
+            min = [@bushing_test.health_index_factor("h1"), @bushing_test.health_index_factor("h2"),
+                   @bushing_test.health_index_factor("h3"), @bushing_test.health_index_factor("h0")].min
+            condition_color(min)
+          %>
+        </th>
+        <tr>
+          <th colspan="3">%HV Bushing Factor = </th>
+          <th colspan="2">
+            <%=
+              max = [@bushing_test.percent_bushing_factor("h1"), @bushing_test.percent_bushing_factor("h2"),
+                     @bushing_test.percent_bushing_factor("h3"), @bushing_test.percent_bushing_factor("h0")].max
+              number_with_precision(max, :precision => 2)
+            %>
+          </th>
+      </tr>
+      <tr>
         <th>Bushing</th>
         <th>%Bushing Factor</th>
         <th>Health Index Factor</th>
@@ -91,6 +110,25 @@
   <table>
     <thead>
       <tr>
+        <th colspan="3">HV Bushing</th>
+        <th colspan="2">
+          <%=
+            min = [@bushing_test.health_index_factor("x1"), @bushing_test.health_index_factor("x2"),
+                   @bushing_test.health_index_factor("x3"), @bushing_test.health_index_factor("x0")].min
+            condition_color(min)
+          %>
+        </th>
+        <tr>
+          <th colspan="3">%LV Bushing Factor = </th>
+          <th colspan="2">
+            <%=
+              max = [@bushing_test.percent_bushing_factor("x1"), @bushing_test.percent_bushing_factor("x2"),
+                     @bushing_test.percent_bushing_factor("x3"), @bushing_test.percent_bushing_factor("x0")].max
+              number_with_precision(max, :precision => 2)
+            %>
+          </th>
+      </tr>
+      <tr>
         <th>Bushing</th>
         <th>%Bushing Factor</th>
         <th>Health Index Factor</th>
@@ -132,10 +170,56 @@
   </table>
 </div>
 
+<br/>
+<hr>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %PowerFactor(C1) กับวันทดสอบ</h4>
+<div id="xv_power_factor_cor_20c_graph" style="width:900px;height:400px"></div>
+<button id="reset_xv_power_factor_cor_20c">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %PowerFactor(C2) กับวันทดสอบ</h4>
+<div id="xv_power_factor_avg_graph" style="width:900px;height:400px"></div>
+<button id="reset_xv_power_factor_avg">Reset</button>
+
+<br/>
+
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Capacitance(C1) กับวันทดสอบ</h4>
+<div id="xv_c1_graph" style="width:900px;height:400px"></div>
+<button id="reset_c1">Reset</button>
+
+<br/>
+<h4>กราฟแสดงความสัมพันธ์ระหว่าง %Capacitance(C2) กับวันทดสอบ</h4>
+<div id="xv_c2_graph" style="width:900px;height:400px"></div>
+<button id="reset_c2">Reset</button>
+
+<hr/>
+<br/>
+
 
 <div class="grid_16">
   <table>
     <thead>
+      <tr>
+        <th colspan="3">HV Bushing</th>
+        <th colspan="2">
+          <%=
+            min = [@bushing_test.health_index_factor("y1"), @bushing_test.health_index_factor("y2"),
+                   @bushing_test.health_index_factor("y3")].min
+            condition_color(min)
+          %>
+        </th>
+        <tr>
+          <th colspan="3">%HV Bushing Factor = </th>
+          <th colspan="2">
+            <%=
+              max = [@bushing_test.percent_bushing_factor("y1"), @bushing_test.percent_bushing_factor("y2"),
+                     @bushing_test.percent_bushing_factor("y3")].max
+              number_with_precision(max, :precision => 2)
+            %>
+          </th>
+      </tr>
       <tr>
         <th>Bushing</th>
         <th>%Bushing Factor</th>
